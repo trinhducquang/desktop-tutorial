@@ -1,0 +1,52 @@
+* {
+    font-family: 'Riviera Nights';
+    margin: 0;
+    padding: 0;
+    cursor: url('../public/mouse/mouse.svg'), auto;
+}
+
+@font-face {
+    font-family: 'Riviera Nights';
+    src: url('/fonts/RivieraNights-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+ 
+  @font-face {
+    font-family: 'Riviera Nights';
+    src: url('/fonts/RivieraNights-Medium.woff') format('woff');
+    font-weight: 500; 
+    font-style: normal;
+  }
+  
+
+  @font-face {
+    font-family: 'Riviera Nights';
+    src: url('/fonts/RivieraNights-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+
+  @font-face {
+    font-family: 'Riviera Nights';
+    src: url('/fonts/RivieraNights-Ultralight.woff') format('woff');
+    font-weight: 100; 
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GillAltOneMT';
+    src: url('/fonts/GillAltOneMT.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GillSansAlt1-Light';
+    src: url('/fonts/GillSansAlt1-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  

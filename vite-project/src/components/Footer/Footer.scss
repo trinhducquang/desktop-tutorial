@@ -1,0 +1,124 @@
+.Footer-container {
+    background-color: #151515;
+    min-height: 240px;
+    text-align: center;
+    padding-top: 30px;
+    
+    h1 {
+        color: white;
+        font-family: 'Riviera Nights';
+        font-weight: 400;
+        letter-spacing: 0.5rem;
+        margin-bottom: 20px;
+    }
+
+    .Footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+
+        ul {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(3, auto);
+            font-size: 0.8rem;
+            font-weight: 400;
+            width: 80%;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            margin-right: 70px;
+            margin-bottom: 20px;
+            padding: 0;
+            list-style: none;
+            text-align: left;
+
+            li,a {
+                list-style: none;
+                grid-column: span 1;
+                grid-row: span 1;
+                margin-top: 15px;
+                text-align: left;
+                color: white;
+                text-transform: uppercase;
+                transition: transform 0.4s ease, opacity 0.4s ease;
+                text-decoration: none;
+                /* Thay đổi thời gian chuyển động và độ mượt mà */
+
+                &:hover {
+                    transform: translateY(-5px);
+                    /* Di chuyển lên trên một chút */
+                    opacity: 0.8;
+                    /* Thay đổi độ mờ */
+                }
+            }
+        }
+
+        .Footer-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+
+            svg {
+                color: white;
+                font-size: 1.5rem;
+            }
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            z-index: 1;
+        }
+
+        &::before {
+            top: 0;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .Footer-content {
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        ul {
+            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-rows: repeat(7, auto) !important;
+            margin-right: 0 !important;
+            margin-bottom: 20px !important;
+            width: 100% !important;
+            padding: 0 !important;
+            list-style: none !important;
+        }
+
+        .Footer-icons {
+            margin-top: 20px !important;
+            position: relative;
+            margin-right: 100px !important;
+        }
+
+        &::before,
+        &::after {
+            left: 0;
+            right: 0;
+            width: 100% !important;
+        }
+    }
+}
