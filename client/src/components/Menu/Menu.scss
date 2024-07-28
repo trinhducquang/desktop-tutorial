@@ -7,7 +7,8 @@
   top: 0;
   left: 0;
   z-index: 10;
-  transition: background-color 0.3s, height 0.3s;
+  transition: background-color 0.3s,
+  height 0.3s;
   color: white;
 
   a {
@@ -299,8 +300,7 @@
   height: 100vh;
   width: 400px;
   color: white;
-
-
+  margin-top: auto;
   transition: right 0.3s ease;
   /* Hiệu ứng trượt */
   z-index: 30;
@@ -318,20 +318,68 @@
     text-transform: uppercase;
     margin-top: 15px;
     border-bottom: 1px solid white;
+
+    .cart-container {
+      display: flex;
+      align-items: center;
+    }
   }
 }
 
-.cart-container {
-  display: flex;
+.cart-item {
   align-items: center;
-  padding: 30px;
-  .cart-item {
-    align-items: center;
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.quantity-buttons {
+  width: fit-content;
+  display: flex;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  margin-right: 18px;
+  height: 30px;
+
+  span {
+    font-size: 18px;
+    width: 40px;
     display: flex;
-   
-    img {
-      width: 60px;
-      height: 60px;
+    align-items: center;
+    justify-content: center;
+    color: #6b6b6b;
+
+    &:nth-child(1) {
+      border-right: 2px solid rgba(0, 0, 0, 0.2);
+    }
+
+    &:nth-child(3) {
+      border-left: 2px solid rgba(0, 0, 0, 0.2);
     }
   }
+}
+
+.item-details {
+  margin-left: 10px;
+}
+
+.cart-item-button {
+  position: relative;
+  top: 540px;
+  display: flex;
+
+  button {
+    width: 80%;
+    margin: 0 auto;
+    height: 50px;
+    background-color: pink;
+    font-family: "Riviera Nights";
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+  }
+
 }

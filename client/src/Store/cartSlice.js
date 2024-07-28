@@ -14,15 +14,15 @@ const cartSlice = createSlice({
             const existingItem = state.items.find(item => item.id === newItem.id);
             if (existingItem) {
                 existingItem.quantity += newItem.quantity;
-                existingItem.price = existingItem.quantity * newItem.pricePerItem;
-                // Giữ nguyên totalQuantity không thay đổi
+                existingItem.price = existingItem.quantity * existingItem.pricePerItem;
             } else {
                 state.items.push({
                     ...newItem,
-                    quantity: newItem.quantity,
-                    price: newItem.quantity * newItem.pricePerItem
+                    pricePerItem: newItem.price,
+                    quantity: 1,  
+                    price: newItem.price  
                 });
-                state.totalQuantity += 1; // Chỉ tăng khi có sản phẩm mới
+                state.totalQuantity += 1; 
             }
         },
     },

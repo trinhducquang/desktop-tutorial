@@ -13,7 +13,6 @@ const MenuComponent = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
   const isClosing = useSelector((state) => state.menu.isClosing);
-  const scrollY = useSelector((state) => state.menu.scrollY);
   const currentPage = useSelector((state) => state.menu.currentPage);
   const location = useLocation();
 
@@ -55,25 +54,19 @@ const MenuComponent = () => {
   }, [dispatch, location.pathname]);
 
   useEffect(() => {
+    const handleOutsideClick = (event) => {
+      const menuElement = document.querySelector('.side-menu-content');
+      if (menuElement && !menuElement.contains(event.target)) {
+        handleCloseMenu();
+      }
+    };
+
     if (isMenuOpen) {
       document.body.classList.add('menu-open');
       document.body.style.overflow = 'hidden';
       dispatch(finishClosing(false));
 
-      const handleOutsideClick = (event) => {
-        const menuElement = document.querySelector('.side-menu-content');
-        if (menuElement && !menuElement.contains(event.target)) {
-          handleCloseMenu();
-        }
-      };
-
       document.addEventListener('mousedown', handleOutsideClick);
-      document.addEventListener('touchstart', handleOutsideClick);
-
-      return () => {
-        document.removeEventListener('mousedown', handleOutsideClick);
-        document.removeEventListener('touchstart', handleOutsideClick);
-      };
     } else {
       document.body.classList.remove('menu-open');
       document.body.style.overflow = 'auto';
@@ -81,11 +74,15 @@ const MenuComponent = () => {
         setTimeout(() => dispatch(finishClosing(false)), 3000);
       }
     }
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
   }, [isMenuOpen, isClosing, dispatch]);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      const cartElement = document.querySelector('.cart-panel-content');
+      const cartElement = document.querySelector('.cart-panel');
       if (cartElement && !cartElement.contains(event.target)) {
         handleCloseCart();
       }
@@ -93,15 +90,12 @@ const MenuComponent = () => {
 
     if (isCartOpen) {
       document.addEventListener('mousedown', handleOutsideClick);
-      document.addEventListener('touchstart', handleOutsideClick);
     } else {
       document.removeEventListener('mousedown', handleOutsideClick);
-      document.removeEventListener('touchstart', handleOutsideClick);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
-      document.removeEventListener('touchstart', handleOutsideClick);
     };
   }, [isCartOpen]);
 
@@ -198,34 +192,40 @@ const MenuComponent = () => {
       </div>
       <div className={`cart-panel ${isCartOpen ? 'open' : ''}`}>
         <div className='cart-panel-content'>
-          <h2>Shopping Cart</h2>
-          <div className='close-cart-button' onClick={handleCloseCart}>
-            <IconButton>
-              <CloseIcon />
-            </IconButton>
-            <span>Close</span>
+          <div className='cart-container'>
+            <div>SHOPPING CART</div>
+            <div className='cart-close-button' onClick={handleCloseCart}>
+              <IconButton>
+                <CloseIcon />
+              </IconButton>
+            </div>
           </div>
         </div>
-        <div className='cart-container'>
-            <div className='cart-items'>
-              {cartItems.map((item) => (
-                <div key={item.id} className='cart-item'>
-                  <img src={item.image} alt={item.name} className='cart-item-image' />
-                  <div className='cart-item-details'>
-                    <span className='cart-item-name'>{item.name}</span>
-                    <span className='cart-item-price'>${item.price}</span>
-                    <span className='cart-item-quantity'>Qty: {item.quantity}</span>
+        <section>
+          <div className='cart-items'>
+            {cartItems.map((item, index) => (
+              <div key={index} className='cart-item'>
+                <img src={item.image} alt={item.name} />
+                <div className='item-details'>
+                  <span>{item.name}</span>
+                  <span>${item.price.toFixed(2)}</span>
+                  <div className='quantity-buttons'>
+                    <span>-</span>
+                    <span>{item.quantity}</span>
+                    <span>+</span>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className='total-price'>
-              <span>Total:</span>
-              <span>${cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+              </div>
+            ))}
+            <div className='cart-item-button'>
+              <button>CHECKOUT</button>
             </div>
           </div>
+        </section>
+
       </div>
     </section>
+
   );
 };
 

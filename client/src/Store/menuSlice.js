@@ -6,7 +6,7 @@ const menuSlice = createSlice({
     isMenuOpen: false,
     isClosing: false,
     scrollY: 0,
-    currentPage: ''
+    currentPage: '' 
   },
   reducers: {
     openMenu: (state) => {

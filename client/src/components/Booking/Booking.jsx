@@ -33,13 +33,13 @@ const Booking = () => {
     const handleAddToCart = () => {
         dispatch(addItemToCart({ id: 1, name: 'Product name', quantity, price, image: img1 }));
     };
-
+    
     return (
         <div className='single-product-main-content'>
             <div className='layout'>
                 <div className='single-product-page'>
                     <div className='left'>
-                        <img src={img1} alt="Product" />
+                        <img src={img1} />
                     </div>
                     <div className='right'>
                         <span className="name">Product name</span>
@@ -81,3 +81,4 @@ const Booking = () => {
 };
 
 export default Booking;
+
