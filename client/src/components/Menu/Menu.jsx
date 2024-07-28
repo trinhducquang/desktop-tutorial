@@ -8,6 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const MenuComponent = () => {
   const dispatch = useDispatch();
@@ -115,6 +116,16 @@ const MenuComponent = () => {
     setIsCartOpen(false);
   };
 
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+    let res = await axios.post('http://localhost:8000/payment');
+    console.log(res);
+    if (res && res.data) {
+      let link = res.data.links[1].href
+      window.location.href = link
+    }
+  }
+
   const menuItems = [
     { name: "INSPIRING GREATNESS", link: "/menu1" },
     { name: "MODELS", link: "/models" },
@@ -218,7 +229,7 @@ const MenuComponent = () => {
               </div>
             ))}
             <div className='cart-item-button'>
-              <button>CHECKOUT</button>
+              <button onClick={HandleSubmit}>CHECKOUT</button>
             </div>
           </div>
         </section>
