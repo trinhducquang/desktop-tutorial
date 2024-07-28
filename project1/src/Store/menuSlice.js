@@ -1,4 +1,3 @@
-// src/Store/menuSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const menuSlice = createSlice({
@@ -7,7 +6,7 @@ const menuSlice = createSlice({
     isMenuOpen: false,
     isClosing: false,
     scrollY: 0,
-    currentPage: '' // Thêm trường này
+    currentPage: ''
   },
   reducers: {
     openMenu: (state) => {

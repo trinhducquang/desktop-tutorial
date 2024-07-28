@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { openMenu, closeMenu, setScrollY, finishClosing, setCurrentPage } from '../../Store/menuSlice';
 import './Menu.scss';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, useLocation } from 'react-router-dom';
@@ -16,7 +17,11 @@ const MenuComponent = () => {
   const currentPage = useSelector((state) => state.menu.currentPage);
   const location = useLocation();
 
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   const [isNavMenuVisible, setIsNavMenuVisible] = useState(true);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     dispatch(setCurrentPage(location.pathname));
@@ -78,12 +83,42 @@ const MenuComponent = () => {
     }
   }, [isMenuOpen, isClosing, dispatch]);
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      const cartElement = document.querySelector('.cart-panel-content');
+      if (cartElement && !cartElement.contains(event.target)) {
+        handleCloseCart();
+      }
+    };
+
+    if (isCartOpen) {
+      document.addEventListener('mousedown', handleOutsideClick);
+      document.addEventListener('touchstart', handleOutsideClick);
+    } else {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, [isCartOpen]);
+
   const handleMenuClick = () => {
     dispatch(openMenu());
   };
 
   const handleCloseMenu = () => {
     dispatch(closeMenu());
+  };
+
+  const handleCartClick = () => {
+    setIsCartOpen(true);
+  };
+
+  const handleCloseCart = () => {
+    setIsCartOpen(false);
   };
 
   const menuItems = [
@@ -93,44 +128,51 @@ const MenuComponent = () => {
     { name: "OWNERSHIP", link: "/ownership" },
     { name: "PROVENANCE", link: "/provenance" },
     { name: "BOUTIQUE", link: "/boutique" },
-    { name: "LIBRARY", link: "/Library" }
+    { name: "LIBRARY", link: "/Library" },
   ];
 
   return (
-    <section>
+    <section className={location.pathname === '/Booking' ? 'booking-page' : ''}>
       <div className='Navbar-container'>
         <div className='container-item'>
           <div className={`top-row`}>
             <div className={`menu-button ${isMenuOpen ? 'hidden' : ''}`} onClick={handleMenuClick}>
-              <IconButton>
-                <MenuIcon style={{ color: 'white' }} />
-              </IconButton>
+              <MenuIcon />
               <span>MENU</span>
             </div>
             <div>
               <Link to='/'><h1>RIMOWA</h1></Link>
             </div>
             <div className='find-dealer'>
-              <SearchIcon />
-              <span>FIND A DEALER</span>
+              {location.pathname === '/Booking' ? (
+                <div className='shopping-cart-container' onClick={handleCartClick}>
+                  <ShoppingCartIcon />
+                  <div className='badge'>{totalQuantity}</div> {/* Hiển thị số lượng giỏ hàng */}
+                </div>
+              ) : (
+                <>
+                  <SearchIcon />
+                  <span>FIND A DEALER</span>
+                </>
+              )}
             </div>
           </div>
-          <hr />
-          {isNavMenuVisible && currentPage === '/menu1' && (
-            <div className='Navbar-container-menu1'>
-              <div className='additional-items'>
-                <a href='./Menu1'>Inspiring Greatness</a>
-                <Link to="/vision">Vali</Link>
-                <Link to="/values">handbag</Link>
-                <Link to="/experience">Backpack</Link>
-                <Link to="/visionaries">Gentlemen</Link>
-                <Link to="/objects">Ladies</Link>
+          <div >
+            {isNavMenuVisible && currentPage === '/menu1' && (
+              <div className='Navbar-container-menu1'>
+                <div className='additional-items'>
+                  <a href='./Menu1'>Inspiring Greatness</a>
+                  <Link to="/vision">Vali</Link>
+                  <Link to="/values">handbag</Link>
+                  <Link to="/experience">Backpack</Link>
+                  <Link to="/visionaries">Gentlemen</Link>
+                  <Link to="/objects">Ladies</Link>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
-
       <div className={`side-menu ${isMenuOpen ? 'open' : ''} ${scrollY > 50 ? 'scrolled' : ''}`}>
         <div className='side-menu-content'>
           <div className='close-button' onClick={handleCloseMenu}>
@@ -153,6 +195,35 @@ const MenuComponent = () => {
             <div className={`menu-background ${isClosing ? 'closing' : ''}`}></div>
           </div>
         </div>
+      </div>
+      <div className={`cart-panel ${isCartOpen ? 'open' : ''}`}>
+        <div className='cart-panel-content'>
+          <h2>Shopping Cart</h2>
+          <div className='close-cart-button' onClick={handleCloseCart}>
+            <IconButton>
+              <CloseIcon />
+            </IconButton>
+            <span>Close</span>
+          </div>
+        </div>
+        <div className='cart-container'>
+            <div className='cart-items'>
+              {cartItems.map((item) => (
+                <div key={item.id} className='cart-item'>
+                  <img src={item.image} alt={item.name} className='cart-item-image' />
+                  <div className='cart-item-details'>
+                    <span className='cart-item-name'>{item.name}</span>
+                    <span className='cart-item-price'>${item.price}</span>
+                    <span className='cart-item-quantity'>Qty: {item.quantity}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className='total-price'>
+              <span>Total:</span>
+              <span>${cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</span>
+            </div>
+          </div>
       </div>
     </section>
   );

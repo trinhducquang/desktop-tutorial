@@ -9,11 +9,11 @@
   z-index: 10;
   transition: background-color 0.3s, height 0.3s;
   color: white;
-  
+
   a {
     text-decoration: none;
   }
-  
+
   h1 {
     color: white;
     font-family: 'Riviera Nights';
@@ -21,16 +21,14 @@
     letter-spacing: 0.5rem;
     margin-left: 70px;
     margin-top: 5px;
-    
+
   }
 
   .container-item {
     display: flex;
     width: 90%;
     flex-direction: column;
-    /* Chuyển đổi thành cột để hr nằm dưới */
     justify-content: center;
-    /* Center all items in container */
     margin: 0 auto;
     height: 100%;
     transition: height 0.3s;
@@ -45,7 +43,7 @@
       justify-content: space-between;
       align-items: center;
       height: 100%;
-      /* Full height to center vertically */
+
 
       .menu-button {
         display: flex;
@@ -85,7 +83,6 @@
 
     .container-item {
       height: 100%;
-      /* Ensure container height is full */
     }
 
     hr {
@@ -281,13 +278,60 @@
 
 @media (max-width: 1023px) {
   .Navbar-container h1 {
-    font-size: 1.2rem; /* Thu nhỏ tên thương hiệu */
+    font-size: 1.2rem;
+    /* Thu nhỏ tên thương hiệu */
     margin-left: 20px;
     letter-spacing: 0.3rem;
   }
 
   .menu-button span,
   .find-dealer span {
-    font-size: 0.8rem; /* Thu nhỏ văn bản */
+    font-size: 0.8rem;
+    /* Thu nhỏ văn bản */
+  }
+}
+
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  /* Ẩn bảng trượt sang phải */
+  height: 100vh;
+  width: 400px;
+  color: white;
+
+
+  transition: right 0.3s ease;
+  /* Hiệu ứng trượt */
+  z-index: 30;
+  /* Đảm bảo bảng trượt nằm trên cùng */
+
+  &.open {
+    right: 0;
+    /* Hiện bảng trượt khi mở */
+  }
+
+  .cart-panel-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    border-bottom: 1px solid white;
+  }
+}
+
+.cart-container {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  .cart-item {
+    align-items: center;
+    display: flex;
+   
+    img {
+      width: 60px;
+      height: 60px;
+    }
   }
 }
