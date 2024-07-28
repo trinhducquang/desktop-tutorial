@@ -45,7 +45,7 @@ app.post('/payment', async (req, res) => {
             }]
         };
 
-    await paypal.payment.create(create_payment_json, function (error, payment) {
+        await paypal.payment.create(create_payment_json, function (error, payment) {
             if (error) {
                 console.log(error);
                 throw error;
@@ -60,6 +60,46 @@ app.post('/payment', async (req, res) => {
         res.status(500).send('Something went wrong');
     }
 });
+
+app.get('/success', async (req, res) => {
+    try {
+        console.log(req.query);
+
+        const payerId = req.query.PayerID;
+        const paymentId = req.query.paymentId;
+
+        const express_checkout_json = {
+            "payer_id": payerId,
+            "transactions": [{
+                "amount": {
+                    "currency": "USD",
+                    "total": "1.00"
+                },
+                "description": "This is the payment description."
+            }]
+        }
+
+    paypal.payment.execute(paymentId, express_checkout_json, function (error, payment){
+        if (error) {
+            console.log(error);
+            return res.redirect("http://localhost:5173/failed")
+        } else {
+           const response = JSON.stringify(payment);
+           const ParsedResponse = JSON.parse(response);
+           console.log(ParsedResponse);
+           return res.redirect("http://localhost:5173/success")
+        }
+    })
+
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+app.get('/failed', async (req, res) => {
+    
+    return
+})
 
 app.listen(8000, () => {
     console.log("Example app listening on port 8000!");
