@@ -8,19 +8,24 @@ import Sitemap from './components/Footer/Sitemap/Sitemap';
 import Contact from './components/Footer/Contact/Contact';
 import Library from './components/Menu/Library/Library';
 import Booking from './components/Booking/Booking';
+import Privacy from './components/Footer/Privacy/Privacy';
+import Legal from './components/Footer/Legal/Legal';
 
 const App = () => {
-  
+
   return (
     <div>
       <Menu />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/menu1' element={<Menu1 />} />
-        <Route path='/Site-Map' element={<Sitemap/>}/>
-        <Route path='/Contact' element={<Contact/>}/>
-        <Route path='/Library' element={<Library/>}/>
-        <Route path='/Booking' element={<Booking/>}/>
+        <Route path='/Site-Map' element={<Sitemap />} />
+        <Route path='/Contact' element={<Contact />} />
+        <Route path='/Library' element={<Library />} />
+        <Route path='/Booking' element={<Booking />} />
+        <Route path='/Privacy' element={<Privacy />} />
+        <Route path='/Legal' element={<Legal />} />
+
       </Routes>
       <Footer />
     </div>

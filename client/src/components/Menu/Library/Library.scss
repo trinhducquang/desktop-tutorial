@@ -20,16 +20,16 @@
     width: 100%;
 
     .Navbar-content {
-      display: flex; /* Xếp hình ảnh và văn bản theo hàng ngang */
-      align-items: center; /* Đảm bảo căn giữa theo chiều dọc */
+      display: flex; 
+      align-items: center; 
 
       .img-container {
         position: relative;
-        height: 400px; /* Đảm bảo chiều cao của container */
+        height: 400px; 
 
         img {
-          max-height: 100%; /* Đảm bảo hình ảnh không vượt quá chiều cao của container */
-          width: auto; /* Giữ tỷ lệ hình ảnh */
+          max-height: 100%;
+          width: auto; 
         }
 
         .img1,

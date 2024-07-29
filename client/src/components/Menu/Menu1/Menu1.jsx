@@ -20,20 +20,20 @@ import { GrLinkNext } from 'react-icons/gr';
 
 const Menu1 = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false)
   const videoRef = useRef(null);
 
   const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = false; 
+    if (!isPlaying && videoRef.current) {
+      videoRef.current.muted = false;
       videoRef.current.play();
     }
   };
 
   const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
+    if (!isPlaying && videoRef.current) {
       videoRef.current.pause();
+      videoRef.current.muted = true;
     }
   };
 
@@ -41,8 +41,11 @@ const Menu1 = () => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
+        videoRef.current.muted = true;
       } else {
         videoRef.current.play();
+       
+        videoRef.current.muted = false;
       }
       setIsPlaying(!isPlaying);
     }
@@ -58,6 +61,7 @@ const Menu1 = () => {
       setIsFullscreen(!isFullscreen);
     }
   };
+
   return (
     <>
       <section>
@@ -79,7 +83,6 @@ const Menu1 = () => {
             <video
               src={menu2}
               ref={videoRef}
-              onClick={handleVideoClick}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               muted
@@ -104,7 +107,7 @@ const Menu1 = () => {
       <section>
         <div className='Navbar-item Navbar-item-Menu1'>
           <div>
-            <h3>VISION</h3>
+            <h3>VALI</h3>
             <p>The pioneering visions of Rolls-Royce Motor Cars unlock a future of unprecedented potential.</p>
           </div>
           <div className='content-container'>
@@ -139,7 +142,7 @@ const Menu1 = () => {
       <section>
         <div className='Navbar-item Navbar-item-Menu1 Navbar-item-Menu2'>
           <div>
-            <h3>VALUES</h3>
+            <h3>HANDBAG</h3>
             <p>Excellence, perfection, and greatness underpin everything we do. By attaining these values, the impossible becomes reality.</p>
           </div>
           <div className='content-container'>
@@ -169,7 +172,7 @@ const Menu1 = () => {
       <section>
         <div className='Navbar-item Navbar-item-Menu1'>
           <div>
-            <h3>EXPERIENCE</h3>
+            <h3>BACKPACK</h3>
             <p>As a world-class marque, there is more to Rolls-Royce than meets the eye. Explore the experiences and events placing us at the summit of luxury.</p>
           </div>
           <div className='content-container'>
@@ -204,64 +207,29 @@ const Menu1 = () => {
       <section>
         <div className='Navbar-item Navbar-item-Menu1 Navbar-item-Menu2'>
           <div>
-            <h3>VALUES</h3>
+            <h3>GENTLEMENT</h3>
             <p>Excellence, perfection, and greatness underpin everything we do. By attaining these values, the impossible becomes reality.</p>
           </div>
           <div className='content-container'>
             <div className='Navbar-content Navbar-content-1'>
               <div>
                 <img src={img9} alt="Discover Bespoke" />
-                <h4>SPECTRE</h4>
-                <p>The marque’s first all-electric motor car is a prophecy fulfilled. </p>
-              </div>
-            </div>
-            <div className='Navbar-content Navbar-content-1'>
-              <div>
-                <img src={img10} alt="Explore Models" />
                 <h4>THE HISTORY OF COACHBUILD</h4>
                 <p>Legacy, craft, and inspiration. A vision realised without compromise.</p>
               </div>
             </div>
             <div className='Navbar-content Navbar-content-1'>
               <div>
+                <img src={img10} alt="Explore Models" />
+                <h4>SPECTRE</h4>
+                <p>The marque’s first all-electric motor car is a prophecy fulfilled.</p>
+              </div>
+            </div>
+            <div className='Navbar-content Navbar-content-1'>
+              <div>
                 <img src={img11} alt="Find Your Dealer" />
-                <h4>The future in the making: Rolls‑Royce 103EX: Vision Next 100</h4>
-                <p>Introducing the visionary Rolls-Royce 103EX. Journey into the future of luxury travel, with our first ever autonomous motor car.</p>
-              </div>
-            </div>
-          </div>
-          <button>
-            DISCOVER MORE
-            <GrLinkNext className="arrow" />
-          </button>
-        </div>
-      </section>
-      <section>
-        <div className='Navbar-item Navbar-item-Menu1'>
-          <div>
-            <h3>OBJECTS</h3>
-            <p>Rolls-Royce objects are singular expressions of unsurpassed artistry, craftsmanship and, of course, luxury.</p>
-          </div>
-          <div className='content-container'>
-            <div className='Navbar-content Navbar-content-1'>
-              <div>
-                <img src={img12} alt="Discover Bespoke" />
-                <h4>Goodwood Festival of Speed</h4>
-                <p>Experience the world’s finest curation of cars, stars, and motor sport royalty over four splendid days.</p>
-              </div>
-            </div>
-            <div className='Navbar-content Navbar-content-1'>
-              <div>
-                <img src={img13} alt="Explore Models" />
-                <h4>Enjoy a Private Privilege</h4>
-                <p>Go behind the scenes at the Home of Rolls‑Royce in Goodwood, and discover the striking rooms that inspire the creation of truly individual motor cars.</p>
-              </div>
-            </div>
-            <div className='Navbar-content Navbar-content-1'>
-              <div>
-                <img src={img14} alt="Find Your Dealer" />
-                <h4>Goodwood Revival</h4>
-                <p>A golden era of motoring.</p>
+                <h4>Discover Bespoke</h4>
+                <p>Explore a world of personalisation and discover the true essence of bespoke luxury.</p>
               </div>
             </div>
           </div>

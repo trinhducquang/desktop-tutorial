@@ -166,12 +166,12 @@ const MenuComponent = () => {
             {isNavMenuVisible && currentPage === '/menu1' && (
               <div className='Navbar-container-menu1'>
                 <div className='additional-items'>
-                  <a href='./Menu1'>Inspiring Greatness</a>
-                  <Link to="/vision">Vali</Link>
-                  <Link to="/values">handbag</Link>
-                  <Link to="/experience">Backpack</Link>
-                  <Link to="/visionaries">Gentlemen</Link>
-                  <Link to="/objects">Ladies</Link>
+                  <a href='./menu1'>Inspiring Greatness</a>
+                  <Link to="/vali">Vali</Link>
+                  <Link to="/handbag">handbag</Link>
+                  <Link to="/Backpack">Backpack</Link>
+                  <Link to="/Gentlemen">Gentlemen</Link>
+                  <Link to="/Ladies">Ladies</Link>
                 </div>
               </div>
             )}
