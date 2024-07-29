@@ -181,8 +181,8 @@ const MenuComponent = () => {
       <div className={`side-menu ${isMenuOpen ? 'open' : ''} ${scrollY > 50 ? 'scrolled' : ''}`}>
         <div className='side-menu-content'>
           <div className='close-button' onClick={handleCloseMenu}>
-            <IconButton>
-              <CloseIcon style={{ color: 'white' }} />
+            <IconButton className='fix'>
+              <CloseIcon style={{ color: 'white', }} />
             </IconButton>
             <span>CLOSE</span>
           </div>

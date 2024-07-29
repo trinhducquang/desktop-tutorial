@@ -133,23 +133,18 @@
   position: fixed;
   top: 0;
   left: -700px;
-  /* Ẩn menu sang trái */
   height: 100vh;
-  /* Chiều cao toàn màn hình */
   width: 500px;
   transition: left 1.7s ease;
-  /* Hiệu ứng trượt */
   z-index: 20;
   overflow: hidden;
-  /* Ẩn thanh cuộn trong menu */
   opacity: 0.9;
-  /* Một chút mờ đục */
   backdrop-filter: blur(60px) saturate(1.5);
-  /* Áp dụng bộ lọc nền mờ */
+  
 
   &.open {
     left: 0;
-    /* Hiện menu khi mở */
+    
   }
 
   .side-menu-content {
@@ -161,15 +156,13 @@
     .close-button {
       position: absolute;
       top: 40px;
-      left: 60px;
+      left: 50px;
       display: flex;
       align-items: center;
       z-index: 30;
-      /* Đảm bảo nút đóng nằm trên cùng */
-
+      
       span {
-        margin-left: 8px;
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: white;
       }
     }
@@ -382,4 +375,9 @@
     letter-spacing: 0.1rem;
   }
 
+}
+
+.fix {
+  width: 30px;
+  margin-left: 50px;
 }

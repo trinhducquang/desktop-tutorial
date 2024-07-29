@@ -2,6 +2,8 @@ import React from 'react';
 import './Legal.scss';
 import img from '/Legal/img.webp';
 import img1 from '/Legal/img1.webp';
+import Accordion from '../Accordion/Accordion';
+import { GrLinkNext } from 'react-icons/gr';
 
 const Legal = () => {
     return (
@@ -24,8 +26,8 @@ const Legal = () => {
                         <img src={img1} alt="Legal Image" />
                     </div>
                     <div className='legal-details'>
-                        <h1>Gender Pay Gap Report</h1>
                         <div>
+                            <h1>Gender Pay Gap Report</h1>
                             <p>Diversity is the engine of our success because a diverse workforce is an important force for innovation.</p>
                             <p>Rolls-Royce Motor Cars believes that diversity and inclusion are crucial to our ability to perform effectively and will ensure the long-term success of our Company.</p>
                             <p>As a wholly-owned subsidiary of the BMW Group, we have established a commitment to diversity and inclusion as part of the Group Company’s human resources and sustainability strategy.</p>
@@ -33,19 +35,37 @@ const Legal = () => {
                             <p>We support the UK Government’s drive for companies to be more transparent on gender pay issues and confirm that the data reported is accurate and in line with The Equality Act 2010 (Gender Pay Gap Information) Regulations 2017.</p>
                         </div>
                         <div className='report-buttons'>
-                            <button>Report 2023</button>
-                            <button>Report 2022</button>
-                            <button>Report 2021</button>
+                            <button>
+                                Report 2021
+                                <GrLinkNext className="arrow" />
+                            </button>
+                            <button>
+                                Report 2022
+                                <GrLinkNext className="arrow" />
+                            </button>
+                            <button>Report 2023
+                                <GrLinkNext className="arrow" />
+                            </button>
                         </div>
                         <div className='note'>
-                            <h2>Note to Fuel Consumption and CO2 Emissions</h2>
+                            <h2>Note to Fuel Consumption <br />
+                                and CO2 Emissions</h2>
                         </div>
                         <div className='discover-button'>
-                            <button>DISCOVER</button>
+                            <button>DISCOVER
+                                <GrLinkNext className="arrow" />
+                            </button>
                         </div>
-                        <hr />
                     </div>
-                    
+                    <hr />
+                    <section className='Privacy-item'>
+                        <div className='item'>
+                            <div className='Legal-accordion'>
+                                <h1>LEGA</h1>
+                                <Accordion />
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </section>
         </div>

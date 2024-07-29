@@ -13,7 +13,7 @@ const Footer = () => {
                 <h1>RIMOWA</h1>
                 <div className='Footer-content'>
                     <ul>
-                        <li><Link to='/PRE-OWNED'>PRE-OWNED</Link></li>
+                        <li><Link to='/pre-owned'>PRE-OWNED</Link></li>
                         <li><Link to='/COOKIES'>COOKIES</Link></li>
                         <li><Link to='/Pressclub'>Pressclub</Link></li>
                         <li><Link to='/Legal'>Legal</Link></li>
