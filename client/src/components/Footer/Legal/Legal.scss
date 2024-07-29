@@ -90,6 +90,42 @@
                 margin-top: 10%;
             }
 
+            button {
+                margin-top: 70px;
+                padding: 15px 30px;
+                border-radius: 50px;
+                width: 280px;
+                border: none;
+                color: black;
+                border: 1.2px solid black;
+                font-size: 13px;
+                letter-spacing: 0.16666666em;
+                font-weight: 500;
+                position: relative;
+                transition: opacity 0.3s ease;
+                opacity: 0.8;
+                background-color: #6D30A7;
+                color: white;
+                margin: 15px;
+            
+                .arrow {
+                  position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  font-size: 20px;
+                  opacity: 0;
+                  transition: opacity 0.3s ease;
+                }
+            
+                &:hover {
+                  opacity: 1;
+            
+                  .arrow {
+                    opacity: 1;
+                  }
+                }
+              }
+
         }
     }
 
