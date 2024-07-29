@@ -5,7 +5,6 @@ import RIMOWAMars from '../../../public/video/main/RIMOWA-Mars.mp4';
 import RIMOWA from '../../../public/video/main/RIMOWA.avif';
 import img1 from '../../../public/video/main/img1.webp';
 import img2 from '../../../public/video/main/img2.webp';
-import img3 from '../../../public/video/main/img3.webp';
 import img4 from '../../../public/video/main/img4.webp';
 import { GrLinkNext } from "react-icons/gr";
 import './Home.scss';
@@ -123,7 +122,7 @@ const Navbar = () => {
           className='Navbar-item'
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          style={{ marginTop: scrollPosition > window.innerHeight ? '0' : '0' }} // Adjust margin based on scroll position
+          style={{ marginTop: scrollPosition > window.innerHeight ? '0' : '0' }} 
         >
           <div>
             <h3>EXPLORE FURTHER</h3>

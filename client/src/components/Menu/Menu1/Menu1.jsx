@@ -23,33 +23,41 @@ const Menu1 = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const videoRef = useRef(null);
 
-
   const handleMouseEnter = () => {
-    if (!isPlaying) videoRef.current.play();
+    if (videoRef.current) {
+      videoRef.current.muted = false; 
+      videoRef.current.play();
+    }
   };
 
   const handleMouseLeave = () => {
-    if (!isPlaying) videoRef.current.pause();
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.pause();
+    }
   };
 
   const handleVideoClick = () => {
-    if (isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
     }
-    setIsPlaying(!isPlaying);
   };
 
   const handleFullscreenClick = () => {
-    if (isFullscreen) {
-      document.exitFullscreen();
-    } else {
-      videoRef.current.requestFullscreen();
+    if (videoRef.current) {
+      if (isFullscreen) {
+        document.exitFullscreen();
+      } else {
+        videoRef.current.requestFullscreen();
+      }
+      setIsFullscreen(!isFullscreen);
     }
-    setIsFullscreen(!isFullscreen);
   };
-
   return (
     <>
       <section>

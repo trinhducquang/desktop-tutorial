@@ -1,11 +1,69 @@
-.Libary-video {
-    position: relative;
-    width: 100vw;
-    height: 80vh;
+.Navbar-libary {
+  height: 400px;
+
+  h2 {
+    letter-spacing: normal;
+  }
+
+  p {
+    letter-spacing: normal;
+    font-size: 20px;
+    font-weight: 300;
+  }
 }
 
 .Libary-item {
-    min-height: 0;
+  min-height: 0;
+  background-color: rgb(255, 255, 255);
+
+  .content-container {
+    width: 100%;
+
+    .Navbar-content {
+      display: flex; /* Xếp hình ảnh và văn bản theo hàng ngang */
+      align-items: center; /* Đảm bảo căn giữa theo chiều dọc */
+
+      .img-container {
+        position: relative;
+        height: 400px; /* Đảm bảo chiều cao của container */
+
+        img {
+          max-height: 100%; /* Đảm bảo hình ảnh không vượt quá chiều cao của container */
+          width: auto; /* Giữ tỷ lệ hình ảnh */
+        }
+
+        .img1,
+        .imgright {
+          transition: opacity 0.3s ease-in-out;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .img1.hidden {
+          opacity: 0;
+        }
+
+        .imgright {
+          opacity: 0;
+        }
+
+        .imgright.visible {
+          opacity: 1;
+        }
+      }
+
+      .text-content {
+        h4,
+        p {
+          color: black;
+          margin-left: 20px;
+        }
+      }
+
+      .rating {
+        margin-left: 50px;
+      }
+    }
+  }
 }
-
-

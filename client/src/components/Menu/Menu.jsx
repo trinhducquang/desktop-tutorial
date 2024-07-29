@@ -152,7 +152,7 @@ const MenuComponent = () => {
               {location.pathname === '/Booking' ? (
                 <div className='shopping-cart-container' onClick={handleCartClick}>
                   <ShoppingCartIcon />
-                  <div className='badge'>{totalQuantity}</div> {/* Hiển thị số lượng giỏ hàng */}
+                  <div className='badge'>{totalQuantity}</div>
                 </div>
               ) : (
                 <>
