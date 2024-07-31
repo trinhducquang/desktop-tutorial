@@ -11,6 +11,7 @@ import Booking from './components/Booking/Booking';
 import Privacy from './components/Footer/Privacy/Privacy';
 import Legal from './components/Footer/Legal/Legal';
 import Preowned from './components/Footer/Pre-owned/Preowned';
+import Complaints from './Pages/Complaints/Complaints';
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/Privacy' element={<Privacy />} />
         <Route path='/Legal' element={<Legal />} />
         <Route path='/pre-owned' element={<Preowned/>}/>
+        <Route path='/Complaints' element={<Complaints/>}/>
       </Routes>
       <Footer />
     </div>

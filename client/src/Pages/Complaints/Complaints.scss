@@ -1,0 +1,139 @@
+.Complaints-container-banner-2 {
+    background-color: #281432;
+    color: #FFF;
+
+
+
+    .Complaints-description-item {
+        text-align: center;
+        width: 50%;
+        margin: 0 auto;
+        padding-top: 120px;
+        padding-bottom: 10%;
+
+
+        div:first-child {
+
+            margin-bottom: 50px;
+        }
+
+        div:nth-child(2) {
+
+            p:nth-child(2) {
+                margin-top: 50px;
+            }
+        }
+
+    }
+
+    .Contact-section {
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 0;
+
+        .Contact-section-contact-us {
+            padding-top: 0 !important;
+        }
+
+        p {
+            margin: 10px;
+            margin-top: 0;
+        }
+
+        .Contact-section-item-1 {
+            position: relative;
+            bottom: 300px;
+        }
+
+        .Contact-section-item {
+            position: relative;
+            padding-top: 50px;
+        }
+
+        div:nth-child(1) {
+            width: 45%;
+            text-align: center;
+            position: sticky;
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        div:nth-child(2) {
+            width: 40%;
+            padding-bottom: 50px;
+            padding-top: 50px;
+            padding-left: 100px;
+
+
+        }
+    }
+
+}
+
+.h2 {
+
+    .img-content {
+        h2 {
+            font-size: 4rem;
+            font-weight: 300;
+        }
+    }
+
+    h2 {
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        font-size: 1.9rem;
+        text-transform: uppercase;
+        font-family: 'Riviera Nights';
+    }
+
+    p {
+
+        font-weight: 300;
+        letter-spacing: 0.0384615385em;
+        font-size: 1rem;
+        color: hsl(0, 0%, 100%) !important;
+    }
+
+    hr {
+        width: 90%;
+        margin: 0 auto;
+        height: 1px !important;
+        color: #7c7c7c;
+        border: none;
+        background-color: #7c7c7c;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Complaints-description-item {
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    .Contact-section {
+        width: 100% !important;
+
+        div:nth-child(1) {
+            width: 100% !important;
+            text-align: center;
+            position: sticky;
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        div:nth-child(2) {
+            width: 100% !important;
+            padding-bottom: 50px;
+            padding-top: 50px;
+            padding-left: 100px;
+
+
+        }
+    }
+}

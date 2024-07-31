@@ -77,8 +77,9 @@
             position: absolute;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 1px;
             background: rgba(255, 255, 255, 0.5);
+            border: none !important;
             z-index: 1;
         }
 

@@ -7,15 +7,18 @@ import img2 from '/public/pre-owned/img2.webp';
 import img3 from '/public/pre-owned/img3.webp';
 import img4 from '/public/pre-owned/img4.webp';
 import SpaceSticker from '/public/pre-owned/SpaceSticker.mp4';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
 import img5 from "/public/pre-owned/img5.webp";
 import img12 from "/public/pre-owned/img12.jpg";
+import img13 from "/public/pre-owned/img13.jpg";
 import nebula from '/public/pre-owned/nebula.webp';
 import Carousel from '../../Carousel/Carousel.jsx'
 import { PreownedImages } from '../../Carousel/imageGroups';
 import Accordion from '../Accordion/Accordion.jsx';
+import { Link } from 'react-router-dom'
+
 
 const Preowned = () => {
     const settings = {
@@ -182,6 +185,58 @@ const Preowned = () => {
                     <div className='Legal-accordion'>
                         <h1>provenance in detail</h1>
                         <Accordion />
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div className="img-section img-section-3">
+                    <div className='image-container'>
+                        <img src={img13} alt="Nebula" />
+                        <h2>begin your provenance story</h2>
+                        <button>
+                            Search Pre-Owned
+                            <GrLinkNext className="cta-arrow" />
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div className='Navbar-item'>
+                    <div>
+                        <h3>CONTINUE YOUR JOURNEY</h3>
+                    </div>
+                    <div className='content-container'>
+                        <div className='Navbar-content'>
+                            <div>
+                                <img src={img1} alt="Discover Bespoke" />
+                                <h4>DISCOVER BESPOKE</h4>
+                                <p>Choose from our exclusive collections or collaborate with our craftspeople and designers to create a Rolls-Royce wholly unique to you. This is Rolls-Royce Bespoke.</p>
+                            </div>
+                        </div>
+                        <div className='Navbar-content'>
+                            <div>
+                                <img src={img2} alt="Explore Models" />
+                                <h4>EXPLORE MODELS</h4>
+                                <p>Explore our stunning collection of new Rolls-Royce models. Whether you’re looking for the ultimate luxury saloon, a sporty coupe or a refined convertible, we have something for you.</p>
+                            </div>
+                        </div>
+                        <div className='Navbar-content'>
+                            <div>
+                                <img src={img4} alt="Find Your Dealer" />
+                                <h4>FIND A DEALER</h4>
+                                <p>Find a Rolls-Royce dealer near you and book a test drive or discover more about the bespoke services we offer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="img-section img-section-3">
+                    <div className='image-container image-container-fix'>
+                        <button>
+                            <Link to='/menu1'>
+                                Inspiring Greatness
+                                <GrLinkNext className="cta-arrow" />
+                            </Link>
+                        </button>
                     </div>
                 </div>
             </section>

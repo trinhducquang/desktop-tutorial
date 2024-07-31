@@ -15,6 +15,7 @@
     "@fullpage/react-fullpage": "^0.1.42",
     "@mui/icons-material": "^5.16.4",
     "@mui/material": "^5.16.4",
+    "@react-spring/web": "^9.7.4",
     "@reduxjs/toolkit": "^2.2.6",
     "axios": "^1.7.2",
     "fullpage.js": "^4.0.26",
@@ -27,8 +28,11 @@
     "react-router-dom": "^6.25.1",
     "react-scroll": "^1.9.0",
     "react-simple-star-rating": "^5.1.7",
+    "react-slick": "^0.30.2",
+    "react-sticky-box": "^2.0.5",
     "redux": "^5.0.1",
     "scrollreveal": "^4.0.9",
+    "slick-carousel": "^1.8.1",
     "video.js": "^8.17.1"
   },
   "devDependencies": {
