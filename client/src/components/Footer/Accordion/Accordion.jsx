@@ -1,20 +1,11 @@
-import React from 'react'
-import { useState } from 'react';
+import React from 'react';
 import cong from '/contact/cong.svg';
-import './Accordion.scss'
+import './Accordion.scss';
+import useAccordion from '../../../hooks/useAccordion'; 
 
 const Accordion = () => {
-  const [expandedSections, setExpandedSections] = useState([]);
-
-  const toggleSection = (index) => {
-    if (expandedSections.includes(index)) {
-      setExpandedSections(expandedSections.filter(i => i !== index));
-    } else {
-      setExpandedSections([...expandedSections, index]);
-    }
-  };
-
-  const isSectionExpanded = (index) => expandedSections.includes(index);
+  const { expandedSections, toggleSection, isSectionExpanded } = useAccordion();
+  
   return (
     <div>
       <div className='item-item-2'>
@@ -34,7 +25,6 @@ const Accordion = () => {
         ].map((text, index) => (
           <div key={index}>
             <div className='img-flex' onClick={() => toggleSection(index)}>
-
               {text}
               <img src={cong} alt="icon" className={isSectionExpanded(index) ? 'rotated' : ''} />
             </div>
@@ -45,7 +35,7 @@ const Accordion = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Accordion
+export default Accordion;

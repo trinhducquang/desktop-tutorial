@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.scss';
 import contact from '/contact/contact.webp';
-import contactend from '/contact/contact.jpg';
+import img5 from '/contact/img5.webp';
 import { GrLinkNext } from 'react-icons/gr';
 import cong from '/public/contact/cong.svg';
 
@@ -14,7 +14,7 @@ const Contact = () => {
     };
 
     return (
-        <div>
+        <div className='overflow'>
             <section>
                 <div className='Navbar-img'>
                     <img src={contact} alt="Culinan" />
@@ -175,7 +175,7 @@ const Contact = () => {
                         <br />
                     </div>
                     <br />
-                    <div>
+                    <div className='fix-top'>
                         <h3>Our PressClub</h3>
                         <p>The Rolls-Royce Motor Cars PressClub gives you access to the very
                             latest official headlines, stories, press <br />
@@ -191,7 +191,7 @@ const Contact = () => {
             </section>
             <section>
                 <div className='Navbar-img'>
-                    <img src={contactend} alt="Culinan" />
+                    <img src={img5} alt="Culinan" />
                 </div>
             </section>
         </div>

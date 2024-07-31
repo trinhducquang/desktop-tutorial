@@ -4,7 +4,7 @@ import Privacyimg from '/Privacy/Privacy.webp';
 import Accordion from '../Accordion/Accordion';
 const Privacy = () => {
     return (
-        <div className='Privacy-container'>
+        <div className='Privacy-container overflow'>
             <section>
                 <div className='Navbar-img Sitemap-img'>
                     <img src={Privacyimg} alt="Privacy" />

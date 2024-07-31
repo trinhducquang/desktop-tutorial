@@ -1,0 +1,13 @@
+.expand-content {
+    text-align: left;
+}
+
+.item-item-2 {
+    padding-bottom: 150px;
+}
+
+@media (max-width: 800px) {
+    .item {
+        width: 100% !important;
+    }
+}

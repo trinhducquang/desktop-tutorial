@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
 import './Menu1.scss';
+import useVideoControl from '../../../hooks/useVideoControl'
 import menu1 from '/video/Menu1/menu1.mp4';
 import menu2 from '/video/Menu1/menu2.mp4';
 import img1 from '/video/Menu1/main1-img1.webp';
@@ -13,54 +13,21 @@ import img8 from '/video/Menu1/main1-img8.webp';
 import img9 from '/video/Menu1/main1-img9.webp';
 import img10 from '/video/Menu1/main1-img10.webp';
 import img11 from '/video/Menu1/main1-img11.webp';
-import img12 from '/video/Menu1/main1-img12.webp';
-import img13 from '/video/Menu1/main1-img13.webp';
-import img14 from '/video/Menu1/main1-img14.webp';
 import { GrLinkNext } from 'react-icons/gr';
 
 const Menu1 = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false)
-  const videoRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    if (!isPlaying && videoRef.current) {
-      videoRef.current.muted = false;
-      videoRef.current.play();
-    }
-  };
+  const {
+    videoRef,
+    isPlaying,
+    isFullscreen,
+    handleMouseEnter,
+    handleMouseLeave,
+    handleVideoClick,
+    handleFullscreenClick
+  } = useVideoControl();
 
-  const handleMouseLeave = () => {
-    if (!isPlaying && videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.muted = true;
-    }
-  };
 
-  const handleVideoClick = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        videoRef.current.muted = true;
-      } else {
-        videoRef.current.play();
-       
-        videoRef.current.muted = false;
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const handleFullscreenClick = () => {
-    if (videoRef.current) {
-      if (isFullscreen) {
-        document.exitFullscreen();
-      } else {
-        videoRef.current.requestFullscreen();
-      }
-      setIsFullscreen(!isFullscreen);
-    }
-  };
 
   return (
     <>

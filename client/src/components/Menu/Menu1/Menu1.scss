@@ -224,12 +224,12 @@
   background-color: white;
 }
 
-// Media queries để thay đổi chiều rộng của phần tử p theo kích thước màn hình
+
 @media (max-width: 768px) {
 
   .Menu1-container .text-overlay p,
   .Menu1-background-container .text-overlay p {
-    width: 90%; // Tăng độ rộng khi màn hình nhỏ hơn 768px
+    width: 90%;
   }
 }
 
@@ -237,7 +237,7 @@
 
   .Menu1-container .text-overlay p,
   .Menu1-background-container .text-overlay p {
-    width: 100%; // Tăng độ rộng khi màn hình nhỏ hơn 480px
+    width: 100%; 
   }
 
   .Menu1-video {

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Sitemap = () => {
   return (
-    <div>
+    <div className='overflow'>
       <section>
         <div className='Navbar-img Sitemap-img'>
           <img src={sitemap} alt="Culinan" />

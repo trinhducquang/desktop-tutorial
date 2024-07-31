@@ -5,6 +5,11 @@
     cursor: url('../public/mouse/mouse.svg'), auto;
 }
 
+.overflow {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 @font-face {
     font-family: 'Riviera Nights';
     src: url('/fonts/RivieraNights-Regular.woff') format('woff');
@@ -49,4 +54,5 @@
     font-weight: normal;
     font-style: normal;
   }
+  
   

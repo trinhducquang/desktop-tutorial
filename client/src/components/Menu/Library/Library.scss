@@ -1,5 +1,5 @@
-.Navbar-libary {
-  height: 400px;
+.Navbar-library {
+  height: 500px;
 
   h2 {
     letter-spacing: normal;
@@ -12,57 +12,71 @@
   }
 }
 
-.Libary-item {
-  min-height: 0;
+.Library-item {
+  text-align: center;
+  width: 95%;
+  margin: 0 auto;
   background-color: rgb(255, 255, 255);
 
   .content-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
     width: 100%;
+  }
 
-    .Navbar-content {
-      display: flex; 
-      align-items: center; 
+  .item {   
+    text-align: center;
+    
 
-      .img-container {
-        position: relative;
-        height: 400px; 
+    .img-container {
+      position: relative;
+      height: 400px; 
 
-        img {
-          max-height: 100%;
-          width: auto; 
-        }
-
-        .img1,
-        .imgright {
-          transition: opacity 0.3s ease-in-out;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-
-        .img1.hidden {
-          opacity: 0;
-        }
-
-        .imgright {
-          opacity: 0;
-        }
-
-        .imgright.visible {
-          opacity: 1;
-        }
+      .img1,
+      .imgright {
+        transition: opacity 0.3s ease-in-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-color: hsl(0, 0%, 90%);
       }
 
-      .text-content {
-        h4,
-        p {
-          color: black;
-          margin-left: 20px;
-        }
+      .img1 {
+        z-index: 2;
+        opacity: 1;
+      }
+
+      .imgright {
+        z-index: 1;
+        opacity: 0;
+      }
+
+      .img1.hidden {
+        opacity: 0;
+      }
+
+      .imgright.visible {
+        z-index: 2;
+        opacity: 1;
+      }
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      
+      h4 {
+        color: black;
       }
 
       .rating {
-        margin-left: 50px;
+        margin: 0 auto;
       }
     }
   }
