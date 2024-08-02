@@ -1,7 +1,8 @@
-import React from 'react'
-import Slider from "react-slick";
-import './Carousel.scss'
-const Carousel = ({ images }) => {
+import React from 'react';
+import Slider from 'react-slick';
+import './Carousel.scss';
+
+const Carousel = ({ media }) => {
     const settings = {
         dots: true,
         infinite: true,
@@ -10,14 +11,14 @@ const Carousel = ({ images }) => {
         slidesToScroll: 1,
         centerMode: true,
         focusOnSelect: true,
-        centerPadding: '30%', 
+        centerPadding: '30%',
         responsive: [
             {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    centerPadding: '0', 
+                    centerPadding: '0',
                 },
             },
         ],
@@ -25,9 +26,16 @@ const Carousel = ({ images }) => {
 
     return (
         <Slider {...settings} className='carousel-container'>
-            {images.map((img, index) => (
+            {media.map((item, index) => (
                 <div key={index} className="carousel-item">
-                    <img src={img} alt={`slide ${index}`} />
+                    {item.type === 'image' ? (
+                        <img src={item.src} alt={`slide ${index}`} />
+                    ) : (
+                        <video controls>
+                            <source src={item.src} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    )}
                 </div>
             ))}
         </Slider>

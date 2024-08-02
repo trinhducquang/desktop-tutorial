@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.scss';
 import contact from '/contact/contact.webp';
-import img5 from '/contact/img5.webp';
+import img5 from '/contact/img5.webp'
 import { GrLinkNext } from 'react-icons/gr';
 import cong from '/public/contact/cong.svg';
 

@@ -3,7 +3,10 @@
     min-height: 240px;
     text-align: center;
     padding-top: 30px;
-    
+    a {
+        color: white;
+    }
+
     h1 {
         color: white;
         font-family: 'Riviera Nights';
@@ -63,7 +66,7 @@
             align-items: center;
             margin-top: 20px;
             position: relative;
-            z-index: 2;
+            z-index: 0;
 
             svg {
                 color: white;

@@ -309,7 +309,7 @@
 .Preowned-item {
     text-align: center;
     background-color: rgb(210, 210, 210);
-    color: black;
+    
 
 
     h1 {
@@ -318,10 +318,11 @@
         font-weight: 300 !important;
         text-transform: uppercase;
         padding-bottom: 70px !important;
+        
     }
 
     .img-flex {
-        border-top: 1px solid black;
+      
         text-align: left !important;
 
     }
@@ -409,6 +410,18 @@
     }
 }
 
+.Legal-accordion {
+    h1 {
+        color: black !important;
+       }
+    .Accordion-container {
+        width: 100% !important;
+        border-bottom: 1px solid black !important;
+        margin: 0 auto;
+        padding: 10px 0;
+        color: black !important;   
+    }
+}
 
 
 @media (max-width: 1440px) {

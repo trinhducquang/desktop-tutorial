@@ -1,0 +1,245 @@
+.Menu1-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .text-overlay {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    text-align: center;
+    color: white;
+    z-index: 10;
+    width: 80%;
+    opacity: 0;
+    animation: slideUp 1.2s ease-out forwards;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1,
+    h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin: 0;
+      font-family: 'GillSansAlt1-Light', sans-serif;
+      font-weight: 300 !important;
+      letter-spacing: 0.1rem;
+      line-height: 1.2;
+      width: 50%;
+    }
+
+    p {
+      margin: 10px 0 0;
+      font-family: 'Riviera Nights', sans-serif;
+      font-weight: 300 !important;
+      line-height: 1.6;
+      text-align: center;
+      width: 60%;
+      margin-top: 20px !important;
+      font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 50%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.Menu1-background-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .text-overlay {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10%;
+
+    h2 {
+      font-family: 'GillSansAlt1-Light';
+      font-weight: 300;
+      margin-bottom: 20px;
+      letter-spacing: 0.1136363636em;
+      font-size: 2.2rem;
+      line-height: 1.6363636364;
+    }
+
+    p {
+      font-family: inherit;
+      font-weight: 300;
+      letter-spacing: 0.0384615385em;
+      font-size: 1rem;
+      line-height: 1.5;
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  button {
+    margin-top: 70px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    width: 280px;
+    border: none;
+    color: black;
+    border: 1.2px solid black;
+    font-size: 13px;
+    letter-spacing: 0.16666666em;
+    font-weight: 500;
+    position: relative;
+    transition: opacity 0.3s ease;
+    opacity: 0.8;
+    background-color: white;
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      .arrow {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.Menu1-video {
+  width: 100%;
+  max-width: 800px; // Đặt chiều rộng tối đa cho video
+  margin: 20px 0; // Khoảng cách trên và dưới video
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+
+  .video-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+
+    .control-btn {
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+}
+
+.Navbar-item-Menu1 {
+  background-color: #F2F2F2;
+
+  .Navbar-content-1 {
+    div {
+      border-left: 1px solid gray !important;
+    }
+  }
+
+  h3,
+  h4,
+  p {
+    color: black;
+  }
+
+  button {
+    margin-top: 70px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    width: 280px;
+    border: none;
+    color: black;
+    border: 1.2px solid black;
+    font-size: 13px;
+    letter-spacing: 0.16666666em;
+    font-weight: 500;
+    position: relative;
+    transition: opacity 0.3s ease;
+    opacity: 0.8;
+    background-color: white;
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      .arrow {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.Navbar-item-Menu2 {
+  background-color: white;
+}
+
+
+@media (max-width: 768px) {
+
+  .Menu1-container .text-overlay p,
+  .Menu1-background-container .text-overlay p {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .Menu1-container .text-overlay p,
+  .Menu1-background-container .text-overlay p {
+    width: 100%; 
+  }
+
+  .Menu1-video {
+    width: 100%;
+  }
+}

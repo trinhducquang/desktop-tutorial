@@ -15,9 +15,10 @@ import img12 from "/public/pre-owned/img12.jpg";
 import img13 from "/public/pre-owned/img13.jpg";
 import nebula from '/public/pre-owned/nebula.webp';
 import Carousel from '../../Carousel/Carousel.jsx'
-import { PreownedImages } from '../../Carousel/imageGroups';
+import { PreownedMedia } from '../../Carousel/imageGroups';
 import Accordion from '../Accordion/Accordion.jsx';
 import { Link } from 'react-router-dom'
+
 
 
 const Preowned = () => {
@@ -151,8 +152,8 @@ const Preowned = () => {
                 </div>
             </section>
             <section>
-                <div>
-                    <Carousel images={PreownedImages} />
+                <div style={{backgroundColor: 'rgb(210, 210, 210);'}}>
+                    <Carousel media={PreownedMedia} />
                 </div>
             </section>
             <section>

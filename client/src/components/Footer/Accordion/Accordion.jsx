@@ -1,13 +1,14 @@
 import React from 'react';
 import cong from '/contact/cong.svg';
 import './Accordion.scss';
-import useAccordion from '../../../Hooks/useAccordion'; 
+import useAccordion from '../../../Hooks/useAccordion';
 
-const Accordion = () => {
+const Accordion = ({ text }) => {
   const { expandedSections, toggleSection, isSectionExpanded } = useAccordion();
-  
+
   return (
     <div>
+      {text && <h2 className='accordion-header'>{text}</h2>}
       <div className='item-item-2'>
         {[
           "Rolls-Royce Motor Cars as a Data Controller and our responsibilities",
@@ -22,14 +23,14 @@ const Accordion = () => {
           "Contacting us about this privacy policy",
           "Location Information Safeguards",
           "Legal grounds for processing of your personal information"
-        ].map((text, index) => (
-          <div key={index}>
+        ].map((itemText, index) => (
+          <div key={index} className='Accordion-container'>
             <div className='img-flex' onClick={() => toggleSection(index)}>
-              {text}
+              {itemText}
               <img src={cong} alt="icon" className={isSectionExpanded(index) ? 'rotated' : ''} />
             </div>
             <div className={`expand-content ${isSectionExpanded(index) ? 'expanded' : ''}`}>
-              <p>Details about {text.toLowerCase()} will be shown here...</p>
+              <p>Details about {itemText.toLowerCase()} will be shown here...</p>
             </div>
           </div>
         ))}

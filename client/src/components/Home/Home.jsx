@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import RIMOWAMars from '../../../public/video/main/RIMOWA-Mars.mp4';
+import RIMOWAMars from '../../../public/video/main/RIMOWA.mp4';
 import RIMOWA from '../../../public/video/main/RIMOWA.avif';
 import img1 from '../../../public/video/main/img1.webp';
 import img2 from '../../../public/video/main/img2.webp';

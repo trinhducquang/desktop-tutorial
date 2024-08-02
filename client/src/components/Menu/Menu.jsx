@@ -127,7 +127,7 @@ const MenuComponent = () => {
   }
 
   const menuItems = [
-    { name: "INSPIRING GREATNESS", link: "/menu1" },
+    { name: "INSPIRING GREATNESS", link: "/Inspiring-Greatness" },
     { name: "MODELS", link: "/models" },
     { name: "BESPOKE", link: "/bespoke" },
     { name: "OWNERSHIP", link: "/ownership" },
