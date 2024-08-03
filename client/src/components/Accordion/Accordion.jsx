@@ -1,7 +1,7 @@
 import React from 'react';
 import cong from '/contact/cong.svg';
 import './Accordion.scss';
-import useAccordion from '../../../Hooks/useAccordion';
+import useAccordion from '../../Hooks/useAccordion';
 
 const Accordion = ({ text }) => {
   const { expandedSections, toggleSection, isSectionExpanded } = useAccordion();

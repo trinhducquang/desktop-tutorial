@@ -1,5 +1,5 @@
 import './InspiringGreatness.scss';
-import useVideoControl from '../../Hooks/useVideoControl'
+import useVideoControl from '../../Hooks/useVideoControl';
 import menu1 from '/video/Menu1/menu1.mp4';
 import menu2 from '/video/Menu1/menu2.mp4';
 import img1 from '/video/Menu1/main1-img1.webp';
@@ -16,18 +16,15 @@ import img11 from '/video/Menu1/main1-img11.webp';
 import { GrLinkNext } from 'react-icons/gr';
 
 const InspiringGreatness = () => {
-
   const {
-    videoRef,
     isPlaying,
     isFullscreen,
     handleMouseEnter,
     handleMouseLeave,
     handleVideoClick,
-    handleFullscreenClick
+    handleFullscreenClick,
+    setVideoRef
   } = useVideoControl();
-
-
 
   return (
     <>
@@ -49,16 +46,17 @@ const InspiringGreatness = () => {
           <div className='Menu1-video'>
             <video
               src={menu2}
-              ref={videoRef}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+              ref={setVideoRef('menu2')}
+              onMouseEnter={() => handleMouseEnter('menu2')}
+              onMouseLeave={() => handleMouseLeave('menu2')}
+              onClick={() => handleVideoClick('menu2')}
               muted
             />
             <div className='video-controls'>
-              <button className='control-btn' onClick={handleVideoClick}>
+              <button className='control-btn' onClick={() => handleVideoClick('menu2')}>
                 {isPlaying ? 'Pause' : 'Play'}
-              </button>
-              <button className='control-btn' onClick={handleFullscreenClick}>
+              </button> 
+              <button className='control-btn' onClick={() => handleFullscreenClick('menu2')}>
                 {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
               </button>
             </div>
@@ -82,7 +80,7 @@ const InspiringGreatness = () => {
               <div>
                 <img src={img1} alt="Discover Bespoke" />
                 <h4>SPECTRE</h4>
-                <p>The marque’s first all-electric motor car is a prophecy fulfilled. </p>
+                <p>The marque’s first all-electric motor car is a prophecy fulfilled.</p>
               </div>
             </div>
             <div className='Navbar-content Navbar-content-1'>
@@ -117,7 +115,7 @@ const InspiringGreatness = () => {
               <div>
                 <img src={img4} alt="Discover Bespoke" />
                 <h4>SPECTRE</h4>
-                <p>The marque’s first all-electric motor car is a prophecy fulfilled. </p>
+                <p>The marque’s first all-electric motor car is a prophecy fulfilled.</p>
               </div>
             </div>
             <div className='Navbar-content Navbar-content-1'>
@@ -174,7 +172,7 @@ const InspiringGreatness = () => {
       <section>
         <div className='Navbar-item Navbar-item-Menu1 Navbar-item-Menu2'>
           <div>
-            <h3>GENTLEMENT</h3>
+            <h3>GENTLEMEN</h3>
             <p>Excellence, perfection, and greatness underpin everything we do. By attaining these values, the impossible becomes reality.</p>
           </div>
           <div className='content-container'>

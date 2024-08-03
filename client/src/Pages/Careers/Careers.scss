@@ -16,17 +16,6 @@
     }
 }
 
-
-.Careers-container {
-    .Menu1-container {
-        height: 500px;
-    }
-}
-
-.Menu1-container.Careers-container-section2 {
-    bottom: 100px;
-}
-
 .Careers-buttons {
     display: flex;
     position: relative;
@@ -173,7 +162,7 @@
 }
 
 .Careers-container-section2 {
-    height: 700px;
+    height: 800px;
 
     h1 {
         padding-top: 20%;
@@ -237,11 +226,8 @@
 
 .section-careers-3 {
     > div {
-        left: 1px;
-     
+        left: 40px;
     }
-
-    
 }
 
 .section-careers-2 {
@@ -250,7 +236,7 @@
     div:last-child {
         width: 500px !important;
         align-self: center !important;
-       
+      
         position: absolute !important; /* Thêm thuộc tính này */
         top: -100px !important; 
         right: 0;
@@ -324,7 +310,6 @@
         }
     }
 }
-
 
 @media (max-width: 400px) {
     .Menu1-container .text-overlay h1, .Menu1-background-container .text-overlay h1 {

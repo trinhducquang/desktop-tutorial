@@ -1,27 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Library.scss';
-import banner from '../../../../public/Library/banner.avif';
-import img1 from '../../../../public/Library/img1.webp';
-import imgright from '../../../../public/Library/imgright.webp';
+import banner from '../../../public/Library/banner.avif';
+import img1 from '../../../public/Library/img1.webp';
+import imgright from '../../../public/Library/imgright.webp';
 import { Rating } from 'react-simple-star-rating';
-import FooterTop from '../../Footer/Footer-top/FooterTop';
-import Topshop from '../../Topshop/Topshop';
+import FooterTop from '../../components/Footer-top/FooterTop';
+import Topshop from '../../components/Topshop/Topshop';
+import useHover from '../../Hooks/useHover';
+import useRating from '../../Hooks/useRating';
 
 const Library = () => {
-  const [showImgRight, setShowImgRight] = useState(false);
-
-  const handleMouseEnter = () => {
-    setShowImgRight(true);
-  };
-
-  const handleMouseLeave = () => {
-    setShowImgRight(false);
-  };
-
-  const [rating, setRating] = useState(5);
-  const handleRating = (rate) => {
-    setRating(rate);
-  };
+  const { hovered, handleMouseEnter, handleMouseLeave } = useHover();
+  const { rating, handleRating } = useRating();
 
   return (
     <>
@@ -44,12 +34,12 @@ const Library = () => {
                   <img
                     src={img1}
                     alt="Discover Bespoke"
-                    className={`img1 ${showImgRight ? 'hidden' : ''}`}
+                    className={`img1 ${hovered ? 'hidden' : ''}`}
                   />
                   <img
                     src={imgright}
                     alt="Right Image"
-                    className={`imgright ${showImgRight ? 'visible' : ''}`}
+                    className={`imgright ${hovered ? 'visible' : ''}`}
                   />
                 </div>
                 <div className='text-container'>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Privacy.scss';
 import Privacyimg from '/Privacy/Privacy.webp';
-import Accordion from '../Accordion/Accordion';
+import Accordion from '../../components/Accordion/Accordion';
 const Privacy = () => {
     return (
         <div className='Privacy-container overflow'>

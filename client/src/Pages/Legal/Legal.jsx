@@ -2,7 +2,7 @@ import React from 'react';
 import './Legal.scss';
 import img from '/Legal/img.webp';
 import img1 from '/Legal/img1.webp';
-import Accordion from '../Accordion/Accordion';
+import Accordion from '../../components/Accordion/Accordion';
 import { GrLinkNext } from 'react-icons/gr';
 
 const Legal = () => {

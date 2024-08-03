@@ -3,57 +3,68 @@ import { useState, useRef } from 'react';
 const useVideoControl = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isFullscreen, setIsFullscreen] = useState(false);
-    const videoRef = useRef(null);
+    const videoRefs = useRef({}); 
 
-    const handleMouseEnter = () => {
-        if (!isPlaying && videoRef.current) {
-            videoRef.current.muted = false;
-            videoRef.current.play();
+   
+    const handleMouseEnter = (key) => {
+        const video = videoRefs.current[key];
+        if (video && !isPlaying) {
+            video.muted = false;
+            video.play();
         }
     };
 
-    const handleMouseLeave = () => {
-        if (!isPlaying && videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.muted = true;
+    
+    const handleMouseLeave = (key) => {
+        const video = videoRefs.current[key];
+        if (video && !isPlaying) {
+            video.pause();
+            video.muted = true;
         }
     };
 
-    const handleVideoClick = () => {
-        if (videoRef.current) {
+ 
+    const handleVideoClick = (key) => {
+        const video = videoRefs.current[key];
+        if (video) {
             if (isPlaying) {
-                videoRef.current.pause();
-                videoRef.current.muted = true;
+                video.pause();
+                video.muted = true;
             } else {
-                videoRef.current.play();
-                videoRef.current.muted = false;
+                video.play();
+                video.muted = false;
             }
             setIsPlaying(!isPlaying);
         }
     };
 
     const handleFullscreenClick = () => {
-        if (videoRef.current) {
-            if (isFullscreen) {
-                document.exitFullscreen();
-            } else {
-                videoRef.current.requestFullscreen();
+        if (isFullscreen) {
+            document.exitFullscreen();
+        } else {
+            const firstVideo = Object.values(videoRefs.current)[0];
+            if (firstVideo) {
+                firstVideo.requestFullscreen();
             }
-            setIsFullscreen(!isFullscreen);
         }
+        setIsFullscreen(!isFullscreen);
     };
 
+
+    const setVideoRef = (key) => (element) => {
+        videoRefs.current[key] = element;
+    };
+    
     return {
-        videoRef,
+        videoRefs,
         isPlaying,
         isFullscreen,
         handleMouseEnter,
         handleMouseLeave,
         handleVideoClick,
-        handleFullscreenClick
+        handleFullscreenClick,
+        setVideoRef 
     };
-    
-    
 };
 
 export default useVideoControl;

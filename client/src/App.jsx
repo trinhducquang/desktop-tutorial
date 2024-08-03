@@ -1,22 +1,22 @@
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import ScrollToTop from './Hooks/ScrollToTop';
-import Menu from './components/Menu/Menu';
-import Home from './components/Home/Home';
+import Home from './Pages/Home/Home';
 import Footer from './components/Footer/Footer';
 import InspiringGreatness from './Pages/InspiringGreatness/InspiringGreatness';
-import Sitemap from './components/Footer/Sitemap/Sitemap';
-import Contact from './components/Footer/Contact/Contact';
-import Library from './components/Menu/Library/Library';
+import Sitemap from './Pages/Sitemap/Sitemap';
+import Contact from './Pages/Contact/Contact';
+import Library from './Pages/Library/Library';
 import Booking from './components/Booking/Booking';
-import Privacy from './components/Footer/Privacy/Privacy';
-import Legal from './components/Footer/Legal/Legal';
-import Preowned from './components/Footer/Pre-owned/Preowned';
+import Privacy from './Pages/Privacy/Privacy';
+import Legal from './Pages/Legal/Legal';
+import Preowned from './Pages/Pre-owned/Preowned';
 import Complaints from './Pages/Complaints/Complaints';
 import Whispers from './Pages/whispers/whispers'
 import Faqs from './Pages/Faqs/Faqs';
 import Cookie from './Pages/Cookie/Cookie';
 import Careers from './Pages/Careers/Careers';
+import MenuComponent from './components/Menu/MenuComponent';
 
 const App = () => {
   const location = useLocation();
@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <div>
-      {!isAdminRoute && <Menu />}
+      {!isAdminRoute && <MenuComponent />}
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />

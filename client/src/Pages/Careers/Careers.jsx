@@ -22,13 +22,13 @@ import { GrLinkNext } from 'react-icons/gr'
 const Careers = () => {
 
     const {
-        videoRef,
         isPlaying,
         isFullscreen,
         handleMouseEnter,
         handleMouseLeave,
         handleVideoClick,
-        handleFullscreenClick
+        handleFullscreenClick,
+        setVideoRef
     } = useVideoControl();
 
     return (
@@ -97,16 +97,17 @@ const Careers = () => {
                 <div className='Menu1-video Careers-video'>
                     <video
                         src={design}
-                        ref={videoRef}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
+                        ref={setVideoRef('design')}
+                        autoPlay
+                        onMouseEnter={() => handleMouseEnter('design')}
+                        onMouseLeave={() => handleMouseLeave('design')}
                         muted
                     />
                     <div className='video-controls'>
-                        <button className='control-btn' onClick={handleVideoClick}>
+                        <button className='control-btn' onClick={() => handleVideoClick('design')}>
                             {isPlaying ? 'Pause' : 'Play'}
                         </button>
-                        <button className='control-btn' onClick={handleFullscreenClick}>
+                        <button className='control-btn' onClick={() => handleFullscreenClick('design')}>
                             {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
                         </button>
                     </div>
@@ -240,16 +241,16 @@ const Careers = () => {
                 <div className='Menu1-video Careers-video'>
                     <video
                         src={rose}
-                        ref={videoRef}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
+                        ref={setVideoRef('rose')}
+                        onMouseEnter={() => handleMouseEnter('rose')}
+                        onMouseLeave={() => handleMouseLeave('rose')}
                         muted
                     />
                     <div className='video-controls'>
-                        <button className='control-btn' onClick={handleVideoClick}>
+                        <button className='control-btn' onClick={() => handleVideoClick('rose')}>
                             {isPlaying ? 'Pause' : 'Play'}
                         </button>
-                        <button className='control-btn' onClick={handleFullscreenClick}>
+                        <button className='control-btn' onClick={() => handleFullscreenClick('rose')}>
                             {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
                         </button>
                     </div>
@@ -319,12 +320,17 @@ const Careers = () => {
             <section>
                 <div className='Menu1-background-container'>
                     <div className='Menu1-video'>
-                        <video src={RIMOWATravel}/>
+                        <video src={RIMOWATravel}
+                            ref={setVideoRef('RIMOWATravel')}
+                            onMouseEnter={() => handleMouseEnter('RIMOWATravel')}
+                            onMouseLeave={() => handleMouseLeave('RIMOWATravel')}
+                            muted
+                        />
                         <div className='video-controls'>
-                            <button className='control-btn' onClick={handleVideoClick}>
+                            <button className='control-btn' onClick={() => handleVideoClick('RIMOWATravel')}>
                                 {isPlaying ? 'Pause' : 'Play'}
                             </button>
-                            <button className='control-btn' onClick={handleFullscreenClick}>
+                            <button className='control-btn' onClick={() => handleFullscreenClick('RIMOWATravel')}>
                                 {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
                             </button>
                         </div>

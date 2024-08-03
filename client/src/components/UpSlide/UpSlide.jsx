@@ -1,7 +1,7 @@
 import React from 'react';
 import './UpSlide.scss';
 import Close from '/Close/Close.svg';
-import Accordion from '../../components/Footer/Accordion/Accordion';
+import Accordion from '../Accordion/Accordion';
 
 
 const SlideUpContainer = () => {
