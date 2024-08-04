@@ -1,4 +1,9 @@
 .Booking-container {
+
+    * {
+        list-style: none;
+    }
+
     background-color: white;
 
     p,
@@ -39,15 +44,17 @@
 
     .Booking-item-2 {
         width: 50%;
+      
+        
     }
 
     .Booking-item-1 {
         width: 75%;
         text-align: center;
         position: relative;
-        
 
-        > div {
+
+        >div {
             background-color: #f7f5f4;
         }
 
@@ -229,6 +236,8 @@
         display: flex;
         background-color: white;
         justify-content: space-between;
+        border-bottom: 1px solid #ececec;
+
 
         img {
             background-color: white;
@@ -242,6 +251,8 @@
                 margin-top: 5px;
             }
         }
+
+
     }
 
 
@@ -298,13 +309,15 @@
 
 
 .item-list-7 {
+    padding-top: 30px;
     .item-list-7-item {
+        padding-top: 10px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, auto);
         gap: 10px;
         text-align: left;
-
+        border-bottom: 1px solid #ececec;
 
         div {
             display: flex;
@@ -323,6 +336,8 @@
             margin: 15px 0;
             font-size: larger;
         }
+
+
     }
 }
 
@@ -332,7 +347,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #f7f5f4;
-    z-index: 1000;
+    z-index: 30;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
 
@@ -342,7 +357,7 @@
         border: none;
     }
 
-    > div {
+    >div {
         margin-top: 15px;
     }
 
@@ -357,10 +372,88 @@
 }
 
 
-@media (max-width: 800px) { 
+.ul-booking-list {
+    ul {
+     
+        margin-top: 30px;
+    
+        li {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+    
+            div:nth-child(1) {
+                display: flex;
+            }
+        }
+    
+        img {
+            width: 20px;
+            margin-right: 10px;
+        }
+    }
+}
+
+.li-size-list {
+    
+    div:nth-child(1) {
+        p {
+            font-size: 15px;   
+        }
+    }
+
+    div:nth-child(2) {
+        
+
+        p {
+            color: #424242;
+            font-size: 17px;
+            margin-top: 15px;
+        }
+    }
+
+
+}
+
+.fix-booking-last {
+    font-size: 10px !important;
+    margin-top: 20px;
+    color: #424242;
+   
+}
+
+.fix-menu-1 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px; /* Khoảng cách giữa các mục */
+    margin-left: 30px; /* Khoảng cách từ bên trái */
+    
+    p {
+        color: #424242;
+        font-size: 17px;
+        margin-top: 15px;
+    }
+}
+
+.fix-menu-1 div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fix-menu-1 div p {
+    margin: 0;
+}
+
+.fix-booking-1 {
+    margin-left: 30px;
+}
+
+
+@media (max-width: 800px) {
     iframe {
         width: 100vw !important;
         height: 100vh !important;
-       
+
     }
 }

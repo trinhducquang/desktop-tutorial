@@ -36,12 +36,12 @@ const PreownedMedia = [
 ];
 
 const WhispersMedia = [
-    { type: 'image', src: img12, caption: 'Caption 1' },
-    { type: 'image', src: img13, caption: 'Caption 2' },
-    { type: 'image', src: img14, caption: 'Caption 3' },
-    { type: 'image', src: img15, caption: 'Caption 4' },
-    { type: 'image', src: img16, caption: 'Caption 5' },
-    { type: 'image', src: img17, caption: 'Caption 6' },
+    { type: 'image', src: img12, caption: 'Accessories Wheels Set', price: '$170.00' },
+    { type: 'image', src: img13, caption: 'Accessories Luggage Tag', price: '$170.00' },
+    { type: 'image', src: img14, caption: 'Accessories Luggage Tag', price: '$170.00' },
+    { type: 'image', src: img15, caption: 'Stickers New York Luggage', price: '$170.00' },
+    { type: 'image', src: img16, caption: 'Travel Accessories Cabin', price: '$170.00' },
+    { type: 'image', src: img17, caption: 'Essential Cabin Accessories', price: '$170.00' },
 ];
 
 const CareersMedia = [

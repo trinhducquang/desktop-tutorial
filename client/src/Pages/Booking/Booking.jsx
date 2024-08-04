@@ -19,12 +19,19 @@ import useRating from '../../Hooks/useRating';
 import down from '/public/Booking/down.png';
 import down2 from '/public/Booking/arrow2.png';
 import Close from '/public/Booking/close.png';
+import cong from '/public/Booking/cong.png';
+
 
 const Booking = () => {
     const [showMore, setShowMore] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [show3D, setShow3D] = useState(false);
+    const [expandedItem, setExpandedItem] = useState(null); // Track the expanded item
     const { rating, handleRating } = useRating();
+
+    const handleItemClick = (item) => {
+        setExpandedItem(expandedItem === item ? null : item);
+    };
 
     return (
         <div>
@@ -141,7 +148,7 @@ const Booking = () => {
                             </div>
                         </div>
                         <div className='item-list-7'>
-                            <strong>Key elements</strong>
+                            <span>Key elements</span>
                             <div className='item-list-7-item'>
                                 <div>
                                     <img src={validata8} />
@@ -177,6 +184,107 @@ const Booking = () => {
                                     </p>
                                 </div>
                             </div>
+                            <ul className='ul-booking-list'>
+                                <li onClick={() => handleItemClick('size')} className='li-size-list'>
+                                    <div>
+                                        <img src={cong} />
+                                        <p>Size and Weight </p>
+                                    </div>
+                                    <div className='fix-booking-1'>
+                                        {expandedItem === 'size' && <p>Additional details about size and weight.</p>}
+                                    </div>
+                                </li>
+                                <li onClick={() => handleItemClick('materials')} className='li-size-list'>
+                                    <div>
+                                        <img src={cong} />
+                                        <p>Materials</p>
+                                    </div>
+                                    <div className='size-best fix-booking-1'>
+                                        {expandedItem === 'materials' && <>
+                                            <p>Outside: Aluminum</p>
+                                            <p>Inside: Polyester</p>
+                                            <p>Handles: Plastic</p>
+                                            <p>Wheels: Hard plastic</p>
+                                            <p>Dividers: Polyester</p>
+                                        </>}
+                                    </div>
+                                </li>
+                               <li onClick={() => handleItemClick('shipping')} className='li-size-list'>
+                                    <div>
+                                        <img src={cong} />
+                                        <p>Shipping and Returns</p>
+                                    </div>
+                                    <div>
+                                        {expandedItem === 'shipping' &&
+                                            <div  className='fix-menu-1 fix-booking-1'>
+                                                <div>
+                                                    <p>Express shipping</p>
+                                                    <p>$35</p>
+                                                </div>
+                                                <div>
+                                                    <p>Standard shipping for orders that are $300 and over</p>
+                                                    <p>Free of charge</p>
+                                                </div>
+                                                <div>
+                                                    <p>Standard shipping for orders under $300</p>
+                                                    <p>$5</p>
+                                                </div>
+
+                                                <div>
+                                                    <p>From the date of delivery, you have 30 days to return your item(s). Products should be returned unused,
+                                                        undamaged, and packaged in their original boxes.</p>
+                                                </div>
+
+                                            </div>
+                                        }
+
+                                    </div>
+                                </li>
+                                <li onClick={() => handleItemClick('warranty')} className='li-size-list'>
+                                    <div>
+                                        <img src={cong} />
+                                        <p>Lifetime Guarantee</p>
+                                    </div>
+                                    <div className='fix-booking-1'>
+                                        {expandedItem === 'warranty' &&
+                                            <p>
+                                                This product comes with RIMOWA's
+                                                lifetime guarantee. For easy enjoyment
+                                                of the lifetime guarantee, please register
+                                                your RIMOWA suitcase here.
+                                            </p>}
+                                    </div>
+                                </li>
+                                <li onClick={() => handleItemClick('contact')} className='li-size-list'>
+                                    <div>
+                                        <img src={cong} />
+                                        <p>Contact Us</p>
+                                    </div>
+                                    <div className='fix-booking-1'>
+                                        {expandedItem === 'contact' &&
+                                            <>
+                                                <p>Call us at:
+                                                    <br />
+                                                    312-635-6607
+                                                    <br />
+                                                    <br />
+                                                    Contact us by email
+                                                </p>
+                                            </>
+                                        }
+                                    </div>
+                                </li>
+                                <li onClick={() => handleItemClick('faq')} className='li-size-list'>
+                                    <div >
+                                        <img src={cong} />
+                                        <p>FAQ</p>
+                                    </div>
+                                    <div className='li-size-list fix-booking-1'>
+                                        {expandedItem === 'faq' && <p>See our FAQs.</p>}
+                                    </div>
+                                </li>
+                            </ul>
+                            <p className='fix-booking-last'>Product SKU: 97363004</p>
                         </div>
                     </div>
                 </div>

@@ -18,33 +18,40 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         </span>
         <h1>Your Shopping bag</h1>
       </div>
-      <div className='cart-content-2'>
-        <img src={vali1} />
-        <div className='cart-content-2-item'>
+      <div className='cart-content-2-container'>
+        <div className='cart-content-2'>
+          <img src={vali1} />
+          <div className='cart-content-2-item'>
+            <div>
+              <h3>Original</h3>
+              <p>Trunk XL</p>
+              <p>$2,450.00</p>
+              <h4>Remove</h4>
+            </div>
+          </div>
           <div>
-            <h3>Original</h3>
-            <p>Trunk XL</p>
-            <p>$2,450.00</p>
-            <h4>Remove</h4>
+            <button>-</button>
+            <button>0</button>
+            <button>+</button>
           </div>
         </div>
         <div>
-          <button>-</button>
-          <button>0</button>
-          <button>+</button>
+          <Carousel2 media={WhispersMedia} title="Recommended for you" />
         </div>
       </div>
       <div className='cart-content-3'>
-        <div>
-          <p>Recommended for you</p>
-          <div>
-            <Carousel2 media={WhispersMedia} />
-            <p>asasas</p>
-          </div>
+        <div className='cart-content-3-item'>
+          <p>Total</p>
+          <p>(2 items)</p>
+          <p>$2.475.00</p>
         </div>
-
+        <div className='cart-content-3-item-2'>
+          <button>CHECKOUT NOW</button>
+        </div>
+        <div>
+          <a href='#'>Modify your shopping cart</a>
+        </div>
       </div>
-
     </div>
   );
 };

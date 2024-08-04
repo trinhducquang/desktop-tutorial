@@ -18,6 +18,8 @@ import Cookie from './Pages/Cookie/Cookie';
 import Careers from './Pages/Careers/Careers';
 import MenuComponent from './components/Menu/MenuComponent';
 import InspiringSeries from './Pages/InspiringSeries/InspiringSeries';
+import Bespoke from './Pages/Bespoke/Bespoke';
+import Muse from './Pages/Muse/Muse';
 
 const App = () => {
   const location = useLocation();
@@ -43,6 +45,8 @@ const App = () => {
         <Route path='/Cookie' element={<Cookie/>}/>
         <Route path='/Careers' element={<Careers/>}/>
         <Route path='/Inspiring-Series' element={<InspiringSeries/>}/>
+        <Route path='/Bespoke' element={<Bespoke/>}/>
+        <Route path='/Muse' element={<Muse/>}/>
       </Routes>
       {!isAdminRoute && <Footer />}
     </div>

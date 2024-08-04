@@ -92,12 +92,14 @@ const useMenu = () => {
 
   const menuItems = [
     { name: "INSPIRING GREATNESS", link: "/Inspiring-Greatness" },
-    { name: "MODELS", link: "/models" },
+    { name: "MODELS", link: "/models", link: "/Bespoke" },
     { name: "BESPOKE", link: "/bespoke" },
     { name: "OWNERSHIP", link: "/ownership" },
-    { name: "PROVENANCE", link: "/provenance" },
+    { name: "PROVENANCE", link: "/pre-owned" },
     { name: "BOUTIQUE", link: "/boutique" },
     { name: "LIBRARY", link: "/Library" },
+    { name: "MUSE ARTS PROGRAMME", link: "/Muse" },
+   
   ];
 
   return {
