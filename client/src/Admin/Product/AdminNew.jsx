@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Editor } from "@tinymce/tinymce-react";
 import AdminConfig from "../AdminConfig";
 import Admin from "../Admin";
@@ -30,7 +30,7 @@ const AdminNew = () => {
 
         reader.onloadend = () => {
             const base64String = 'data:image/jpeg;base64,' + reader.result.replace('data:', '').replace(/^.+,/, '');
-            setProducts({ ...products, picture: base64String });
+            setProducts({ ...products, [event.target.name]: base64String });
         };
 
         if (file) {
@@ -38,16 +38,15 @@ const AdminNew = () => {
         }
     };
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
-
 
         fetch(`${url}AdminProduct.php`, {
             method: 'POST',
             headers: {
                 'X-React-File-Name': 'AdminNew.jsx',
-                'x-File-Type': 'product'
+                'x-File-Type': 'product',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 "fields": {
@@ -70,9 +69,7 @@ const AdminNew = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-
                 alert('Product Updated successfully');
-
                 navigate('/Admin/product');
             })
             .catch(error => {
@@ -80,8 +77,8 @@ const AdminNew = () => {
             });
     }
 
-    const [attributes, setAttirbutes] = useState([]);
-    const [attributeValue, setAttirbuteValue] = useState([]);
+    const [attributes, setAttributes] = useState([]);
+    const [attributeValues, setAttributeValues] = useState([]);
 
     useEffect(() => {
         fetchAttri();
@@ -94,19 +91,16 @@ const AdminNew = () => {
                 headers: {
                     'X-React-File-Name': 'AdminAttribute.jsx'
                 }
-            })
+            });
             if (!response.ok) {
                 console.log(response);
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            console.log(data);
-            setAttirbutes(data);
-            // console.log(attributes);
+            setAttributes(data);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-
     };
 
     const fetchAttriValue = async () => {
@@ -115,21 +109,17 @@ const AdminNew = () => {
                 headers: {
                     'X-React-File-Name': 'AdminAttriValue.jsx'
                 }
-            })
+            });
             if (!response.ok) {
                 console.log(response);
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            console.log(data);
-            setAttirbuteValue(data);
-            // console.log(attributeValue);
+            setAttributeValues(data);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-
     };
-
 
     return (
         <div className="container">
@@ -141,13 +131,18 @@ const AdminNew = () => {
                     <Link to="/Admin/product">Go Back</Link>
                 </div>
 
-
-
-
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
-                        <input required type="text" className="form-control" id="name" name="name" value={products.name} onChange={(event) => setProducts({ ...products, name: event.target.value })} />
+                        <input
+                            required
+                            type="text"
+                            className="form-control"
+                            id="name"
+                            name="name"
+                            value={products.name}
+                            onChange={(event) => setProducts({ ...products, name: event.target.value })}
+                        />
                     </div><br />
 
                     <div className="form-group mb-3">
@@ -198,43 +193,73 @@ const AdminNew = () => {
 
                     <div className="form-group">
                         <label htmlFor="gender">Gender</label>
-                        <select name="gender" className="form-control" value={products.gender} onChange={(event) => setProducts({ ...products, gender: event.target.value })}>
+                        <select
+                            name="gender"
+                            className="form-control"
+                            value={products.gender || ''}
+                            onChange={(event) => setProducts({ ...products, gender: event.target.value })}
+                        >
                             <option value="" disabled>Select gender</option>
-                            <option {...(products.gender === `gentlman` ? { selected: true } : {})} value="gentlman">Gentlman</option>
-                            <option {...(products.gender === `ladies` ? { selected: true } : {})} value="ladies">Ladies</option>
+                            <option value="gentlman">Gentlman</option>
+                            <option value="ladies">Ladies</option>
                         </select>
                     </div><br />
 
                     <div className="form-group">
                         <label htmlFor="quantity">Quantity</label>
-                        <input required type="text" className="form-control" id="quantity" name="quantity" value={products.quantity} onChange={(event) => setProducts({ ...products, quantity: event.target.value })} />
+                        <input
+                            required
+                            type="text"
+                            className="form-control"
+                            id="quantity"
+                            name="quantity"
+                            value={products.quantity}
+                            onChange={(event) => setProducts({ ...products, quantity: event.target.value })}
+                        />
                     </div><br />
 
                     <div className="form-group">
                         <label htmlFor="image1">Image1</label>
-                        <input type="file" className="form-control" id="image1" name="image1" onChange={handleImageUpload} />
+                        <input
+                            type="file"
+                            className="form-control"
+                            id="image1"
+                            name="image1"
+                            onChange={handleImageUpload}
+                        />
                         {products.image1 && <img src={products.image1} alt="product" className="img-fluid" />}
                     </div><br />
 
                     <div className="form-group">
                         <label htmlFor="image2">Image2</label>
-                        <input type="file" className="form-control" id="image2" name="image2" onChange={handleImageUpload} />
+                        <input
+                            type="file"
+                            className="form-control"
+                            id="image2"
+                            name="image2"
+                            onChange={handleImageUpload}
+                        />
                         {products.image2 && <img src={products.image2} alt="product" className="img-fluid" />}
                     </div><br />
 
                     <div className="form-group">
                         <label htmlFor="price">Price</label>
-                        <input required type="text" className="form-control" id="price" name="price" value={products.price} onChange={(event) => setProducts({ ...products, price: event.target.value })} />
+                        <input
+                            required
+                            type="text"
+                            className="form-control"
+                            id="price"
+                            name="price"
+                            value={products.price}
+                            onChange={(event) => setProducts({ ...products, price: event.target.value })}
+                        />
                     </div><br />
 
                     <button type="submit">Submit</button>
-                    {/* <Link to="/Admin/product">Go Back</Link> */}
                 </form>
-
             </div>
         </div>
-
-    )
-}
+    );
+};
 
 export default AdminNew;

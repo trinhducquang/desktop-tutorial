@@ -186,8 +186,8 @@ const Booking = () => {
                             </div>
                             <ul className='ul-booking-list'>
                                 <li onClick={() => handleItemClick('size')} className='li-size-list'>
-                                    <div>
-                                        <img src={cong} />
+                                    <div className='fix-img-1'>
+                                        <img src={cong} className='fix-img'/>
                                         <p>Size and Weight </p>
                                     </div>
                                     <div className='fix-booking-1'>
@@ -195,8 +195,8 @@ const Booking = () => {
                                     </div>
                                 </li>
                                 <li onClick={() => handleItemClick('materials')} className='li-size-list'>
-                                    <div>
-                                        <img src={cong} />
+                                    <div className='fix-img-1'>
+                                        <img src={cong} className='fix-img' />
                                         <p>Materials</p>
                                     </div>
                                     <div className='size-best fix-booking-1'>
@@ -210,8 +210,8 @@ const Booking = () => {
                                     </div>
                                 </li>
                                <li onClick={() => handleItemClick('shipping')} className='li-size-list'>
-                                    <div>
-                                        <img src={cong} />
+                                    <div className='fix-img-1' >
+                                        <img src={cong} className='fix-img'/>
                                         <p>Shipping and Returns</p>
                                     </div>
                                     <div>
@@ -241,8 +241,8 @@ const Booking = () => {
                                     </div>
                                 </li>
                                 <li onClick={() => handleItemClick('warranty')} className='li-size-list'>
-                                    <div>
-                                        <img src={cong} />
+                                    <div className='fix-img-1' >
+                                        <img src={cong} className='fix-img'/>
                                         <p>Lifetime Guarantee</p>
                                     </div>
                                     <div className='fix-booking-1'>
@@ -256,8 +256,8 @@ const Booking = () => {
                                     </div>
                                 </li>
                                 <li onClick={() => handleItemClick('contact')} className='li-size-list'>
-                                    <div>
-                                        <img src={cong} />
+                                    <div className='fix-img-1'>
+                                        <img src={cong} className='fix-img'/>
                                         <p>Contact Us</p>
                                     </div>
                                     <div className='fix-booking-1'>
@@ -275,8 +275,8 @@ const Booking = () => {
                                     </div>
                                 </li>
                                 <li onClick={() => handleItemClick('faq')} className='li-size-list'>
-                                    <div >
-                                        <img src={cong} />
+                                    <div className='fix-img-1'>
+                                        <img src={cong} className='fix-img'/>
                                         <p>FAQ</p>
                                     </div>
                                     <div className='li-size-list fix-booking-1'>

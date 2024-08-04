@@ -4,7 +4,9 @@
     padding: 0;
     cursor: url('../public/mouse/mouse.svg'), auto;
     text-decoration: none;
+  
 }
+
 
 a {
   color: black;
