@@ -4,6 +4,9 @@
   position: relative;
   overflow: hidden;
 
+
+
+
   video {
     width: 100%;
     height: 100%;
@@ -13,7 +16,7 @@
 
   .text-overlay {
     position: absolute;
-    bottom: 10%;
+    bottom: 120px;
     left: 50%;
     transform: translate(-50%, 50%);
     text-align: center;
@@ -237,7 +240,7 @@
 
   .Menu1-container .text-overlay p,
   .Menu1-background-container .text-overlay p {
-    width: 100%; 
+    width: 100%;
   }
 
   .Menu1-video {

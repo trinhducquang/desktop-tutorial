@@ -1,0 +1,84 @@
+.inspiringSeries-container {
+    .Menu1-container .color-overlay p {
+        line-height: 1.6;
+        text-align: center;
+        font-size: 2.2rem;
+        width: 60%;
+    }
+
+    .whisper-container-v1 {
+        p,
+        h2,
+        h1,h3 {
+            color: black;
+        }
+        background-color: white;
+
+    }
+
+    .section1-container {
+        height: 60vh;
+        .text-overlay {
+            top: 250px;
+        }
+    }
+
+    .section2-container {
+        height: 300px;
+        bottom: 150px;
+    } 
+
+    .text-series-color {
+
+        p,
+        h2,
+        h1 {
+            color: black;
+        }
+
+
+        h2 {
+            font-size: 20px !important;
+            width: 100%;
+        }
+
+
+        .Careers-buttons {
+            button {
+                background-color: black;
+                color: white;
+            }
+        }
+
+
+        .Menu1-container .text-overlay p {
+            font-size: 50px !important;
+        }
+    }
+
+
+    .Menu-best-video {
+        video {
+            width: 140%;
+        }
+    }
+    
+    hr {
+        height: 1px;
+        color: #e2e2e2;
+        background-color: #e2e2e2;
+        border: none;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .Menu1-container .text-overlay h1, .Menu1-container .text-overlay h2 {
+        font-size: clamp(2rem, 2.5vw, 4rem);
+        margin: 0;
+        font-family: "GillSansAlt1-Light", sans-serif;
+        font-weight: 300 !important;
+        letter-spacing: 0.1rem;
+        line-height: 1.2;
+    }
+
+}

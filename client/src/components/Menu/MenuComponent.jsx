@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import useMenu from '../../Hooks/useMenu';
 import Navbar from './Navbar';
 import Menu from './Menu';
-import CartPanel from './CartPanel';
+import CartMenu from './CartMenu';
 import './Menu.scss';
 
 const MenuComponent = () => {
@@ -12,17 +12,18 @@ const MenuComponent = () => {
     isMenuOpen,
     isClosing,
     isNavMenuVisible,
-    isCartOpen,
     scrollY,
     totalQuantity,
-    cartItems,
     menuItems,
     handleMenuClick,
     handleCloseMenu,
     handleCartClick,
     handleCloseCart,
-    handleSubmit,
+    isCartOpen
   } = useMenu(location);
+
+  // Xác định xem lớp phủ có nên hiển thị không
+  const shouldShowOverlay = isMenuOpen || isCartOpen;
 
   return (
     <section className={location.pathname === '/Booking' ? 'booking-page' : ''}>
@@ -40,13 +41,19 @@ const MenuComponent = () => {
         scrollY={scrollY}
         handleCloseMenu={handleCloseMenu}
         menuItems={menuItems}
-      />
-      <CartPanel
         isCartOpen={isCartOpen}
         handleCloseCart={handleCloseCart}
-        cartItems={cartItems}
-        handleSubmit={handleSubmit}
       />
+      <CartMenu
+        isCartOpen={isCartOpen}
+        handleCloseCart={handleCloseCart}
+      />
+      {shouldShowOverlay && (
+        <div
+          className={`overlay ${shouldShowOverlay ? 'open' : ''}`}
+          onClick={isMenuOpen ? handleCloseMenu : handleCloseCart}
+        ></div>
+      )}
     </section>
   );
 };

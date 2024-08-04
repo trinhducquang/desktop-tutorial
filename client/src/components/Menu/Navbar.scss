@@ -1,0 +1,159 @@
+/* Navbar.scss */
+.Navbar-container {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transition: background-color 0.3s, height 0.3s;
+    color: white;
+  
+    a {
+      text-decoration: none;
+    }
+  
+    h1 {
+      color: white;
+      font-family: 'Riviera Nights';
+      font-weight: 400;
+      letter-spacing: 0.5rem;
+      margin-left: 70px;
+      margin-top: 5px;
+    }
+  
+    .container-item {
+      display: flex;
+      width: 90%;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
+      height: 100%;
+      transition: height 0.3s;
+  
+      img {
+        width: 30px;
+        margin-left: 30px;
+      }
+  
+      .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+  
+        .menu-button {
+          display: flex;
+          align-items: center;
+  
+          &:hover {
+            transition: opacity 0.3s;
+            opacity: 0.7;
+          }
+  
+          &.hidden {
+            display: none;
+          }
+        }
+  
+        .find-dealer {
+          display: flex;
+          align-items: center;
+  
+          &:hover {
+            transition: opacity 0.3s;
+            opacity: 0.7;
+          }
+        }
+      }
+  
+      hr {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgb(232, 219, 219);
+        margin-bottom: 30px;
+      }
+    }
+  
+    &.scrolled {
+      height: 60px;
+      .container-item {
+        height: 100%;
+      }
+      hr {
+        display: none;
+      }
+      backdrop-filter: blur(60px) saturate(1.5);
+    }
+  }
+  
+  .Navbar-container-menu1 {
+    display: flex;
+    justify-content: space-between;
+    opacity: 1;
+    transition: opacity 0.3s;
+  
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: 'Riviera Nights';
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  
+    &.hidden {
+      opacity: 0;
+    }
+  }
+  
+  .booking-page {
+    width: 100%;
+    height: 100px !important;
+    display: flex;
+    align-items: center;
+    position: static;
+    z-index: 1;
+    transition: background-color 0.3s, height 0.3s;
+    color: black !important;
+    background-color: white;
+  
+    .top-row {
+      color: black;
+    }
+    h1 {
+      color: black;
+    }
+  }
+  
+  @media (max-width: 1023px) {
+    .Navbar-container h1 {
+      font-size: 1.2rem;
+      margin-left: 20px;
+      letter-spacing: 0.3rem;
+    }
+  
+    .menu-button span,
+    .find-dealer span {
+      font-size: 0.8rem;
+    }
+  }
+  
+
+  .additional-items {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .additional-items>a:first-child {
+    margin-right: auto;
+  }
+  
+  .additional-items>a:not(:first-child) {
+    margin-left: 20px;
+  }
+  

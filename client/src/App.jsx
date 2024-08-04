@@ -7,7 +7,7 @@ import InspiringGreatness from './Pages/InspiringGreatness/InspiringGreatness';
 import Sitemap from './Pages/Sitemap/Sitemap';
 import Contact from './Pages/Contact/Contact';
 import Library from './Pages/Library/Library';
-import Booking from './components/Booking/Booking';
+import Booking from './Pages/Booking/Booking';
 import Privacy from './Pages/Privacy/Privacy';
 import Legal from './Pages/Legal/Legal';
 import Preowned from './Pages/Pre-owned/Preowned';
@@ -17,6 +17,7 @@ import Faqs from './Pages/Faqs/Faqs';
 import Cookie from './Pages/Cookie/Cookie';
 import Careers from './Pages/Careers/Careers';
 import MenuComponent from './components/Menu/MenuComponent';
+import InspiringSeries from './Pages/InspiringSeries/InspiringSeries';
 
 const App = () => {
   const location = useLocation();
@@ -41,6 +42,7 @@ const App = () => {
         <Route path='/whispers' element={<Whispers />} />
         <Route path='/Cookie' element={<Cookie/>}/>
         <Route path='/Careers' element={<Careers/>}/>
+        <Route path='/Inspiring-Series' element={<InspiringSeries/>}/>
       </Routes>
       {!isAdminRoute && <Footer />}
     </div>

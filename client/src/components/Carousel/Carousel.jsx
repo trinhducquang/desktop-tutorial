@@ -11,7 +11,7 @@ const Carousel = ({ media }) => {
         slidesToScroll: 1,
         centerMode: true,
         focusOnSelect: true,
-        centerPadding: '30%',
+        centerPadding: '25%',
         responsive: [
             {
                 breakpoint: 768,

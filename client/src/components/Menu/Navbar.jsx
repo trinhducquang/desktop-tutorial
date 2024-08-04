@@ -4,6 +4,7 @@ import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import './Navbar.scss'
 
 const Navbar = ({
   location,

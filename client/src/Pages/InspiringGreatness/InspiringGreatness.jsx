@@ -14,6 +14,8 @@ import img9 from '/video/Menu1/main1-img9.webp';
 import img10 from '/video/Menu1/main1-img10.webp';
 import img11 from '/video/Menu1/main1-img11.webp';
 import { GrLinkNext } from 'react-icons/gr';
+import { Link } from 'react-router-dom'
+
 
 const InspiringGreatness = () => {
   const {
@@ -63,7 +65,10 @@ const InspiringGreatness = () => {
           </div>
           <div>
             <button>
-              Watch All Episodes
+               <Link to ='/Inspiring-Series'>
+               Watch All Episodes
+
+               </Link>
               <GrLinkNext className="arrow" />
             </button>
           </div>

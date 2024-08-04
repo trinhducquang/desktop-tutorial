@@ -7,8 +7,7 @@
   top: 0;
   left: 0;
   z-index: 1;
-  transition: background-color 0.3s,
-  height 0.3s;
+  transition: background-color 0.3s, height 0.3s;
   color: white;
 
   a {
@@ -22,7 +21,6 @@
     letter-spacing: 0.5rem;
     margin-left: 70px;
     margin-top: 5px;
-
   }
 
   .container-item {
@@ -44,7 +42,6 @@
       justify-content: space-between;
       align-items: center;
       height: 100%;
-
 
       .menu-button {
         display: flex;
@@ -105,8 +102,6 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-
-
 }
 
 .additional-items {
@@ -122,7 +117,6 @@
 .additional-items>a:not(:first-child) {
   margin-left: 20px;
 }
-
 
 .Navbar-container.scrolled {
   backdrop-filter: blur(60px) saturate(1.5);
@@ -140,11 +134,9 @@
   overflow: hidden;
   opacity: 0.9;
   backdrop-filter: blur(60px) saturate(1.5);
-  
 
   &.open {
     left: 0;
-    
   }
 
   .side-menu-content {
@@ -160,7 +152,7 @@
       display: flex;
       align-items: center;
       z-index: 30;
-      
+
       span {
         font-size: 1rem;
         color: white;
@@ -169,7 +161,6 @@
 
     .menu-items {
       margin-top: 100px;
-      /* Khoảng cách cho nút đóng */
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -196,7 +187,6 @@
 
         &.closing {
           animation: closing 0.5s forwards;
-          /* Hiệu ứng khi menu đóng */
         }
       }
 
@@ -211,16 +201,12 @@
 
         &.closing {
           animation: closing 0.5s forwards;
-          /* Hiệu ứng khi menu đóng */
           opacity: 1;
-          /* Đảm bảo nền menu vẫn hiển thị */
         }
       }
     }
   }
 }
-
-
 
 @keyframes appearing {
   from {
@@ -249,7 +235,7 @@
 .Navbar-container-menu1 {
   display: flex;
   justify-content: space-between;
-  transition: opacity 0.3s; // Thêm hiệu ứng mờ dần
+  transition: opacity 0.3s;
 
   a {
     text-decoration: none;
@@ -263,17 +249,16 @@
 }
 
 .Navbar-container-menu1 {
-  opacity: 1; // Hiển thị bình thường
+  opacity: 1;
 }
 
 .Navbar-container-menu1.hidden {
-  opacity: 0; // Ẩn khi cuộn xuống
+  opacity: 0;
 }
 
 @media (max-width: 1023px) {
   .Navbar-container h1 {
     font-size: 1.2rem;
-    /* Thu nhỏ tên thương hiệu */
     margin-left: 20px;
     letter-spacing: 0.3rem;
   }
@@ -281,103 +266,42 @@
   .menu-button span,
   .find-dealer span {
     font-size: 0.8rem;
-    /* Thu nhỏ văn bản */
   }
 }
 
-.cart-panel {
+.booking-page {
+  width: 100%;
+  height: 100px !important;
+  display: flex;
+  align-items: center;
+  position: static;
+  z-index: 1;
+  transition: background-color 0.3s, height 0.3s;
+  color: black !important;
+  background-color: white;
+  
+  .top-row {
+    color: black;
+  }
+  h1 {
+    color: black;
+  }
+  
+ /* Menu.scss */
+.overlay {
   position: fixed;
   top: 0;
-  right: -500px;
-  /* Ẩn bảng trượt sang phải */
-  height: 100vh;
-  width: 400px;
-  color: white;
-  margin-top: auto;
-  transition: right 0.3s ease;
-  /* Hiệu ứng trượt */
-  z-index: 30;
-  /* Đảm bảo bảng trượt nằm trên cùng */
-
-  &.open {
-    right: 0;
-    /* Hiện bảng trượt khi mở */
-  }
-
-  .cart-panel-content {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    text-transform: uppercase;
-    margin-top: 15px;
-    border-bottom: 1px solid white;
-
-    .cart-container {
-      display: flex;
-      align-items: center;
-    }
-  }
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 50% */
+  z-index: 9; /* Đảm bảo lớp phủ ở trên cùng */
+  display: none; /* Ẩn lớp phủ mặc định */
 }
 
-.cart-item {
-  align-items: center;
-  display: flex;
-  margin-top: 10px;
-  margin-left: 10px;
-
-  img {
-    width: 60px;
-    height: 60px;
-  }
+.overlay.open {
+  display: block; /* Hiển thị lớp phủ khi menu hoặc giỏ hàng mở */
 }
 
-.quantity-buttons {
-  width: fit-content;
-  display: flex;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  margin-right: 18px;
-  height: 30px;
-
-  span {
-    font-size: 18px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6b6b6b;
-
-    &:nth-child(1) {
-      border-right: 2px solid rgba(0, 0, 0, 0.2);
-    }
-
-    &:nth-child(3) {
-      border-left: 2px solid rgba(0, 0, 0, 0.2);
-    }
-  }
-}
-
-.item-details {
-  margin-left: 10px;
-}
-
-.cart-item-button {
-  position: relative;
-  top: 540px;
-  display: flex;
-
-  button {
-    width: 80%;
-    margin: 0 auto;
-    height: 50px;
-    background-color: pink;
-    font-family: "Riviera Nights";
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-  }
-
-}
-
-.fix {
-  width: 30px;
-  margin-left: 50px;
+ 
 }

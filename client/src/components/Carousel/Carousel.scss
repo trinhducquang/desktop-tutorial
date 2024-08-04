@@ -1,23 +1,28 @@
 .carousel-container {
-  .carousel-item img {
-    width: 90%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    max-height: 400px;
-  }
-
-  video {
-    width: 90%;
+  .carousel-item {
+    img,
+    video {
+      width: 90%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      max-height: 400px;
+      padding-left: 40px;
+    }
   }
 
   .slick-center .carousel-item img {
     transform: scale(1.2);
   }
 
-  .slick-slide img {
+  .slick-center .carousel-item video {
+    transform: scale(1.2);
+    max-height: 400px;
+    width: 90%; 
+  }
+
+  .slick-slide img,
+  .slick-slide video {
     transform: scale(0.8);
   }
-  
 }
-

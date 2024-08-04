@@ -8,12 +8,8 @@ const useMenu = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
   const isClosing = useSelector((state) => state.menu.isClosing);
-  const currentPage = useSelector((state) => state.menu.currentPage);
   const scrollY = useSelector((state) => state.menu.scrollY);
   const location = useLocation();
-
-  const cartItems = useSelector((state) => state.cart.items);
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const [isNavMenuVisible, setIsNavMenuVisible] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -49,19 +45,21 @@ const useMenu = () => {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (isMenuOpen && !document.querySelector('.side-menu-content')?.contains(event.target)) {
-        handleCloseMenu();
+      const cartPanel = document.querySelector('.cart-panel');
+      const menuPanel = document.querySelector('.side-menu-content');
+
+      if (isCartOpen && cartPanel && !cartPanel.contains(event.target)) {
+        handleCloseCart();
       }
 
-      if (isCartOpen && !document.querySelector('.cart-panel')?.contains(event.target)) {
-        handleCloseCart();
+      if (isMenuOpen && menuPanel && !menuPanel.contains(event.target)) {
+        handleCloseMenu();
       }
     };
 
-    if (isMenuOpen || isCartOpen) {
+    if (isCartOpen || isMenuOpen) {
       document.body.classList.toggle('menu-open', isMenuOpen);
       document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
-      dispatch(finishClosing(false));
       document.addEventListener('mousedown', handleOutsideClick);
     } else if (isClosing) {
       setTimeout(() => dispatch(finishClosing(false)), 3000);
@@ -105,11 +103,9 @@ const useMenu = () => {
   return {
     isMenuOpen,
     isClosing,
-    currentPage,
+    currentPage: location.pathname,
     isNavMenuVisible,
     isCartOpen,
-    cartItems,
-    totalQuantity,
     handleMenuClick,
     handleCloseMenu,
     handleCartClick,
