@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Editor } from "@tinymce/tinymce-react";
+import AdminConfig from "../AdminConfig";
+import Admin from "../Admin";
 
-const AdminEdit = () => {
-    const { id } = useParams();
+const AdminNew = () => {
+    const { url } = AdminConfig;
     const navigate = useNavigate();
 
     const [products, setProducts] = useState({
@@ -21,49 +23,6 @@ const AdminEdit = () => {
         brand: '',
         type: ''
     });
-
-
-    useEffect(() => {
-        console.log('vaochinh');
-        // fetchDataById();
-
-
-        console.log('avo chinh');
-        fetch(`http://localhost/project1%20-%2030-7/desktop-tutorial/client/src/components/Admin/AdminProduct.php/${id}`, {
-            headers: {
-                'X-React-File-Name': 'AdminEdit.jsx',
-                'x-File-Type': 'product'
-            }
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        }).then(data => {
-            console.log(data);
-            setProducts({
-                ...products,
-                id: data.id,
-                name: data.name ? data.name : '',
-                description: data.description ? data.description : '',
-                gender: data.gender ? data.gender : '',
-                quantity: data.quantity ? data.quantity : '',
-                image1: data.image1 ? data.image1 : '',
-                image2: data.image2 ? data.image2 : '',
-                price: data.price ? data.price : '',
-                rating: data.rating ? data.rating : '',
-                color: data.color ? data.color : '',
-                size: data.size ? data.size : '',
-                brand: data.brand ? data.brand : '',
-                type: data.type ? data.type : ''
-
-            });
-        }).catch(error => {
-            console.error('Fetch error:', error);
-        });
-
-    }, [id]);
-
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -84,10 +43,10 @@ const AdminEdit = () => {
         event.preventDefault();
 
 
-        fetch(`http://localhost/project1%20-%2030-7/desktop-tutorial/client/src/components/Admin/AdminProduct.php/${id}`, {
-            method: 'PATCH',
+        fetch(`${url}AdminProduct.php`, {
+            method: 'POST',
             headers: {
-                'X-React-File-Name': 'AdminEdit.jsx',
+                'X-React-File-Name': 'AdminNew.jsx',
                 'x-File-Type': 'product'
             },
             body: JSON.stringify({
@@ -112,30 +71,80 @@ const AdminEdit = () => {
             .then(data => {
                 console.log(data);
 
-                // setProducts(data);
                 alert('Product Updated successfully');
 
-                navigate('Admin/product');
+                navigate('/Admin/product');
             })
             .catch(error => {
                 console.log(error);
             });
     }
 
+    const [attributes, setAttirbutes] = useState([]);
+    const [attributeValue, setAttirbuteValue] = useState([]);
+
+    useEffect(() => {
+        fetchAttri();
+        fetchAttriValue();
+    }, []);
+
+    const fetchAttri = async () => {
+        try {
+            let response = await fetch(`${url}AdminProduct.php`, {
+                headers: {
+                    'X-React-File-Name': 'AdminAttribute.jsx'
+                }
+            })
+            if (!response.ok) {
+                console.log(response);
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            // console.log(data);
+            setAttirbutes(data);
+            // console.log(attributes);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+
+    };
+
+    const fetchAttriValue = async () => {
+        try {
+            const response = await fetch(`${url}AdminProduct.php`, {
+                headers: {
+                    'X-React-File-Name': 'AdminAttriValue.jsx'
+                }
+            })
+            if (!response.ok) {
+                console.log(response);
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            // console.log(data);
+            setAttirbuteValue(data);
+            // console.log(attributeValue);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+
+    };
+
 
     return (
-        <div className="ccontainer">
-            <h1>Update product</h1>
+        <div className="container">
+            <Admin />
 
-            {
-                // console.log(products)
-                products.id !== null &&
+            <div className="admin-product-content">
+                <div className="product-list-header">
+                    <h3 className="admin-product-title">Add New product</h3>
+                    <Link to="/Admin/product">Go Back</Link>
+                </div>
+
+
+
+
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="id">Id</label>
-                        <input required type="text" className="form-control" id="id" name="id" value={products.id} onChange={(event) => setProducts({ ...products, id: event.target.value })} disabled />
-                    </div><br />
-
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input required type="text" className="form-control" id="name" name="name" value={products.name} onChange={(event) => setProducts({ ...products, name: event.target.value })} />
@@ -152,37 +161,46 @@ const AdminEdit = () => {
                                 toolbar: []
                             }}
                             apiKey="lq7do16j36or80re6ywmzmdpp02ifk10sgtkclo61gagp6l5"
-                            onEditorChange={(content, editor) => setProducts({ ...products, description: content })}
-                            onInit={(evt, editor) => editor.setContent(products.description)}
+                            onChange={(event) => setProducts({ ...products, description: event.target.getContent() })}
                         />
                     </div><br />
 
-                    <div className="form-group">
-                        <label htmlFor="type">Type</label>
-                        <input required type="text" className="form-control" id="type" name="type" value={products.type} onChange={(event) => setProducts({ ...products, type: event.target.value })} />
-                    </div><br />
+                    {
+                        attributes.map((attri) => (
+                            <div className="form-group" key={attri.attribute_type}>
+                                <label htmlFor={attri.attribute_type}>{attri.attribute_type.toUpperCase()}</label>
 
-                    <div className="form-group">
-                        <label htmlFor="brand">Brand</label>
-                        <input required type="text" className="form-control" id="brand" name="brand" value={products.brand} onChange={(event) => setProducts({ ...products, brand: event.target.value })} />
-                    </div><br />
+                                <select
+                                    name={attri.attribute_type}
+                                    className="form-control"
+                                    value={[products[attri.attribute_type]]}
+                                    onChange={(event) => setProducts({ ...products, [attri.attribute_type]: event.target.value })}>
 
-                    <div className="form-group">
-                        <label htmlFor="color">Color</label>
-                        <input required type="text" className="form-control" id="color" name="color" value={products.color} onChange={(event) => setProducts({ ...products, color: event.target.value })} />
-                    </div><br />
+                                    <option value="" disabled>Select {attri.attribute_type}</option>
+                                    {
+                                        attributeValue
+                                            .filter(attri_value => attri_value.attribute_id === attri.id)
+                                            .map((attri_value) => (
+                                                // {...(product.location_id === `${location.id}` ? { selected: true } : {})}
+                                                <option key={attri_value.id} {...(products[attri.attribute_type] === `${attri_value.id}` ? { selected: true } : {})} value={attri_value.id}>
+                                                    {attri_value.value}
+                                                </option>
+                                            ))
+                                    }
 
-                    <div className="form-group">
-                        <label htmlFor="size">Size</label>
-                        <input required type="text" className="form-control" id="size" name="size" value={products.size} onChange={(event) => setProducts({ ...products, size: event.target.value })} />
-                    </div><br />
+                                </select>
+                            </div>
+                        ))
+
+
+                    }<br />
 
                     <div className="form-group">
                         <label htmlFor="gender">Gender</label>
                         <select name="gender" className="form-control" value={products.gender} onChange={(event) => setProducts({ ...products, gender: event.target.value })}>
-                            <option value="">Select gender</option>
-                            <option value="1">Gentlman</option>
-                            <option value="2">Ladies</option>
+                            <option value="" disabled>Select gender</option>
+                            <option {...(products.gender === `gentlman` ? { selected: true } : {})} value="gentlman">Gentlman</option>
+                            <option {...(products.gender === `ladies` ? { selected: true } : {})} value="ladies">Ladies</option>
                         </select>
                     </div><br />
 
@@ -209,12 +227,13 @@ const AdminEdit = () => {
                     </div><br />
 
                     <button type="submit">Submit</button>
-                    <Link to="/Admin/product">Go Back</Link>
+                    {/* <Link to="/Admin/product">Go Back</Link> */}
                 </form>
-            }
 
+            </div>
         </div>
+
     )
 }
 
-export default AdminEdit
+export default AdminNew;

@@ -1,5 +1,5 @@
-import './InspiringGreatness.scss';
-import useVideoControl from '../../Hooks/useVideoControl';
+import './InspiringGreatness';
+import useVideoControl from '../../Hooks/useVideoControl'
 import menu1 from '/video/Menu1/menu1.mp4';
 import menu2 from '/video/Menu1/menu2.mp4';
 import img1 from '/video/Menu1/main1-img1.webp';
