@@ -12,6 +12,28 @@ import Privacy from './components/Footer/Privacy/Privacy';
 import Legal from './components/Footer/Legal/Legal';
 import Preowned from './components/Footer/Pre-owned/Preowned';
 import Complaints from './Pages/Complaints/Complaints';
+import Admin from './components/Admin/Admin';
+import AdminProduct from './components/Admin/Product/AdminProduct';
+import AdminEdit from './components/Admin/Product/AdminEdit';
+import AdminNew from './components/Admin/Product/AdminNew';
+import AdminAttribute from './components/Admin/Attribute/AdminAttribute';
+import AdminEdit2 from './components/Admin/Attribute/AdminEdit2';
+import AdminNew2 from './components/Admin/Attribute/AdminNew2';
+import AdminAttriValue from './components/Admin/Attribute Value/AdminAttriValue';
+import AdminEdit3 from './components/Admin/Attribute Value/AdminEdit3';
+import AdminNew3 from './components/Admin/Attribute Value/AdminNew3';
+import AdminUsers from './components/Admin/Users/AdminUsers';
+import AdminEdit4 from './components/Admin/Users/AdminEdit4';
+import AdminNew4 from './components/Admin/Users/AdminNew4';
+import AdminOrders from './components/Admin/Orders/AdminOrders';
+import AdminEdit5 from './components/Admin/Orders/AdminEdit5';
+// import AdminNew5 from './components/Admin/Orders/AdminNew5';
+import AdminOrderDetail from './components/Admin/OrderDetail/AdminOrderDetail';
+import AdminEdit6 from './components/Admin/OrderDetail/AdminEdit6';
+import AdminVideo from './components/Admin/Video/AdminVideo';
+import AdminEdit7 from './components/Admin/Video/AdminEdit7';
+import AdminNew7 from './components/Admin/Video/AdminNew7';
+// import AdminNew6 from './components/Admin/OrderDetail/AdminNew6';
 
 const App = () => {
   const location = useLocation();
@@ -31,7 +53,40 @@ const App = () => {
         <Route path='/Legal' element={<Legal />} />
         <Route path='/pre-owned' element={<Preowned/>}/>
         <Route path='/Complaints' element={<Complaints/>}/>
+
+
+        <Route path='/Admin' element={<Admin/>}/>
+
+        <Route path='/Admin/product' element={<AdminProduct/>}></Route>
+        <Route path='/Admin/product/edit/:id' element={<AdminEdit/>}></Route>
+        <Route path='/Admin/product/new' element={<AdminNew/>}></Route>
+
+        <Route path='/Admin/attri' element={<AdminAttribute/>}></Route>
+        <Route path='/Admin/attri/edit/:id' element={<AdminEdit2/>}></Route>
+        <Route path='/Admin/attri/new' element={<AdminNew2/>}></Route>
+        
+        <Route path='/Admin/attri_value/:id' element={<AdminAttriValue/>}></Route>
+        <Route path='/Admin/attri_value/edit/:id' element={<AdminEdit3/>}></Route>
+        <Route path='/Admin/attri_value/new/:id' element={<AdminNew3/>}></Route>
+
+        <Route path='/Admin/user/' element={<AdminUsers/>}></Route>
+        <Route path='/Admin/user/edit/:id' element={<AdminEdit4/>}></Route>
+        <Route path='/Admin/user/new/' element={<AdminNew4/>}></Route>
+
+        <Route path='/Admin/order' element={<AdminOrders/>}></Route>
+        <Route path='/Admin/order/edit/:id' element={<AdminEdit5/>}></Route>
+        {/* <Route path='/Admin/order/new' element={<AdminNew5/>}></Route> */}
+        
+        <Route path='/Admin/order_detail/:id' element={<AdminOrderDetail/>}></Route>
+        <Route path='/Admin/order_detail/edit/:id' element={<AdminEdit6/>}></Route>
+        {/* <Route path='/Admin/order_detail/new/:id' element={<AdminNew6/>}></Route> */}
+
+        <Route path='/Admin/video' element={<AdminVideo/>}></Route>
+        <Route path='/Admin/video/edit/:id' element={<AdminEdit7/>}></Route>
+        <Route path='/Admin/video/new' element={<AdminNew7/>}></Route>
+
       </Routes>
+
       {!isAdminRoute && <Footer />}
     </div>
   );

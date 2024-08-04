@@ -7,7 +7,7 @@ import img1 from '../../../public/video/main/img1.webp';
 import img2 from '../../../public/video/main/img2.webp';
 import img4 from '../../../public/video/main/img4.webp';
 import { GrLinkNext } from "react-icons/gr";
-import useNavbar from '../../Hooks/useNavbar';
+import useNavbar from '../../hooks/useNavbar';
 import './Home.scss';
 
 const Navbar = () => {

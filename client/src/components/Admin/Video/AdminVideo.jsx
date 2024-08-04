@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AdminConfig from "../AdminConfig";
 import Admin from "../Admin";
 
-const AdminProduct = () => {
+const AdminVideo = () => {
     const { url } = AdminConfig;
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
@@ -14,7 +14,7 @@ const AdminProduct = () => {
             let resp = await fetch(`${url}AdminProduct.php`, {
                 method: 'GET',
                 headers: {
-                    'X-React-File-Name': 'AdminProduct.jsx'
+                    'X-React-File-Name': 'AdminVideo.jsx'
                 }
             });
 
@@ -45,7 +45,7 @@ const AdminProduct = () => {
     const deletePro = async (event, prd) => {
         event.preventDefault();
 
-        let cf = window.confirm("Are you sure you want to delete this product?");
+        let cf = window.confirm("Are you sure you want to delete this video?");
         if (!cf) {
             return;
         }
@@ -56,7 +56,7 @@ const AdminProduct = () => {
                 method: "DELETE",
                 headers: {
                     'X-React-File-Name': 'AdminDelete.jsx',
-                    'X-File-Type': 'product'
+                    'X-File-Type': 'video'
                 }
             });
 
@@ -90,9 +90,9 @@ const AdminProduct = () => {
                 }
 
                 <div className="product-list-header">
-                    <h3 className="admin-product-title">Product List</h3>
+                    <h3 className="admin-product-title">Video List</h3>
                     {/* <Link to='/Admin'>Admin</Link><br/> */}
-                    <Link to='/Admin/product/new' className="add-new-button">Add New</Link>
+                    <Link to='/Admin/video/new' className="add-new-button">Add New</Link>
                 </div>
 
                 <div className="admin-product-table-container">
@@ -101,18 +101,9 @@ const AdminProduct = () => {
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Description</th>
                                 <th>Type</th>
-                                <th>Brand</th>
-                                <th>Color</th>
-                                <th>Size</th>
-                                <th>Gender</th>
-                                <th>Quantity</th>
-                                <th>Image1</th>
-                                <th>Image2</th>
-                                <th>Price</th>
-                                <th>Rating</th>
-                                <th>Actions</th>
+                                <th>Link</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -122,23 +113,11 @@ const AdminProduct = () => {
                                         <tr key={prd.id}>
                                             <td>{prd.id}</td>
                                             <td>{prd.name}</td>
-                                            <td>{prd.description}</td>
                                             <td>{prd.type}</td>
-                                            <td>{prd.brand}</td>
-                                            <td>{prd.color}</td>
-                                            <td>{prd.size}</td>
-                                            <td>{prd.gender}</td>
-                                            <td>{prd.quantity}</td>
-                                            <td>
-                                                <img src={prd.image1} alt={prd.name} className="product-image" />
-                                            </td>
-                                            <td>
-                                                <img src={prd.image2} alt={prd.name} className="product-image" />
-                                            </td>
-                                            <td>{prd.price}</td>
-                                            <td>{prd.rating}</td>
+                                            <td>{prd.link}</td>
+                                            
                                             <td className="action-buttons">
-                                                <Link to={`/Admin/product/edit/${prd.id}`}><button className="edit-button">Edit</button></Link>
+                                                <Link to={`/Admin/video/edit/${prd.id}`}><button className="edit-button">Edit</button></Link>
                                                 <button type="button" className="delete-button" onClick={(event) => deletePro(event, prd)}>Delete</button>
                                             </td>
                                         </tr>
@@ -153,4 +132,4 @@ const AdminProduct = () => {
     )
 }
 
-export default AdminProduct;
+export default AdminVideo;

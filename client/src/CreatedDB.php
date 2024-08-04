@@ -195,4 +195,222 @@ if (!($result === TRUE)) {
 }
 
 
+
+
+
+
+// Generic function to check if a record exists in a given table
+function checkRecordExists($conn, $table, $columnValues)
+{
+    // Escape the column values
+    foreach ($columnValues as $key => $value) {
+        $columnValues[$key] = $conn->real_escape_string($value);
+    }
+
+    $title = $table['title'];
+
+    // Create the WHERE clause
+    $whereClauses = [];
+    foreach ($columnValues as $column => $value) {
+        $whereClauses[] = "$column = '$value'";
+    }
+    $whereClause = implode(' AND ', $whereClauses);
+
+    // Prepare and execute the SQL query
+    $sql = "SELECT COUNT(*) as count FROM $title WHERE $whereClause";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['count'] > 0;
+    }
+
+    return false;
+}
+
+// Generic function to insert data into a given table
+function insertData($conn, $table, $columns, $data)
+{
+    // Escape the data
+    foreach ($data as $key => $value) {
+        $data[$key] = $conn->real_escape_string($value);
+    }
+
+    // Create the SQL query
+    $columnsList = implode(', ', $columns);
+    $valuesList = "'" . implode("', '", $data) . "'";
+    $sql = "INSERT INTO $table ($columnsList) VALUES ($valuesList)";
+
+    // Execute the query
+    $result = $conn->query($sql);
+
+    if ($result === TRUE) {
+        echo "Inserted new data into $table table: " . implode(', ', $data) . "<br>";
+    } else {
+        echo "Error inserting data into $table table: " . $conn->error . "<br>";
+    }
+}
+
+$tables = [
+    [
+        'title' => 'products',
+        'columns' => [
+            'name',
+            'description',
+            'gender',
+            'quantity',
+            'image1',
+            'image2',
+            'price',
+            'rating'
+        ]
+    ],
+    [
+        'title' => 'attributes',
+        'columns' => [
+            'attribute_type',
+            'description'
+        ]
+    ],
+    [
+        'title' => 'attribute_values',
+        'columns' => [
+            'attribute_id',
+            'value',
+            'description'
+        ]
+    ],
+    [
+        'title' => 'product_attri',
+        'columns' => [
+            'product_id',
+            'attribute_value_id'
+        ]
+    ]
+];
+
+// Example data to insert for each table
+$dataToInsert = [
+    'products' => [
+        ['Selena', 'Black-tailed deer', 'ladies', 77, 'http://dummyimage.com/114x100.png/cc0000/ffffff', 'http://dummyimage.com/212x100.png/dddddd/000000', 235.23, 4],
+        ['Yves', 'Vulture, turkey', 'ladies', 41, 'http://dummyimage.com/228x100.png/cc0000/ffffff', 'http://dummyimage.com/139x100.png/dddddd/000000', 552.13, 3],
+        ['Benita', 'Woylie', 'ladies', 54, 'http://dummyimage.com/212x100.png/cc0000/ffffff', 'http://dummyimage.com/206x100.png/cc0000/ffffff', 794.18, 5],
+        ['Corissa', 'Cormorant, javanese', 'ladies', 35, 'http://dummyimage.com/205x100.png/cc0000/ffffff', 'http://dummyimage.com/247x100.png/cc0000/ffffff', 448.5, 5],
+        ['Elisabet', 'Common pheasant', 'gentlman', 70, 'http://dummyimage.com/244x100.png/cc0000/ffffff', 'http://dummyimage.com/176x100.png/ff4444/ffffff', 172.2, 2],
+        ['Kermie', 'Grant\'s gazelle', 'ladies', 56, 'http://dummyimage.com/165x100.png/ff4444/ffffff', 'http://dummyimage.com/219x100.png/cc0000/ffffff', 760.53, 3],
+        ['Olvan', 'Pie, rufous tree', 'gentlman', 23, 'http://dummyimage.com/228x100.png/ff4444/ffffff', 'http://dummyimage.com/139x100.png/ff4444/ffffff', 312.42, 1],
+        ['Roze', 'Slender-billed cockatoo', 'ladies', 61, 'http://dummyimage.com/227x100.png/ff4444/ffffff', 'http://dummyimage.com/173x100.png/5fa2dd/ffffff', 437.34, 1],
+        ['Leena', 'Australian sea lion', 'gentlman', 55, 'http://dummyimage.com/179x100.png/ff4444/ffffff', 'http://dummyimage.com/212x100.png/dddddd/000000', 643.43, 3],
+        ['Bettine', 'Chipmunk, least', 'ladies', 53, 'http://dummyimage.com/207x100.png/dddddd/000000', 'http://dummyimage.com/146x100.png/dddddd/000000', 363.45, 1]
+    ],
+    'attributes' => [
+        ['color', 'Color of the product'],
+        ['size', 'Size of the product'],
+        ['brand', 'Brand of the product'],
+        ['type', 'Type of the product']
+    ],
+    'attribute_values' => [
+        ['1', 'Red', 'Bright red color'],
+        ['1', 'Blue', 'Bright blue color'],
+        ['1', 'Green', 'Lush green color'],
+        ['1', 'Black', 'Classic black color'],
+        ['2', 'Small', 'Small size suitable for compact storage'],
+        ['2', 'Medium', 'Medium size for moderate capacity'],
+        ['2', 'Large', 'Large size for more storage'],
+        ['3', 'Nike', 'Nike brand'],
+        ['3', 'Adidas', 'Adidas brand'],
+        ['3', 'Puma', 'Puma brand'],
+        ['3', 'Under Armour', 'Under Armour brand'],
+        ['3', 'Reebok', 'Reebok brand'],
+        ['3', 'New Balance', 'New Balance brand'],
+        ['4', 'Luggage', 'Luggage for travel'],
+        ['4', 'Bags', 'Various types of bags'],
+        ['4', 'Backpacks', 'Backpacks for carrying items']
+    ],
+    'product_attri' => [
+        // Product 1
+        ['1', '1'], // Red color
+        ['1', '5'], // Small size
+        ['1', '8'], // Nike brand
+        ['1', '14'], // Luggage type
+
+        // Product 2
+        ['2', '1'], // Blue color
+        ['2', '6'], // Medium size
+        ['2', '9'], // Adidas brand
+        ['2', '15'], // Bags type
+
+        // Product 3
+        ['3', '3'], // Green color
+        ['3', '7'], // Large size
+        ['3', '10'], // Puma brand
+        ['3', '16'], // Backpacks type
+
+        // Product 4
+        ['4', '4'], // Black color
+        ['4', '5'], // Small size
+        ['4', '11'], // Under Armour brand
+        ['4', '14'], // Luggage type
+
+        // Product 5
+        ['5', '1'], // Red color
+        ['5', '6'], // Medium size
+        ['5', '12'], // Reebok brand
+        ['5', '15'], // Bags type
+
+        // Product 6
+        ['6', '2'], // Blue color
+        ['6', '7'], // Large size
+        ['6', '13'], // New Balance brand
+        ['6', '16'], // Backpacks type
+
+        // Product 7
+        ['7', '3'], // Green color
+        ['7', '5'], // Small size
+        ['7', '8'], // Nike brand
+        ['7', '15'], // Bags type
+
+        // Product 8
+        ['8', '4'], // Black color
+        ['8', '6'], // Medium size
+        ['8', '9'], // Adidas brand
+        ['8', '14'], // Luggage type
+
+        // Product 9
+        ['9', '1'], // Red color
+        ['9', '7'], // Large size
+        ['9', '10'], // Puma brand
+        ['9', '16'], // Backpacks type
+
+        // Product 10
+        ['10', '2'], // Blue color
+        ['10', '5'], // Small size
+        ['10', '11'], // Under Armour brand
+        ['10', '14'] // Luggage type
+    ]
+];
+
+foreach ($tables as $table) {
+    $tableName = $table['title'];
+    $columns = $table['columns'];
+    $data = $dataToInsert[$tableName] ?? [];  // Get the data for the current table
+    // var_dump($table['columns']) ;
+    // var_dump( $data);
+
+    foreach ($data as $dataRow) {
+        if (count($dataRow) !== count($columns)) {
+            echo "Error: Data row length does not match columns length for table $tableName. Skipping data row.<br>";
+            continue;
+        }
+        $columnValues = array_combine($columns, $dataRow);
+
+        if (!checkRecordExists($conn, $table, $columnValues)) {
+            insertData($conn, $tableName, $columns, $dataRow);
+        } else {
+            echo "Data already exists in $tableName table: " . implode(', ', $dataRow) . ". Skipping insertion.<br>";
+        }
+    }
+}
+
+
 $conn->close();
