@@ -100,6 +100,7 @@ $tables = [
 function fetchData($table)
 {
     $reactFileName = $_SERVER['HTTP_X_REACT_FILE_NAME'];
+    // $reactFileType = $_SERVER['HTTP_X_FILE_TYPE'];
 
     $conn = createConnection();
 
@@ -115,18 +116,6 @@ function fetchData($table)
             JOIN attributes a ON av.attribute_id = a.id
             GROUP BY p.id";
         $result = $conn->query($sql);
-    } elseif ($reactFileName === 'AdminAttriValue.jsx') {
-        $columns = implode(', ', $table['columns']);
-        $title = $table['title'];
-        $id = intval(basename($_SERVER['REQUEST_URI']));
-
-        $sql = $conn->prepare("SELECT $columns FROM $title WHERE attribute_id = ?");
-
-        $sql->bind_param("i", $id);
-
-        $sql->execute();
-        $result = $sql->get_result();
-
 
     } else {
         $columns = implode(', ', $table['columns']);
@@ -153,6 +142,7 @@ function fetchData($table)
 
 if (isset($_SERVER['HTTP_X_REACT_FILE_NAME'])) {
     $reactFileName = $_SERVER['HTTP_X_REACT_FILE_NAME'];
+    // $reactFileType = $_SERVER['HTTP_X_FILE_TYPE'];
     $expectedReactFileName = '';
 
     if ($reactFileName === 'AdminProduct.jsx') {
@@ -302,6 +292,29 @@ function fetchDataById($table, $id)
             JOIN attributes a ON av.attribute_id = a.id
             WHERE p.id = ?
             GROUP BY p.id");
+    } elseif ($reactFileType === 'attri_value_ID') { //lay id cua attribute_id
+        $columns = implode(', ', $table['columns']);
+        $title = $table['title'];
+        $id = intval(basename($_SERVER['REQUEST_URI']));
+
+        $sql = $conn->prepare("SELECT $columns FROM $title WHERE attribute_id = ?");
+
+        $sql->bind_param("i", $id);
+
+        $sql->execute();
+        $result = $sql->get_result();
+
+        $data = array();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+                // echo ($data);
+            }
+        }
+        $sql->close();
+
+        closeConnection($conn);
     } else {
         $columns = implode(', ', $table['columns']);
         $title = $table['title'];
@@ -310,23 +323,26 @@ function fetchDataById($table, $id)
 
     }
 
-    // echo json_encode($stmt);
-    $stmt->bind_param("i", $id);
 
-    $stmt->execute();
-    $result = $stmt->get_result();
+    if ($reactFileType !== 'attri_value_ID') {
+        // echo json_encode($stmt);
+        $stmt->bind_param("i", $id);
 
-    // echo json_encode('vaof');
-    if ($result->num_rows > 0) {
-        $data = $result->fetch_assoc();
-        // echo json_encode($data);
-    } else {
-        $data = null;
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // echo json_encode('vaof');
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            // echo json_encode($data);
+        } else {
+            $data = null;
+        }
+
+        $stmt->close();
+
+        closeConnection($conn);
     }
-
-    $stmt->close();
-
-    closeConnection($conn);
 
     return $data;
 }
@@ -345,7 +361,7 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
         $table = $tables[1];
         // $expectedReactFileType = 'attri';
     }
-    if ($reactFileType === 'attri_value') {
+    if ($reactFileType === 'attri_value' || $reactFileType === 'attri_value_ID') {
         $table = $tables[2];
         // $expectedReactFileType = 'attri_value';
     }

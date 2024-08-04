@@ -100,7 +100,7 @@ const AdminNew = () => {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            // console.log(data);
+            console.log(data);
             setAttirbutes(data);
             // console.log(attributes);
         } catch (error) {
@@ -121,7 +121,7 @@ const AdminNew = () => {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            // console.log(data);
+            console.log(data);
             setAttirbuteValue(data);
             // console.log(attributeValue);
         } catch (error) {
@@ -181,6 +181,7 @@ const AdminNew = () => {
                                         attributeValue
                                             .filter(attri_value => attri_value.attribute_id === attri.id)
                                             .map((attri_value) => (
+                                                // console.log('vao')
                                                 // {...(product.location_id === `${location.id}` ? { selected: true } : {})}
                                                 <option key={attri_value.id} {...(products[attri.attribute_type] === `${attri_value.id}` ? { selected: true } : {})} value={attri_value.id}>
                                                     {attri_value.value}

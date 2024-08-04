@@ -15,7 +15,8 @@ const AdminAttriValue = () => {
             let resp = await fetch(`${url}AdminProduct.php/${id}`, {
                 method: 'GET',
                 headers: {
-                    'X-React-File-Name': 'AdminAttriValue.jsx'
+                    'X-React-File-Name': 'AdminById.jsx',
+                    'X-File-Type': 'attri_value_ID'
                 }
             });
 

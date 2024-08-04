@@ -83,7 +83,7 @@ const AdminNew3 = () => {
 
                 <div className="product-list-header">
                     <h3 className="admin-product-title">Add New Attribute Value</h3>
-                    <Link to={`/Admin/attri_value/${products.attribute_id}`}>Go Back</Link>
+                    <Link to={`/Admin/attri_value/${id}`}>Go Back</Link>
                 </div>
 
 
