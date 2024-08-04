@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { openMenu, closeMenu, setScrollY, finishClosing, setCurrentPage } from '../../src/Store/menuSlice';
+import { openMenu, closeMenu, setScrollY, finishClosing, setCurrentPage } from '../Store/menuSlice';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
