@@ -1,19 +1,23 @@
 .carousel-container {
-    background-color: rgb(210, 210, 210);
+  .carousel-item img {
+    width: 90%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    max-height: 400px;
+  }
 
-    .carousel-item img {
-        width: 95%;
-       
-        transition: transform 0.5s ease;
-      }
-      
-      .slick-center .carousel-item img {
-        transform: scale(1.2); 
-      }
-      
-      .slick-slide img {
-        transform: scale(0.8); 
-      }
-      
+  video {
+    width: 90%;
+  }
 
+  .slick-center .carousel-item img {
+    transform: scale(1.2);
+  }
+
+  .slick-slide img {
+    transform: scale(0.8);
+  }
+  
 }
+

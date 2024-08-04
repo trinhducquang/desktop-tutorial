@@ -1,0 +1,32 @@
+.slide-up-container {
+  background-color: #1b0d2e;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+  position: fixed;
+  overflow-x: auto;
+ 
+
+  .header {
+    display: flex;
+    background-color: #281432;
+    height: 82px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img {
+      width: 50px;
+      cursor: pointer;
+    }
+  }
+
+  .content {
+    background-color: #1b0d2e;
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 70px;
+  }
+}
+

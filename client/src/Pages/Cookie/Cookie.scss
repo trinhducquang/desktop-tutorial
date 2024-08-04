@@ -1,0 +1,161 @@
+.background-cookie {
+    background: rgb(40, 20, 50);
+    height: auto;
+
+    button {
+        margin-top: 70px;
+        padding: 15px 30px;
+        border-radius: 50px;
+        width: 280px;
+        border: none;
+        color: black;
+        border: 1.2px solid black;
+        font-size: 13px;
+        letter-spacing: 0.16666666em;
+        font-weight: 500;
+        position: relative;
+        transition: opacity 0.3s ease;
+        opacity: 0.8;
+        background-color: #6D30A7;
+        color: white;
+        margin: 15px;
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover {
+            opacity: 1;
+
+            .arrow {
+                opacity: 1;
+            }
+        }
+    }
+
+}
+
+.animated-text {
+    position: relative;
+    color: white;
+    opacity: 0;
+    animation: textSlideUp 1.5s forwards;
+}
+
+
+.text-font {
+    padding: 50px;
+
+    h2 {
+        color: #fff;
+        font: 300 34px / 44px epaasTextFont, "Riviera Nights", "Gill Alt One MT", Helvetica, Arial, -apple-system, sans-serif;
+        letter-spacing: 4px;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        font-weight: 300;
+    }
+
+    li {
+        font-weight: 300;
+    }
+
+    p {
+        font-weight: 300;
+
+    }
+
+    .cookie-report-buttons {
+        border: 1px solid dimgrey;
+        padding: 16px 24px 40px 24px;
+        margin: 40px 0 40px 0;
+
+        button:nth-child(1) {
+            background: rgb(40, 20, 50);
+            border: 1px solid white;
+        }
+
+        button:nth-child(2) {
+            background: rgb(40, 20, 50);
+            border: 1px solid white;
+        }
+
+        button:nth-child(3) {
+            background: white;
+            color: black;
+            opacity: 1;
+        }
+    }
+}
+
+.Cookie-text {
+    text-align: left;
+    padding: 16px 16px;
+
+    h2 {
+        font-weight: 500;
+    }
+
+    h2 {
+        font-size: 15px;
+
+    }
+
+    p,
+    li {
+        margin-bottom: 18px;
+
+    }
+
+    p {
+        line-height: 2rem;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    li {
+        margin-left: 14px;
+
+    }
+
+    section:nth-child(even) {
+        border-bottom: 1px solid dimgrey;
+        ;
+    }
+
+    section:first-child {
+        div:first-child {
+            > div {
+                display: flex;
+                justify-content: space-between;
+                
+            }
+        }
+    }
+
+    section:nth-child(3) {
+        div:first-child {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+
+@keyframes textSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

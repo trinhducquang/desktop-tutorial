@@ -1,0 +1,62 @@
+.Privacy-item {
+    background-color: #281432;
+    color: white;
+    padding-top: 90px;
+
+    .item {
+        width: 50%;
+        margin: 0 auto;
+        height: auto;
+
+        h1 {
+            margin-top: 50px;
+            font-weight: 400;
+            letter-spacing: 0.125em;
+            font-size: clamp(0.875rem, 1.2vw, 1.5rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-weight: 300;
+            letter-spacing: 0.0357142857em;
+            font-size: clamp(0.75rem, 1vw, 1.5rem);
+            line-height: 1.5;
+            margin-bottom: 70px;
+        }
+    }
+
+    .img-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        cursor: pointer;
+
+        img {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        &:hover img {
+            transform: rotate(90deg);
+        }
+    }
+
+    .expand-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, padding 0.5s ease;
+        padding: 0 10px;
+        
+        p {
+            margin: 0;
+        }
+    }
+
+    .expand-content.expanded {
+        max-height: 500px; // Đặt chiều cao tối đa nếu bạn muốn giới hạn, hoặc để auto nếu không muốn giới hạn
+        padding: 10px;
+    }
+}
+

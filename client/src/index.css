@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     cursor: url('../public/mouse/mouse.svg'), auto;
+    text-decoration: none;
 }
 
 .overflow {
@@ -54,5 +55,7 @@
     font-weight: normal;
     font-style: normal;
   }
+
+
   
   

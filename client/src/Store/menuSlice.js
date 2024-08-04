@@ -5,8 +5,8 @@ const menuSlice = createSlice({
   initialState: {
     isMenuOpen: false,
     isClosing: false,
+    currentPage: '',
     scrollY: 0,
-    currentPage: '' 
   },
   reducers: {
     openMenu: (state) => {
@@ -23,8 +23,8 @@ const menuSlice = createSlice({
     },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { openMenu, closeMenu, setScrollY, finishClosing, setCurrentPage } = menuSlice.actions;
