@@ -46,7 +46,6 @@ const AdminNew = () => {
             headers: {
                 'X-React-File-Name': 'AdminNew.jsx',
                 'x-File-Type': 'product',
-                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 "fields": {
@@ -171,6 +170,7 @@ const AdminNew = () => {
                 value={products[attri.attribute_type]}
                 onChange={(event) => setProducts({ ...products, [attri.attribute_type]: event.target.value })}>
 
+<<<<<<< HEAD
                 <option value="" disabled>Select {attri.attribute_type}</option>
                 {
                     attributeValues
@@ -179,6 +179,23 @@ const AdminNew = () => {
                             <option key={attri_value.id} value={attri_value.id}>
                                 {attri_value.value}
                             </option>
+=======
+                                    <option value="" disabled>Select {attri.attribute_type}</option>
+                                    {
+                                        attributeValues
+                                            .filter(attri_value => attri_value.attribute_id === attri.id)
+                                            .map((attri_value) => (
+                                                // console.log('vao')
+                                                // {...(product.location_id === `${location.id}` ? { selected: true } : {})}
+                                                <option key={attri_value.id} {...(products[attri.attribute_type] === `${attri_value.id}` ? { selected: true } : {})} value={attri_value.id}>
+                                                    {attri_value.value}
+                                                </option>
+                                            ))
+                                    }
+
+                                </select>
+                            </div>
+>>>>>>> ff06a5c420f57e9e2623e7dac40faeee3272e0d6
                         ))
                 }
 
@@ -197,8 +214,8 @@ const AdminNew = () => {
                             onChange={(event) => setProducts({ ...products, gender: event.target.value })}
                         >
                             <option value="" disabled>Select gender</option>
-                            <option value="gentlman">Gentlman</option>
-                            <option value="ladies">Ladies</option>
+                            <option {...(products.gender === `gentlman` ? { selected: true } : {})} value="gentlman">Gentlman</option>
+                            <option {...(products.gender === `ladies` ? { selected: true } : {})} value="ladies">Ladies</option>
                         </select>
                     </div><br />
 

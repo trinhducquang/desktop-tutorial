@@ -13,9 +13,10 @@ $tables = [
             'image1',
             'image2',
             'price',
-            'rating'
+            'rating',
+            'id',
         ],
-        'type' => 'sssdssdd', // isssdssdd
+        'type' => 'sssdssddi', // isssdssdd
 
         'attriTitle' => 'product_attri',
         'attribute' => [
@@ -412,6 +413,7 @@ function editProduct($id, $table, $fieldValues, $AttriValues)
     });
 
     $type = $table['type'];
+    $filteredType = substr($type, 0, -1);
     $columns = implode(', ', array_map(function ($column) {
         return $column . '=?';
     }, $filteredColumns));
@@ -426,7 +428,7 @@ function editProduct($id, $table, $fieldValues, $AttriValues)
     $sql = "UPDATE $title SET $columns WHERE id=?";
     $stmt = $conn->prepare($sql);
     // $stmt->bind_param("$type", $fieldValues, $id);
-    $typeString = $type; // Append 'i' for the integer id
+    $typeString = $filteredType . 'i'; // Append 'i' for the integer id
 
     // Prepare values to bind
     $values = array_merge(array_values($fieldValues), [$id]);

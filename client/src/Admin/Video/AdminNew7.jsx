@@ -15,21 +15,6 @@ const AdminNew7 = () => {
         link: ''
     });
 
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            const base64String = 'data:image/jpeg;base64,' + reader.result.replace('data:', '').replace(/^.+,/, '');
-            setProducts({ ...products, picture: base64String });
-        };
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    };
-
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
