@@ -160,27 +160,36 @@ const AdminNew = () => {
                         />
                     </div><br />
 
-                    {attributes.map((attri) => (
-                        <div className="form-group" key={attri.attribute_type}>
-                            <label htmlFor={attri.attribute_type}>{attri.attribute_type.toUpperCase()}</label>
-                            <select
-                                name={attri.attribute_type}
-                                className="form-control"
-                                value={products[attri.attribute_type] || ''}
-                                onChange={(event) => setProducts({ ...products, [attri.attribute_type]: event.target.value })}
-                            >
-                                <option value="" disabled>Select {attri.attribute_type}</option>
-                                {attributeValues
-                                    .filter(attri_value => attri_value.attribute_id === attri.id)
-                                    .map((attri_value) => (
-                                        <option key={attri_value.id} value={attri_value.id}>
-                                            {attri_value.value}
-                                        </option>
-                                    ))
-                                }
-                            </select>
-                        </div>
-                    ))}<br />
+                    {
+                        attributes.map((attri) => (
+                            <div className="form-group" key={attri.attribute_type}>
+                                <label htmlFor={attri.attribute_type}>{attri.attribute_type.toUpperCase()}</label>
+
+                                <select
+                                    name={attri.attribute_type}
+                                    className="form-control"
+                                    value={[products[attri.attribute_type]]}
+                                    onChange={(event) => setProducts({ ...products, [attri.attribute_type]: event.target.value })}>
+
+                                    <option value="" disabled>Select {attri.attribute_type}</option>
+                                    {
+                                        attributeValue
+                                            .filter(attri_value => attri_value.attribute_id === attri.id)
+                                            .map((attri_value) => (
+                                                // console.log('vao')
+                                                // {...(product.location_id === `${location.id}` ? { selected: true } : {})}
+                                                <option key={attri_value.id} {...(products[attri.attribute_type] === `${attri_value.id}` ? { selected: true } : {})} value={attri_value.id}>
+                                                    {attri_value.value}
+                                                </option>
+                                            ))
+                                    }
+
+                                </select>
+                            </div>
+                        ))
+
+
+                    }<br />
 
                     <div className="form-group">
                         <label htmlFor="gender">Gender</label>
