@@ -48,10 +48,11 @@
     gap: 15px; // Khoảng cách giữa các ảnh
    
 
-    .content-container {
+    .content-container-1 {
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      
     
 
       img {
@@ -69,7 +70,7 @@
     grid-template-columns: repeat(3, 1fr); // Bốn cột đồng đều
     gap: 10px;
 
-    .content-container {
+    .content-container-1 {
       display: flex;
       flex-direction: column;
     
@@ -83,9 +84,15 @@
       }
     }
   }
+
+  .content {
+    padding: 15px;
+  }
 }
 
-
+.content-container-1 {
+  border-left: 1px solid gray;
+}
 
 .Navbar-container.muse-page {
   background-color: white;

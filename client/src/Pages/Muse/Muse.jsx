@@ -23,7 +23,7 @@ const MusePage = () => {
       </div>
       <div className='Muse-item-2'>
         <div className='top-row'>
-          <div className='content-container hover-effect' onClick={() => handleNavigate('/Page1')}>
+          <div className='content-container-1 hover-effect' onClick={() => handleNavigate('/Page1')}>
             <img className='img-main' src={img1} alt='img1' />
             <div className='content'>
               <h4>THE WORLD OF MUSE</h4>
@@ -34,7 +34,7 @@ const MusePage = () => {
               </p>
             </div>
           </div>
-          <div className='content-container' onClick={() => handleNavigate('/page2')}>
+          <div className='content-container-1 hover-effect' onClick={() => handleNavigate('/page2')}>
             <img className='img-side' src={img2} alt='img2' />
             <div className='content'>
               <h4>Spirit of Ecstasy Challenge Exhibition</h4>
@@ -47,28 +47,28 @@ const MusePage = () => {
           </div>
         </div>
         <div className='bottom-row'>
-          <div className='content-container' onClick={() => handleNavigate('/page1')}>
+          <div className='content-container-1 hover-effect' onClick={() => handleNavigate('/page3')}>
             <img src={img3} alt='img3' />
             <div className='content'>
               <h4>Stitched Urban Skin, Bi Rongrong</h4>
               <p>Titled “Stitched Urban Skin”, Bi Rongrong’s work consists of three layers of two-dimensional sheets made from different materials: specially treated metal, an animated LED light sheet, and a Perspex sheet embedded with crochet.</p>
             </div>
           </div>
-          <div className='content-container' onClick={() => handleNavigate('/page2')}>
+          <div className='content-container-1 hover-effect' onClick={() => handleNavigate('/page4')}>
             <img src={img4} alt='img4' />
             <div className='content'>
               <h4>Nissa's Rina, Ghizlane Sahli</h4>
               <p>Resembling two triumphant wings about to take flight, Ghizlane Sahli’s artwork is a joyous celebration of femininity and freedom.</p>
             </div>
           </div>
-          <div className='content-container' onClick={() => handleNavigate('/page1')}>
+          <div className='content-container-1 hover-effect' onClick={() => handleNavigate('/page5')}>
             <img src={img5} alt='img5' />
             <div className='content'>
               <h4>Transient Materiality, Scarlett Yang</h4>
               <p>In keeping with the hybrid nature of her practice, Scarlett Yang’s artwork is composed of two elements.</p>
             </div>
           </div>
-          <div className='content-container' onClick={() => handleNavigate('/page2')}>
+          <div className='content-container-1 hover-effect' onClick={() => handleNavigate('/page6')}>
             <img src={img6} alt='img6' />
             <div className='content'>
               <h4>Pushing The Boundaries Of Textiles</h4>

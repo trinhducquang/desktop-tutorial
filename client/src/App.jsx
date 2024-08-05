@@ -44,6 +44,10 @@ import InspiringSeries from './Pages/InspiringSeries/InspiringSeries';
 import Bespoke from './Pages/Bespoke/Bespoke';
 import Muse from './Pages/Muse/Muse';
 import Page1 from './Pages/Muse/Muse-stories/Page1/Page1';
+import Page2 from './Pages/Muse/Muse-stories/Page2/Page2';
+import Page3 from './Pages/Muse/Muse-stories/Page3/Page3';
+
+
 
 const App = () => {
   const location = useLocation();
@@ -81,6 +85,10 @@ const App = () => {
 
         <Route path='/Muse' element={<Muse/>}/>
         <Route path='/Page1' element={<Page1/>}/>
+        <Route path='/Page2' element={<Page2/>}/>
+        <Route path='/Page3' element={<Page3/>}/>
+
+
 
 
 

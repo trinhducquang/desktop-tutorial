@@ -178,8 +178,8 @@ const Page1 = () => {
       <section className='Page-2-item'>
         <div className='Menu1-container Careers-container-section2 Careers-container-section3'>
           <div className='text-overlay color-overlay'>
-            <h1>SIGN UP NOW</h1>
-            <div></div>
+            <h1 style={{paddingTop: '0px'}}>SIGN UP NOW</h1>
+            <div className='border-1-px'></div>
             <p>Be the first to hear about our commissioning work with artists and designers,
               events, conversations with collectors and museum partnership programmes.
             </p>
@@ -224,7 +224,7 @@ const Page1 = () => {
             </div>
           </div>
           <div className='Page1-button fix2-button'>
-            <Link to='/menu1'>
+            <Link to='/Inspiring-Greatness'>
               Inspiring Greatness
               <GrLinkNext className="arrow" />
             </Link>
