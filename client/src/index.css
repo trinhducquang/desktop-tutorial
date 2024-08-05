@@ -17,6 +17,16 @@ a {
   overflow-y: hidden;
 }
 
+
+.hover-effect:hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+
+
+
 @font-face {
     font-family: 'Riviera Nights';
     src: url('/fonts/RivieraNights-Regular.woff') format('woff');
