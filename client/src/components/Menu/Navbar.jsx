@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import './Navbar.scss'
+import './Navbar.scss';
 
 const Navbar = ({
   location,
@@ -13,9 +12,10 @@ const Navbar = ({
   handleCartClick,
   isNavMenuVisible,
   totalQuantity,
+  navBarClass, // Nhận lớp CSS
 }) => {
   return (
-    <div className='Navbar-container'>
+    <div className={`Navbar-container ${navBarClass}`}>
       <div className='container-item'>
         <div className='top-row'>
           <div className={`menu-button ${isMenuOpen ? 'hidden' : ''}`} onClick={handleMenuClick}>

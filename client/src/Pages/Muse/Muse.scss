@@ -1,0 +1,74 @@
+.Muse-container {
+  display: grid;
+  grid-template-rows: auto 1fr; // Hai hàng: một hàng cho video, một hàng cho ảnh
+  min-height: calc(100vh - 70px); // Chiều cao tối thiểu là toàn bộ viewport trừ chiều cao của footer (70px trong trường hợp này)
+}
+
+.Muse-item {
+  grid-row: 1 / 2;
+  display: flex;
+  height: 60vh; // Điều chỉnh chiều cao theo nhu cầu
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.Muse-item-2 {
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-columns: 2fr 1fr; // Hai cột: cột 1 chiếm 2 phần, cột 2 chiếm 1 phần
+  grid-template-rows: auto auto; // Hai hàng cho ảnh
+
+  .top-row {
+    grid-column: 1 / 3; // Chiếm toàn bộ chiều ngang của phần tử chứa
+    display: grid;
+    grid-template-columns: 2fr 1fr; // Hai cột: cột 1 chiếm 2 phần, cột 2 chiếm 1 phần
+    gap: 10px; // Khoảng cách giữa các ảnh
+
+    .img-main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .img-side {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .bottom-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // Ba cột với chiều rộng bằng nhau
+    gap: 10px; // Khoảng cách giữa các ảnh
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+
+  .Navbar-container.muse-page {
+    background-color: white;
+    height: 70px; 
+    position: static; 
+
+    color: black; 
+  }
+  
+  .Navbar-container.muse-page h1 {
+    color: black;
+  }
+  
+  .Navbar-container.muse-page .top-row {
+    color: black;
+  }
+  
+ 
