@@ -175,7 +175,7 @@ const AdminNew = () => {
                     attributeValues
                         .filter(attri_value => attri_value.attribute_id === attri.id)
                         .map((attri_value) => (
-                            <option key={attri_value.id} value={attri_value.id}>
+                            <option key={attri_value.id} {...(products[attri.attribute_type] === `${attri_value.id}` ? { selected: true } : {})}  value={attri_value.id}>
                                 {attri_value.value}
                             </option>
                         ))
