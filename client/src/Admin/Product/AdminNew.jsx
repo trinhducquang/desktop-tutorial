@@ -46,7 +46,6 @@ const AdminNew = () => {
             headers: {
                 'X-React-File-Name': 'AdminNew.jsx',
                 'x-File-Type': 'product',
-                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 "fields": {
@@ -173,7 +172,7 @@ const AdminNew = () => {
 
                                     <option value="" disabled>Select {attri.attribute_type}</option>
                                     {
-                                        attributeValue
+                                        attributeValues
                                             .filter(attri_value => attri_value.attribute_id === attri.id)
                                             .map((attri_value) => (
                                                 // console.log('vao')
@@ -200,8 +199,8 @@ const AdminNew = () => {
                             onChange={(event) => setProducts({ ...products, gender: event.target.value })}
                         >
                             <option value="" disabled>Select gender</option>
-                            <option value="gentlman">Gentlman</option>
-                            <option value="ladies">Ladies</option>
+                            <option {...(products.gender === `gentlman` ? { selected: true } : {})} value="gentlman">Gentlman</option>
+                            <option {...(products.gender === `ladies` ? { selected: true } : {})} value="ladies">Ladies</option>
                         </select>
                     </div><br />
 

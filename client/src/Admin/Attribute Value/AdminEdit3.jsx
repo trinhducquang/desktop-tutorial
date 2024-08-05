@@ -97,7 +97,7 @@ const AdminEdit3 = () => {
                 // setProducts(data);
                 alert('attri Updated successfully');
 
-                navigate('/Admin/attri_value');
+                navigate(`/Admin/attri_value/${products.attribute_id}`);
             })
             .catch(error => {
                 console.log(error);
