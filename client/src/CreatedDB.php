@@ -71,7 +71,7 @@ $sql = "CREATE TABLE IF NOT EXISTS attribute_values (
     value VARCHAR(40) NOT NULL,
     description TEXT,
 
-    FOREIGN KEY (attribute_id ) REFERENCES attributes(id)
+    FOREIGN KEY (attribute_id ) REFERENCES attributes(id) ON DELETE CASCADE
 )";
 
 $result = $conn->query($sql);

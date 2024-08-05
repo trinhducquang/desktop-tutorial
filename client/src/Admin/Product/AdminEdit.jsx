@@ -121,7 +121,7 @@ const AdminEdit = () => {
 
         reader.onloadend = () => {
             const base64String = 'data:image/jpeg;base64,' + reader.result.replace('data:', '').replace(/^.+,/, '');
-            setProducts({ ...products, picture: base64String });
+            setProducts({ ...products, [event.target.name]: base64String });
         };
 
         if (file) {
