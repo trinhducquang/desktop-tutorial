@@ -22,14 +22,17 @@ const MenuComponent = () => {
     isCartOpen
   } = useMenu(location);
 
-  // Xác định xem lớp phủ có nên hiển thị không
   const shouldShowOverlay = isMenuOpen || isCartOpen;
 
-  // Thêm lớp 'muse-page' nếu trang hiện tại là '/Muse'
-  const navBarClass = location.pathname === '/Muse' ? 'muse-page' : '';
+  // Thêm điều kiện cho các trang khác nhau
+  const sectionClass = location.pathname === '/Booking' ? 'booking-page' : 
+                       location.pathname === '/User' ? 'user-page' : '';
+
+  const navBarClass = location.pathname === '/Muse' ? 'muse-page' : 
+                      location.pathname === '/User' ? 'user-page' : '';
 
   return (
-    <section className={location.pathname === '/Booking' ? 'booking-page' : ''}>
+    <section className={sectionClass}>
       <Navbar
         location={location}
         isMenuOpen={isMenuOpen}
@@ -37,7 +40,7 @@ const MenuComponent = () => {
         handleCartClick={handleCartClick}
         isNavMenuVisible={isNavMenuVisible}
         totalQuantity={totalQuantity}
-        navBarClass={navBarClass}  // Thêm prop cho lớp của Navbar
+        navBarClass={navBarClass}  
       />
       <Menu
         isMenuOpen={isMenuOpen}
