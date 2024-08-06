@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import AdminConfig from "../AdminConfig";
 import Admin from "../Admin";
 
-const AdminProduct = () => {
+const AdminImage = () => {
     const { url } = AdminConfig;
+    const { id } = useParams();
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const fetchData = async (url) => {
         try {
-            let resp = await fetch(`${url}AdminProduct.php`, {
+            let resp = await fetch(`${url}AdminProduct.php/${id}`, {
                 method: 'GET',
                 headers: {
-                    'X-React-File-Name': 'AdminProduct.jsx'
+                    'X-React-File-Name': 'AdminById.jsx',
+                    'X-File-Type': 'image_by_Id'
                 }
             });
 
             if (!resp.ok) {
-                throw new Error('Failed to fetch entertainment data.');
+                throw new Error('Failed to fetch image data.');
             }
 
             let data = await resp.json();
@@ -27,7 +29,6 @@ const AdminProduct = () => {
 
             setProducts(data);
             // console.log(products);
-            console.log('vao');
             setLoading(false);
         }
         catch (error) {
@@ -45,7 +46,7 @@ const AdminProduct = () => {
     const deletePro = async (event, prd) => {
         event.preventDefault();
 
-        let cf = window.confirm("Are you sure you want to delete this product?");
+        let cf = window.confirm("Are you sure you want to delete this image?");
         if (!cf) {
             return;
         }
@@ -56,7 +57,7 @@ const AdminProduct = () => {
                 method: "DELETE",
                 headers: {
                     'X-React-File-Name': 'AdminDelete.jsx',
-                    'X-File-Type': 'product'
+                    'X-File-Type': 'image'
                 }
             });
 
@@ -67,9 +68,7 @@ const AdminProduct = () => {
             let data = await resp.json();
             console.log(data);
 
-            console.log('vao2');
             fetchData(url);
-            console.log('vao3');
         } catch (error) {
             console.log(error);
         }
@@ -79,7 +78,7 @@ const AdminProduct = () => {
 
     return (
         <div className="container">
-            <Admin />
+            <Admin/>
             <div className="admin-product-content">
                 {
                     loading && (
@@ -90,9 +89,9 @@ const AdminProduct = () => {
                 }
 
                 <div className="product-list-header">
-                    <h3 className="admin-product-title">Product List</h3>
-                    {/* <Link to='/Admin'>Admin</Link><br/> */}
-                    <Link to='/Admin/product/new' className="add-new-button">Add New</Link>
+                    <h3 className="admin-product-title">Image List</h3>
+                    <Link to={`/Admin/image/new/${id}`} className="add-new-button">Add New</Link>
+                    <Link to='/Admin/product' className="add-new-button">Go Back</Link>
                 </div>
 
                 <div className="admin-product-table-container">
@@ -100,21 +99,9 @@ const AdminProduct = () => {
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Type</th>
-                                <th>Brand</th>
-                                <th>Color</th>
-                                <th>Size</th>
-                                <th>Gender</th>
-                                <th>Quantity</th>
-                                {/* <th>Image1</th>
-                                <th>Image2</th> */}
-                                <th>Link</th>
+                                <th>Product Id</th>
                                 <th>Image</th>
-                                <th>Price</th>
-                                <th>Rating</th>
-                                <th>Actions</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,28 +110,13 @@ const AdminProduct = () => {
                                     return (
                                         <tr key={prd.id}>
                                             <td>{prd.id}</td>
-                                            <td>{prd.name}</td>
-                                            <td>{prd.description}</td>
-                                            <td>{prd.type}</td>
-                                            <td>{prd.brand}</td>
-                                            <td>{prd.color}</td>
-                                            <td>{prd.size}</td>
-                                            <td>{prd.gender}</td>
-                                            <td>{prd.quantity}</td>
-                                            {/* <td>
-                                                <img src={prd.image1} alt={prd.name} className="product-image" />
-                                            </td>
+                                            <td>{prd.product_id}</td>
                                             <td>
-                                                <img src={prd.image2} alt={prd.name} className="product-image" />
-                                            </td> */}
-                                            <td>{prd.link}</td>
-                                            <td>
-                                                <Link to={`/Admin/image/${prd.id}`}><button className="show-button">Show</button></Link>
+                                                <img src={prd.image} alt={prd.name} className="product-image" />
                                             </td>
-                                            <td>{prd.price}</td>
-                                            <td>{prd.rating}</td>
+                                            
                                             <td className="action-buttons">
-                                                <Link to={`/Admin/product/edit/${prd.id}`}><button className="edit-button">Edit</button></Link>
+                                                <Link to={`/Admin/image/edit/${prd.id}`}><button className="edit-button">Edit</button></Link>
                                                 <button type="button" className="delete-button" onClick={(event) => deletePro(event, prd)}>Delete</button>
                                             </td>
                                         </tr>
@@ -159,4 +131,4 @@ const AdminProduct = () => {
     )
 }
 
-export default AdminProduct;
+export default AdminImage;

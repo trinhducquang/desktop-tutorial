@@ -54,6 +54,7 @@ const Library = () => {
       <section>
         <div className='Library-item'>
           <div className='content-container'>
+
             {products.map((product) => (
               <div className='item' key={product.id}>
                 <div
@@ -78,6 +79,7 @@ const Library = () => {
                 </div>
               </div>
             ))}
+            
           </div>
         </div>
       </section>

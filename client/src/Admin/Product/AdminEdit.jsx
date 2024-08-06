@@ -16,8 +16,9 @@ const AdminEdit = () => {
         description: '',
         gender: '',
         quantity: '',
-        image1: '',
-        image2: '',
+        // image1: '',
+        // image2: '',
+        link: '',
         price: '',
         rating: '',
         color: '',
@@ -48,8 +49,9 @@ const AdminEdit = () => {
                 description: data.description ? data.description : '',
                 gender: data.gender ? data.gender : '',
                 quantity: data.quantity ? data.quantity : '',
-                image1: data.image1 ? data.image1 : '',
-                image2: data.image2 ? data.image2 : '',
+                // image1: data.image1 ? data.image1 : '',
+                // image2: data.image2 ? data.image2 : '',
+                link: data.link ? data.link : '',
                 price: data.price ? data.price : '',
                 rating: data.rating ? data.rating : '',
                 color: data.color ? data.color : '',
@@ -147,8 +149,9 @@ const AdminEdit = () => {
                     "description": products.description,
                     "gender": products.gender,
                     "quantity": products.quantity,
-                    "image1": products.image1,
-                    "image2": products.image2,
+                    // "image1": products.image1,
+                    // "image2": products.image2,
+                    "link": products.link,
                     "price": products.price,
                     "rating": products.rating,
                     "color": products.color,
@@ -268,7 +271,7 @@ const AdminEdit = () => {
                             <input required type="text" className="form-control" id="quantity" name="quantity" value={products.quantity} onChange={(event) => setProducts({ ...products, quantity: event.target.value })} />
                         </div><br />
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label htmlFor="image1">Image1</label>
                             <input type="file" className="form-control" id="image1" name="image1" onChange={handleImageUpload} />
                             {products.image1 && <img src={products.image1} alt="product" className="img-fluid" />}
@@ -278,6 +281,11 @@ const AdminEdit = () => {
                             <label htmlFor="image2">Image2</label>
                             <input type="file" className="form-control" id="image2" name="image2" onChange={handleImageUpload} />
                             {products.image2 && <img src={products.image2} alt="product" className="img-fluid" />}
+                        </div><br /> */}
+
+                        <div className="form-group">
+                            <label htmlFor="link">Link</label>
+                            <input required type="text" className="form-control" id="link" name="link" value={products.link} onChange={(event) => setProducts({ ...products, link: event.target.value })} />
                         </div><br />
 
                         <div className="form-group">

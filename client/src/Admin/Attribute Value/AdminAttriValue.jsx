@@ -16,7 +16,7 @@ const AdminAttriValue = () => {
                 method: 'GET',
                 headers: {
                     'X-React-File-Name': 'AdminById.jsx',
-                    'X-File-Type': 'attri_value_ID'
+                    'X-File-Type': 'attriValue_by_Id'
                 }
             });
 

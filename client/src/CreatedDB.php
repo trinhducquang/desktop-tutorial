@@ -88,8 +88,9 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     description text not null,
     gender varchar(10) not null, -- gentleman/ladies
     quantity int,
-    image1 MEDIUMTEXT not null, 
-    image2 MEDIUMTEXT not null, 
+    -- image1 MEDIUMTEXT not null, 
+    -- image2 MEDIUMTEXT not null, 
+    link varchar(255),
     price decimal(18,2) not null,
     rating int  -- (1-5) 
 )";
@@ -115,6 +116,22 @@ $result = $conn->query($sql);
 
 if (!($result === TRUE)) {
     echo "error creating table --product_attri--: " . $conn->error;
+}
+
+
+// images
+$sql = "CREATE TABLE IF NOT EXISTS images (
+    id int not null primary key AUTO_INCREMENT,
+    product_id int not null,
+    image LONGBLOB not null,
+    
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+)";
+
+$result = $conn->query($sql);
+
+if (!($result === TRUE)) {
+    echo "error creating table --images--: " . $conn->error;
 }
 
 
@@ -259,8 +276,9 @@ $tables = [
             'description',
             'gender',
             'quantity',
-            'image1',
-            'image2',
+            // 'image1',
+            // 'image2',
+            'link',
             'price',
             'rating'
         ]
@@ -286,22 +304,37 @@ $tables = [
             'product_id',
             'attribute_value_id'
         ]
+    ],
+    // [
+    //     'title' => 'videos',
+    //     'columns' => [
+    //         'name',
+    //         'type',
+    //         'link'
+    //     ]
+    // ],
+    [
+        'title' => 'images',
+        'columns' => [
+            'product_id',
+            'image'
+        ]
     ]
 ];
 
 // Example data to insert for each table
 $dataToInsert = [
     'products' => [
-        ['Selena', 'Black-tailed deer', 'ladies', 77, 'http://dummyimage.com/114x100.png/cc0000/ffffff', 'http://dummyimage.com/212x100.png/dddddd/000000', 235.23, 4],
-        ['Yves', 'Vulture, turkey', 'ladies', 41, 'http://dummyimage.com/228x100.png/cc0000/ffffff', 'http://dummyimage.com/139x100.png/dddddd/000000', 552.13, 3],
-        ['Benita', 'Woylie', 'ladies', 54, 'http://dummyimage.com/212x100.png/cc0000/ffffff', 'http://dummyimage.com/206x100.png/cc0000/ffffff', 794.18, 5],
-        ['Corissa', 'Cormorant, javanese', 'ladies', 35, 'http://dummyimage.com/205x100.png/cc0000/ffffff', 'http://dummyimage.com/247x100.png/cc0000/ffffff', 448.5, 5],
-        ['Elisabet', 'Common pheasant', 'gentlman', 70, 'http://dummyimage.com/244x100.png/cc0000/ffffff', 'http://dummyimage.com/176x100.png/ff4444/ffffff', 172.2, 2],
-        ['Kermie', 'Grant\'s gazelle', 'ladies', 56, 'http://dummyimage.com/165x100.png/ff4444/ffffff', 'http://dummyimage.com/219x100.png/cc0000/ffffff', 760.53, 3],
-        ['Olvan', 'Pie, rufous tree', 'gentlman', 23, 'http://dummyimage.com/228x100.png/ff4444/ffffff', 'http://dummyimage.com/139x100.png/ff4444/ffffff', 312.42, 1],
-        ['Roze', 'Slender-billed cockatoo', 'ladies', 61, 'http://dummyimage.com/227x100.png/ff4444/ffffff', 'http://dummyimage.com/173x100.png/5fa2dd/ffffff', 437.34, 1],
-        ['Leena', 'Australian sea lion', 'gentlman', 55, 'http://dummyimage.com/179x100.png/ff4444/ffffff', 'http://dummyimage.com/212x100.png/dddddd/000000', 643.43, 3],
-        ['Bettine', 'Chipmunk, least', 'ladies', 53, 'http://dummyimage.com/207x100.png/dddddd/000000', 'http://dummyimage.com/146x100.png/dddddd/000000', 363.45, 1]
+        ['Selena', 'Black-tailed deer', 'ladies', 77, '', 235.23, 4],
+        ['Yves', 'Vulture, turkey', 'ladies', 41, '', 552.13, 3],
+        ['Benita', 'Woylie', 'ladies', 54, '', 794.18, 5],
+        ['Corissa', 'Cormorant, javanese', 'ladies', 35, '', 448.5, 5],
+        ['Elisabet', 'Common pheasant', 'gentlman', 70, '', 172.2, 2],
+        ['Kermie', 'Grant\'s gazelle', 'ladies', 56, '', 760.53, 3],
+        ['Olvan', 'Pie, rufous tree', 'gentlman', 23, '', 312.42, 1],
+        ['Roze', 'Slender-billed cockatoo', 'ladies', 61, '', 437.34, 1],
+        ['Leena', 'Australian sea lion', 'gentlman', 55, '', 643.43, 3],
+        ['Bettine', 'Chipmunk, least', 'ladies', 53, '', 363.45, 1]
     ],
     'attributes' => [
         ['color', 'Color of the product'],
@@ -387,6 +420,28 @@ $dataToInsert = [
         ['10', '5'], // Small size
         ['10', '11'], // Under Armour brand
         ['10', '14'] // Luggage type
+    ],
+    'images' => [
+        ['1', 'http://dummyimage.com/114x100.png/cc0000/ffffff'],
+        ['1', 'http://dummyimage.com/114x100.png/00cc00/ffffff'],
+        ['2', 'http://dummyimage.com/114x100.png/0000cc/ffffff'],
+        ['2', 'http://dummyimage.com/114x100.png/cc00cc/ffffff'],
+        ['3', 'http://dummyimage.com/114x100.png/ffcc00/ffffff'],
+        ['3', 'http://dummyimage.com/114x100.png/00cccc/ffffff'],
+        ['4', 'http://dummyimage.com/114x100.png/ff0000/ffffff'],
+        ['4', 'http://dummyimage.com/114x100.png/00ff00/ffffff'],
+        ['5', 'http://dummyimage.com/114x100.png/0000ff/ffffff'],
+        ['5', 'http://dummyimage.com/114x100.png/ff00ff/ffffff'],
+        ['6', 'http://dummyimage.com/114x100.png/ffff00/ffffff'],
+        ['6', 'http://dummyimage.com/114x100.png/00ffff/ffffff'],
+        ['7', 'http://dummyimage.com/114x100.png/ff6600/ffffff'],
+        ['7', 'http://dummyimage.com/114x100.png/6600ff/ffffff'],
+        ['8', 'http://dummyimage.com/114x100.png/ff3333/ffffff'],
+        ['8', 'http://dummyimage.com/114x100.png/33ff33/ffffff'],
+        ['9', 'http://dummyimage.com/114x100.png/3333ff/ffffff'],
+        ['9', 'http://dummyimage.com/114x100.png/ff33ff/ffffff'],
+        ['10', 'http://dummyimage.com/114x100.png/ff9999/ffffff'],
+        ['10', 'http://dummyimage.com/114x100.png/9999ff/ffffff']
     ]
 ];
 

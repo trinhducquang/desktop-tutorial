@@ -47,6 +47,9 @@ import Page1 from './Pages/Muse/Muse-stories/Page1/Page1';
 import Page2 from './Pages/Muse/Muse-stories/Page2/Page2';
 import Page3 from './Pages/Muse/Muse-stories/Page3/Page3';
 import User from './Pages/User/User';
+import AdminImage from './Admin/Image/AdminImage';
+import AdminEdit8 from './Admin/Image/AdminEdit8';
+import AdminNew8 from './Admin/Image/AdminNew8';
 
 
 
@@ -81,22 +84,10 @@ const App = () => {
         <Route path='/User' element={<User/>}/>
 
 
-
-
-
-
         <Route path='/Muse' element={<Muse/>}/>
         <Route path='/Page1' element={<Page1/>}/>
         <Route path='/Page2' element={<Page2/>}/>
         <Route path='/Page3' element={<Page3/>}/>
-
-
-
-
-
-
-
-
 
 
 
@@ -132,6 +123,10 @@ const App = () => {
         <Route path='/Admin/video' element={<AdminVideo/>}></Route>
         <Route path='/Admin/video/edit/:id' element={<AdminEdit7/>}></Route>
         <Route path='/Admin/video/new' element={<AdminNew7/>}></Route>
+
+        <Route path='/Admin/image/:id' element={<AdminImage/>}></Route>
+        <Route path='/Admin/image/edit/:id' element={<AdminEdit8/>}></Route>
+        <Route path='/Admin/image/new/:id' element={<AdminNew8/>}></Route>
 
       </Routes>
 

@@ -10,13 +10,14 @@ $tables = [
             'description',
             'gender',
             'quantity',
-            'image1',
-            'image2',
+            // 'image1',
+            // 'image2',
+            'link',
             'price',
             'rating',
             'id',
         ],
-        'type' => 'sssdssddi', // isssdssdd
+        'type' => 'sssdsddi', // isssdssdd
 
         'attriTitle' => 'product_attri',
         'attribute' => [
@@ -44,7 +45,8 @@ $tables = [
             'description',
             'id'
         ],
-        'type' => 'dssi'
+        'type' => 'dssi',
+        'byId' => 'attribute_id'
     ],
     [
         'title' => 'users',
@@ -94,6 +96,16 @@ $tables = [
             'id'
         ],
         'type' => 'sssi'
+    ],
+    [
+        'title' => 'images',
+        'columns' => [
+            'product_id',
+            'image',
+            'id'
+        ],
+        'type' => 'isi',
+        'byId' => 'product_id'
     ]
 ];
 
@@ -177,7 +189,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME'])) {
         $table = $tables[6];
         $expectedReactFileName = 'AdminVideo.jsx';
     }
-
+    if ($reactFileName === 'AdminImage.jsx') {
+        $table = $tables[7];
+        $expectedReactFileName = 'AdminImage.jsx';
+    }
 
     if ($reactFileName === $expectedReactFileName) {
 
@@ -245,6 +260,9 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
     if ($reactFileType === 'video') {
         $table = $tables[6];
     }
+    if ($reactFileType === 'image') {
+        $table = $tables[7];
+    }
 
 
     if ($reactFileName === $expectedReactFileName && $table) {
@@ -293,12 +311,13 @@ function fetchDataById($table, $id)
             JOIN attributes a ON av.attribute_id = a.id
             WHERE p.id = ?
             GROUP BY p.id");
-    } elseif ($reactFileType === 'attri_value_ID') { //lay id cua attribute_id
+    } elseif ($reactFileType === 'attriValue_by_Id' || $reactFileType === 'image_by_Id') { //lay id cua attribute_id
         $columns = implode(', ', $table['columns']);
         $title = $table['title'];
         $id = intval(basename($_SERVER['REQUEST_URI']));
+        $byId = $table['byId'];
 
-        $sql = $conn->prepare("SELECT $columns FROM $title WHERE attribute_id = ?");
+        $sql = $conn->prepare("SELECT $columns FROM $title WHERE $byId = ?");
 
         $sql->bind_param("i", $id);
 
@@ -324,8 +343,8 @@ function fetchDataById($table, $id)
 
     }
 
-
-    if ($reactFileType !== 'attri_value_ID') {
+    // echo json_encode($reactFileType);
+    if ($reactFileType !== 'attriValue_by_Id' && $reactFileType !== 'image_by_Id') {
         // echo json_encode($stmt);
         $stmt->bind_param("i", $id);
 
@@ -343,6 +362,8 @@ function fetchDataById($table, $id)
         $stmt->close();
 
         closeConnection($conn);
+    }else{
+        // echo json_encode('vao');
     }
 
     return $data;
@@ -362,7 +383,7 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
         $table = $tables[1];
         // $expectedReactFileType = 'attri';
     }
-    if ($reactFileType === 'attri_value' || $reactFileType === 'attri_value_ID') {
+    if ($reactFileType === 'attri_value' || $reactFileType === 'attriValue_by_Id') {
         $table = $tables[2];
         // $expectedReactFileType = 'attri_value';
     }
@@ -377,6 +398,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
     }
     if ($reactFileType === 'video') {
         $table = $tables[6];
+    }
+    if ($reactFileType === 'image' || $reactFileType === 'image_by_Id') {
+        $table = $tables[7];
+        // $expectedReactFileType = 'attri_value';
     }
 
     // echo json_encode($reactFileName);
@@ -509,6 +534,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
     if ($reactFileType === 'video') {
         $table = $tables[6];
     }
+    if ($reactFileType === 'image') {
+        $table = $tables[7];
+    }
+
 
     // echo json_encode($reactFileName);
     // echo json_encode($reactFileType);
@@ -749,6 +778,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
     if ($reactFileType === 'video') {
         $table = $tables[6];
     }
+    if ($reactFileType === 'image') {
+        $table = $tables[7];
+    }
+
 
     // echo json_encode($reactFileName);
     // echo json_encode($reactFileType);
@@ -823,3 +856,6 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
         // echo json_encode(['error' => 'Error file name for edit ']);
     }
 }
+
+
+// by attribute + gender
