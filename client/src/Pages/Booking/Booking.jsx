@@ -54,9 +54,9 @@ const Booking = () => {
                         <div>
                             <img src={validata3} />
                         </div>
-                        <div className={showMore ? 'visible' : 'hidden'}>
-                            <img src={validata7} />
-                            <img src={validata8} />
+                        <div className={showMore ? 'visible' : 'hidden' }>
+                            <img src={validata7}/>
+                            <img src={validata8}/>
                         </div>
                         <button className='show-button' onClick={() => setShowMore(!showMore)}>
                             {showMore ? 'Show Less' : 'See more images (2)'}
