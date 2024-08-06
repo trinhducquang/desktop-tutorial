@@ -1,6 +1,5 @@
 .User-container {
-    height: 2000px;
-    background-color: red;
+    background-color: white;
 
 
     * {
@@ -63,11 +62,12 @@
 .User-item-3 {
     gap: 30px;
     background-color: white;
-    height: 500px;
     display: flex;
     justify-content: center;
     border-top: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
+    width: 95%;
+    margin: 0 auto;
 
 
     h3,
@@ -94,7 +94,7 @@
     .item-3-left-item {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 70%;
 
         .item-3-left-item-2 {
             display: flex;
@@ -115,7 +115,6 @@
 
             h4 {
                 margin-left: auto;
-                /* Đẩy $1,704.55 ra góc phải */
             }
         }
     }
@@ -181,6 +180,28 @@
 .User-item-4 {
     text-align: center;
     background-color: white;
+
+    .User-item-4-item-1 {
+        padding-top: 50px;
+    }
+
+    .User-item-4-item-3 {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        button {
+            background-color: white;
+            border: none;
+            width: 300px;
+            color: white;
+            border: 1px solid black;
+            color: black;
+            height: 50px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-left: auto;
+        }
+    }
 }
 
 .Navbar-container.user-page {

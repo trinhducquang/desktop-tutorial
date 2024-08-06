@@ -1,0 +1,47 @@
+.carousel-new-container {
+    margin-top: 50px;
+    padding-left: 70px;
+    width: 1500px;
+}
+
+
+.carousel-new-item {
+  
+    img {
+        width: 352px;
+        height: 352px;
+        display: block;
+
+    }
+}
+
+.carousel-new-item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: flex-start; 
+    margin-top: 10px; 
+}
+
+.carousel-item-caption {
+    font-size: 16px; 
+    margin-bottom: 5px;
+}
+
+.carousel-item-price {
+    font-size: 14px; 
+    margin-top: 5px; 
+    margin-bottom: 15px;
+}
+
+.carousel-add-to-cart-button {
+    background-color: #0c67e7;
+    border: none;
+    width: 350px;
+    color: white;
+    height: 50px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-left: auto;
+}

@@ -11,6 +11,8 @@ import Mastercard from '../../../public/User/Mastercard.png'
 import discover from '../../../public/User/discover.png'
 import Amex from '../../../public/User/Amex.png'
 import dinersclub from '../../../public/User/dinersclub.png'
+import Carousel3 from '../../components/Carousel/Carousel3';
+import { WhispersMedia } from '../../components/Carousel/imageGroups';
 
 
 
@@ -101,9 +103,15 @@ const User = () => {
                     </div>
                 </div>
                 <div className='User-item-4'>
-                    <div className=''>
+                    <div className='User-item-4-item-1'>
                         <p>YOU MIGHT ALSO LIKE</p>
                         <span>Our most popular items handpicked for you.</span>
+                    </div>
+                    <div className='User-item-4-item-2'>
+                        <Carousel3 media={WhispersMedia} />
+                    </div>
+                    <div className='User-item-4-item-3'>
+                        <button>BACK TO SHOP</button>
                     </div>
                 </div>
             </div>
