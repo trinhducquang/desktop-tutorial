@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Library.scss';
 import banner from '../../../public/Library/banner.avif';
-import img1 from '../../../public/Library/img1.webp';
-import imgright from '../../../public/Library/imgright.webp';
 import FooterTop from '../../components/Footer-top/FooterTop';
 import Topshop from '../../components/Topshop/Topshop';
 import useHover from '../../Hooks/useHover';
+import AdminConfig from '../../Admin/AdminConfig';
 
 const Library = () => {
-  const { hovered, handleMouseEnter, handleMouseLeave } = useHover();
+  const { url } = AdminConfig;
+  const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHover();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  const fetchData = async (url) => {
+    setLoading(true);
+    try {
+      let resp = await fetch(`${url}AdminProduct.php`, {
+        method: 'GET',
+        headers: {
+          'X-React-File-Name': 'AdminProduct.jsx'
+        }
+      });
+
+      if (!resp.ok) {
+        throw new Error('Failed to fetch product data.');
+      }
+
+      let data = await resp.json();
+      setProducts(data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(url);
+  }, [url]);
 
   return (
     <>
@@ -26,42 +54,30 @@ const Library = () => {
       <section>
         <div className='Library-item'>
           <div className='content-container'>
-              <div className='item'>
-                <div className='img-container' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            {products.map((product) => (
+              <div className='item' key={product.id}>
+                <div
+                  className='img-container'
+                  onMouseEnter={() => handleMouseEnter(product.id)}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <img
-                    src={img1}
-                    alt="Discover Bespoke"
-                    className={`img1 ${hovered ? 'hidden' : ''}`}
+                    src={product.image1}
+                    alt={product.name}
+                    className={`img1 ${hoveredItem === product.id ? 'hidden' : ''}`}
                   />
                   <img
-                    src={imgright}
-                    alt="Right Image"
-                    className={`imgright ${hovered ? 'visible' : ''}`}
-                  />
-                </div>
-                <div className='text-container'>
-                  <h4>DISCOVER BESPOKE</h4>
-                  <p>$1,725.00</p>
-                </div>
-              </div>
-              <div className='item'>
-                <div className='img-container' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                  <img
-                    src={img1}
-                    alt="Discover Bespoke"
-                    className={`img1 ${hovered ? 'hidden' : ''}`}
-                  />
-                  <img
-                    src={imgright}
-                    alt="Right Image"
-                    className={`imgright ${hovered ? 'visible' : ''}`}
+                    src={product.image2}
+                    alt={product.name}
+                    className={`imgright ${hoveredItem === product.id ? 'visible' : ''}`}
                   />
                 </div>
                 <div className='text-container'>
-                  <h4>DISCOVER BESPOKE</h4>
-                  <p>$1,725.00</p>
+                  <h4>{product.name}</h4>
+                  <p>${product.price}</p>
                 </div>
               </div>
+            ))}
           </div>
         </div>
       </section>

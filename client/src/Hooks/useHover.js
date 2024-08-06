@@ -1,18 +1,18 @@
 import { useState } from 'react';
 
 const useHover = () => {
-  const [hovered, setHovered] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
 
-  const handleMouseEnter = () => {
-    setHovered(true);
+  const handleMouseEnter = (id) => {
+    setHoveredItem(id);
   };
 
   const handleMouseLeave = () => {
-    setHovered(false);
+    setHoveredItem(null);
   };
 
   return {
-    hovered,
+    hoveredItem,
     handleMouseEnter,
     handleMouseLeave
   };

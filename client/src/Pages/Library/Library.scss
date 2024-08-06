@@ -28,10 +28,10 @@
   .item {   
     text-align: center;
     
-
     .img-container {
       position: relative;
       height: 400px; 
+      background-color: hsl(0, 0%, 90%); // Giữ nền cố định
 
       .img1,
       .imgright {
@@ -42,7 +42,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        background-color: hsl(0, 0%, 90%);
+        background-color: inherit; // Đảm bảo ảnh giữ nguyên nền của container
       }
 
       .img1 {

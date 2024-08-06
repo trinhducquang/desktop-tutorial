@@ -46,6 +46,7 @@ import Muse from './Pages/Muse/Muse';
 import Page1 from './Pages/Muse/Muse-stories/Page1/Page1';
 import Page2 from './Pages/Muse/Muse-stories/Page2/Page2';
 import Page3 from './Pages/Muse/Muse-stories/Page3/Page3';
+import User from './Pages/User/User';
 
 
 
@@ -77,6 +78,7 @@ const App = () => {
         <Route path='/Careers' element={<Careers/>}/>
         <Route path='/Inspiring-Series' element={<InspiringSeries/>}/>
         <Route path='/Bespoke' element={<Bespoke/>}/>
+        <Route path='/User' element={<User/>}/>
 
 
 
