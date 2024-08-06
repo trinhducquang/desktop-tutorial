@@ -20,13 +20,15 @@ import down from '/public/Booking/down.png';
 import down2 from '/public/Booking/arrow2.png';
 import Close from '/public/Booking/close.png';
 import cong from '/public/Booking/cong.png';
+import Carousel3 from '../../components/Carousel/Carousel3';
+import { WhispersMedia } from '../../components/Carousel/imageGroups';
 
 
 const Booking = () => {
     const [showMore, setShowMore] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [show3D, setShow3D] = useState(false);
-    const [expandedItem, setExpandedItem] = useState(null); // Track the expanded item
+    const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
 
     const handleItemClick = (item) => {
@@ -187,7 +189,7 @@ const Booking = () => {
                             <ul className='ul-booking-list'>
                                 <li onClick={() => handleItemClick('size')} className='li-size-list'>
                                     <div className='fix-img-1'>
-                                        <img src={cong} className='fix-img'/>
+                                        <img src={cong} className='fix-img' />
                                         <p>Size and Weight </p>
                                     </div>
                                     <div className='fix-booking-1'>
@@ -209,14 +211,14 @@ const Booking = () => {
                                         </>}
                                     </div>
                                 </li>
-                               <li onClick={() => handleItemClick('shipping')} className='li-size-list'>
+                                <li onClick={() => handleItemClick('shipping')} className='li-size-list'>
                                     <div className='fix-img-1' >
-                                        <img src={cong} className='fix-img'/>
+                                        <img src={cong} className='fix-img' />
                                         <p>Shipping and Returns</p>
                                     </div>
                                     <div>
                                         {expandedItem === 'shipping' &&
-                                            <div  className='fix-menu-1 fix-booking-1'>
+                                            <div className='fix-menu-1 fix-booking-1'>
                                                 <div>
                                                     <p>Express shipping</p>
                                                     <p>$35</p>
@@ -242,7 +244,7 @@ const Booking = () => {
                                 </li>
                                 <li onClick={() => handleItemClick('warranty')} className='li-size-list'>
                                     <div className='fix-img-1' >
-                                        <img src={cong} className='fix-img'/>
+                                        <img src={cong} className='fix-img' />
                                         <p>Lifetime Guarantee</p>
                                     </div>
                                     <div className='fix-booking-1'>
@@ -257,7 +259,7 @@ const Booking = () => {
                                 </li>
                                 <li onClick={() => handleItemClick('contact')} className='li-size-list'>
                                     <div className='fix-img-1'>
-                                        <img src={cong} className='fix-img'/>
+                                        <img src={cong} className='fix-img' />
                                         <p>Contact Us</p>
                                     </div>
                                     <div className='fix-booking-1'>
@@ -276,7 +278,7 @@ const Booking = () => {
                                 </li>
                                 <li onClick={() => handleItemClick('faq')} className='li-size-list'>
                                     <div className='fix-img-1'>
-                                        <img src={cong} className='fix-img'/>
+                                        <img src={cong} className='fix-img' />
                                         <p>FAQ</p>
                                     </div>
                                     <div className='li-size-list fix-booking-1'>
@@ -302,9 +304,11 @@ const Booking = () => {
                         </div>
                     </div>
                 )}
-                <div>
-                    <h1>Related products</h1>
-                </div>
+            </div>
+            <div className='fix-best-lat-booking'>
+                <h1>Related products</h1>
+                <p>You may also like</p>
+                <Carousel3 media={WhispersMedia} />
             </div>
             <FooterTop />
         </div>

@@ -6,7 +6,7 @@ import './CartMenu.scss';
 import Carousel2 from '../Carousel/Carousel2';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
 import useMenu from '../../Hooks/useMenu'; 
-
+import { Link } from 'react-router-dom';
 const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   const {
     handleSubmit, 
@@ -55,7 +55,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           <button onClick={handleSubmit}>CHECKOUT NOW</button>
         </div>
         <div>
-          <a href='#'>Modify your shopping cart</a>
+          <Link to = '/User'>Modify your shopping cart</Link>
         </div>
       </div>
     </div>

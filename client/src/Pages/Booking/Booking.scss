@@ -56,6 +56,11 @@
 
         >div {
             background-color: #f7f5f4;
+            img {
+                width: 520px;
+                height: 520px;
+
+            }
         }
 
         div:nth-child(1),
@@ -75,11 +80,7 @@
                 cursor: pointer;
             }
 
-            img {
-                width: 520px;
-                height: 520px;
-
-            }
+           
         }
 
         .abc {
@@ -306,7 +307,21 @@
 
 }
 
+.fix-best-lat-booking {
+    margin-left: 35px;
+    padding-bottom: 30px;
 
+    p {
+        text-decoration: underline;
+        font-size: 17px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+.User-item-4-item-1 {
+    padding-bottom: 15px;
+}
 
 .item-list-7 {
     padding-top: 30px;
