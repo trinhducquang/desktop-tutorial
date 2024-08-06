@@ -13,18 +13,23 @@ import Amex from '../../../public/User/Amex.png'
 import dinersclub from '../../../public/User/dinersclub.png'
 import Carousel3 from '../../components/Carousel/Carousel3';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
+import useMenu from '../../Hooks/useMenu'; 
 
 
 
 const User = () => {
+    const {
+        handleSubmit,
+
+    } = useMenu();
     return (
-        <div className='User-container'>
+        <div className='User-container overflow'>
             <div className='User-item'>
                 <div className='User-item-1'>
                     <div className='item-1'>
                         <p>Total (1 item)</p>
                         <span>$760.00</span>
-                        <button>Proceed to checkout</button>
+                        <button onClick={handleSubmit}>Proceed to checkout</button>
                     </div>
                 </div>
                 <div className='User-item-2'>

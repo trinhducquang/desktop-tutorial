@@ -54,7 +54,6 @@ const Library = () => {
       <section>
         <div className='Library-item'>
           <div className='content-container'>
-
             {products.map((product) => (
               <div className='item' key={product.id}>
                 <div
@@ -63,12 +62,12 @@ const Library = () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <img
-                    src={product.image1}
+                    src={product.image}
                     alt={product.name}
                     className={`img1 ${hoveredItem === product.id ? 'hidden' : ''}`}
                   />
                   <img
-                    src={product.image2}
+                    src={product.image}
                     alt={product.name}
                     className={`imgright ${hoveredItem === product.id ? 'visible' : ''}`}
                   />
@@ -79,7 +78,6 @@ const Library = () => {
                 </div>
               </div>
             ))}
-            
           </div>
         </div>
       </section>

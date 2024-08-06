@@ -36,7 +36,7 @@ const Booking = () => {
     };
 
     return (
-        <div>
+        <div className='overflow'>
             <div className='Booking-container'>
                 <div className='Booking-container-item'>
                     <div className='Booking-item-1'>
