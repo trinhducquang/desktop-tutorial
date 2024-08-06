@@ -1,12 +1,10 @@
-.fix-img-best-page3 {
+.Page2-container {
+    background-color: #151515;
+
     img {
         width: 100%;
         object-fit: contain;
     }
-}
-
-.Page2-container {
-    background-color: #151515;
 
     h1,
     p {
@@ -43,4 +41,12 @@
 .Careers-container-section3 {
     height: 300px;
     bottom: 150px;
+}
+
+.text-fix-last-best {
+    a {
+        border: none;
+    }
+
+    top: 300px !important;
 }

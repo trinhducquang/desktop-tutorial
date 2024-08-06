@@ -54,7 +54,7 @@ const Page3 = () => {
             </section>
             <section>
                 <div className='fix-best-img-page'>
-                    <img src={img5} />
+                    <img src={img4} />
                 </div>
             </section>
             <section>
@@ -70,7 +70,7 @@ const Page3 = () => {
             </section>
             <section>
                 <div className="container-preowned-video">
-                    <img src={img2} alt="Nebula" />
+                    <img src={img5} alt="Nebula" />
                     <div className='Menu1-video Preowned-video'>
                         <video
                             src={Page3video1}
@@ -92,10 +92,20 @@ const Page3 = () => {
                 </div>
             </section>
             <section>
-                <div className='fix-img-best-page3'>
-                    <img src={img3} alt="Culinan" />
-                </div>
+                <div className='Menu1-container page-2-overlay'>
+                    <img src={img3} />
+                    <div className='text-overlay text-overplay-2 text-fix-last-best'>
+                        <p>introducing SPIRIT OF ECSTASY CHALLENGE winner</p>
+                        <h1>bi rongrong</h1>
+                        <div className='Page1-button fix2-button'>
+                            <Link to='/Inspiring-Greatness'>
+                                EXPLORE
+                                <GrLinkNext className="arrow" />
+                            </Link>
+                        </div>
+                    </div>
 
+                </div>
             </section>
         </div>
     )
