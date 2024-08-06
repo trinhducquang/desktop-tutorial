@@ -1,12 +1,18 @@
 import React from 'react';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import vali1 from '/public/Booking/vali1.avif'
+import vali1 from '/public/Booking/vali1.avif';
 import './CartMenu.scss';
 import Carousel2 from '../Carousel/Carousel2';
-import { WhispersMedia } from '../../components/Carousel/imageGroups'
+import { WhispersMedia } from '../../components/Carousel/imageGroups';
+import useMenu from '../../Hooks/useMenu'; 
 
 const CartMenu = ({ isCartOpen, handleCloseCart }) => {
+  const {
+    handleSubmit, 
+    
+  } = useMenu();
+
   return (
     <div className={`cart-panel ${isCartOpen ? 'open' : ''}`}>
       <div className='cart-content'>
@@ -20,7 +26,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       </div>
       <div className='cart-content-2-container'>
         <div className='cart-content-2'>
-          <img src={vali1} />
+          <img src={vali1} alt="Product Image" />
           <div className='cart-content-2-item'>
             <div>
               <h3>Original</h3>
@@ -46,7 +52,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           <p>$2.475.00</p>
         </div>
         <div className='cart-content-3-item-2'>
-          <button>CHECKOUT NOW</button>
+          <button onClick={handleSubmit}>CHECKOUT NOW</button>
         </div>
         <div>
           <a href='#'>Modify your shopping cart</a>
