@@ -12,7 +12,7 @@ const AdminNew8 = () => {
 
     const [products, setProducts] = useState({
         id: null,
-        product_id: null,
+        product_id: '',
         image: ''
     });
 
@@ -72,7 +72,8 @@ const AdminNew8 = () => {
 
                     <div className="form-group">
                         <label htmlFor="product_id">Product Id</label>
-                        <input required type="text" className="form-control" id="product_id" name="product_id" value={id} onChange={(event) => setProducts({ ...products, product_id: event.target.value })} disabled />
+                        <input required type="text" className="form-control" id="product_id" name="product_id" 
+                        value={products.product_id = id} onChange={(event) => setProducts({ ...products, product_id: event.target.value })} disabled />
                     </div><br />
 
                     <div className="form-group">

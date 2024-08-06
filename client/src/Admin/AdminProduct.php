@@ -678,6 +678,7 @@ function addNewProduct($table, $fieldValues, $AttriValues)
 
     // Prepare values to bind
     $values = array_values($fieldValues);
+    // echo json_encode($values);
 
     // Bind the parameters
     $stmt->bind_param($filteredType, ...$values);
@@ -806,6 +807,7 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
 
         $fieldValues = [];
 
+        // echo json_encode($data);    
         // Iterate through columns in the order they are defined
         foreach ($filteredColumns as $index => $column) {
             $type = $table['type'][$index]; // Get the type for the current column
