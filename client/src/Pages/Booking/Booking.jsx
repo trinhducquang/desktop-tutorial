@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Booking.scss';
 import vali1 from '/public/Booking/vali1.avif';
 import validata from '/public/Booking/validata.avif';
@@ -23,6 +23,8 @@ import cong from '/public/Booking/cong.png';
 import Carousel3 from '../../components/Carousel/Carousel3';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
 
+import AdminConfig from '../../Admin/AdminConfig';
+
 
 const Booking = () => {
     const [showMore, setShowMore] = useState(false);
@@ -30,13 +32,73 @@ const Booking = () => {
     const [show3D, setShow3D] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const { url } = AdminConfig;
+
+    const fetchData = async (url) => {
+        setLoading(true);
+        try {
+          let resp = await fetch(`${url}AdminProduct.php`, {
+            method: 'GET',
+            headers: {
+              'X-React-File-Name': 'AdminProduct.jsx'
+            }
+          });
+    
+          if (!resp.ok) {
+            throw new Error('Failed to fetch product data.');
+          }
+    
+          let data = await resp.json();
+          setProducts(data);
+          setLoading(false);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setLoading(false);
+        }
+      };
+    
+      useEffect(() => {
+        fetchData(url);
+        fetchImage();
+      }, [url]);
+    
+      const [images, setImages] = useState([]);
+    
+      const fetchImage = async () => {
+        try {
+          const response = await fetch(`${url}AdminProduct.php`, {
+            headers: {
+              'X-React-File-Name': 'AdminImage.jsx'
+            }
+          })
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          setImages(data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+    
+      const groupedImages = images.reduce((acc, img) => {
+        if (!acc[img.product_id]) {
+          acc[img.product_id] = [];
+        }
+        acc[img.product_id].push(img);
+        return acc;
+      }, {});
+
+    
 
     const handleItemClick = (item) => {
         setExpandedItem(expandedItem === item ? null : item);
     };
 
     return (
-        <div className='overflow'>
+        <div>
             <div className='Booking-container'>
                 <div className='Booking-container-item'>
                     <div className='Booking-item-1'>
@@ -54,9 +116,9 @@ const Booking = () => {
                         <div>
                             <img src={validata3} />
                         </div>
-                        <div className={showMore ? 'visible' : 'hidden' }>
-                            <img src={validata7}/>
-                            <img src={validata8}/>
+                        <div className={showMore ? 'visible' : 'hidden'}>
+                            <img src={validata7} />
+                            <img src={validata8} />
                         </div>
                         <button className='show-button' onClick={() => setShowMore(!showMore)}>
                             {showMore ? 'Show Less' : 'See more images (2)'}

@@ -24,8 +24,10 @@ const MenuComponent = () => {
 
   const shouldShowOverlay = isMenuOpen || isCartOpen;
 
-  // Thêm điều kiện cho các trang khác nhau
-  const sectionClass = location.pathname === '/Booking' ? 'booking-page' : 
+  const pathSegments = location.pathname.split('/');
+  const id = pathSegments[pathSegments.length - 1];
+
+  const sectionClass = location.pathname.startsWith(`/product-details/${id}`) ? 'booking-page' :
                        location.pathname === '/User' ? 'user-page' : '';
 
   const navBarClass = location.pathname === '/Muse' ? 'muse-page' : 
@@ -40,7 +42,8 @@ const MenuComponent = () => {
         handleCartClick={handleCartClick}
         isNavMenuVisible={isNavMenuVisible}
         totalQuantity={totalQuantity}
-        navBarClass={navBarClass}  
+        navBarClass={navBarClass}
+        id={id}
       />
       <Menu
         isMenuOpen={isMenuOpen}
