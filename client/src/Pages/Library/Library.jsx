@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Library.scss';
 import banner from '../../../public/Library/banner.avif';
 import FooterTop from '../../components/Footer-top/FooterTop';
@@ -9,7 +10,7 @@ import { useFilters } from '../../components/Topshop/FilterContext';
 
 const Library = () => {
   const { url } = AdminConfig;
-  const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHover();
+  const {hoveredItem, handleMouseEnter, handleMouseLeave } = useHover();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -84,29 +85,23 @@ const Library = () => {
 
   const [images, setImages] = useState([]);
 
-
   const fetchImage = async () => {
     try {
       const response = await fetch(`${url}AdminProduct.php`, {
         headers: {
-          // 'X-React-File-Name': 'AdminById.jsx',
-          // 'X-File-Type': 'image_by_Id'
           'X-React-File-Name': 'AdminImage.jsx'
-
         }
       })
       if (!response.ok) {
-        console.log(response);
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      // console.log(data);
       setImages(data);
-      // console.log(attributeValue);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
+
   const groupedImages = images.reduce((acc, img) => {
     // if (img.product_id === products.id) {
     if (!acc[img.product_id]) {

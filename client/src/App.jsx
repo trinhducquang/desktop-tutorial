@@ -90,6 +90,16 @@ const App = () => {
         <Route path='/Page3' element={<Page3/>}/>
 
 
+        <Route path='/product-details/:id' element={<Booking />}/>
+
+
+
+
+
+
+
+
+
 
 
 
