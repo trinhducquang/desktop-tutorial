@@ -54,20 +54,13 @@ import AdminImage from './Admin/Image/AdminImage';
 import AdminEdit8 from './Admin/Image/AdminEdit8';
 import AdminNew8 from './Admin/Image/AdminNew8';
 
-// import { FilterProvider } from './components/Topshop/FilterContext';
-import Topshop from './components/Topshop/Topshop';
-
 
 
 const App = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.includes('/Admin');
-  const isRoute = location.pathname.includes('/');
 
   return (
-    // <FilterProvider>
-      // {!isRoute && <Topshop />}
-      // {/* {!isAdminRoute && <Library />} */}
 
 
 
@@ -150,7 +143,6 @@ const App = () => {
 
         {!isAdminRoute && <Footer />}
       </div>
-    // {/* </FilterProvider> */}
   );
 };
 
