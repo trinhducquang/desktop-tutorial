@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import './Library.scss';
 import banner from '../../../public/Library/banner.avif';
@@ -9,7 +9,7 @@ import AdminConfig from '../../Admin/AdminConfig';
 
 const Library = () => {
   const { url } = AdminConfig;
-  const {hoveredItem, handleMouseEnter, handleMouseLeave } = useHover();
+  const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHover();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -28,6 +28,7 @@ const Library = () => {
       }
 
       let data = await resp.json();
+      // console.log(data);
       setProducts(data);
       setLoading(false);
     } catch (error) {
@@ -40,11 +41,9 @@ const Library = () => {
     fetchData(url);
     fetchImage();
     fetchProductAttri();
-    fetchAttriValue();
   }, [url]);
 
   const [productAttributes, setPorductAttributes] = useState([]);
-  const [attributeValues, setAttributeValues] = useState([]);
 
   const fetchProductAttri = async () => {
     try {
@@ -58,25 +57,8 @@ const Library = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
+      // console.log(data);
       setPorductAttributes(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  const fetchAttriValue = async () => {
-    try {
-      const response = await fetch(`${url}AdminProduct.php`, {
-        headers: {
-          'X-React-File-Name': 'AdminAttriValue.jsx'
-        }
-      });
-      if (!response.ok) {
-        console.log(response);
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      setAttributeValues(data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -112,21 +94,34 @@ const Library = () => {
   }, {});
 
 
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filters, setFilters] = useState({});
 
+  const handleFilterChange = useCallback((newFilters) => {
+    setFilters(newFilters);
+  }, []);
 
-  const { selectedFilters } = useFilters();
-
-  const filteredProducts = products.filter(product => {
-    return Object.keys(selectedFilters).every(attributeType => {
-      const selectedValues = selectedFilters[attributeType];
-      return productAttributes
-        .filter(pa => pa[0] === product[0]) // filter by product ID
-        .some(pa => {
-          const value = attributeValues.find(av => av[0] === pa[1]);
-          return value && selectedValues.includes(value[1]);
+  useEffect(() => {
+    const applyFilters = () => {
+      const filtered = products.filter(product => {
+        return Object.entries(filters).every(([attributeType, selectedValues]) => {
+          if (selectedValues.length === 0) return true;
+          // console.log(product);
+          // console.log(productAttributes);
+          const productAttriForType = productAttributes.filter(
+            pa => pa.product_id === product.id && pa.attribute_value_id && selectedValues.includes(pa.attribute_value_id)
+          );
+          console.log(productAttriForType.filter(pa => pa.product_id === product.id && pa.attribute_value_id && selectedValues.includes(pa.attribute_value_id)));
+          return productAttriForType.length > 0;
         });
-    });
-  });
+      });
+      // console.log(filtered);
+      setFilteredProducts(filtered);
+    };
+
+    applyFilters();
+  }, [filters, products, productAttributes]);
+
 
 
 
@@ -141,7 +136,7 @@ const Library = () => {
           </div>
         </div>
       </section>
-      <Topshop />
+      <Topshop onFilterChange={handleFilterChange} />
       <section>
         <div className='Library-item'>
           <div className='content-container'>
@@ -149,7 +144,7 @@ const Library = () => {
             {
               filteredProducts.map((product) => (
                 <div className='item' key={product.id}>
-                  <div className='text-container'>
+                  <div className=''>
                     {
                       // images
                       // .filter(img => img.product_id === product.id)
