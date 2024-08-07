@@ -6,6 +6,7 @@ import FooterTop from '../../components/Footer-top/FooterTop';
 import Topshop from '../../components/Topshop/Topshop';
 import useHover from '../../Hooks/useHover';
 import AdminConfig from '../../Admin/AdminConfig';
+import { useFilters } from '../../components/Topshop/FilterContext';
 
 const Library = () => {
   const { url } = AdminConfig;
@@ -39,7 +40,48 @@ const Library = () => {
   useEffect(() => {
     fetchData(url);
     fetchImage();
+    fetchProductAttri();
+    fetchAttriValue();
   }, [url]);
+
+  const [productAttributes, setPorductAttributes] = useState([]);
+  const [attributeValues, setAttributeValues] = useState([]);
+
+  const fetchProductAttri = async () => {
+    try {
+      let response = await fetch(`${url}AdminProduct.php`, {
+        headers: {
+          'X-React-File-Name': 'AdminProductAttri.jsx'
+        }
+      });
+      if (!response.ok) {
+        console.log(response);
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setPorductAttributes(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const fetchAttriValue = async () => {
+    try {
+      const response = await fetch(`${url}AdminProduct.php`, {
+        headers: {
+          'X-React-File-Name': 'AdminAttriValue.jsx'
+        }
+      });
+      if (!response.ok) {
+        console.log(response);
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setAttributeValues(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   const [images, setImages] = useState([]);
 
@@ -61,12 +103,33 @@ const Library = () => {
   };
 
   const groupedImages = images.reduce((acc, img) => {
+    // if (img.product_id === products.id) {
     if (!acc[img.product_id]) {
       acc[img.product_id] = [];
     }
     acc[img.product_id].push(img);
+    // }
     return acc;
   }, {});
+
+
+
+
+  const { selectedFilters } = useFilters();
+
+  const filteredProducts = products.filter(product => {
+    return Object.keys(selectedFilters).every(attributeType => {
+      const selectedValues = selectedFilters[attributeType];
+      return productAttributes
+        .filter(pa => pa[0] === product[0]) // filter by product ID
+        .some(pa => {
+          const value = attributeValues.find(av => av[0] === pa[1]);
+          return value && selectedValues.includes(value[1]);
+        });
+    });
+  });
+
+
 
   return (
     <>
@@ -83,48 +146,81 @@ const Library = () => {
       <section>
         <div className='Library-item'>
           <div className='content-container'>
-            {products.map((product) => (
-              <div className='item' key={product.id}>
-                {
-                  Object.entries(groupedImages)
-                    .filter(([productId, imageList]) => productId === product.id)
-                    .map(([productId, imageList]) => {
-                      const [image1, image2] = imageList.slice(0, 2);
-                      return (
-                        <div key={productId} className='img-container'>
-                          {image1 && (
-                            <Link to={`/product-details/${productId}`}>
-                              <img
-                                src={image1.image}
-                                alt={`Product ${productId} - Image 1`}
-                                className={`img1 ${hoveredItem === productId ? 'hidden' : ''}`}
-                                onMouseEnter={() => handleMouseEnter(productId)}
-                                onMouseLeave={handleMouseLeave}
-                              />
-                            </Link>
-                          )}
-                          {image2 && (
-                            <Link to={`/product-details/${productId}`}>
-                              <img
-                                src={image2.image}
-                                alt={`Product ${productId} - Image 2`}
-                                className={`imgright ${hoveredItem === productId ? 'visible' : ''}`}
-                                onMouseEnter={() => handleMouseEnter(productId)}
-                                onMouseLeave={handleMouseLeave}
-                              />
-                            </Link>
-                          )}
-                        </div>
-                      );
-                    })
-                }
-                <div className='text-container-library'>
-                  <h4>{product.name}</h4>
-                  <p>${product.price}</p>
+
+            {
+              filteredProducts.map((product) => (
+                <div className='item' key={product.id}>
+                  <div className='text-container'>
+                    {
+                      // images
+                      // .filter(img => img.product_id === product.id)
+                      // .map((img) => (
+                      Object.entries(groupedImages)
+                        .filter(([productId, imageList]) => productId === product.id)
+                        .map(([productId, imageList]) => {
+                          // console.log(groupedImages);
+                          // console.log('Product ID:', productId); // Logs the product_id
+                          // console.log('Images:', imageList);    // Logs the associated images
+                          // console.log(imageList) || console.log('vao')
+
+                          // Slice the first 2 images from imageList
+                          const [image1, image2] = imageList.slice(0, 2);
+                          // console.log(image1);
+
+                          return (
+                            <div
+                              key={productId}
+                              className='img-container'
+                              onMouseEnter={() => handleMouseEnter(product.id)}
+                              onMouseLeave={handleMouseLeave}
+                            >
+                              {image1 && (
+                                <img
+                                  src={image1.image}
+                                  alt={`Product ${productId} - Image 1`}
+                                  className={`img1 ${hoveredItem === productId ? 'hidden' : ''}`}
+                                />
+                              )}
+                              {image2 && (
+                                <img
+                                  src={image2.image}
+                                  alt={`Product ${productId} - Image 2`}
+                                  className={`imgright ${hoveredItem === productId ? 'visible' : ''}`}
+                                />
+                              )}
+                            </div>
+                          );
+                          // console.log(img.image) || console.log(img.product_id)
+                          // <div
+                          //   className='img-container'
+                          //   onMouseEnter={() => handleMouseEnter(product.id)}
+                          //   onMouseLeave={handleMouseLeave}
+                          // >
+                          //   <img
+                          //     src={img.image[0]}
+                          //     alt={product.name}
+                          //     className={`img1 ${hoveredItem === product.id ? 'hidden' : ''}`}
+                          //   />
+                          //   <img
+                          //     src={img.image[1]}
+                          //     alt={product.name}
+                          //     className={`imgright ${hoveredItem === product.id ? 'visible' : ''}`}
+                          //   />
+                          // </div>
+
+                        })
+                    }
+
+                    <div className='text-container'>
+                      <h4>{product.name}</h4>
+                      <p>${product.price}</p>
+                    </div>
+
+                  </div>
                 </div>
-              </div>
-              
-            ))}
+
+              ))
+            }
           </div>
         </div>
       </section >
