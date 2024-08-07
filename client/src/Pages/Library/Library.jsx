@@ -6,7 +6,6 @@ import FooterTop from '../../components/Footer-top/FooterTop';
 import Topshop from '../../components/Topshop/Topshop';
 import useHover from '../../Hooks/useHover';
 import AdminConfig from '../../Admin/AdminConfig';
-import { useFilters } from '../../components/Topshop/FilterContext';
 
 const Library = () => {
   const { url } = AdminConfig;

@@ -11,18 +11,18 @@ const Accordion = ({ text }) => {
       {text && <h2 className='accordion-header'>{text}</h2>}
       <div className='item-item-2'>
         {[
-          "Rolls-Royce Motor Cars as a Data Controller and our responsibilities",
-          "How do we collect your personal information",
-          "What information may be collected about you",
-          "How your personal information may be used",
-          "Third parties to whom we may transfer your data",
-          "How do we keep your personal information safe",
-          "How long do we keep your personal information for",
-          "Processing data outside of the UK and the EEA",
-          "Changing your marketing preferences",
-          "Contacting us about this privacy policy",
+          "Rimowa as a Data Controller and Our Responsibilities",
+          "How We Collect Your Personal Information",
+          "Types of Information We May Collect",
+          "How We Use Your Personal Information",
+          "Third Parties With Whom We May Share Your Data",
+          "How We Protect Your Personal Information",
+          "Retention Period for Your Personal Information",
+          "Data Processing Outside of the EU",
+          "Changing Your Marketing Preferences",
+          "Contacting Us About This Privacy Policy",
           "Location Information Safeguards",
-          "Legal grounds for processing of your personal information"
+          "Legal Grounds for Processing Your Personal Information"
         ].map((itemText, index) => (
           <div key={index} className='Accordion-container'>
             <div className='img-flex' onClick={() => toggleSection(index)}>

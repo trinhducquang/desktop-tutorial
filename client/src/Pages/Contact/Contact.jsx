@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './Contact.scss';
 import contact from '/contact/contact.webp';
-import img5 from '/contact/img5.webp'
+import img5 from '/contact/img5.webp';
 import { GrLinkNext } from 'react-icons/gr';
 import cong from '/public/contact/cong.svg';
-
 
 const Contact = () => {
     const [isAssistanceVisible, setAssistanceVisible] = useState(false);
@@ -17,7 +16,7 @@ const Contact = () => {
         <div className='overflow'>
             <section>
                 <div className='Navbar-img'>
-                    <img src={contact} alt="Culinan" />
+                    <img src={contact} alt="Rimowa Contact" />
                     <div className='img-content'>
                         <h2>CONTACT US</h2>
                     </div>
@@ -35,26 +34,26 @@ const Contact = () => {
                     <div className='Contact-info Contact-info-1'>
                         <div className='info-wrapper'>
                             <div className='info-content'>
-                                <p><strong>THE HOME OF ROLLS-ROYCE MOTOR CARS</strong></p>
-                                <p>Every Rolls-Royce motor car is built by hand at our state-of-the-art headquarters in Goodwood, England.</p>
-                                <p><strong>Rolls-Royce Motor Cars Limited</strong></p>
+                                <p><strong>THE HOME OF RIMOWA</strong></p>
+                                <p>Every Rimowa product is crafted with precision at our state-of-the-art facilities.</p>
+                                <p><strong>Rimowa</strong></p>
                                 <p>The Drive, Westhampnett, Chichester, West Sussex, PO18 0SH</p>
-                                <p>For model, general queries and Rolls-Royce Gift Collection purchases we have dedicated teams ready to speak to you, wherever you are.</p>
+                                <p>For model, general queries, and Rimowa Gift Collection purchases, we have dedicated teams ready to assist you, wherever you are.</p>
 
                                 <p><strong>International</strong></p>
-                                <p>+ 44 (0)1243 525700 or email enquiries@rolls-roycemotorcars.com</p>
-                                <p>Monday to Friday 06:30- 19:00 (GMT)</p>
-                                <p>Saturday to Sunday 09:00- 18:00 (GMT)</p>
+                                <p>+ 44 (0)1243 525700 or email enquiries@rimowa.com</p>
+                                <p>Monday to Friday 06:30-19:00 (GMT)</p>
+                                <p>Saturday to Sunday 09:00-18:00 (GMT)</p>
 
                                 <p><strong>Japan</strong></p>
-                                <p>+ 81 (0)120 980242 or email enquiries.jp@rolls-roycemotorcars.com</p>
-                                <p>Monday to Friday 06:30- 19:00 (JST)</p>
-                                <p>Saturday to Sunday 09:00- 18:00 (JST)</p>
+                                <p>+ 81 (0)120 980242 or email enquiries.jp@rimowa.com</p>
+                                <p>Monday to Friday 06:30-19:00 (JST)</p>
+                                <p>Saturday to Sunday 09:00-18:00 (JST)</p>
 
                                 <p><strong>North America</strong></p>
-                                <p>+1 877-877-3735 or email generalenquiries@rolls-roycemotorcarsna.com</p>
-                                <p>Monday to Friday 06:30- 19:00 (EST)</p>
-                                <p>Saturday to Sunday 09:00- 18:00 (EST)</p>
+                                <p>+1 877-877-3735 or email generalenquiries@rimowa.com</p>
+                                <p>Monday to Friday 06:30-19:00 (EST)</p>
+                                <p>Saturday to Sunday 09:00-18:00 (EST)</p>
 
                                 <p><strong>China</strong></p>
                                 <p>+86 400 818 7979</p>
@@ -68,20 +67,20 @@ const Contact = () => {
                     <div className='Contact-info'>
                         <div className='info-wrapper'>
                             <div className='info-content'>
-                                <p><strong>THERE FOR OUR OWNERS</strong></p>
-                                <p>We have dedicated Customer Relations teams ready to speak with you, wherever you are.</p>
+                                <p><strong>SUPPORT FOR OUR CUSTOMERS</strong></p>
+                                <p>Our Customer Relations teams are ready to assist you, wherever you are.</p>
 
                                 <p><strong>International</strong></p>
                                 <p>+44 (0) 1243 384300</p>
-                                <p>customer.relations@rolls-roycemotorcars.com</p>
+                                <p>customer.relations@rimowa.com</p>
 
                                 <p><strong>North America</strong></p>
                                 <p>+1 877 877 3735</p>
-                                <p>customer.relations@rolls-roycemotorcarsna.com</p>
+                                <p>customer.relations@rimowa.com</p>
 
                                 <p><strong>China</strong></p>
                                 <p>+86 400 818 7979</p>
-                                <p>customer.relationschina@rolls-roycemotorcars.com</p>
+                                <p>customer.relationschina@rimowa.com</p>
                             </div>
                             <br />
                             <br />
@@ -91,14 +90,14 @@ const Contact = () => {
                     <div className='Contact-info'>
                         <div className='info-wrapper'>
                             <div className='info-content'>
-                                <p><strong>We make every journey a pleasure</strong></p>
-                                <p>For four years after you take ownership of your new Rolls-Royce Motor Car, you’re covered by a comprehensive Roadside Assistance recovery package. Should something unexpected happen, simply call us and a dedicated advisor will be at your service.</p>
+                                <p><strong>Ensuring Your Journey is Smooth</strong></p>
+                                <p>For four years after you take ownership of your new Rimowa product, you’re covered by a comprehensive Roadside Assistance recovery package. Should something unexpected happen, simply call us and a dedicated advisor will be at your service.</p>
                             </div>
                             <br />
                             <br />
                             <p className='assistance-toggle' onClick={toggleAssistance}>
                                 {isAssistanceVisible ? 'Hide Roadside Assistance' : 'Show Roadside Assistance'}
-                                <img src={cong}/>
+                                <img src={cong} alt="Toggle Icon" />
                             </p>
                             {isAssistanceVisible && (
                                 <ul className='assistance-list'>
@@ -176,13 +175,10 @@ const Contact = () => {
                     </div>
                     <br />
                     <div className='fix-top'>
-                        <h3>Our PressClub</h3>
-                        <p>The Rolls-Royce Motor Cars PressClub gives you access to the very
-                            latest official headlines, stories, press <br />
-                            kits, product and brand
-                            imagery and HD film. Just register for access.</p>
+                        <h3>Press Room</h3>
+                        <p>The Rimowa Press Room provides access to the latest official headlines, stories, press kits, product, and brand imagery. Just register for access.</p>
                         <button>
-                            <h3>visit pressclub</h3>
+                            <h3>Visit Press Room</h3>
                             <GrLinkNext className="arrow arrow2" />
                         </button>
                     </div>
@@ -191,7 +187,7 @@ const Contact = () => {
             </section>
             <section>
                 <div className='Navbar-img'>
-                    <img src={img5} alt="Culinan" />
+                    <img src={img5} alt="Rimowa Image" />
                 </div>
             </section>
         </div>

@@ -1,29 +1,30 @@
-import React from 'react'
-import img from '/public/Whispers/img.jpg'
-import './whispers.scss'
+import React from 'react';
+import img from '/public/Whispers/img.jpg';
+import './whispers.scss';
 import { GrLinkNext } from "react-icons/gr";
-import Roll from '/video/Rolls.mp4'
-import useVideoControl from '../../Hooks/useVideoControl'
+import Roll from '/video/Rolls.mp4';
+import useVideoControl from '../../Hooks/useVideoControl';
 import Carousel from '../../components/Carousel/Carousel';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
 
 const Whispers = () => {
   const {
-    videoRef,
     isPlaying,
     isFullscreen,
     handleMouseEnter,
     handleMouseLeave,
     handleVideoClick,
-    handleFullscreenClick
+    handleFullscreenClick,
+    setVideoRef
   } = useVideoControl();
+
   return (
     <div className='overflow'>
       <section>
         <div className='whisper-container'>
           <div className='Navbar-img'>
-            <img src={img} alt="Culinan" />
-            <div className={`img-content`}>
+            <img src={img} alt="Cullinan" />
+            <div className='img-content'>
               <h2>CHARGING SPECTRE</h2>
               <button>
                 DISCOVER NOW
@@ -49,12 +50,20 @@ const Whispers = () => {
       </section>
       <section className='background-color'>
         <div className="center-video-container Menu1-video">
-          <video src={Roll} ref={videoRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="centered-video" muted />
+          <video 
+            src={Roll} 
+            ref={setVideoRef('Roll')} 
+            onMouseEnter={() => handleMouseEnter('Roll')} 
+            onMouseLeave={() => handleMouseLeave('Roll')} 
+            onClick={() => handleVideoClick('Roll')}
+            className="centered-video" 
+            muted 
+          />
           <div className='video-controls'>
-            <button className='control-btn' onClick={handleVideoClick}>
+            <button className='control-btn' onClick={() => handleVideoClick('Roll')}>
               {isPlaying ? 'Pause' : 'Play'}
             </button>
-            <button className='control-btn' onClick={handleFullscreenClick}>
+            <button className='control-btn' onClick={() => handleFullscreenClick('Roll')}>
               {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
             </button>
           </div>
@@ -81,7 +90,7 @@ const Whispers = () => {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
 export default Whispers;

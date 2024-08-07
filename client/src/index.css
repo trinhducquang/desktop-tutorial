@@ -25,6 +25,10 @@ a {
 }
 
 
+li {
+  list-style: none;
+}
+
 
 
 @font-face {

@@ -13,6 +13,12 @@ import img8 from '/video/Menu1/main1-img8.webp';
 import img9 from '/video/Menu1/main1-img9.webp';
 import img10 from '/video/Menu1/main1-img10.webp';
 import img11 from '/video/Menu1/main1-img11.webp';
+import img13 from '/video/Menu1/main1-img13.webp';
+import img14 from '/video/Menu1/main1-img14.webp';
+import img15 from '/video/Menu1/main1-img15.webp';
+
+
+
 import { GrLinkNext } from 'react-icons/gr';
 import { Link } from 'react-router-dom'
 
@@ -33,10 +39,6 @@ const InspiringGreatness = () => {
       <section>
         <div className='Menu1-container'>
           <video src={menu1} autoPlay loop muted />
-          <div className='text-overlay'>
-            <h1>INSPIRING GREATNESS</h1>
-            <p>Inspiring Greatness exists at the very core of Rolls-Royce Motor Cars. It is the guiding force from which our innovation, aspirations, and ongoing legacy unfold. As we continue to extend the limits of possibility, Inspiring Greatness will forever remain our ultimate pursuit.</p>
-          </div>
         </div>
       </section>
       <section>
@@ -57,7 +59,7 @@ const InspiringGreatness = () => {
             <div className='video-controls'>
               <button className='control-btn' onClick={() => handleVideoClick('menu2')}>
                 {isPlaying ? 'Pause' : 'Play'}
-              </button> 
+              </button>
               <button className='control-btn' onClick={() => handleFullscreenClick('menu2')}>
                 {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
               </button>
@@ -65,10 +67,10 @@ const InspiringGreatness = () => {
           </div>
           <div>
             <button>
-               <Link to ='/Inspiring-Series'>
-               Watch All Episodes
+              <Link to='/Inspiring-Series'>
+                Watch All Episodes
 
-               </Link>
+              </Link>
               <GrLinkNext className="arrow" />
             </button>
           </div>
@@ -200,6 +202,41 @@ const InspiringGreatness = () => {
                 <img src={img11} alt="Find Your Dealer" />
                 <h4>Discover Bespoke</h4>
                 <p>Explore a world of personalisation and discover the true essence of bespoke luxury.</p>
+              </div>
+            </div>
+          </div>
+          <button>
+            DISCOVER MORE
+            <GrLinkNext className="arrow" />
+          </button>
+        </div>
+      </section>
+      <section>
+        <div className='Navbar-item Navbar-item-Menu1'>
+          <div>
+            <h3>LADIES</h3>
+            <p>The pioneering visions of Rolls-Royce Motor Cars unlock a future of unprecedented potential.</p>
+          </div>
+          <div className='content-container'>
+            <div className='Navbar-content Navbar-content-1'>
+              <div>
+                <img src={img13} alt="Discover Bespoke" />
+                <h4>SPECTRE</h4>
+                <p>The marque’s first all-electric motor car is a prophecy fulfilled.</p>
+              </div>
+            </div>
+            <div className='Navbar-content Navbar-content-1'>
+              <div>
+                <img src={img14} alt="Explore Models" />
+                <h4>THE HISTORY OF COACHBUILD</h4>
+                <p>Legacy, craft, and inspiration. A vision realised without compromise.</p>
+              </div>
+            </div>
+            <div className='Navbar-content Navbar-content-1'>
+              <div>
+                <img src={img15} alt="Find Your Dealer" />
+                <h4>The future in the making: Rolls‑Royce 103EX: Vision Next 100</h4>
+                <p>Introducing the visionary Rolls-Royce 103EX. Journey into the future of luxury travel, with our first ever autonomous motor car.</p>
               </div>
             </div>
           </div>
