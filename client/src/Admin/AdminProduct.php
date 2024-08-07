@@ -106,6 +106,15 @@ $tables = [
         ],
         'type' => 'isi',
         'byId' => 'product_id'
+    ],
+    [
+        'title' => 'product_attri',
+        'columns' => [
+            'product_id',
+            'attribute_value_id'
+        ],
+        'type' => 'ii',
+        'byId' => 'product_attri_id'
     ]
 ];
 
@@ -193,6 +202,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME'])) {
         $table = $tables[7];
         $expectedReactFileName = 'AdminImage.jsx';
     }
+    if ($reactFileName === 'AdminProductAttri.jsx') {
+        $table = $tables[8];
+        $expectedReactFileName = 'AdminProductAttri.jsx';
+    }
 
     if ($reactFileName === $expectedReactFileName) {
 
@@ -263,6 +276,9 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
     if ($reactFileType === 'image') {
         $table = $tables[7];
     }
+    if ($reactFileType === 'product_attri') {
+        $table = $tables[8];
+    }
 
 
     if ($reactFileName === $expectedReactFileName && $table) {
@@ -311,7 +327,7 @@ function fetchDataById($table, $id)
             JOIN attributes a ON av.attribute_id = a.id
             WHERE p.id = ?
             GROUP BY p.id");
-    } elseif ($reactFileType === 'attriValue_by_Id' || $reactFileType === 'image_by_Id') { //lay id cua attribute_id
+    } elseif ($reactFileType === 'attriValue_by_Id' || $reactFileType === 'image_by_Id' || $reactFileType === 'product_attri_by_id') { //lay id cua attribute_id
         $columns = implode(', ', $table['columns']);
         $title = $table['title'];
         $id = intval(basename($_SERVER['REQUEST_URI']));
@@ -344,7 +360,7 @@ function fetchDataById($table, $id)
     }
 
     // echo json_encode($reactFileType);
-    if ($reactFileType !== 'attriValue_by_Id' && $reactFileType !== 'image_by_Id') {
+    if ($reactFileType !== 'attriValue_by_Id' && $reactFileType !== 'image_by_Id' && $reactFileType === 'product_attri_by_id') {
         // echo json_encode($stmt);
         $stmt->bind_param("i", $id);
 
@@ -401,7 +417,9 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
     }
     if ($reactFileType === 'image' || $reactFileType === 'image_by_Id') {
         $table = $tables[7];
-        // $expectedReactFileType = 'attri_value';
+    }
+    if ($reactFileType === 'product_attri' || $reactFileType === 'product_attri_by_id') {
+        $table = $tables[8];
     }
 
     // echo json_encode($reactFileName);

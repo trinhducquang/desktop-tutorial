@@ -54,100 +54,99 @@ import AdminImage from './Admin/Image/AdminImage';
 import AdminEdit8 from './Admin/Image/AdminEdit8';
 import AdminNew8 from './Admin/Image/AdminNew8';
 
+import { FilterProvider } from './components/Topshop/FilterContext';
+import Topshop from './components/Topshop/Topshop';
+
 
 
 const App = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.includes('/Admin');
+  const isRoute = location.pathname.includes('/');
 
   return (
-    <div>
-      {!isAdminRoute && <MenuComponent />}
-      <ScrollToTop />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/Inspiring-Greatness' element={<InspiringGreatness />} />
-        <Route path='/Site-Map' element={<Sitemap />} />
-        <Route path='/Contact' element={<Contact />} />
-        <Route path='/Library' element={<Library />} />
-        <Route path='/Privacy' element={<Privacy />} />
-        <Route path='/Legal' element={<Legal />} />
-        <Route path='/pre-owned' element={<Preowned/>}/>
-        <Route path='/Complaints' element={<Complaints/>}/>
-
-        <Route path='/pre-owned' element={<Preowned />} />
-        <Route path='/Complaints' element={<Complaints />} />
-        <Route path='/Faqs' element={<Faqs />} />
-        <Route path='/whispers' element={<Whispers />} />
-        <Route path='/Cookie' element={<Cookie/>}/>
-        <Route path='/Careers' element={<Careers/>}/>
-        <Route path='/Inspiring-Series' element={<InspiringSeries/>}/>
-        <Route path='/Bespoke' element={<Bespoke/>}/>
-        <Route path='/User' element={<User/>}/>
-
-
-        <Route path='/Muse' element={<Muse/>}/>
-        <Route path='/Page1' element={<Page1/>}/>
-        <Route path='/Page2' element={<Page2/>}/>
-        <Route path='/Page3' element={<Page3/>}/>
-        <Route path='/Page4' element={<Page4/>}/>
-        <Route path='/Page5' element={<Page5/>}/>
-        <Route path='/Page6' element={<Page6/>}/>
+    <FilterProvider>
+      {!isRoute && <Topshop />}
+      {/* {!isAdminRoute && <Library />} */}
 
 
 
+      <div>
+        {!isAdminRoute && <MenuComponent />}
+        <ScrollToTop />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Inspiring-Greatness' element={<InspiringGreatness />} />
+          <Route path='/Site-Map' element={<Sitemap />} />
+          <Route path='/Contact' element={<Contact />} />
+          <Route path='/Library' element={<Library />} />
+          <Route path='/Booking' element={<Booking />} />
+          <Route path='/Privacy' element={<Privacy />} />
+          <Route path='/Legal' element={<Legal />} />
+          <Route path='/pre-owned' element={<Preowned />} />
+          <Route path='/Complaints' element={<Complaints />} />
 
-        <Route path='/product-details/:id' element={<Booking />}/>
+          <Route path='/pre-owned' element={<Preowned />} />
+          <Route path='/Complaints' element={<Complaints />} />
+          <Route path='/Faqs' element={<Faqs />} />
+          <Route path='/whispers' element={<Whispers />} />
+          <Route path='/Cookie' element={<Cookie />} />
+          <Route path='/Careers' element={<Careers />} />
+          <Route path='/Inspiring-Series' element={<InspiringSeries />} />
+          <Route path='/Bespoke' element={<Bespoke />} />
+          <Route path='/User' element={<User />} />
 
 
+          <Route path='/Muse' element={<Muse />} />
+          <Route path='/Page1' element={<Page1 />} />
+          <Route path='/Page2' element={<Page2 />} />
+          <Route path='/Page3' element={<Page3 />} />
 
 
+          <Route path='/product-details/:id' element={<Booking />} />
 
 
 
 
+          <Route path='/Admin' element={<Admin />} />
 
+          <Route path='/Admin/product' element={<AdminProduct />}></Route>
+          <Route path='/Admin/product/edit/:id' element={<AdminEdit />}></Route>
+          <Route path='/Admin/product/new' element={<AdminNew />}></Route>
 
+          <Route path='/Admin/attri' element={<AdminAttribute />}></Route>
+          <Route path='/Admin/attri/edit/:id' element={<AdminEdit2 />}></Route>
+          <Route path='/Admin/attri/new' element={<AdminNew2 />}></Route>
 
+          <Route path='/Admin/attri_value/:id' element={<AdminAttriValue />}></Route>
+          <Route path='/Admin/attri_value/edit/:id' element={<AdminEdit3 />}></Route>
+          <Route path='/Admin/attri_value/new/:id' element={<AdminNew3 />}></Route>
 
-        <Route path='/Admin' element={<Admin/>}/>
+          <Route path='/Admin/user/' element={<AdminUsers />}></Route>
+          <Route path='/Admin/user/edit/:id' element={<AdminEdit4 />}></Route>
+          <Route path='/Admin/user/new/' element={<AdminNew4 />}></Route>
 
-        <Route path='/Admin/product' element={<AdminProduct/>}></Route>
-        <Route path='/Admin/product/edit/:id' element={<AdminEdit/>}></Route>
-        <Route path='/Admin/product/new' element={<AdminNew/>}></Route>
+          <Route path='/Admin/order' element={<AdminOrders />}></Route>
+          <Route path='/Admin/order/edit/:id' element={<AdminEdit5 />}></Route>
+          {/* <Route path='/Admin/order/new' element={<AdminNew5/>}></Route> */}
 
-        <Route path='/Admin/attri' element={<AdminAttribute/>}></Route>
-        <Route path='/Admin/attri/edit/:id' element={<AdminEdit2/>}></Route>
-        <Route path='/Admin/attri/new' element={<AdminNew2/>}></Route>
-        
-        <Route path='/Admin/attri_value/:id' element={<AdminAttriValue/>}></Route>
-        <Route path='/Admin/attri_value/edit/:id' element={<AdminEdit3/>}></Route>
-        <Route path='/Admin/attri_value/new/:id' element={<AdminNew3/>}></Route>
+          <Route path='/Admin/order_detail/:id' element={<AdminOrderDetail />}></Route>
+          <Route path='/Admin/order_detail/edit/:id' element={<AdminEdit6 />}></Route>
+          {/* <Route path='/Admin/order_detail/new/:id' element={<AdminNew6/>}></Route> */}
 
-        <Route path='/Admin/user/' element={<AdminUsers/>}></Route>
-        <Route path='/Admin/user/edit/:id' element={<AdminEdit4/>}></Route>
-        <Route path='/Admin/user/new/' element={<AdminNew4/>}></Route>
+          <Route path='/Admin/video' element={<AdminVideo />}></Route>
+          <Route path='/Admin/video/edit/:id' element={<AdminEdit7 />}></Route>
+          <Route path='/Admin/video/new' element={<AdminNew7 />}></Route>
 
-        <Route path='/Admin/order' element={<AdminOrders/>}></Route>
-        <Route path='/Admin/order/edit/:id' element={<AdminEdit5/>}></Route>
-        {/* <Route path='/Admin/order/new' element={<AdminNew5/>}></Route> */}
-        
-        <Route path='/Admin/order_detail/:id' element={<AdminOrderDetail/>}></Route>
-        <Route path='/Admin/order_detail/edit/:id' element={<AdminEdit6/>}></Route>
-        {/* <Route path='/Admin/order_detail/new/:id' element={<AdminNew6/>}></Route> */}
+          <Route path='/Admin/image/:id' element={<AdminImage />}></Route>
+          <Route path='/Admin/image/edit/:id' element={<AdminEdit8 />}></Route>
+          <Route path='/Admin/image/new/:id' element={<AdminNew8 />}></Route>
 
-        <Route path='/Admin/video' element={<AdminVideo/>}></Route>
-        <Route path='/Admin/video/edit/:id' element={<AdminEdit7/>}></Route>
-        <Route path='/Admin/video/new' element={<AdminNew7/>}></Route>
+        </Routes>
 
-        <Route path='/Admin/image/:id' element={<AdminImage/>}></Route>
-        <Route path='/Admin/image/edit/:id' element={<AdminEdit8/>}></Route>
-        <Route path='/Admin/image/new/:id' element={<AdminNew8/>}></Route>
-
-      </Routes>
-
-      {!isAdminRoute && <Footer />}
-    </div>
+        {!isAdminRoute && <Footer />}
+      </div>
+    </FilterProvider>
   );
 };
 
