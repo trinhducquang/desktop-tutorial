@@ -34,7 +34,7 @@ const MenuComponent = () => {
                       location.pathname === '/User' ? 'user-page' : '';
 
   return (
-    <section className={sectionClass}>
+    <section className={`${sectionClass} ${shouldShowOverlay ? 'darken' : ''}`}>
       <Navbar
         location={location}
         isMenuOpen={isMenuOpen}
