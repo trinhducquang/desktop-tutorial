@@ -205,7 +205,7 @@ const Library = () => {
                         })
                     }
 
-                    <div className='text-container'>
+                    <div className='text-abc'>
                       <h4>{product.name}</h4>
                       <p>${product.price}</p>
                     </div>
