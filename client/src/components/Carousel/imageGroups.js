@@ -117,7 +117,6 @@ const epstion2 = [
     { type: 'video/mp4', src: video12 },
     { type: 'video/mp4', src: video13 },
     { type: 'video/mp4', src: video14 },
-    { type: 'video/mp4', src: video15 },
 ];
 
 
