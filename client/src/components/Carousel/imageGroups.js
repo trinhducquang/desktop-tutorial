@@ -32,6 +32,18 @@ import video3 from '/public/Careers/video3.mp4';
 import video4 from '/public/Careers/video4.mp4';
 import video5 from '/public/Careers/video5.mp4';
 
+
+import video6 from '/public/InspiringSeries/Episode1.mp4'
+import video7 from '/public/InspiringSeries/Episode2.mp4'
+import video8 from '/public/InspiringSeries/Episode3.mp4'
+import video9 from '/public/InspiringSeries/Episode4.mp4'
+import video10 from '/public/InspiringSeries/Episode5.mp4'
+import video11 from '/public/InspiringSeries/Episode6.mp4'
+import video12 from '/public/InspiringSeries/Episode7.mp4'
+import video13 from '/public/InspiringSeries/Episode8.mp4'
+import video14 from '/public/InspiringSeries/Episode9.mp4'
+
+
 const PreownedMedia = [
     { type: 'image', src: img6 },
     { type: 'image', src: img7 },
@@ -92,8 +104,22 @@ const CareersVideo = [
     { type: 'video/mp4', src: video5 },
 ];
 
+const epstion3 = [
+    { type: 'video/mp4', src: video6 },
+    { type: 'video/mp4', src: video7 },
+    { type: 'video/mp4', src: video8 },
+    { type: 'video/mp4', src: video9 },
+    { type: 'video/mp4', src: video10 },
+];
+
+const epstion2 = [
+    { type: 'video/mp4', src: video11 },
+    { type: 'video/mp4', src: video12 },
+    { type: 'video/mp4', src: video13 },
+    { type: 'video/mp4', src: video14 },
+    { type: 'video/mp4', src: video15 },
+];
 
 
-
-export { PreownedMedia, WhispersMedia, CareersMedia, CareersVideo, mediaData, Page6img };
+export { PreownedMedia, WhispersMedia, CareersMedia, CareersVideo, mediaData, Page6img, epstion3, epstion2 };
 

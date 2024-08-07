@@ -6,6 +6,8 @@ import Espisode from '/public/InspiringSeries/Espisode.mp4'
 import useVideoControl from '../../Hooks/useVideoControl';
 import Carousel from '../../components/Carousel/Carousel'
 import { CareersVideo } from '../../components/Carousel/imageGroups.js';
+import { epstion3 } from '../../components/Carousel/imageGroups.js';
+
 import { GrLinkNext } from "react-icons/gr";
 
 const InspiringSeries = () => {
@@ -170,7 +172,7 @@ const InspiringSeries = () => {
                         </div>
                     </div>
                     <div>
-                        <Carousel media={CareersVideo} />
+                        <Carousel media={epstion3} />
                     </div>
                     <div className='Menu1-container section1-container section2-container'>
                         <div className='text-overlay text-series-color'>
