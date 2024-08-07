@@ -1,0 +1,38 @@
+.video-carousel-container {
+    height: auto;
+    background-color: black;
+    justify-content: center;
+    padding-top: 250px;
+    padding-bottom: 150px;
+    width: 2500px;
+    .video-container {
+        video {
+            width: 700px;
+    
+        }
+    }
+
+    h3,p {
+        color: white;
+        line-height: 2rem;
+    }
+}
+
+.small-video-container {
+    position: absolute;
+    
+    img {
+        width: 350px;
+        position: relative;
+        left: 1200px;
+        bottom: 480px;
+    }
+}
+
+.text-container {
+    position: relative;
+    bottom: 300px;
+    width: 400px;
+    margin-left: 30%;
+}
+

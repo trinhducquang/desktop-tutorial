@@ -9,7 +9,7 @@ const Carousel = ({ media }) => {
         slidesToShow: 4,
         centerMode: true,
         slidesToScroll: 1,
-        centerPadding: '0px', // Đặt centerPadding là 0 để padding của phần tử hoạt động đúng
+        centerPadding: '0px'
     };
 
     return (

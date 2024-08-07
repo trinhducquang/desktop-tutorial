@@ -118,11 +118,12 @@ const Library = () => {
                       );
                     })
                 }
-                <div className='text-container'>
+                <div className='text-container-library'>
                   <h4>{product.name}</h4>
                   <p>${product.price}</p>
                 </div>
               </div>
+              
             ))}
           </div>
         </div>

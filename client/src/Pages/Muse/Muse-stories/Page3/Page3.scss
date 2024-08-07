@@ -45,8 +45,13 @@
 
 .text-fix-last-best {
     a {
-        border: none;
+        border: none !important;
+    }
+
+    button {
+        border: none !important;
     }
 
     top: 300px !important;
 }
+

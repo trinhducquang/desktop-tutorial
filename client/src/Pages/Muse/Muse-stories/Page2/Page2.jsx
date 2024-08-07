@@ -40,7 +40,7 @@ const Page2 = () => {
                 </div>
             </section>
             <section>
-                <div className='Menu1-background-container'>
+                <div className='Menu1-background-container '>
                     <div className='text-overlay'>
                         <h2>The Exhibition</h2>
                         <p>Explore the unveiling of the inaugural Spirit of Ecstasy Challenge
@@ -66,7 +66,7 @@ const Page2 = () => {
                             </button>
                         </div>
                     </div>
-                    <div className='text-overlay text-overplay-kk'>
+                    <div className='text-overlay text-overplay-kk '>
                         <p>The three winning artists, Scarlett Yang, Ghizlane Sahli, and Bi Rongrong, were selected by an
                             esteemed jury of design experts including Anders Warming, Director of Design, Rolls-Royce Motor Cars;
                             Yoon Ahn, Creative Director of AMBUSH and Director of Jewellery at Dior Men; Tim Marlow, Chief Executive
@@ -159,7 +159,7 @@ const Page2 = () => {
                 <div>
                     <img src={img3} />
                 </div>
-                <div className='Menu1-container whisper-container-v2'>
+                <div className='Menu1-container whisper-container-v2 fix-top-abc'>
                     <div className='text-overlay text-overplay-v1 text-overplay-v2' >
                         <p >Installation View, Spirit of Ecstasy Challenge Exhibition,
                             Cromwell Place, London, 5 - 8 October 2022.
@@ -170,9 +170,9 @@ const Page2 = () => {
                 </div>
             </section>
             <section className='Page-2-item Page-2-color-item color-best-abc'>
-                <div className='Menu1-container Careers-container-section2 Careers-container-section3'>
-                    <div className='text-overlay color-overlay'>
-                        <h1 style={{ paddingTop: '0px' }}>SIGN UP NOW</h1>
+                <div className='Menu1-container Careers-container-section2 Careers-container-section4'>
+                    <div className='text-overlay color-overlay best-fix-text'>
+                        <h1 >SIGN UP NOW</h1>
                         <div className='border-1-px'></div>
                         <p>Be the first to hear about our commissioning work with artists and designers,
                             events, conversations with collectors and museum partnership programmes.

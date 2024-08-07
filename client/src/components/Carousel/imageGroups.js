@@ -16,6 +16,12 @@ import img18 from '/public/Careers/img18.jpg';
 import img19 from '/public/Careers/img19.jpg';
 import img20 from '/public/Careers/img20.jpg';
 import img21 from '/public/Careers/img21.jpg';
+import img22 from '/public/muse/Page6/img5.webp';
+import img23 from '/public/muse/Page6/img6.webp';
+import img24 from '/public/muse/Page6/img8.webp';
+
+
+
 import img4 from '/public/Careers/img4.jpg';
 import img3 from '/public/Careers/img3.jpg';
 
@@ -54,6 +60,30 @@ const CareersMedia = [
 ];
 
 
+const Page6img = [
+    { type: 'image', src: img22 },
+    { type: 'image', src: img23 },
+    { type: 'image', src: img24 },
+];
+
+
+const mediaData = [
+    {
+        videos: [video1, video2],
+        title: 'GHIZLANE SAHLI',
+        description: 'The Marrakech-based winner of the Spirit of Ecstacy Challenge rejoices freedom and the human form in a celebration of femininity in all its facets.',
+        img: img4,
+    },
+    {
+        videos: [video4, video5],
+        title: 'SCARLETT YANG',
+        description: 'The London-based winner of the Spirit of Ecstacy Challenge explores nature, humanity and technological approaches that intercept design.',
+        img: img3,
+    },
+    // Thêm các phần tử khác nếu cần
+];
+
+
 const CareersVideo = [
     { type: 'video/mp4', src: video1 },
     { type: 'video/mp4', src: video2 },
@@ -65,5 +95,5 @@ const CareersVideo = [
 
 
 
-export { PreownedMedia, WhispersMedia, CareersMedia, CareersVideo };
+export { PreownedMedia, WhispersMedia, CareersMedia, CareersVideo, mediaData, Page6img };
 
