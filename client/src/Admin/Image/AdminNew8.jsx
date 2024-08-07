@@ -7,7 +7,7 @@ import Compressor from 'compressorjs';
 
 const AdminNew8 = () => {
     const { url } = AdminConfig;
-    const { id,product_id } = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
 
     const [products, setProducts] = useState({
