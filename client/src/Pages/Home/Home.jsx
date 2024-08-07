@@ -38,12 +38,12 @@ const Navbar = () => {
           selectedItem={currentSlide}
           onChange={handleChange}
         >
-          <div className='Navbar-video'>
+          <div className='Navbar-video '>
             <video src={RIMOWAMars} autoPlay muted loop />
             <div className={`video-content ${isVideoInView ? 'visible' : ''}`}>
               <h2>Original Colours </h2>
               <p>Mars & Mercury</p>
-              <button>
+              <button className='circle-large bigmouse'>
                 DISCOVER NOW
                 <GrLinkNext className="arrow" />
               </button>
@@ -53,7 +53,7 @@ const Navbar = () => {
             <img src={RIMOWA} alt="Culinan" />
             <div className={`img-content ${isImgInView ? 'visible' : ''}`}>
               <h2>CHARGING SPECTRE</h2>
-              <button>
+              <button className='bigmouse'>
                 DISCOVER NOW
                 <GrLinkNext className="arrow" />
               </button>
@@ -74,20 +74,20 @@ const Navbar = () => {
           </div>
           <div className='content-container'>
             <div className='Navbar-content'>
-              <div>
-                <img src={img1} alt="Discover Bespoke" />
+              <div className='bigmouse'>
+                <img src={img1} alt="Discover Bespoke " />
                 <h4>DISCOVER BESPOKE</h4>
                 <p>Choose from our exclusive collections or collaborate with our craftspeople and designers to create a Rolls-Royce wholly unique to you. This is Rolls-Royce Bespoke.</p>
               </div>
             </div>
             <div className='Navbar-content'>
-              <div>
-                <img src={img2} alt="Explore Models" />
+              <div className='bigmouse'>
+                <img src={img2} alt="Explore Models " />
                 <h4>EXPLORE MODELS</h4>
                 <p>Explore our stunning collection of new Rolls-Royce models. Whether you’re looking for the ultimate luxury saloon, a sporty coupe or a refined convertible, we have something for you.</p>
               </div>
             </div>
-            <div className='Navbar-content'>
+            <div className='Navbar-content '>
               <div>
                 <img src={img4} alt="Find Your Dealer" />
                 <h4>FIND A DEALER</h4>

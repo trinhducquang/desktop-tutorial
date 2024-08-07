@@ -4,7 +4,13 @@
     padding: 0;
     cursor: url('../public/mouse/mouse.svg'), auto;
     text-decoration: none;
-  
+    
+}
+
+
+
+img,button,a:hover {
+    cursor: pointer;  
 }
 
 
