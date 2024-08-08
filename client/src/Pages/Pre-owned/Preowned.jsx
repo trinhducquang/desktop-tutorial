@@ -220,7 +220,7 @@ const Preowned = () => {
                 <div className="img-section img-section-3">
                     <div className='image-container image-container-fix'>
                         <button>
-                            <Link to='/menu1'>
+                            <Link to='/Inspiring-Greatness'>
                                 Inspiring Greatness
                                 <GrLinkNext className="cta-arrow" />
                             </Link>

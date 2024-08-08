@@ -27,7 +27,7 @@ const MenuComponent = () => {
   const pathSegments = location.pathname.split('/');
   const id = pathSegments[pathSegments.length - 1];
 
-  const sectionClass = location.pathname.startsWith(`/product-details/${id}`) ? 'booking-page' :
+  const sectionClass = location.pathname.startsWith(`/Booking/${id}`) ? 'booking-page' :
                        location.pathname === '/User' ? 'user-page' : '';
 
   const navBarClass = location.pathname === '/Muse' ? 'muse-page' : 
