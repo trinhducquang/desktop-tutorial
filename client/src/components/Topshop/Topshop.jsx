@@ -11,16 +11,6 @@ const Topshop = ({ onFilterChange }) => {
         setActiveDropdown(activeDropdown === dropdown ? '' : dropdown);
     };
 
-    const colors = [
-        { name: 'Black', color: '#000000' },
-        { name: 'Blue', color: '#0000FF' },
-        { name: 'Green', color: '#008000' },
-        { name: 'Grey', color: '#808080' },
-        { name: 'Pink', color: '#FFC0CB' },
-        { name: 'White', color: '#f3f3f3' },
-        { name: 'Silver', color: '#C0C0C0' },
-    ];
-
     const [attributes, setAttirbutes] = useState([]);
     const [attributeValues, setAttirbuteValues] = useState([]);
 
@@ -106,17 +96,12 @@ const Topshop = ({ onFilterChange }) => {
                             {
                                 ['COLOR', 'TYPE', 'BRAND', 'SIZE', 'COLLECTION', 'FEATURES'].map(item => (
                                     <div key={item}>
-                                        <h5 onClick={() => toggleDropdown(item)}>{item}</h5>
-                                        <KeyboardArrowDownIcon />
+                                        <div className="topshop-container-item-1">
+                                            <h5 onClick={() => toggleDropdown(item)}>{item}</h5>
+                                            <KeyboardArrowDownIcon />
+                                        </div>
                                         {activeDropdown === item && item !== 'COLLECTION' && item !== 'FEATURES' && (
                                             <div className='dropdown-menu colors-menu'>
-                                                {/* {colors.map(color => (
-                                                    <div key={color.name} className='color-option'>
-                                                        <div className='color-box' style={{ backgroundColor: color.color }}></div>
-                                                        <p>{color.name}</p>
-                                                    </div>
-                                                ))} */}
-
                                                 {
                                                     attributes
                                                         .filter((attri) => attri.attribute_type === item.toLocaleLowerCase())
@@ -133,7 +118,7 @@ const Topshop = ({ onFilterChange }) => {
                                                                                 {/* <div className='color-box' style={{ backgroundColor: attri_value.value }}></div> */}
                                                                                 {/* <div typeof="checkbox">{attri_value.value}</div> */}
                                                                                 <input
-                                                                                    type="checkbox"
+                                                                                    type="checkbox" className="color-box"
                                                                                     id={`filter-${attri_value.id}`}
                                                                                     checked={selectedFilters[item.toLowerCase()]?.includes(attri_value.id) || false}
                                                                                     onChange={() => handleCheckboxChange(item.toLowerCase(), attri_value.id)}
@@ -143,10 +128,10 @@ const Topshop = ({ onFilterChange }) => {
                                                                             </div>
                                                                         ))
                                                                 }
-
                                                             </div>
                                                         ))
                                                 }
+
                                             </div>
                                         )}
                                         {activeDropdown === item && item === 'COLLECTION' && item === 'FEATURES' && (

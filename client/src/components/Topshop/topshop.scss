@@ -15,10 +15,10 @@
             position: relative;
             bottom: 2px;
         }
-
+       
         div {
             position: relative;
-            display: flex;
+            
             align-items: center;
             letter-spacing: 3px;
             margin: 5px;
@@ -34,31 +34,34 @@
                 background-color: #fff;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
                 z-index: 999;
-                width: 300px;
                 height: auto;
 
                 .color-option {
-                    display: flex;
-                    align-items: center;
                     margin: 5px 0;
                     letter-spacing: normal;
 
                     .color-box {
-                        width: 20px;
-                        height: 20px;
+                        width: 15px;
+                        height: 15px;
                         margin-right: 10px;
                     }
                 }
             }
 
+            .topshop-container-item-1 {
+                display: flex;
+            }
+
             .colors-menu {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
+                display: flex;
+                flex-wrap: wrap; 
                 padding: 20px;
 
                 .color-option {
                     display: flex;
                     align-items: center;
+                    width: 50%; 
+                    margin-bottom: 10px;
                 }
 
                 .color-box {
@@ -79,7 +82,7 @@
             margin: 0 10px;
             display: flex;
             cursor: pointer;
-
         }
     }
 }
+

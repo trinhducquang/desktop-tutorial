@@ -42,6 +42,8 @@ import video11 from '/public/InspiringSeries/Episode6.mp4'
 import video12 from '/public/InspiringSeries/Episode7.mp4'
 import video13 from '/public/InspiringSeries/Episode8.mp4'
 import video14 from '/public/InspiringSeries/Episode9.mp4'
+import video15 from '/public/InspiringSeries/Episode10.mp4'
+
 
 
 const PreownedMedia = [
@@ -117,6 +119,8 @@ const epstion2 = [
     { type: 'video/mp4', src: video12 },
     { type: 'video/mp4', src: video13 },
     { type: 'video/mp4', src: video14 },
+    { type: 'video/mp4', src: video15 },
+
 ];
 
 
