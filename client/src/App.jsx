@@ -12,6 +12,12 @@ import Privacy from './Pages/Privacy/Privacy';
 import Legal from './Pages/Legal/Legal';
 import Preowned from './Pages/Pre-owned/Preowned';
 import Complaints from './Pages/Complaints/Complaints';
+import Vali from './Pages/Vali/Vali'
+import Handbag from './Pages/Handbag/Handbag'
+import Packpack from './Pages/Packpack/Packpack'
+import Gentlement from './Pages/Gentlement/Gentlement'
+import Ladies from './Pages/Ladies/Ladies'
+
 import Admin from './Admin/Admin';
 import AdminProduct from './Admin/Product/AdminProduct';
 import AdminEdit from './Admin/Product/AdminEdit';
@@ -88,6 +94,12 @@ const App = () => {
           <Route path='/Inspiring-Series' element={<InspiringSeries />} />
           <Route path='/Bespoke' element={<Bespoke />} />
           <Route path='/User' element={<User />} />
+
+          <Route path='/Vali' element={<Vali/>}/>
+          <Route path='/Handbag' element={<Handbag/>}/>
+          <Route path='/Backpack' element={<Packpack/>}/>
+          <Route path='/Gentlemen' element={<Gentlement/>}/>
+          <Route path='/Ladies' element={<Ladies/>}/>
 
 
           <Route path='/Muse' element={<Muse />} />

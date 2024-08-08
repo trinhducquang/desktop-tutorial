@@ -102,7 +102,9 @@ const InspiringGreatness = () => {
             </div>
           </div>
           <button>
-            DISCOVER MORE
+            <Link to='/Vali'>
+              DISCOVER MORE
+            </Link>
             <GrLinkNext className="arrow" />
           </button>
         </div>
@@ -132,7 +134,9 @@ const InspiringGreatness = () => {
             </div>
           </div>
           <button>
-            DISCOVER MORE
+            <Link to='/Handbag'>
+              DISCOVER MORE
+            </Link>
             <GrLinkNext className="arrow" />
           </button>
         </div>
@@ -167,7 +171,9 @@ const InspiringGreatness = () => {
             </div>
           </div>
           <button>
-            DISCOVER MORE
+            <Link to='/Backpack'>
+              DISCOVER MORE
+            </Link>
             <GrLinkNext className="arrow" />
           </button>
         </div>
@@ -202,7 +208,9 @@ const InspiringGreatness = () => {
             </div>
           </div>
           <button>
-            DISCOVER MORE
+            <Link to='/Gentlemen'>
+              DISCOVER MORE
+            </Link>
             <GrLinkNext className="arrow" />
           </button>
         </div>
@@ -237,7 +245,9 @@ const InspiringGreatness = () => {
             </div>
           </div>
           <button>
-            DISCOVER MORE
+            <Link to='/Ladies'>
+              DISCOVER MORE
+            </Link>
             <GrLinkNext className="arrow" />
           </button>
         </div>
