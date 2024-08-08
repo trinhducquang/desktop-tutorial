@@ -73,7 +73,7 @@ const App = () => {
           <Route path='/Site-Map' element={<Sitemap />} />
           <Route path='/Contact' element={<Contact />} />
           <Route path='/Library' element={<Library />} />
-          <Route path='/Booking' element={<Booking />} />
+          <Route path='/Booking/:id' element={<Booking />} />
           <Route path='/Privacy' element={<Privacy />} />
           <Route path='/Legal' element={<Legal />} />
           <Route path='/pre-owned' element={<Preowned />} />
@@ -100,7 +100,7 @@ const App = () => {
 
 
 
-          <Route path='/product-details/:id' element={<Booking />} />
+          {/* <Route path='/product-details/:id' element={<Booking />} /> */}
 
 
 

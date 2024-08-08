@@ -162,27 +162,29 @@ const Library = () => {
                           // console.log(image1);
 
                           return (
-                            <div
-                              key={productId}
-                              className='img-container'
-                              onMouseEnter={() => handleMouseEnter(product.id)}
-                              onMouseLeave={handleMouseLeave}
-                            >
-                              {image1 && (
-                                <img
-                                  src={image1.image}
-                                  alt={`Product ${productId} - Image 1`}
-                                  className={`img1 ${hoveredItem === productId ? 'hidden' : ''}`}
-                                />
-                              )}
-                              {image2 && (
-                                <img
-                                  src={image2.image}
-                                  alt={`Product ${productId} - Image 2`}
-                                  className={`imgright ${hoveredItem === productId ? 'visible' : ''}`}
-                                />
-                              )}
-                            </div>
+                            <Link to={`/Booking/${productId}`}>
+                              <div
+                                key={productId}
+                                className='img-container'
+                                onMouseEnter={() => handleMouseEnter(product.id)}
+                                onMouseLeave={handleMouseLeave}
+                              >
+                                {image1 && (
+                                  <img
+                                    src={image1.image}
+                                    alt={`Product ${productId} - Image 1`}
+                                    className={`img1 ${hoveredItem === productId ? 'hidden' : ''}`}
+                                  />
+                                )}
+                                {image2 && (
+                                  <img
+                                    src={image2.image}
+                                    alt={`Product ${productId} - Image 2`}
+                                    className={`imgright ${hoveredItem === productId ? 'visible' : ''}`}
+                                  />
+                                )}
+                              </div>
+                            </Link>
                           );
                           // console.log(img.image) || console.log(img.product_id)
                           // <div

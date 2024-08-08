@@ -24,81 +24,113 @@ import Carousel3 from '../../components/Carousel/Carousel3';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
 
 import AdminConfig from '../../Admin/AdminConfig';
+import { useParams } from 'react-router-dom';
 
 
 const Booking = () => {
+    const { id } = useParams();
+    const { url } = AdminConfig;
+
     const [showMore, setShowMore] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [show3D, setShow3D] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
+
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const { url } = AdminConfig;
 
     const fetchData = async (url) => {
-        setLoading(true);
         try {
-          let resp = await fetch(`${url}AdminProduct.php`, {
-            method: 'GET',
-            headers: {
-              'X-React-File-Name': 'AdminProduct.jsx'
+            let resp = await fetch(`${url}AdminProduct.php/${id}`, {
+                method: 'GET',
+                headers: {
+                    'X-React-File-Name': 'AdminById.jsx',
+                    'x-File-Type': 'product'
+                }
+            });
+
+            if (!resp.ok) {
+                throw new Error('Failed to fetch product data.');
             }
-          });
-    
-          if (!resp.ok) {
-            throw new Error('Failed to fetch product data.');
-          }
-    
-          let data = await resp.json();
-          setProducts(data);
-          setLoading(false);
+
+            let data = await resp.json();
+            setProducts(data);
+            // console.log(data);
         } catch (error) {
-          console.error('Error fetching data:', error);
-          setLoading(false);
+            console.error('Error fetching data:', error);
         }
-      };
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         fetchData(url);
         fetchImage();
-      }, [url]);
-    
-      const [images, setImages] = useState([]);
-    
-      const fetchImage = async () => {
+    }, [url]);
+
+    const [images, setImages] = useState([]);
+
+    const fetchImage = async () => {
         try {
-          const response = await fetch(`${url}AdminProduct.php`, {
-            headers: {
-              'X-React-File-Name': 'AdminImage.jsx'
+            const response = await fetch(`${url}AdminProduct.php`, {
+                headers: {
+                    'X-React-File-Name': 'AdminImage.jsx'
+                }
+            })
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-          })
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          const data = await response.json();
-          setImages(data);
+            const data = await response.json();
+            // console.log(data);
+            setImages(data);
         } catch (error) {
-          console.error('Error fetching data:', error);
+            console.error('Error fetching data:', error);
         }
-      };
-    
-      const groupedImages = images.reduce((acc, img) => {
+    };
+
+    const groupedImages = images.reduce((acc, img) => {
         if (!acc[img.product_id]) {
-          acc[img.product_id] = [];
+            acc[img.product_id] = [];
         }
         acc[img.product_id].push(img);
         return acc;
-      }, {});
+    }, {});
 
-    
+
 
     const handleItemClick = (item) => {
         setExpandedItem(expandedItem === item ? null : item);
     };
+    // console.log(products)
+    const product = products;
+    console.log(product.id)
+    console.log(groupedImages);
+    let executed = false;
 
     return (
         <div className='overflow'>
+
+            {/* product.id !== null && */}
+            {
+                // products.map((product) => ({
+                console.log(product) ||
+                Object.entries(groupedImages)
+                    // .filter(([productId, imageList]) => productId === product.id)
+                    .map(([productId, imageList]) => {
+                        // const imageArray = Array.from({ length: images.filter(img => img.product_id == product.id) }, (_, index) => `image${index + 1}`);
+
+                        console.log( {length: images.filter(img => img.product_id == product.id)} );
+                        // console.log(imageArray);
+                        const [image3, image4, image5, image6,image7, image8, image9, image10,image11, image12] = imageList.slice(2, 12);
+
+                        if (executed) return null; // Skip further items
+                        executed = true;
+
+                        return (
+                            <>vao</>
+
+                        )
+                    })
+            }
+
             <div className='Booking-container'>
                 <div className='Booking-container-item'>
                     <div className='Booking-item-1'>
@@ -193,24 +225,24 @@ const Booking = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='item-list-6'>
-                            <div>
-                                <img src={ship} />
-                                <div>
-                                    <strong>Expected Delivery (United States)</strong>
-                                    <p>Express : Aug 06 - Aug 08</p>
-                                    <p>Standard : Aug 08 - Aug 13</p>
-                                </div>
-                            </div>
-                            <div>
-                                <img src={handbag} />
-                                <div>
-                                    <strong>Pick up in store</strong>
-                                    <p>Available to pick up <br /> in store</p>
-                                    <p><a href="#">Pick up in store</a></p>
-                                </div>
-                            </div>
+                        {/* <div className='item-list-6'>
+                    <div>
+                        <img src={ship} />
+                        <div>
+                            <strong>Expected Delivery (United States)</strong>
+                            <p>Express : Aug 06 - Aug 08</p>
+                            <p>Standard : Aug 08 - Aug 13</p>
                         </div>
+                    </div>
+                    <div>
+                        <img src={handbag} />
+                        <div>
+                            <strong>Pick up in store</strong>
+                            <p>Available to pick up <br /> in store</p>
+                            <p><a href="#">Pick up in store</a></p>
+                        </div>
+                    </div>
+                </div> */}
                         <div className='item-list-7'>
                             <span>Key elements</span>
                             <div className='item-list-7-item'>
@@ -352,26 +384,34 @@ const Booking = () => {
                         </div>
                     </div>
                 </div>
-                {show3D && (
+                {
+                    show3D && (
 
-                    <div className="iframe-container">
-                        <button className="close-button" onClick={() => setShow3D(false)}><img src={Close} /></button>
-                        <div>
-                            <iframe
-                                src="https://rimowa.threedium.co.uk/product-experience/latest/?sku=92585014&lang=en"
-                                frameBorder="0"
-                                allowFullScreen
-                                title="3D Product Experience"
-                            ></iframe>
+                        <div className="iframe-container">
+                            <button className="close-button" onClick={() => setShow3D(false)}><img src={Close} /></button>
+                            <div>
+                                <iframe
+                                    src="https://rimowa.threedium.co.uk/product-experience/latest/?sku=92585014&lang=en"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    title="3D Product Experience"
+                                ></iframe>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )
+                }
             </div>
-            <div className='fix-best-lat-booking'>
+
+
+            <div className='Booking-container'>
+
+            </div>
+
+            {/* <div className='fix-best-lat-booking'>
                 <h1>Related products</h1>
                 <p>You may also like</p>
                 <Carousel3 media={WhispersMedia} />
-            </div>
+            </div> */}
             <FooterTop />
         </div>
     );
