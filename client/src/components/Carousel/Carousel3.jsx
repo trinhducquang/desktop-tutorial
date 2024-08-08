@@ -122,15 +122,15 @@ const Carousel = () => {
 
                                             return (
                                                 // <Link to={`/Booking/${productId}`}>
-                                                    <div key={productId}>
-                                                        {image1 && (
+                                                    // <div key={productId}>
+                                                        image1 && (
                                                             <img
                                                                 src={image1.image}
                                                                 alt={`Product ${productId} - Image 1`}
-                                                                className='carousel-new-item-info'
+                                                                // className='carousel-new-item-info'
                                                             />
-                                                        )}
-                                                    </div>
+                                                        )
+                                                    // </div>
                                                 // </Link>
                                             );
                                         })
