@@ -92,7 +92,7 @@ const AdminAttribute = () => {
                 <div className="product-list-header">
                     <h3 className="admin-product-title">Attribute List</h3>
                     {/* <Link to='/Admin'>Admin</Link><br/> */}
-                    <Link to='/Admin/attri/new' className="add-new-button">Add New</Link>
+                    {/* <Link to='/Admin/attri/new' className="add-new-button">Add New</Link> */}
                 </div>
 
                 <div className="admin-product-table-container">

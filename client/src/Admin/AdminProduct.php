@@ -359,27 +359,40 @@ function fetchDataById($table, $id)
 
     }
 
+    
     // echo json_encode($reactFileType);
-    if ($reactFileType !== 'attriValue_by_Id' && $reactFileType !== 'image_by_Id' && $reactFileType === 'product_attri_by_id') {
-        // echo json_encode($stmt);
-        $stmt->bind_param("i", $id);
+    switch ($reactFileType) {
+        case 'attriValue_by_Id':
+            # code...
+            break;
 
-        $stmt->execute();
-        $result = $stmt->get_result();
+        case 'image_by_Id':
+            # code...
+            break;
 
-        // echo json_encode('vaof');
-        if ($result->num_rows > 0) {
-            $data = $result->fetch_assoc();
-            // echo json_encode($data);
-        } else {
-            $data = null;
-        }
+        case 'product_attri_by_id':
+            # code...
+            break;
 
-        $stmt->close();
+        default:
+            // echo json_encode($stmt);
+            $stmt->bind_param("i", $id);
 
-        closeConnection($conn);
-    }else{
-        // echo json_encode('vao');
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            // echo json_encode('vaof');
+            if ($result->num_rows > 0) {
+                $data = $result->fetch_assoc();
+                // echo json_encode($data);
+            } else {
+                $data = null;
+            }
+
+            $stmt->close();
+
+            closeConnection($conn);
+            break;
     }
 
     return $data;
