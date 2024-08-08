@@ -27,7 +27,7 @@ const Navbar = ({
             <Link to='/'><h1>RIMOWA</h1></Link>
           </div>
           <div className='find-dealer'>
-            {location.pathname.startsWith(`/product-details/${id}`) ? (
+            {location.pathname.startsWith(`/Booking/${id}`) ? (
               <div className='shopping-cart-container' onClick={handleCartClick}>
                 <ShoppingCartIcon />
                 <div className='badge'>{totalQuantity}</div>
