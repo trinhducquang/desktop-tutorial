@@ -511,7 +511,6 @@ const Booking = () => {
                                             <button className="close-button" onClick={() => setShow3D(false)}><img src={Close} /></button>
                                             <div>
                                                 <iframe
-                                                    // src="https://rimowa.threedium.co.uk/product-experience/latest/?sku=92585014&lang=en"
                                                     src={`${product.link}`}
                                                     frameBorder="0"
                                                     allowFullScreen
