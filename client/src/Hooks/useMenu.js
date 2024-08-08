@@ -92,8 +92,8 @@ const useMenu = () => {
 
   const menuItems = [
     { name: "INSPIRING GREATNESS", link: "/Inspiring-Greatness" },
+    { name: "OBJECTS OF LUXURY", link: "/Luxury" },
     { name: "MODELS", link: "/models", link: "/Bespoke" },
-    { name: "BESPOKE", link: "/bespoke" },
     { name: "OWNERSHIP", link: "/ownership" },
     { name: "PROVENANCE", link: "/pre-owned" },
     { name: "BOUTIQUE", link: "/boutique" },

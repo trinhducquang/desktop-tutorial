@@ -5,8 +5,8 @@ import useScrollTranslate from '../../Hooks/useScrollTranslate';
 
 const Complaints = () => {
   
-  const distance1 = 810.4;
-  const distance2 = 209.4;
+  const distance1 = 362;
+  const distance2 = 220.4;
   const distance3 = 168.8;
 
   const contactRef1 = useScrollTranslate(distance1);

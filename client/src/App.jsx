@@ -17,7 +17,6 @@ import Handbag from './Pages/Handbag/Handbag'
 import Packpack from './Pages/Packpack/Packpack'
 import Gentlement from './Pages/Gentlement/Gentlement'
 import Ladies from './Pages/Ladies/Ladies'
-
 import Admin from './Admin/Admin';
 import AdminProduct from './Admin/Product/AdminProduct';
 import AdminEdit from './Admin/Product/AdminEdit';
@@ -47,7 +46,7 @@ import Cookie from './Pages/Cookie/Cookie';
 import Careers from './Pages/Careers/Careers';
 import MenuComponent from './components/Menu/MenuComponent';
 import InspiringSeries from './Pages/InspiringSeries/InspiringSeries';
-import Bespoke from './Pages/Bespoke/Bespoke';
+import Luxury from './Pages/Luxury/Luxury';
 import Muse from './Pages/Muse/Muse';
 import Page1 from './Pages/Muse/Muse-stories/Page1/Page1';
 import Page2 from './Pages/Muse/Muse-stories/Page2/Page2';
@@ -92,7 +91,7 @@ const App = () => {
           <Route path='/Cookie' element={<Cookie />} />
           <Route path='/Careers' element={<Careers />} />
           <Route path='/Inspiring-Series' element={<InspiringSeries />} />
-          <Route path='/Bespoke' element={<Bespoke />} />
+          <Route path='/Luxury' element={<Luxury />} />
           <Route path='/User' element={<User />} />
 
           <Route path='/Vali' element={<Vali/>}/>
