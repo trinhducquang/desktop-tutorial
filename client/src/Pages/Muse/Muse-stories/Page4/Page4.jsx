@@ -26,7 +26,7 @@ const Page4 = () => {
     } = useVideoControl();
 
     return (
-        <div className='Page2-container'>
+        <div className='Page2-container overflow'>
             <section>
                 <div className='Menu1-container page-2-overlay'>
                     <img src={img1} />
