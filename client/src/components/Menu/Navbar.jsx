@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import user from '/public/icon/user.png'
-import Shopcart from '/public/icon/shopping-bag.png'
+import Shopcart from '/public/icon/shopping-bag.png';
+import market from '/public/icon/market.png';
 import './Navbar.scss';
 
 const Navbar = ({
@@ -15,6 +15,8 @@ const Navbar = ({
   navBarClass,
   id
 }) => {
+  const currentLocation = useLocation();
+
   return (
     <div className={`Navbar-container ${navBarClass}`}>
       <div className='container-item'>
@@ -28,12 +30,16 @@ const Navbar = ({
           </div>
           <div className='find-dealer'>
             <div className='shopping-cart-container' onClick={handleCartClick}>
-              <img src={Shopcart}/>
+              {currentLocation.pathname.startsWith(`/Booking/${id}`) ? (
+                <img src={market} />
+              ) : (
+                <img src={Shopcart} />
+              )}
               <div className='badge'>{totalQuantity}</div>
             </div>
           </div>
         </div>
-        {isNavMenuVisible && location.pathname === '/Inspiring-Greatness' && (
+        {isNavMenuVisible && currentLocation.pathname === '/Inspiring-Greatness' && (
           <div className='Navbar-container-menu1'>
             <div className='additional-items'>
               <a href='./menu1'>Inspiring Greatness</a>
