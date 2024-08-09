@@ -32,10 +32,6 @@
       height: 100%;
       transition: height 0.3s;
   
-      img {
-        width: 30px;
-        margin-left: 30px;
-      }
   
       .top-row {
         display: flex;
@@ -155,4 +151,13 @@
   .additional-items>a:not(:first-child) {
     margin-left: 20px;
   }
+
+  .find-dealer {
+    img {
+      gap: 30px
+      ;
+    }
+  }
+
+
   

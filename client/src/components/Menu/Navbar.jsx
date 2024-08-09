@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import user from '/public/icon/user.png'
+import Shopcart from '/public/icon/shopping-bag.png'
 import './Navbar.scss';
 
 const Navbar = ({
@@ -12,8 +12,8 @@ const Navbar = ({
   handleCartClick,
   isNavMenuVisible,
   totalQuantity,
-  navBarClass, // Nhận lớp CSS
-  id  // Nhận id từ MenuComponent
+  navBarClass,
+  id
 }) => {
   return (
     <div className={`Navbar-container ${navBarClass}`}>
@@ -27,17 +27,10 @@ const Navbar = ({
             <Link to='/'><h1>RIMOWA</h1></Link>
           </div>
           <div className='find-dealer'>
-            {location.pathname.startsWith(`/Booking/${id}`) ? (
-              <div className='shopping-cart-container' onClick={handleCartClick}>
-                <ShoppingCartIcon />
-                <div className='badge'>{totalQuantity}</div>
-              </div>
-            ) : (
-              <>
-                <SearchIcon />
-                <span>FIND A DEALER</span>
-              </>
-            )}
+            <div className='shopping-cart-container' onClick={handleCartClick}>
+              <img src={Shopcart}/>
+              <div className='badge'>{totalQuantity}</div>
+            </div>
           </div>
         </div>
         {isNavMenuVisible && location.pathname === '/Inspiring-Greatness' && (

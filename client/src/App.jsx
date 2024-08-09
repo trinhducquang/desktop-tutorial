@@ -58,6 +58,7 @@ import User from './Pages/User/User';
 import AdminImage from './Admin/Image/AdminImage';
 import AdminEdit8 from './Admin/Image/AdminEdit8';
 import AdminNew8 from './Admin/Image/AdminNew8';
+import Login from './Pages/Login/Login';
 
 
 
@@ -83,6 +84,8 @@ const App = () => {
           <Route path='/Legal' element={<Legal />} />
           <Route path='/pre-owned' element={<Preowned />} />
           <Route path='/Complaints' element={<Complaints />} />
+          <Route path='/Login' element={<Login />} />
+
 
           <Route path='/pre-owned' element={<Preowned />} />
           <Route path='/Complaints' element={<Complaints />} />

@@ -6,7 +6,10 @@ import Roll from '/video/Rolls.mp4';
 import useVideoControl from '../../Hooks/useVideoControl';
 import Carousel from '../../components/Carousel/Carousel';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
-
+import img1 from '/public/muse/page3/img1.webp'
+import img2 from '/public/muse/page3/img2.webp'
+import img3 from '/public/muse/page3/img3.webp'
+import { Link } from 'react-router-dom';
 const Whispers = () => {
   const {
     isPlaying,
@@ -74,21 +77,58 @@ const Whispers = () => {
         </button>
       </section>
       <section className='background-color-v1'>
-        <div className='Menu1-container whisper-container-v2'>
+        <div className='Menu1-container whisper-container-v2 whisper-container-v5'>
           <div className='text-overlay text-overplay-v1 text-overplay-v2'>
             <h1>EXPLORE WHISPERS</h1>
-            <p>For Rolls-Royce owners, Whispers unlocks new horizons, and grants access to the most memorable experiences. Discover a world where unique opportunities to connect meet unparalleled possibilities.</p>
+            <p>For Rolls-Royce owners, Whispers unlocks new horizons, and grants access to the most memorable experiences. 
+              Discover a world where unique opportunities to connect meet unparalleled possibilities.</p>
           </div>
         </div>
         <div className='carousel-padding'>
           <Carousel media={WhispersMedia} />
-          <div className='Menu1-container whisper-container-v2'>
+          <div className='Menu1-container heightwhisper'>
             <div className='text-overlay text-overplay-v2'>
               <p>For Rolls-Royce owners, Whispers unlocks new horizons, and grants access to the most memorable experiences. Discover a world where unique opportunities to connect meet unparalleled possibilities.</p>
             </div>
           </div>
         </div>
       </section>
+      <section className='color-seticon-last'>
+                <div className='Navbar-item'>
+                    <div>
+                        <h3>CONTINUE YOUR JOURNEY</h3>
+                    </div>
+                    <div className='content-container'>
+                        <div className='Navbar-content'>
+                            <div>
+                                <img src={img1} alt="Discover Bespoke" />
+                                <h4>DISCOVER BESPOKE</h4>
+                                <p>Choose from our exclusive collections or collaborate with our craftspeople and designers to create a Rolls-Royce wholly unique to you. This is Rolls-Royce Bespoke.</p>
+                            </div>
+                        </div>
+                        <div className='Navbar-content'>
+                            <div>
+                                <img src={img2} alt="Explore Models" />
+                                <h4>EXPLORE MODELS</h4>
+                                <p>Explore our stunning collection of new Rolls-Royce models. Whether you’re looking for the ultimate luxury saloon, a sporty coupe or a refined convertible, we have something for you.</p>
+                            </div>
+                        </div>
+                        <div className='Navbar-content'>
+                            <div>
+                                <img src={img3} alt="Find Your Dealer" />
+                                <h4>FIND A DEALER</h4>
+                                <p>Find a Rolls-Royce dealer near you and book a test drive or discover more about the bespoke services we offer.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='Page1-button fix2-button'>
+                        <Link to='/Inspiring-Greatness'>
+                            Inspiring Greatness
+                            <GrLinkNext className="arrow" />
+                        </Link>
+                    </div>
+                </div>
+            </section>
     </div>
   );
 }
