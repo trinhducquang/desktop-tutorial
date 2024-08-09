@@ -58,12 +58,6 @@ const MenuComponent = () => {
         isCartOpen={isCartOpen}
         handleCloseCart={handleCloseCart}
       />
-      {shouldShowOverlay && (
-        <div
-          className={`overlay ${shouldShowOverlay ? 'open' : ''}`}
-          onClick={isMenuOpen ? handleCloseMenu : handleCloseCart}
-        ></div>
-      )}
     </section>
   );
 };

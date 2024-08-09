@@ -49,5 +49,20 @@
 }
 
 .class {
-    background-color: #222;
+    background-color: #151515 !important;
+    > span,h2,p, button {
+        color: white !important;
+        border: none !important;
+        background-color: #151515 !important;
+    }
+
+}
+
+.luxury-button {
+    justify-content: center;
+    bottom: 10px;
+    button {
+        border: 1px solid black !important;
+        
+    }
 }
