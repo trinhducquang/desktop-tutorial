@@ -42,7 +42,7 @@ const Navbar = ({
         {isNavMenuVisible && currentLocation.pathname === '/Inspiring-Greatness' && (
           <div className='Navbar-container-menu1'>
             <div className='additional-items'>
-              <a href='./menu1'>Inspiring Greatness</a>
+              <a href='./Inspiring-Greatness'>Inspiring Greatness</a>
               <Link to="/Vali">Vali</Link>
               <Link to="/Handbag">Handbag</Link>
               <Link to="/Backpack">Backpack</Link>
