@@ -8,15 +8,9 @@ import AdminConfig from '../../Admin/AdminConfig';
 import './CartMenu.scss';
 
 const CartMenu = ({ isCartOpen, handleCloseCart }) => {
-  const { handleSubmit } = useMenu();
+  // const { handleSubmit } = useMenu();
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
-  const [products, setProducts] = useState({
-    id: null,
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-  });
+  // console.log(cartItems);
 
   const { url } = AdminConfig;
   const navigate = useNavigate();
@@ -31,33 +25,44 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     return isNaN(numPrice) ? '0.00' : numPrice.toFixed(2);
   };
 
+
+
+  sessionStorage.setItem('userId', '1');
+  const id = sessionStorage.getItem('userId');
+  // console.log(id); // This will log 'myValue'
+
+  const [products, setProducts] = useState({
+    id: null,
+    name: '',
+    email: '',
+    phone: '',
+    address: ''
+  });
   useEffect(() => {
     const id = sessionStorage.getItem('userId') || '1';
     fetch(`${url}AdminProduct.php/${id}`, {
       headers: {
         'X-React-File-Name': 'AdminById.jsx',
-        'x-File-Type': 'user',
-      },
+        'x-File-Type': 'user'
+      }
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+      
+    }).then(data => {
+      // console.log(data);
+      setProducts({
+        ...products,
+        id: data.id,
+        name: data.name ? data.name : '',
+        email: data.email ? data.email : '',
+        phone: data.phone ? data.phone : '',
+        address: data.address ? data.address : ''
+
+      })
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setProducts({
-          ...products,
-          id: data.id,
-          name: data.name || '',
-          email: data.email || '',
-          phone: data.phone || '',
-          address: data.address || '',
-        });
-      })
-      .catch((error) => {
-        console.error('Fetch error:', error);
-      });
   }, []);
 
   const handleCheckout = (event) => {
@@ -90,9 +95,9 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       },
       body: JSON.stringify(order),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+      .then(response => response.json())
+      .then(data => {
+        // console.log(data);
         alert('Checkout successfully');
         clearCart();
         navigate('./Library');
@@ -140,7 +145,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           <p>${totalPrice.toFixed(2)}</p>
         </div>
         <div className='cart-content-3-item-2'>
-          <button type="submit" onClick={handleSubmit}>CHECKOUT NOW</button>
+          <button type="submit">CHECKOUT NOW</button>
         </div>
       </div>
     </form>
