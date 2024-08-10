@@ -1,0 +1,33 @@
+.fix-color-ownership {
+    background-color: white !important;
+    h1,h4, p {
+        color: black;
+    }
+
+   
+}
+
+.background-color-owner-ship {
+    background-color: white !important;
+}
+
+.color-super-aaa {
+    background-color: #151515 !important;
+    h1, p {
+        color: white !important;
+    }
+}
+
+.Careers-container-section5 {
+    top: 50px;
+}
+
+.fix-carousel {
+    padding-bottom: 100px;
+}
+
+.fix-boder-left {
+    > div {
+        border-left: 1px solid gray;
+    }
+}

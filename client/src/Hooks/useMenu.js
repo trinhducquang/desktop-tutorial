@@ -91,14 +91,14 @@ const useMenu = () => {
   };
 
   const menuItems = [
+    { name: "TRAVEL COMPANIONS COLLECTION", link: "/Library" },
     { name: "MUSE ARTS PROGRAMME", link: "/Muse" },
     { name: "INSPIRING GREATNESS", link: "/Inspiring-Greatness" },
     { name: "OBJECTS OF LUXURY", link: "/Luxury" },
     { name: "PROVENANCE", link: "/pre-owned" },
     { name: "OWNERSHIP", link: "/ownership" },
     { name: "BOUTIQUE", link: "/boutique" },
-    { name: "LIBRARY", link: "/Library" },
-    { name: "LOGIN", link: "/Login" },   
+    { name: "LOGIN", link: "/Login" },
   ];
 
   return {
