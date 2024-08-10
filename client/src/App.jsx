@@ -9,6 +9,7 @@ import Contact from './Pages/Contact/Contact';
 import Library from './Pages/Library/Library';
 import Booking from './Pages/Booking/Booking';
 import Privacy from './Pages/Privacy/Privacy';
+import Ownership from './Pages/Ownership/Ownership';
 import Legal from './Pages/Legal/Legal';
 import Preowned from './Pages/Pre-owned/Preowned';
 import Complaints from './Pages/Complaints/Complaints';
@@ -96,6 +97,7 @@ const App = () => {
           <Route path='/Inspiring-Series' element={<InspiringSeries />} />
           <Route path='/Luxury' element={<Luxury />} />
           <Route path='/User' element={<User />} />
+          <Route path='/Ownership' element={<Ownership/>}></Route>
 
           <Route path='/Vali' element={<Vali/>}/>
           <Route path='/Handbag' element={<Handbag/>}/>
