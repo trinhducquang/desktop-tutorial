@@ -26,6 +26,8 @@ import { WhispersMedia } from '../../components/Carousel/imageGroups';
 import AdminConfig from '../../Admin/AdminConfig';
 import { useParams } from 'react-router-dom';
 
+import { useCart } from '../../Hooks/CartContext';
+
 
 const Booking = () => {
     const { id } = useParams();
@@ -151,6 +153,24 @@ const Booking = () => {
     // console.log(product.id)
     // console.log(groupedImages);
     let executed = false;
+
+    
+    const { addToCart } = useCart();
+
+    const handleAddToCart = () => {
+        const filterImage = images.filter(imgL => imgL.product_id == product.id);
+        const mainImage = filterImage.slice(0, 2).length > 0 ? filterImage[0].image : null;
+        // console.log(filterImage.slice(0, 1));
+
+        const productToAdd = {
+            id: product.id,
+            name: product.name,
+            price: parseFloat(product.price) || 0,
+            image: mainImage,
+        };
+        addToCart(productToAdd);
+    };
+
 
     return (
         <div className='overflow'>
@@ -305,7 +325,7 @@ const Booking = () => {
                                         </div> */}
                                         <div className='hr'></div>
                                         <div className='item-list-5'>
-                                            <button>ADD TO CART</button>
+                                            <button onClick={handleAddToCart}>ADD TO CART</button>
                                             <div>
                                                 <span>Rate:</span>
                                                 <div className='rating'>

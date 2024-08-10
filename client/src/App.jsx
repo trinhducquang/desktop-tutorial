@@ -61,6 +61,8 @@ import AdminEdit8 from './Admin/Image/AdminEdit8';
 import AdminNew8 from './Admin/Image/AdminNew8';
 import Login from './Pages/Login/Login';
 
+import { CartProvider } from './Hooks/CartContext';
+
 
 
 const App = () => {
@@ -69,7 +71,7 @@ const App = () => {
 
   return (
 
-
+    <CartProvider>
 
       <div>
         {!isAdminRoute && <MenuComponent />}
@@ -99,11 +101,11 @@ const App = () => {
           <Route path='/User' element={<User />} />
           <Route path='/Ownership' element={<Ownership/>}></Route>
 
-          <Route path='/Vali' element={<Vali/>}/>
-          <Route path='/Handbag' element={<Handbag/>}/>
-          <Route path='/Backpack' element={<Packpack/>}/>
-          <Route path='/Gentlemen' element={<Gentlement/>}/>
-          <Route path='/Ladies' element={<Ladies/>}/>
+          <Route path='/Vali' element={<Vali />} />
+          <Route path='/Handbag' element={<Handbag />} />
+          <Route path='/Backpack' element={<Packpack />} />
+          <Route path='/Gentlemen' element={<Gentlement />} />
+          <Route path='/Ladies' element={<Ladies />} />
 
 
           <Route path='/Muse' element={<Muse />} />
@@ -159,6 +161,7 @@ const App = () => {
 
         {!isAdminRoute && <Footer />}
       </div>
+    </CartProvider>
   );
 };
 
