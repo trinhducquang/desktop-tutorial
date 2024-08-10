@@ -161,7 +161,6 @@ function fetchData($table)
     return $data;
 }
 
-
 if (isset($_SERVER['HTTP_X_REACT_FILE_NAME'])) {
     $reactFileName = $_SERVER['HTTP_X_REACT_FILE_NAME'];
     // $reactFileType = $_SERVER['HTTP_X_FILE_TYPE'];
@@ -238,7 +237,6 @@ function deleteData($id, $table)
 
     return $data > 0;  // Return true if deletion was successful
 }
-
 
 if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYPE'])) {
     $reactFileType = $_SERVER['HTTP_X_FILE_TYPE'];
@@ -359,7 +357,7 @@ function fetchDataById($table, $id)
 
     }
 
-    
+
     // echo json_encode($reactFileType);
     switch ($reactFileType) {
         case 'attriValue_by_Id':
@@ -397,7 +395,6 @@ function fetchDataById($table, $id)
 
     return $data;
 }
-
 
 if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYPE'])) {
     $reactFileName = $_SERVER['HTTP_X_REACT_FILE_NAME'];
@@ -534,7 +531,6 @@ function editProduct($id, $table, $fieldValues, $AttriValues)
     return $success;
 
 }
-
 
 if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAME'] === 'AdminEdit.jsx' && isset($_SERVER['HTTP_X_FILE_TYPE'])) {
     $reactFileName = $_SERVER['HTTP_X_REACT_FILE_NAME'];
@@ -780,7 +776,6 @@ function sanitizeInput($value, $type)
     }
 }
 
-
 if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAME'] === 'AdminNew.jsx' && isset($_SERVER['HTTP_X_FILE_TYPE'])) {
     $reactFileName = $_SERVER['HTTP_X_REACT_FILE_NAME'];
     $reactFileName = $_SERVER['HTTP_X_REACT_FILE_NAME'];
@@ -891,4 +886,125 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
 }
 
 
-// by attribute + gender
+// Order Product
+
+function orderProduct($orderItems, $orderInfos) {
+    
+    $conn = createConnection();
+
+    // Insert order into orders table
+    $sql = "INSERT INTO orders (user_id, name, email, phone, address, order_date, total_amount)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("isssssd", 
+        $orderInfos[0]['user_id'],
+        $orderInfos[0]['name'],
+        $orderInfos[0]['email'],
+        $orderInfos[0]['phone'],
+        $orderInfos[0]['address'],
+        $orderInfos[0]['order_date'],
+        $orderInfos[0]['total']
+    );
+
+    if ($stmt->execute()) {
+        $order_id = $stmt->insert_id;
+
+        // Insert order details into order_detail table
+        foreach ($orderItems as $item) {
+            $sql_detail = "INSERT INTO order_detail (order_id, product_id, quantity, price_product, subtotal)
+                           VALUES (?, ?, ?, ?, ?)";
+
+            $stmt_detail = $conn->prepare($sql_detail);
+            $stmt_detail->bind_param("iiidd", 
+                $order_id, 
+                $item['product_id'], 
+                $item['quantity'], 
+                $item['price_product'], 
+                $item['subtotal']
+            );
+
+            if (!$stmt_detail->execute()) {
+                return ["error" => "Error creating order detail: " . $stmt_detail->error];
+            }
+
+            $stmt_detail->close();
+        }
+
+        // Prepare response
+        $response = [
+            "status" => "success",
+            "message" => "Order and details created successfully",
+            "order_id" => $order_id
+        ];
+
+        // echo json_encode($response);
+        // return $response;
+    } else {
+        return ["error" => "Error creating order: " . $stmt->error];
+    }
+
+    $stmt->close();
+
+    $conn->close();
+
+    return $response;
+}
+
+if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAME'] === 'OrderProduct.jsx') {
+    $reactFileName = $_SERVER['HTTP_X_REACT_FILE_NAME'];
+    $ordersTable = $tables[4];
+    $order_detailTable = $tables[5];
+
+
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    if (!isset($data) || !is_array($data)) {
+        echo json_encode(["error" => "Invalid data format"]);
+        exit;
+    }
+
+    $orderItems = [];
+    foreach ($data['fields']['orderDetails'] as $record) {
+        if (isset($record)) {
+            $orderItems[] = [
+                'product_id' => $record['fields']['product_id'],
+                'price_product' => $record['fields']['price_product'],
+                'quantity' => $record['fields']['quantity'],
+
+                'subtotal' => $record['fields']['price_product'] * $record['fields']['quantity']
+            ];
+        }
+    }
+
+    // Calculate total amount
+    $total = 0.0;
+    foreach ($orderItems as $item) {
+        $total += $item['subtotal'];
+    }
+
+    $orderInfos = [];
+    foreach ($data as $record) {
+        if (isset($record)) {
+            $orderInfos[] = [
+                'user_id' => $record['user_id'],
+                'name' => $record['name'],
+                'email' => $record['email'],
+                'phone' => $record['phone'],
+                'address' => $record['address'],
+                'order_date' => date("Y-m-d H:i:s"),
+                'total' => $total
+            ];
+        }
+    }
+
+    $checkout = orderProduct($orderItems, $orderInfos);
+
+    if ($checkout) {
+        echo json_encode(array("message" => "checkout successfully"));
+    } else {
+        echo json_encode(array("error" => "Failed to checkout"));
+    }
+
+
+}

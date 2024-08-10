@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Slider from 'react-slick';
 import './Carousel2.scss';
 import AdminConfig from '../../Admin/AdminConfig';
+import { useCart } from '../../Hooks/CartContext';
 
 const Carousel = ({ media, title }) => {
     const { url } = AdminConfig;
@@ -106,6 +107,23 @@ const Carousel = ({ media, title }) => {
     }, {});
 
 
+    const { addToCart } = useCart();
+
+    const handleAddToCart = useCallback((product) => {
+        const filterImage = images.filter(imgL => imgL.product_id == product.id);
+        const mainImage = filterImage.slice(0, 2).length > 0 ? filterImage[0].image : null;
+        // console.log(filterImage.slice(0, 1));
+
+        const productToAdd = {
+            id: product.id,
+            name: product.name,
+            price: parseFloat(product.price) || 0,
+            image: mainImage,
+        };
+        addToCart(productToAdd);
+    }, [addToCart]);
+
+
     return (
         <div className='carousel-container'>
             <p className='carousel-title'>{title}</p>
@@ -149,7 +167,7 @@ const Carousel = ({ media, title }) => {
                                 <span className='item-caption'>{product.name}</span>
                                 <span className='item-price'>${product.price}</span>
                                 <div>
-                                    <button className='add-to-cart-button'>Add to Cart</button>
+                                    <button className='add-to-cart-button' onClick={() => handleAddToCart(product)}>Add to Cart</button>
                                 </div>
                             </div>
 
