@@ -6,6 +6,7 @@ import RIMOWA from '../../../public/video/main/RIMOWA.avif';
 import img1 from '../../../public/video/main/img1.webp';
 import img2 from '../../../public/video/main/img2.webp';
 import img4 from '../../../public/video/main/img4.webp';
+import { Link } from 'react-router-dom';
 import { GrLinkNext } from "react-icons/gr";
 import useNavbar from '../../Hooks/useNavbar';
 import './Home.scss';
@@ -44,7 +45,9 @@ const Navbar = () => {
               <h2>Original Colours </h2>
               <p>Mars & Mercury</p>
               <button className='circle-large bigmouse'>
-                DISCOVER NOW
+                <Link to="/Vali">
+                  DISCOVER NOW
+                </Link>
                 <GrLinkNext className="arrow" />
               </button>
             </div>
@@ -54,7 +57,9 @@ const Navbar = () => {
             <div className={`img-content ${isImgInView ? 'visible' : ''}`}>
               <h2>CHARGING SPECTRE</h2>
               <button className='bigmouse'>
-                DISCOVER NOW
+                <Link to="/Library">
+                  DISCOVER NOW
+                </Link>
                 <GrLinkNext className="arrow" />
               </button>
             </div>
@@ -66,7 +71,7 @@ const Navbar = () => {
           className='Navbar-item'
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          style={{ marginTop: scrollPosition > window.innerHeight ? '0' : '0' }} 
+          style={{ marginTop: scrollPosition > window.innerHeight ? '0' : '0' }}
         >
           <div>
             <h3>EXPLORE FURTHER</h3>
