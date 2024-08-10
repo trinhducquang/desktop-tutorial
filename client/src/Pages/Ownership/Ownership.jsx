@@ -38,7 +38,7 @@ const Ownership = () => {
     } = useVideoControl();
 
     return (
-        <div>
+        <div className='overflow'>
             <section>
                 <div className='Menu1-container'>
                     <video src={Owership} autoPlay loop muted />
