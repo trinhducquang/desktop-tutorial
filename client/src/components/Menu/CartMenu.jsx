@@ -8,6 +8,7 @@ import { WhispersMedia } from '../../components/Carousel/imageGroups';
 import useMenu from '../../Hooks/useMenu';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../Hooks/CartContext';
+
 import AdminConfig from '../../Admin/AdminConfig';
 
 
@@ -17,7 +18,6 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
   } = useMenu();
 
-  // const { handleSubmit } = useMenu();
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
   console.log(cartItems);
 
