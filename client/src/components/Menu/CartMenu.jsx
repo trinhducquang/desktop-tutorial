@@ -13,10 +13,6 @@ import AdminConfig from '../../Admin/AdminConfig';
 
 
 const CartMenu = ({ isCartOpen, handleCloseCart }) => {
-  const {
-    // handleSubmit, 
-
-  } = useMenu();
 
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
   console.log(cartItems);

@@ -4,7 +4,7 @@ import { openMenu, closeMenu, setScrollY, finishClosing, setCurrentPage } from '
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-const useMenu = () => {
+const useMenu = (totalPrice, totalItems) => {
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
   const isClosing = useSelector((state) => state.menu.isClosing);
@@ -77,18 +77,6 @@ const useMenu = () => {
   const handleCartClick = () => setIsCartOpen(true);
   const handleCloseCart = () => setIsCartOpen(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post('http://localhost:8000/payment');
-      if (res?.data) {
-        const link = res.data.links[1].href;
-        window.location.href = link;
-      }
-    } catch (error) {
-      console.error('Error during payment submission:', error);
-    }
-  };
 
   const menuItems = [
     { name: "TRAVEL COMPANIONS COLLECTION", link: "/Library" },
@@ -111,7 +99,6 @@ const useMenu = () => {
     handleCloseMenu,
     handleCartClick,
     handleCloseCart,
-    handleSubmit,
     menuItems
   };
 };
