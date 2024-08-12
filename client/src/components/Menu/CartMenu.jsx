@@ -37,8 +37,8 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   const { url } = AdminConfig;
   const navigate = useNavigate()
 
-  sessionStorage.setItem('uesrId', '1');
-  const id = sessionStorage.getItem('uesrId');
+  sessionStorage.setItem('userId', '1');
+  const id = sessionStorage.getItem('userId');
   console.log(id); // This will log 'myValue'
 
   const [products, setProducts] = useState({
@@ -59,6 +59,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         throw new Error('Network response was not ok');
       }
       return response.json();
+
     }).then(data => {
       // console.log(data);
       setProducts({
@@ -124,7 +125,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
 
   return (
-    <form className={`cart-panel ${isCartOpen ? 'open' : ''}`} onSubmit={handleSubmit}>
+    <form className={`cart-panel ${isCartOpen ? 'open' : ''}`} onSubmit={(e) => handleCheckout(e)}>
       <div className='cart-content'>
         <span className='close-button' onClick={handleCloseCart}>
           <IconButton className='fix'>
@@ -173,11 +174,14 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         ))}
 
 
-        <div>
-          {/* <Carousel2 media={WhispersMedia} title="Recommended for you" /> */}
-        </div>
+        {/* <div>
+          <Carousel2 media={WhispersMedia} title="Recommended for you" />
+        </div> */}
       </div>
 
+      <div>
+        {/* <Carousel2 media={WhispersMedia} title="Recommended for you" /> */}
+      </div>
 
       <div className='cart-content-3'>
         <div className='cart-content-3-item'>
@@ -187,8 +191,10 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           <p>({totalItems} items)</p>
           <p>${totalPrice.toFixed(2)}</p>
         </div>
+
         <div className='cart-content-3-item-2'>
-          <button>CHECKOUT NOW</button>
+          {/* <button type="submit" onClick={handleSubmit}>CHECKOUT NOW</button> */}
+          <button type="submit">CHECKOUT NOW</button>
         </div>
         <div>
           {/* <Link to = '/User'>Modify your shopping cart</Link> */}
