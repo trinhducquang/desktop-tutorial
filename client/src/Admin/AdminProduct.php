@@ -73,7 +73,8 @@ $tables = [
             'total_amount',
             'id'
         ],
-        'type' => 'issssadi'
+        'type' => 'issssadi',
+        'byId' => 'user_id'
     ],
     [
         'title' => 'order_detail',
@@ -85,7 +86,8 @@ $tables = [
             'subtotal',
             'id'
         ],
-        'type' => 'dssi'
+        'type' => 'dssi',
+        'byId' => 'order_id'
     ],
     [
         'title' => 'videos',
@@ -115,6 +117,16 @@ $tables = [
         ],
         'type' => 'ii',
         'byId' => 'product_attri_id'
+    ],
+    [
+        'title' => 'ratings ',
+        'columns' => [
+            'product_id',
+            'user_id',
+            'raing',
+            'id'
+        ],
+        'type' => 'iidi'
     ]
 ];
 
@@ -205,6 +217,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME'])) {
         $table = $tables[8];
         $expectedReactFileName = 'AdminProductAttri.jsx';
     }
+    if ($reactFileName === 'AdminRatings.jsx') {
+        $table = $tables[9];
+        $expectedReactFileName = 'AdminRatings.jsx';
+    }
 
     if ($reactFileName === $expectedReactFileName) {
 
@@ -277,6 +293,9 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
     if ($reactFileType === 'product_attri') {
         $table = $tables[8];
     }
+    if ($reactFileType === 'rating') {
+        $table = $tables[9];
+    }
 
 
     if ($reactFileName === $expectedReactFileName && $table) {
@@ -325,7 +344,11 @@ function fetchDataById($table, $id)
             JOIN attributes a ON av.attribute_id = a.id
             WHERE p.id = ?
             GROUP BY p.id");
-    } elseif ($reactFileType === 'attriValue_by_Id' || $reactFileType === 'image_by_Id' || $reactFileType === 'product_attri_by_id') { //lay id cua attribute_id
+    } elseif (
+        $reactFileType === 'attriValue_by_Id' || $reactFileType === 'image_by_Id'
+        || $reactFileType === 'product_attri_by_Id' || $reactFileType === 'order_by_Id'
+        || $reactFileType === 'order_detail_by_Id'
+    ) { //lay id cua attribute_id
         $columns = implode(', ', $table['columns']);
         $title = $table['title'];
         $id = intval(basename($_SERVER['REQUEST_URI']));
@@ -368,7 +391,15 @@ function fetchDataById($table, $id)
             # code...
             break;
 
-        case 'product_attri_by_id':
+        case 'product_attri_by_Id':
+            # code...
+            break;
+
+        case 'order_by_Id':
+            # code...
+            break;
+
+        case 'order_detail_by_Id':
             # code...
             break;
 
@@ -416,10 +447,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
     if ($reactFileType === 'user') {
         $table = $tables[3];
     }
-    if ($reactFileType === 'order') {
+    if ($reactFileType === 'order' || $reactFileType === 'order_by_Id') {
         $table = $tables[4];
     }
-    if ($reactFileType === 'order_detail') {
+    if ($reactFileType === 'order_detail' || $reactFileType === 'order_detail_by_Id') {
         $table = $tables[5];
     }
     if ($reactFileType === 'video') {
@@ -428,9 +459,13 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
     if ($reactFileType === 'image' || $reactFileType === 'image_by_Id') {
         $table = $tables[7];
     }
-    if ($reactFileType === 'product_attri' || $reactFileType === 'product_attri_by_id') {
+    if ($reactFileType === 'product_attri' || $reactFileType === 'product_attri_by_Id') {
         $table = $tables[8];
     }
+    if ($reactFileType === 'rating') {
+        $table = $tables[9];
+    }
+
 
     // echo json_encode($reactFileName);
     // echo json_encode($reactFileType);
@@ -564,6 +599,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
     if ($reactFileType === 'image') {
         $table = $tables[7];
     }
+    if ($reactFileType === 'rating') {
+        $table = $tables[9];
+    }
+
 
 
     // echo json_encode($reactFileName);
@@ -808,6 +847,9 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
     if ($reactFileType === 'image') {
         $table = $tables[7];
     }
+    if ($reactFileType === 'rating') {
+        $table = $tables[9];
+    }
 
 
     // echo json_encode($reactFileName);
@@ -888,8 +930,9 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
 
 // Order Product
 
-function orderProduct($orderItems, $orderInfos) {
-    
+function orderProduct($orderItems, $orderInfos)
+{
+
     $conn = createConnection();
 
     // Insert order into orders table
@@ -897,7 +940,8 @@ function orderProduct($orderItems, $orderInfos) {
             VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isssssd", 
+    $stmt->bind_param(
+        "isssssd",
         $orderInfos[0]['user_id'],
         $orderInfos[0]['name'],
         $orderInfos[0]['email'],
@@ -916,11 +960,12 @@ function orderProduct($orderItems, $orderInfos) {
                            VALUES (?, ?, ?, ?, ?)";
 
             $stmt_detail = $conn->prepare($sql_detail);
-            $stmt_detail->bind_param("iiidd", 
-                $order_id, 
-                $item['product_id'], 
-                $item['quantity'], 
-                $item['price_product'], 
+            $stmt_detail->bind_param(
+                "iiidd",
+                $order_id,
+                $item['product_id'],
+                $item['quantity'],
+                $item['price_product'],
                 $item['subtotal']
             );
 
