@@ -15,7 +15,8 @@ const AdminOrderDetail = () => {
             let resp = await fetch(`${url}AdminProduct.php/${id}`, {
                 method: 'GET',
                 headers: {
-                    'X-React-File-Name': 'AdminOrderDetail.jsx'
+                    'X-React-File-Name': 'AdminById.jsx',
+                    'x-File-Type': 'order_detail_by_Id'
                 }
             });
 
@@ -24,11 +25,11 @@ const AdminOrderDetail = () => {
             }
 
             let data = await resp.json();
-            console.log(data);
+            // console.log(data);
 
             setProducts(data);
             // console.log(products);
-            console.log('vao');
+            // console.log('vao');
             setLoading(false);
         }
         catch (error) {
@@ -66,11 +67,11 @@ const AdminOrderDetail = () => {
             // }
 
             let data = await resp.json();
-            console.log(data);
+            // console.log(data);
 
-            console.log('vao2');
+            // console.log('vao2');
             fetchData(url);
-            console.log('vao3');
+            // console.log('vao3');
         } catch (error) {
             console.log(error);
         }
@@ -117,9 +118,9 @@ const AdminOrderDetail = () => {
                                             <td>{prd.id}</td>
                                             <td>{prd.order_id}</td>
                                             <td>{prd.product_id}</td>
-                                            <td>${prd.price_product.toFixed(2)}</td>
+                                            <td>${prd.price_product}</td>
                                             <td>{prd.quantity}</td>
-                                            <td>${prd.subtotal.toFixed(2)}</td>
+                                            <td>${prd.subtotal}</td>
 
                                             <td className="action-buttons">
                                                 {/* <Link to={`/Admin/order_detail/edit/${prd.id}`}><button className="edit-button">Edit</button></Link> */}

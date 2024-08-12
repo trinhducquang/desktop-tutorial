@@ -39,6 +39,7 @@ const AdminProduct = () => {
 
     useEffect(() => {
         fetchData(url);
+        fetchRating();
     }, []);
 
 
@@ -74,6 +75,55 @@ const AdminProduct = () => {
             console.log(error);
         }
     }
+
+    const [ratings, setRatings] = useState([]);
+
+    const fetchRating = async () => {
+        try {
+            let response = await fetch(`${url}AdminProduct.php`, {
+                headers: {
+                    'X-React-File-Name': 'AdminRatings.jsx'
+                }
+            });
+            if (!response.ok) {
+                console.log(response);
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            // console.log(data);
+            setRatings(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    const calculateAverageRating = (ratings) => {
+        const productRatings = {};
+
+        // Group ratings by product_id
+        ratings.forEach(({ product_id, raing }) => {
+
+            const numericValue = parseFloat(raing);
+            if (!productRatings[product_id]) {
+                productRatings[product_id] = { sum: 0, count: 0 };
+            }
+            productRatings[product_id].sum += numericValue;
+            productRatings[product_id].count += 1;
+        });
+
+        // Calculate average ratings
+        const averageRatings = Object.keys(productRatings).map(product_id => {
+            const { sum, count } = productRatings[product_id];
+            return {
+                product_id,
+                average: sum / count,
+            };
+        });
+
+        return averageRatings;
+    };
+
+    const averageRatings = calculateAverageRating(ratings);
 
 
 
@@ -142,7 +192,20 @@ const AdminProduct = () => {
                                                 <Link to={`/Admin/image/${prd.id}`}><button className="show-button">Show</button></Link>
                                             </td>
                                             <td>{prd.price}</td>
-                                            <td>{prd.rating}</td>
+                                            {/* <td>{prd.rating}</td> */}
+                                            {
+                                                averageRatings.filter(avgR => avgR.product_id === prd.id).length > 0 ? (
+                                                    averageRatings
+                                                        .filter(avgR => avgR.product_id === prd.id)
+                                                        .map(({ product_id, average }) => (
+                                                            <div key={product_id}>
+                                                                <td>{average}</td>
+                                                            </div>
+                                                        ))
+                                                ) : (
+                                                    <td>0</td>
+                                                )
+                                            }
                                             <td className="action-buttons">
                                                 <Link to={`/Admin/product/edit/${prd.id}`}><button className="edit-button">Edit</button></Link>
                                                 <button type="button" className="delete-button" onClick={(event) => deletePro(event, prd)}>Delete</button>

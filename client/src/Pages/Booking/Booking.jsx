@@ -22,6 +22,9 @@ const Booking = () => {
     const [show3D, setShow3D] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
+
+
+    // console.log(rating);
     const [products, setProducts] = useState([]);
 
 
@@ -165,6 +168,46 @@ const Booking = () => {
    }
 
 
+    sessionStorage.setItem('userId', '1');
+    const userId = sessionStorage.getItem('userId');
+
+    const [ratings, setRatings] = useState({
+        id: null,
+        product_id: '',
+        user_id: '',
+        raing: ''
+    })
+
+    const handleChangeRating = (event, star) => {
+        event.preventDefault();
+
+        fetch(`${url}AdminProduct.php`, {
+            method: 'POST',
+            headers: {
+                'X-React-File-Name': 'AdminNew.jsx',
+                'x-File-Type': 'rating',
+            },
+            body: JSON.stringify({
+                "fields": {
+                    "id": null,
+                    "product_id": products.id,
+                    "user_id": userId,
+                    "raing": star
+                }
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+                handleRating(star)
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+
     return (
         <div className='overflow'>
 
@@ -291,17 +334,18 @@ const Booking = () => {
                                             <p><a href="#">Size guide</a></p>
                                         </div>
                                         <div className='item-list-2'>
-                                            <button>
-                                                {/* <span>Trunk XL</span> */}
-                                                <span>{product.name}</span>
-                                                {/* <span>31.5 x 17.2 x 17 inch</span> */}
-                                                {
-                                                    attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
-                                                        <span>{attri_value.value}</span>
-                                                    ))
-                                                }
-                                                <img src={down2} />
-                                            </button>
+                                            {/* <button> */}
+                                            {/* <span>Trunk XL</span> */}
+                                            <span>{product.name}</span>
+                                            {/* <span>31.5 x 17.2 x 17 inch</span> */}
+                                            {
+                                                // attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
+                                                attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
+                                                    <span>{attri_value.value}</span>
+                                                ))
+                                            }
+                                            <img src={down2} />
+                                            {/* </button> */}
                                         </div>
                                         <div className='item-list-3'>
                                             <span>Color:</span>
@@ -326,7 +370,7 @@ const Booking = () => {
                                                         <span
                                                             key={star}
                                                             className={`star ${rating >= star ? 'filled' : ''}`}
-                                                            onClick={() => handleRating(star)}
+                                                            onClick={(e) => handleChangeRating(e, star)}
                                                         >
                                                             ★
                                                         </span>
