@@ -39,9 +39,9 @@
 
 .cart-content-2 {
   display: flex;
-  padding: 12px 20px 30px;
+  padding: 12px 5px 30px;
   align-items: center;
-  border-bottom: 1px solid #ececec;
+ 
 
   h3 {
     color: #6f6f6f;
@@ -99,7 +99,7 @@
 
 .cart-content-3 {
   margin-left: 20px;
-  position: relative;
+  position: static;
   width: 90%;
   text-align: center;
   border-top: 1px solid #ececec;
@@ -147,6 +147,10 @@
     overflow-y: auto; 
     overflow-x: hidden;
     height: 500px; 
-    border-bottom: 1px solid #ececec;
+   
   }
+}
+
+.border-bottom {
+  border-bottom: 1px solid #ececec;
 }

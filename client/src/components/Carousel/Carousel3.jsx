@@ -4,11 +4,13 @@ import './Carousel3.scss';
 import AdminConfig from '../../Admin/AdminConfig';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Hooks/CartContext';
-import useHover from '../../Hooks/useHover'; // Import useHover
+import useHover from '../../Hooks/useHover'; 
+import useMenu from '../../Hooks/useMenu';
 
 const Carousel = () => {
     const { url } = AdminConfig;
     const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHover(); // Use useHover
+    const { handleCartClick } = useMenu(); // Use useMenu
     const settings = {
         infinite: true,
         speed: 500,
@@ -86,6 +88,11 @@ const Carousel = () => {
         addToCart(productToAdd);
     }, [addToCart, images]);
 
+    const cartClick = (product) => {
+        handleCartClick();
+        handleAddToCart(product);
+    }
+
     return (
         <div className='carousel-new-container'>
             <Slider {...settings} className='carousel-new-slider'>
@@ -128,7 +135,7 @@ const Carousel = () => {
                                 <span className='carousel-item-caption'>{product.name}</span>
                                 <span className='carousel-item-price'>${product.price}</span>
                                 <div>
-                                    <button className='carousel-add-to-cart-button' onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                                    <button className='carousel-add-to-cart-button' onClick={() => cartClick(product)}>Add to Cart</button>
                                 </div>
                             </div>
                         </div>

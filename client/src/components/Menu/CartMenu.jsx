@@ -160,35 +160,30 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
             <button>+</button>
           </div>
         </div> */}
-        {cartItems.map((item) => (
-          <div key={item.id} className='cart-content-2'>
-            <img src={item.image} alt={item.name} />
-            <div className='cart-content-2-item'>
+        <div className='border-bottom'>
+          {cartItems.map((item) => (
+            <div key={item.id} className='cart-content-2'>
+              <img src={item.image} alt={item.name} />
+              <div className='cart-content-2-item'>
+                <div>
+                  <h3>Original</h3>
+                  <p>{item.name}</p>
+                  <p>${formatPrice(item.price)}</p>
+                  <h4 onClick={() => removeFromCart(item.id)}>Remove</h4>
+                </div>
+              </div>
               <div>
-                <h3>Original</h3>
-                <p>{item.name}</p>
-                <p>${formatPrice(item.price)}</p>
-                <h4 onClick={() => removeFromCart(item.id)}>Remove</h4>
+                <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
+                <button>{item.quantity}</button>
+                <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
               </div>
             </div>
-            <div>
-              <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
-              <button>{item.quantity}</button>
-              <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
-            </div>
-          </div>
-        ))}
-
-
+          ))}
+        </div>
         <div>
           <Carousel2 media={WhispersMedia} title="Recommended for you" />
         </div>
       </div>
-
-      <div>
-        {/* <Carousel2 media={WhispersMedia} title="Recommended for you" /> */}
-      </div>
-
       <div className='cart-content-3'>
         <div className='cart-content-3-item'>
           <p>Total</p>
@@ -203,7 +198,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           <button type="submit" onClick={handleSubmitPaypal}>CHECKOUT NOW</button>
         </div>
         <div>
-          <Link to = '/User'>Modify your shopping cart</Link>
+          <Link to='/User'>Modify your shopping cart</Link>
         </div>
       </div>
     </form>

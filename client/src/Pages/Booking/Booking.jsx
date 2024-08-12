@@ -334,7 +334,7 @@ const Booking = () => {
                                             <p><a href="#">Size guide</a></p>
                                         </div>
                                         <div className='item-list-2'>
-                                            {/* <button> */}
+                                            <button>
                                             {/* <span>Trunk XL</span> */}
                                             <span>{product.name}</span>
                                             {/* <span>31.5 x 17.2 x 17 inch</span> */}
@@ -345,7 +345,7 @@ const Booking = () => {
                                                 ))
                                             }
                                             <img src={down2} />
-                                            {/* </button> */}
+                                            </button>
                                         </div>
                                         <div className='item-list-3'>
                                             <span>Color:</span>
