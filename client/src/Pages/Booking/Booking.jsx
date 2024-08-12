@@ -1,45 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import './Booking.scss';
-import vali1 from '/public/Booking/vali1.avif';
-import validata from '/public/Booking/validata.avif';
-import validata2 from '/public/Booking/validata2.avif';
-import validata3 from '/public/Booking/validata3.avif';
-import validata7 from '/public/Booking/validata7.avif';
-import validata8 from '/public/Booking/validata8.avif';
-import validata9 from '/public/Booking/validata9.avif';
-import validata10 from '/public/Booking/validata10.avif';
-import validata11 from '/public/Booking/validata11.avif';
 import vali from '/public/Booking/vali.mp4';
-import colorimg1 from '/public/Booking/colorimg1.avif';
-import colorimg2 from '/public/Booking/colorimg2.avif';
 import FooterTop from '../../components/Footer-top/FooterTop';
-import handbag from '/public/Booking/handbag.png';
-import ship from '/public/Booking/ship.png';
 import useRating from '../../Hooks/useRating';
 import down from '/public/Booking/down.png';
 import down2 from '/public/Booking/arrow2.png';
 import Close from '/public/Booking/close.png';
 import cong from '/public/Booking/cong.png';
 import Carousel3 from '../../components/Carousel/Carousel3';
-import { WhispersMedia } from '../../components/Carousel/imageGroups';
-
 import AdminConfig from '../../Admin/AdminConfig';
 import { useParams } from 'react-router-dom';
-
 import { useCart } from '../../Hooks/CartContext';
+import useMenu from '../../Hooks/useMenu';
 
 
 const Booking = () => {
     const { id } = useParams();
     const { url } = AdminConfig;
-
     const [showMore, setShowMore] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [show3D, setShow3D] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
-
     const [products, setProducts] = useState([]);
+
+
+    const { handleCartClick } = useMenu();
+
 
     const fetchData = async (url) => {
         try {
@@ -154,7 +141,7 @@ const Booking = () => {
     // console.log(groupedImages);
     let executed = false;
 
-    
+
     const { addToCart } = useCart();
 
     const handleAddToCart = () => {
@@ -170,6 +157,12 @@ const Booking = () => {
         };
         addToCart(productToAdd);
     };
+    
+
+   const cartClick = () => {
+    handleCartClick();
+    handleAddToCart();
+   }
 
 
     return (
@@ -325,7 +318,7 @@ const Booking = () => {
                                         </div> */}
                                         <div className='hr'></div>
                                         <div className='item-list-5'>
-                                            <button onClick={handleAddToCart}>ADD TO CART</button>
+                                            <button onClick={cartClick}>ADD TO CART</button>
                                             <div>
                                                 <span>Rate:</span>
                                                 <div className='rating'>
@@ -556,7 +549,7 @@ const Booking = () => {
             <div className='fix-best-lat-booking'>
                 <h1>Related products</h1>
                 <p>You may also like</p>
-                <Carousel3 media={WhispersMedia} />
+                <Carousel3 />
             </div>
             <FooterTop />
         </div>

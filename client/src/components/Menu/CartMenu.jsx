@@ -143,8 +143,6 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         </span>
         <h1>Your Shopping bag</h1>
       </div>
-
-
       <div className='cart-content-2-container'>
         {/* <div className='cart-content-2'>
           <img src={vali1} alt="Product Image" />

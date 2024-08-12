@@ -105,24 +105,6 @@
     }
   }
   
-  .booking-page {
-    width: 100%;
-    height: 100px !important;
-    display: flex;
-    align-items: center;
-    position: static;
-    z-index: 1;
-    transition: background-color 0.3s, height 0.3s;
-    color: black !important;
-    background-color: white;
-  
-    .top-row {
-      color: black;
-    }
-    h1 {
-      color: black;
-    }
-  }
   
   @media (max-width: 1023px) {
     .Navbar-container h1 {

@@ -7,6 +7,7 @@ const menuSlice = createSlice({
     isClosing: false,
     currentPage: '',
     scrollY: 0,
+    isCartOpen: false, // Thêm trạng thái isCartOpen
   },
   reducers: {
     openMenu: (state) => {
@@ -24,8 +25,14 @@ const menuSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
+    openCart: (state) => { 
+      state.isCartOpen = true;
+    },
+    closeCart: (state) => { 
+      state.isCartOpen = false;
+    },
   },
 });
 
-export const { openMenu, closeMenu, setScrollY, finishClosing, setCurrentPage } = menuSlice.actions;
+export const { openMenu, closeMenu, setScrollY, finishClosing, setCurrentPage, openCart, closeCart } = menuSlice.actions;
 export default menuSlice.reducer;

@@ -6,7 +6,6 @@ import market from '/public/icon/market.png';
 import './Navbar.scss';
 
 const Navbar = ({
-  location,
   isMenuOpen,
   handleMenuClick,
   handleCartClick,
@@ -30,11 +29,13 @@ const Navbar = ({
           </div>
           <div className='find-dealer'>
             <div className='shopping-cart-container' onClick={handleCartClick}>
-              {currentLocation.pathname.startsWith(`/Booking/${id}`) ? (
-                <img src={market} />
-              ) : (
-                <img src={Shopcart} />
-              )}
+              <img
+                src={currentLocation.pathname.startsWith(`/Booking/${id}`) ||
+                     ['/Muse', '/Login', '/User', '/Resgiter'].includes(currentLocation.pathname)
+                     ? market
+                     : Shopcart}
+                alt="Shopping Cart"
+              />
               <div className='badge'>{totalQuantity}</div>
             </div>
           </div>

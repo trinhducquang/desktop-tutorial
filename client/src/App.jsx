@@ -59,7 +59,8 @@ import User from './Pages/User/User';
 import AdminImage from './Admin/Image/AdminImage';
 import AdminEdit8 from './Admin/Image/AdminEdit8';
 import AdminNew8 from './Admin/Image/AdminNew8';
-import Login from './Pages/Login/Login';
+import Login from './Pages/LoginRegister/Login/Login';
+import Resgiter from './Pages/LoginRegister/Resgiter/Resgiter';
 
 import { CartProvider } from './Hooks/CartContext';
 
@@ -88,6 +89,7 @@ const App = () => {
           <Route path='/pre-owned' element={<Preowned />} />
           <Route path='/Complaints' element={<Complaints />} />
           <Route path='/Login' element={<Login />} />
+          <Route path='/Resgiter' element={<Resgiter />}/>
 
 
           <Route path='/pre-owned' element={<Preowned />} />

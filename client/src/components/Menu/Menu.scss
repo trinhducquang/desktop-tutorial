@@ -18,8 +18,8 @@
     color: white;
     font-family: 'Riviera Nights';
     font-weight: 400;
-    letter-spacing: 0.5rem;
-    margin-left: 70px;
+    letter-spacing: 0.4rem;
+    
     margin-top: 5px;
   }
 
@@ -271,7 +271,47 @@
 
 .booking-page {
   width: 100%;
-  height: 100px !important;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  position: static;
+  z-index: 1;
+  transition: background-color 0.3s, height 0.3s;
+  color: black !important;
+  background-color: white;
+  
+  .top-row {
+    color: black;
+  }
+  h1 {
+    color: black;
+  }
+   
+}
+
+.login-page {
+  width: 100%;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  position: static;
+  z-index: 1;
+  transition: background-color 0.3s, height 0.3s;
+  color: black !important;
+  background-color: white;
+  
+  .top-row {
+    color: black;
+  }
+  h1 {
+    color: black;
+  }
+   
+}
+
+.resgiter-page {
+  width: 100%;
+  height: 130px;
   display: flex;
   align-items: center;
   position: static;

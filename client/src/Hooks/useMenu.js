@@ -1,82 +1,23 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { openMenu, closeMenu, setScrollY, finishClosing, setCurrentPage } from '../Store/menuSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { openMenu, closeMenu, openCart, closeCart } from '../Store/menuSlice';
+import useScroll from './useScroll';
+import useOutsideClick from './useOutsideClick';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 
-const useMenu = (totalPrice, totalItems) => {
+const useMenu = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
+  const isCartOpen = useSelector((state) => state.menu.isCartOpen);
   const isClosing = useSelector((state) => state.menu.isClosing);
-  const scrollY = useSelector((state) => state.menu.scrollY);
   const location = useLocation();
-
-  const [isNavMenuVisible, setIsNavMenuVisible] = useState(true);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-
-  useEffect(() => {
-    dispatch(setCurrentPage(location.pathname));
-
-    const handleScroll = () => {
-      dispatch(setScrollY(window.scrollY));
-
-      setIsNavMenuVisible(window.scrollY <= 50);
-
-      const navbar = document.querySelector('.Navbar-container');
-      if (navbar) {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      }
-
-      if (location.pathname === '/Inspiring-Greatness' && window.scrollY > 100) {
-        dispatch(closeMenu());
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [dispatch, location.pathname]);
-
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      const cartPanel = document.querySelector('.cart-panel');
-      const menuPanel = document.querySelector('.side-menu-content');
-
-      if (isCartOpen && cartPanel && !cartPanel.contains(event.target)) {
-        handleCloseCart();
-      }
-
-      if (isMenuOpen && menuPanel && !menuPanel.contains(event.target)) {
-        handleCloseMenu();
-      }
-    };
-
-    if (isCartOpen || isMenuOpen) {
-      document.body.classList.toggle('menu-open', isMenuOpen);
-      document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
-      document.addEventListener('mousedown', handleOutsideClick);
-    } else if (isClosing) {
-      setTimeout(() => dispatch(finishClosing(false)), 3000);
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, [isMenuOpen, isCartOpen, isClosing, dispatch]);
+  
+  useScroll();
+  useOutsideClick(); 
 
   const handleMenuClick = () => dispatch(openMenu());
   const handleCloseMenu = () => dispatch(closeMenu());
-  const handleCartClick = () => setIsCartOpen(true);
-  const handleCloseCart = () => setIsCartOpen(false);
-
+  const handleCartClick = () => dispatch(openCart());
+  const handleCloseCart = () => dispatch(closeCart());
 
   const menuItems = [
     { name: "TRAVEL COMPANIONS COLLECTION", link: "/Library" },
@@ -93,7 +34,7 @@ const useMenu = (totalPrice, totalItems) => {
     isMenuOpen,
     isClosing,
     currentPage: location.pathname,
-    isNavMenuVisible,
+    isNavMenuVisible: window.scrollY <= 50,
     isCartOpen,
     handleMenuClick,
     handleCloseMenu,

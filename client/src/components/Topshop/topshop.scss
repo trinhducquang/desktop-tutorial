@@ -4,6 +4,11 @@
     width: 95%;
     margin: 0 auto;
     align-items: center;
+    
+    * {
+        font-family: 'RimowaGrotesk-Light';
+        font-weight: normal;
+    }
 
     .topshop-container-item {
         background-color: white;
@@ -18,7 +23,6 @@
        
         div {
             position: relative;
-            
             align-items: center;
             letter-spacing: 3px;
             margin: 5px;
@@ -76,11 +80,11 @@
 
     .sort-container {
         display: flex;
-        align-items: center;
 
         p {
             margin: 0 10px;
             display: flex;
+            align-items: center;
             cursor: pointer;
         }
     }
