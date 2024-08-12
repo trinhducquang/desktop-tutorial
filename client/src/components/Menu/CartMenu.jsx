@@ -134,13 +134,12 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
 
   return (
-    <form className={`cart-panel ${isCartOpen ? 'open' : ''}`} onSubmit={(e) => handleCheckout(e)}>
+    <form className={`cart-panel ${isCartOpen ? 'open' : ''}`} onSubmit={(e) => handleSubmit(e)}>
       <div className='cart-content'>
         <span className='close-button' onClick={handleCloseCart}>
           <IconButton className='fix'>
             <CloseIcon style={{ color: 'black' }} />
           </IconButton>
-          <span>CLOSE</span>
         </span>
         <h1>Your Shopping bag</h1>
       </div>
@@ -181,9 +180,9 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         ))}
 
 
-        {/* <div>
+        <div>
           <Carousel2 media={WhispersMedia} title="Recommended for you" />
-        </div> */}
+        </div>
       </div>
 
       <div>
@@ -204,7 +203,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           <button type="submit" onClick={handleSubmitPaypal}>CHECKOUT NOW</button>
         </div>
         <div>
-          {/* <Link to = '/User'>Modify your shopping cart</Link> */}
+          <Link to = '/User'>Modify your shopping cart</Link>
         </div>
       </div>
     </form>

@@ -1,44 +1,82 @@
-.carousel-2-container {
-    .carousel-2-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        min-height: 350px;
-        right: 40px;
-        img {
-            width: 170px;
-            height: 180px;
-        }
+.carousel-container {
+    .carousel-title {
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
-    .carousel-2-item-1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: 11px;
-        padding: 0 5px;
-       
+    .carousel-2-container {
+        .carousel-2-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 400px;
+            right: 40px;
 
-        span {
-            font-size: 14px;
-            
+            .img-container {
+                position: relative;
+                height: 150px; // Chiều cao của ảnh trong carousel
+                width: 95%; // Chiều rộng của ảnh trong carousel
+                background-color: hsl(0, 0%, 90%); // Màu nền của container
+
+                .img1,
+                .imgright {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: opacity 0.2s ease-in-out; // Thêm hiệu ứng chuyển đổi
+                }
+
+                .img1 {
+                    opacity: 1;
+                    z-index: 1; // Đảm bảo ảnh chính ở trên cùng
+                }
+
+                .imgright {
+                    opacity: 0;
+                    z-index: 2; // Đảm bảo ảnh hover ở trên cùng
+                }
+
+                .img1.hidden {
+                    opacity: 0;
+                }
+
+                .imgright.visible {
+                    opacity: 1;
+                }
+            }
         }
 
-        .item-caption {
-            margin-bottom: 5px;
+        .carousel-2-item-1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         
+            margin-top: 15px;
+           
+            padding: 0 5px;
+
+            span {
+                font-size: 14px;
+            }
+
+            .item-caption {
+                margin-bottom: 5px;
+            }
+
+            .item-price {
+                color: #6f6f6f;
+            }
         }
 
-        .item-price {
-            color: #6f6f6f;
-        }
-    }
-
-      .add-to-cart-button {
+        .add-to-cart-button {
             background-color: white;
             color: #0c67e7;
             border: 1.5px solid #0c67e7;
-            width: 140px;
+            width: 143px;
             height: 50px;
             padding: 10px 15px;
             margin-top: 10px;
@@ -48,15 +86,11 @@
             transition: background-color 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-top: 30px;
 
             &:hover {
                 background-color: #6f6f6f;
             }
         }
-
-}
-
-.carousel-title {
-    margin-left: 15px;
-    margin-top: 30px;
+    }
 }
