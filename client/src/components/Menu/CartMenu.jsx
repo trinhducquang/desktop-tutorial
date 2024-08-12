@@ -8,18 +8,15 @@ import { WhispersMedia } from '../../components/Carousel/imageGroups';
 import useMenu from '../../Hooks/useMenu';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../Hooks/CartContext';
+
 import AdminConfig from '../../Admin/AdminConfig';
+import axios from 'axios';
 
 
 const CartMenu = ({ isCartOpen, handleCloseCart }) => {
-  const {
-    // handleSubmit, 
 
-  } = useMenu();
-
-  // const { handleSubmit } = useMenu();
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
-  console.log(cartItems);
+
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cartItems.reduce((sum, item) => {
@@ -33,13 +30,25 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   };
 
 
+  const handleSubmitPaypal = async (e) => {
+    e.preventDefault()
+    let res = await axios.post('http://localhost:8000/payment', { cartItems })
+
+    console.log(res)
+
+    if (res && res.data) {
+
+      let link = res.data.links[1].href
+      window.location.href = link
+    }
+  }
+
 
   const { url } = AdminConfig;
   const navigate = useNavigate()
 
-  sessionStorage.setItem('userId', '1');
-  const id = sessionStorage.getItem('userId');
-  console.log(id); // This will log 'myValue'
+  sessionStorage.setItem('uesrId', '1');
+  const id = sessionStorage.getItem('uesrId');
 
   const [products, setProducts] = useState({
     id: null,
@@ -92,14 +101,14 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       // records: [
       //   {
 
-          fields: {
-            user_id: products.id,
-            name: products.name,
-            email: products.email,
-            phone: products.phone,
-            address: products.address,
-            orderDetails: orderDetail // Include order details directly here
-          }
+      fields: {
+        user_id: products.id,
+        name: products.name,
+        email: products.email,
+        phone: products.phone,
+        address: products.address,
+        orderDetails: orderDetail // Include order details directly here
+      }
       //   }
       // ]
     };
@@ -194,7 +203,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
         <div className='cart-content-3-item-2'>
           {/* <button type="submit" onClick={handleSubmit}>CHECKOUT NOW</button> */}
-          <button type="submit">CHECKOUT NOW</button>
+          <button type="submit" onClick={handleSubmitPaypal}>CHECKOUT NOW</button>
         </div>
         <div>
           {/* <Link to = '/User'>Modify your shopping cart</Link> */}
