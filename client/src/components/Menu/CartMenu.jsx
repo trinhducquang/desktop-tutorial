@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import vali1 from '/public/Booking/vali1.avif';
 import './CartMenu.scss';
 import Carousel2 from '../Carousel/Carousel2';
-import { WhispersMedia } from '../../components/Carousel/imageGroups';
-import useMenu from '../../Hooks/useMenu';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../Hooks/CartContext';
 

@@ -29,6 +29,14 @@ const Resgiter = () => {
                             <label>Confirm Password</label>
                             <input type="password" />
                         </div>
+                        <div className='input-group'>
+                            <label>Phone</label>
+                            <input type="text" />
+                        </div>
+                        <div className='input-group'>
+                            <label>Address</label>
+                            <input type="password" />
+                        </div>
                         <div className='input-group consent-group'>
                             <input type="checkbox" id="consent-checkbox" />
                             <label htmlFor="consent-checkbox">
