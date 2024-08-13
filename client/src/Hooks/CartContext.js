@@ -32,7 +32,6 @@ export const CartProvider = ({ children }) => {
     };
 
     const updateQuantity = (productId, newQuantity) => {
-
         if (newQuantity < 1) return;
         setCartItems(prevItems =>
             prevItems.map(item =>

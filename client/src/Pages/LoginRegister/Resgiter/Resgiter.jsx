@@ -1,12 +1,53 @@
-import React from 'react'
-import './Resgiter.scss'
-import login from '/public/Login/login.jpg'
+import React, { useState } from 'react';
+import './Resgiter.scss';
+import login from '/public/Login/login.jpg';
+import useForm from '../../../Hooks/useForm'; 
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
+
 
 const Resgiter = () => {
+    const { formData, errors, errorMessages, handleChange, validateForm } = useForm();
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
+
+    const handleSubmit = async () => {
+        if (!validateForm()) {
+            alert('Please fill out all required fields.');
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost/git/desktop-tutorial-main/desktop-tutorial/client/src/Pages/LoginRegister/Resgiter/Resgiter.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert('Registration successful!');
+            } else {
+                alert('An error occurred during registration.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred during registration.');
+        }
+    };
+
     return (
         <div className='resgiter-container'>
             <div className='resgiter-image'>
-                <img src={login} />
+                <img src={login} alt="Login" />
             </div>
             <div className='resgiter-form'>
                 <div className='form-header'>
@@ -19,32 +60,83 @@ const Resgiter = () => {
                     <div className='form-body'>
                         <div className='input-group'>
                             <label>Email Address</label>
-                            <input type="text" />
+                            <input
+                                type="text"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className={errors.email ? 'invalid' : ''}
+                            />
+                            {errors.email && <div className="error-message">{errorMessages.email}</div>}
                         </div>
                         <div className='input-group'>
                             <label>Password</label>
-                            <input type="password" />
+                            <div className='password-wrapper'>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    className={errors.password ? 'invalid' : ''}
+                                />
+                                <span onClick={togglePasswordVisibility} className="eye-icon">
+                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </span>
+                            </div>
+                            {errors.password && <div className="error-message">{errorMessages.password}</div>}
                         </div>
                         <div className='input-group'>
                             <label>Confirm Password</label>
-                            <input type="password" />
+                            <div className='password-wrapper'>
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    name="confirmPassword"
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
+                                    className={errors.confirmPassword ? 'invalid' : ''}
+                                />
+                                <span onClick={toggleConfirmPasswordVisibility} className="eye-icon">
+                                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                                </span>
+                            </div>
+                            {errors.confirmPassword && <div className="error-message">{errorMessages.confirmPassword}</div>}
                         </div>
                         <div className='input-group'>
                             <label>Phone</label>
-                            <input type="text" />
+                            <input
+                                type="text"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                className={errors.phone ? 'invalid' : ''}
+                            />
+                            {errors.phone && <div className="error-message">{errorMessages.phone}</div>}
                         </div>
                         <div className='input-group'>
                             <label>Address</label>
-                            <input type="password" />
+                            <input
+                                type="text"
+                                name="address"
+                                value={formData.address}
+                                onChange={handleChange}
+                                className={errors.address ? 'invalid' : ''}
+                            />
+                            {errors.address && <div className="error-message">{errorMessages.address}</div>}
                         </div>
                         <div className='input-group consent-group'>
-                            <input type="checkbox" id="consent-checkbox" />
+                            <input
+                                type="checkbox"
+                                name="consent"
+                                checked={formData.consent}
+                                onChange={handleChange}
+                                id="consent-checkbox"
+                            />
                             <label htmlFor="consent-checkbox">
                                 I consent to RIMOWA processing my personal data in order to send me personalized marketing material and to share my personal data with RIMOWA’s marketing partners in accordance with the consent form and the privacy policy.
                             </label>
                         </div>
                         <div className='submit-button'>
-                            <button>Create Account</button>
+                            <button onClick={handleSubmit}>Create Account</button>
                         </div>
                     </div>
                     <div className='form-footer'>
@@ -54,7 +146,7 @@ const Resgiter = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Resgiter
+export default Resgiter;

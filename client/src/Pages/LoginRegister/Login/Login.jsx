@@ -1,14 +1,51 @@
-import React from 'react'
-import './Login.scss'
-import login from '/public/Login/login.jpg'
-import tick from '/public/Login/tick.png'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import './Login.scss';
+import login from '/public/Login/login.jpg';
+import tick from '/public/Login/tick.png';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    const handleSignIn = async () => {
+        try {
+            const response = await fetch('http://localhost/git/desktop-tutorial-main/desktop-tutorial/client/src/Pages/LoginRegister/Login/login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Login successful.');
+                // Redirect to another page or perform any action after successful login
+            } else {
+                alert(result.message || 'An error occurred during login.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred during login.');
+        }
+    };
+
     return (
         <div className='login-container'>
             <div className='login-image'>
-                <img src={login} />
+                <img src={login} alt="Login" />
             </div>
             <div className='login-form'>
                 <div className='form-header'>
@@ -21,15 +58,25 @@ const Login = () => {
                     <div className='form-body'>
                         <div className='input-group'>
                             <label>Email Address</label>
-                            <input type="text" />
+                            <input
+                                type="text"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
                         </div>
                         <div className='input-group'>
                             <label>Password</label>
-                            <input type="password" />
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
                             <a href="#">Forgot your password?</a>
                         </div>
                         <div className='submit-button'>
-                            <button>Sign in</button>
+                            <button onClick={handleSignIn}>Sign in</button>
                         </div>
                     </div>
                 </div>
@@ -66,7 +113,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
