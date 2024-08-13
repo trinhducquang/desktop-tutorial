@@ -29,7 +29,6 @@ const Carousel = ({ title }) => {
     };
 
     const [products, setProducts] = useState([]);
-    const [productAttributes, setProductAttributes] = useState([]);
     const [images, setImages] = useState([]);
 
     const fetchData = async (url) => {
@@ -47,23 +46,6 @@ const Carousel = ({ title }) => {
 
             let data = await resp.json();
             setProducts(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    const fetchProductAttri = async () => {
-        try {
-            let response = await fetch(`${url}AdminProduct.php`, {
-                headers: {
-                    'X-React-File-Name': 'AdminProductAttri.jsx'
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            setProductAttributes(data);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -89,7 +71,6 @@ const Carousel = ({ title }) => {
     useEffect(() => {
         fetchData(url);
         fetchImage();
-        fetchProductAttri();
     }, [url]);
 
     const groupedImages = images.reduce((acc, img) => {
