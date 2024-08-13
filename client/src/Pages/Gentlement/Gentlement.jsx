@@ -6,6 +6,8 @@ import banner from '../../../public/Library/banner.avif';
 import FooterTop from '../../components/Footer-top/FooterTop';
 import useHover from '../../Hooks/useHover';
 import AdminConfig from '../../Admin/AdminConfig';
+import Topshop from '../../components/Topshop/Topshop';
+
 
 const Gentlement = () => {
   const { url } = AdminConfig;
@@ -103,6 +105,7 @@ const Gentlement = () => {
           </div>
         </div>
       </section>
+      <Topshop onFilterChange={(filters) => console.log(filters)} />
       <section>
         <div className='Library-item'>
           <div className='content-container'>

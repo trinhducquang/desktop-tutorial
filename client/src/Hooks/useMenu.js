@@ -10,6 +10,7 @@ const useMenu = () => {
   const isCartOpen = useSelector((state) => state.menu.isCartOpen);
   const isClosing = useSelector((state) => state.menu.isClosing);
   const location = useLocation();
+  const scrollY = useSelector((state) => state.menu.scrollY);
   
   useScroll();
   useOutsideClick(); 
@@ -26,15 +27,17 @@ const useMenu = () => {
     { name: "OBJECTS OF LUXURY", link: "/Luxury" },
     { name: "PROVENANCE", link: "/pre-owned" },
     { name: "OWNERSHIP", link: "/ownership" },
-    { name: "BOUTIQUE", link: "/boutique" },
+    { name: "LIBRARY", link: "/Library" },
     { name: "LOGIN", link: "/Login" },
   ];
+
+  const isNavMenuVisible = scrollY <= 50;
 
   return {
     isMenuOpen,
     isClosing,
     currentPage: location.pathname,
-    isNavMenuVisible: window.scrollY <= 50,
+    isNavMenuVisible,
     isCartOpen,
     handleMenuClick,
     handleCloseMenu,

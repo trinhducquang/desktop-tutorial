@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import './Packpack.scss'
+import './Packpack.scss';
 import { Link } from 'react-router-dom';
 import banner from '../../../public/Library/banner.avif';
 import FooterTop from '../../components/Footer-top/FooterTop';
 import useHover from '../../Hooks/useHover';
 import AdminConfig from '../../Admin/AdminConfig';
+import Topshop from '../../components/Topshop/Topshop';
 
 const Packpack = () => {
   const { url } = AdminConfig;
@@ -25,7 +26,6 @@ const Packpack = () => {
       }
 
       let data = await resp.json();
-      // console.log(data);
       setProducts(data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -52,7 +52,6 @@ const Packpack = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      // console.log(data);
       setPorductAttributes(data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -79,33 +78,29 @@ const Packpack = () => {
   };
 
   const groupedImages = images.reduce((acc, img) => {
-    // if (img.product_id === products.id) {
     if (!acc[img.product_id]) {
       acc[img.product_id] = [];
     }
     acc[img.product_id].push(img);
-    // }
     return acc;
   }, {});
 
-
-
-
   return (
     <>
+     
       <section>
         <div className='Navbar-img Navbar-library'>
           <img src={banner} alt="Library Banner" />
           <div className='img-content'>
             <h2>Backpack</h2>
-            <p>Find your most sutiable travel companion</p>
+            <p>Find your most suitable travel companion</p>
           </div>
         </div>
       </section>
+      <Topshop onFilterChange={(filters) => console.log(filters)} />
       <section>
         <div className='Library-item'>
           <div className='content-container'>
-
             {
               products
                 .filter((product) => product.type === 'Backpacks')
@@ -119,12 +114,11 @@ const Packpack = () => {
                             const [image1, image2] = imageList.slice(0, 2);
 
                             return (
-                              <Link to={`/Booking/${productId}`}>
+                              <Link to={`/Booking/${productId}`} key={productId}>
                                 <div
-                                  key={productId}
                                   className='img-container'
                                   onMouseEnter={() => handleMouseEnter(product.id)}
-                                  onMouseLeave={handleMouseLeave}
+                                  onMouseLeave={() => handleMouseLeave(product.id)}
                                 >
                                   {image1 && (
                                     <img
@@ -153,15 +147,14 @@ const Packpack = () => {
 
                     </div>
                   </div>
-
                 ))
             }
           </div>
         </div>
-      </section >
+      </section>
       <FooterTop />
     </>
   );
 }
 
-export default Packpack
+export default Packpack;

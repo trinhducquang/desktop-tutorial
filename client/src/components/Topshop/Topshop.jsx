@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useLocation } from 'react-router-dom'; // Import useLocation
 import './topshop.scss';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AdminConfig from '../../Admin/AdminConfig';
 
+
 const Topshop = ({ onFilterChange }) => {
     const { url } = AdminConfig;
+    const location = useLocation(); // Sử dụng useLocation để lấy đường dẫn hiện tại
     const [activeDropdown, setActiveDropdown] = useState('');
 
     const toggleDropdown = (dropdown) => {
@@ -20,19 +23,16 @@ const Topshop = ({ onFilterChange }) => {
                 headers: {
                     'X-React-File-Name': 'AdminAttribute.jsx'
                 }
-            })
+            });
             if (!response.ok) {
                 console.log(response);
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            // console.log(data);
             setAttirbutes(data);
-            // console.log(attributes);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-
     };
 
     const fetchAttriValue = async () => {
@@ -41,26 +41,22 @@ const Topshop = ({ onFilterChange }) => {
                 headers: {
                     'X-React-File-Name': 'AdminAttriValue.jsx'
                 }
-            })
+            });
             if (!response.ok) {
                 console.log(response);
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            // console.log(data);
             setAttirbuteValues(data);
-            // console.log(attributeValue);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-
     };
 
     useEffect(() => {
         fetchAttri();
         fetchAttriValue();
-    }, [])
-
+    }, []);
 
     const [selectedFilters, setSelectedFilters] = useState({});
 
@@ -85,7 +81,8 @@ const Topshop = ({ onFilterChange }) => {
         onFilterChange(selectedFilters);
     }, [selectedFilters, onFilterChange]);
 
-
+    // Kiểm tra nếu đường dẫn hiện tại có chứa các trang cụ thể
+    const shouldHideType = ['/Vali', '/Handbag', '/Backpack', '/Gentlemen', '/Ladies'].includes(location.pathname);
 
     return (
         <div>
@@ -96,27 +93,25 @@ const Topshop = ({ onFilterChange }) => {
                             {
                                 ['COLOR', 'TYPE', 'BRAND', 'SIZE', 'COLLECTION', 'FEATURES'].map(item => (
                                     <div key={item}>
-                                        <div className="topshop-container-item-1">
-                                            <h5 onClick={() => toggleDropdown(item)}>{item}</h5>
-                                            <KeyboardArrowDownIcon />
-                                        </div>
+                                        {/* Ẩn chữ và biểu tượng mũi tên nếu item là 'TYPE' và đường dẫn hiện tại cần ẩn */}
+                                        {(item === 'TYPE' && shouldHideType) ? null : (
+                                            <div className="topshop-container-item-1">
+                                                <h5 onClick={() => toggleDropdown(item)}>{item}</h5>
+                                                {item === 'TYPE' && shouldHideType ? null : <KeyboardArrowDownIcon />}
+                                            </div>
+                                        )}
                                         {activeDropdown === item && item !== 'COLLECTION' && item !== 'FEATURES' && (
                                             <div className='dropdown-menu colors-menu'>
                                                 {
                                                     attributes
-                                                        .filter((attri) => attri.attribute_type === item.toLocaleLowerCase())
+                                                        .filter((attri) => attri.attribute_type === item.toLowerCase())
                                                         .map((attri) => (
-                                                            <div key={attri.attribute_type} >
+                                                            <div key={attri.attribute_type}>
                                                                 {
                                                                     attributeValues
                                                                         .filter(attri_value => attri_value.attribute_id === attri.id)
                                                                         .map((attri_value) => (
-                                                                            // <option key={attri_value.id} value={attri_value.id}>
-                                                                            //     {attri_value.value}
-                                                                            // </option>
                                                                             <div key={attri_value.id} className='color-option'>
-                                                                                {/* <div className='color-box' style={{ backgroundColor: attri_value.value }}></div> */}
-                                                                                {/* <div typeof="checkbox">{attri_value.value}</div> */}
                                                                                 <input
                                                                                     type="checkbox" className="color-box"
                                                                                     id={`filter-${attri_value.id}`}
@@ -124,17 +119,15 @@ const Topshop = ({ onFilterChange }) => {
                                                                                     onChange={() => handleCheckboxChange(item.toLowerCase(), attri_value.id)}
                                                                                 />
                                                                                 <label htmlFor={`filter-${attri_value.id}`}>{attri_value.value}</label>
-
                                                                             </div>
                                                                         ))
                                                                 }
                                                             </div>
                                                         ))
                                                 }
-
                                             </div>
                                         )}
-                                        {activeDropdown === item && item === 'COLLECTION' && item === 'FEATURES' && (
+                                        {activeDropdown === item && (item === 'COLLECTION' || item === 'FEATURES') && (
                                             <div className='dropdown-menu'>
                                                 <p>Select {item}</p>
                                                 {/* Add more options as needed */}
