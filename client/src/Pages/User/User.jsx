@@ -371,7 +371,7 @@ const User = () => {
 
                     </div>
 
-                    {/* <div className='item-3-left'>
+                    <div className='item-3-left'>
                             <div>
                                 <img src={img1} alt="Product Image" />
                             </div>
@@ -392,7 +392,7 @@ const User = () => {
                                     <h4>$1,704.55</h4>
                                 </div>
                             </div>
-                        </div> */}
+                        </div>
 
 
                     <div className='item-3-right'>
