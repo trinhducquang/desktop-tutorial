@@ -361,7 +361,7 @@ const User = () => {
                                                 </button>
                                             </div>
                                             <div className='item-3-left-item-2'>
-                                                <h5 onClick={() => deleteOrder}>REMOVE</h5>
+                                                {/* <h5 onClick={() => deleteOrder}>REMOVE</h5> */}
                                             </div><hr />
                                         </>
                                     )
