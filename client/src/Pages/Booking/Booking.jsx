@@ -58,7 +58,7 @@ const Booking = () => {
         fetchImage();
         fetchAttri();
         fetchAttriValue();
-    }, [url]);
+    }, [url, id]);
 
     const [attributes, setAttirbutes] = useState([]);
     const [attributeValue, setAttirbuteValue] = useState([]);

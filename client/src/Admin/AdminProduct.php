@@ -486,7 +486,7 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && isset($_SERVER['HTTP_X_FILE_TYP
         }
     } else {
         // Return 400 Bad Request if method is not supported
-        http_response_code(400);
+        // http_response_code(400);
         // echo json_encode(['error' => 'Error file name for fetch by id']);
     }
 }
@@ -916,6 +916,7 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
 
         if ($updated) {
             echo json_encode(array("message" => "Product added successfully"));
+            exit;
         } else {
             echo json_encode(array("error" => "Failed to add product"));
         }

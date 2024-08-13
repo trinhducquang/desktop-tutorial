@@ -106,7 +106,7 @@ const Carousel = () => {
                                         const [image1, image2] = imageList.slice(0, 2);
 
                                         return (
-                                            <Link to={`/Booking/${productId}`} key={productId}>
+                                            <Link to={`/Booking/${productId}`} key={productId} className='img-link'>
                                                 <div
                                                     className='img-container'
                                                     onMouseEnter={() => handleMouseEnter(product.id)}
@@ -135,7 +135,7 @@ const Carousel = () => {
                                 <span className='carousel-item-caption'>{product.name}</span>
                                 <span className='carousel-item-price'>${product.price}</span>
                                 <div>
-                                    <button className='carousel-add-to-cart-button' onClick={() => cartClick(product)}>Add to Cart</button>
+                                    <button type='button' className='carousel-add-to-cart-button' onClick={() => cartClick(product)}>Add to Cart</button>
                                 </div>
                             </div>
                         </div>

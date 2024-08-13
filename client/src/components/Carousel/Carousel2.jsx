@@ -84,6 +84,9 @@ const Carousel = ({ title }) => {
     const { addToCart } = useCart();
 
     const handleAddToCart = useCallback((product) => {
+        // e.preventDefault();
+        // console.log('abd');
+        // return;
         const filterImage = images.filter(imgL => imgL.product_id == product.id);
         const mainImage = filterImage.slice(0, 2).length > 0 ? filterImage[0].image : null;
 
@@ -95,6 +98,8 @@ const Carousel = ({ title }) => {
         };
         addToCart(productToAdd);
     }, [addToCart, images]);
+
+    
 
     return (
         <div className='carousel-container'>
@@ -138,7 +143,7 @@ const Carousel = ({ title }) => {
                                 <span className='item-caption'>{product.name}</span>
                                 <span className='item-price'>${product.price}</span>
                                 <div>
-                                    <button className='add-to-cart-button' onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                                    <button type='button' className='add-to-cart-button' onClick={() => handleAddToCart(product)}>Add to Cart</button>
                                 </div>
                             </div>
                         </div>
