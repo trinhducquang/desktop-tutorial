@@ -3,9 +3,11 @@ import './Resgiter.scss';
 import login from '/public/Login/login.jpg';
 import useForm from '../../../Hooks/useForm'; 
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
+import AdminConfig from '../../../Admin/AdminConfig';
 
 
 const Resgiter = () => {
+    const { urlRegister } = AdminConfig;
     const { formData, errors, errorMessages, handleChange, validateForm } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -24,7 +26,7 @@ const Resgiter = () => {
         }
 
         try {
-            const response = await fetch('http://localhost/git/desktop-tutorial-main/desktop-tutorial/client/src/Pages/LoginRegister/Resgiter/Resgiter.php', {
+            const response = await fetch(`${urlRegister}Resgiter.php`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

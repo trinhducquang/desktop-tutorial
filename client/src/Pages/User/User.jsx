@@ -87,7 +87,7 @@ const User = () => {
 
 
 
-    sessionStorage.setItem('userId', '2');
+    // sessionStorage.setItem('userId', '2');
     const userId = sessionStorage.getItem('userId');
 
     const [users, setUsers] = useState([]);

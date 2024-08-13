@@ -37,11 +37,13 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     }
   };
 
-  const { url } = AdminConfig;
+  const { url, urlLogin } = AdminConfig;
   const navigate = useNavigate();
 
-  sessionStorage.setItem('userId', '2');
+  // sessionStorage.setItem('userId', '2');
+
   const id = sessionStorage.getItem('userId');
+
 
   const [products, setProducts] = useState({
     id: null,
@@ -119,7 +121,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   };
 
   const clickSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     handleSubmit(e);
     handleSubmitPaypal();
   };
@@ -157,7 +159,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
                   e.preventDefault();
                   updateQuantity(item.id, item.quantity + 1);
                 }}>+</button> */}
-                
+
                 <button type='button' onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
                 <button disabled>{item.quantity}</button>
                 <button type='button' onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
