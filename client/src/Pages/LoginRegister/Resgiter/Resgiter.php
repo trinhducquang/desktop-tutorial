@@ -3,9 +3,8 @@ require_once('../../../connection.php');
 
 $conn = createConnection();
 
-// Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the raw POST data
+    
     $data = json_decode(file_get_contents('php://input'), true);
 
     $email = filter_var(trim($data['email'] ?? ''), FILTER_SANITIZE_EMAIL);

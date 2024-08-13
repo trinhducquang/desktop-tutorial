@@ -20,7 +20,6 @@ const Resgiter = () => {
 
     const handleSubmit = async () => {
         if (!validateForm()) {
-            alert('Please fill out all required fields.');
             return;
         }
 

@@ -3,12 +3,15 @@ import './Login.scss';
 import login from '/public/Login/login.jpg';
 import tick from '/public/Login/tick.png';
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import biểu tượng mắt
 
 const Login = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -32,7 +35,6 @@ const Login = () => {
 
             if (response.ok) {
                 alert('Login successful.');
-                // Redirect to another page or perform any action after successful login
             } else {
                 alert(result.message || 'An error occurred during login.');
             }
@@ -40,6 +42,10 @@ const Login = () => {
             console.error('Error:', error);
             alert('An error occurred during login.');
         }
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
     };
 
     return (
@@ -67,12 +73,17 @@ const Login = () => {
                         </div>
                         <div className='input-group'>
                             <label>Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
+                            <div className='password-wrapper'>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                />
+                                <span onClick={togglePasswordVisibility} className="eye-icon">
+                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </span>
+                            </div>
                             <a href="#">Forgot your password?</a>
                         </div>
                         <div className='submit-button'>

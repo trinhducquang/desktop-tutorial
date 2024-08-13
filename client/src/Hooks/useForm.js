@@ -53,7 +53,7 @@ const useForm = () => {
                 });
                 setErrorMessages({
                     ...errorMessages,
-                    phone: 'Phone numbers contain only numbers and no more than 15 characters.',
+                    phone: 'Số điện thoại chỉ được chứa số và không quá 15 ký tự.',
                 });
             }
         } else {

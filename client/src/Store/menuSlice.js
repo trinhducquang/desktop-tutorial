@@ -7,7 +7,7 @@ const menuSlice = createSlice({
     isClosing: false,
     currentPage: '',
     scrollY: 0,
-    isCartOpen: false, // Thêm trạng thái isCartOpen
+    isCartOpen: false, 
   },
   reducers: {
     openMenu: (state) => {
