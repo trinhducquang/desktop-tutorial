@@ -168,7 +168,7 @@ const Booking = () => {
     }
 
 
-    sessionStorage.setItem('userId', '1');
+    sessionStorage.setItem('userId', '2');
     const userId = sessionStorage.getItem('userId');
 
     const [ratings, setRatings] = useState({

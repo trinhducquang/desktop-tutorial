@@ -40,8 +40,8 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   const { url } = AdminConfig;
   const navigate = useNavigate();
 
-  sessionStorage.setItem('uesrId', '1');
-  const id = sessionStorage.getItem('uesrId');
+  sessionStorage.setItem('userId', '2');
+  const id = sessionStorage.getItem('userId');
 
   const [products, setProducts] = useState({
     id: null,
@@ -148,7 +148,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
                 </div>
               </div>
               <div>
-                <button onClick={(e) => {
+                {/* <button onClick={(e) => {
                   e.preventDefault();
                   updateQuantity(item.id, item.quantity - 1);
                 }}>-</button>
@@ -156,7 +156,11 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
                 <button onClick={(e) => {
                   e.preventDefault();
                   updateQuantity(item.id, item.quantity + 1);
-                }}>+</button>
+                }}>+</button> */}
+                
+                <button type='button' onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
+                <button disabled>{item.quantity}</button>
+                <button type='button' onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
               </div>
             </div>
           ))}
