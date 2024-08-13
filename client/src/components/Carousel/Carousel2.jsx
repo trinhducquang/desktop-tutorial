@@ -91,7 +91,7 @@ const Carousel = ({ title }) => {
         const mainImage = filterImage.slice(0, 2).length > 0 ? filterImage[0].image : null;
 
         const productToAdd = {
-            id: product.id,
+            id: parseFloat(product.id),
             name: product.name,
             price: parseFloat(product.price) || 0,
             image: mainImage,

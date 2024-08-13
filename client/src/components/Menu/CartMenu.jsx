@@ -16,7 +16,7 @@ import axios from 'axios';
 const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
-
+  console.log(cartItems);
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cartItems.reduce((sum, item) => {
