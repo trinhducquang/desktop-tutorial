@@ -160,12 +160,12 @@ const Booking = () => {
         };
         addToCart(productToAdd);
     };
-    
 
-   const cartClick = () => {
-    handleCartClick();
-    handleAddToCart();
-   }
+
+    const cartClick = () => {
+        handleCartClick();
+        handleAddToCart();
+    }
 
 
     sessionStorage.setItem('userId', '1');
@@ -335,16 +335,16 @@ const Booking = () => {
                                         </div>
                                         <div className='item-list-2'>
                                             <button>
-                                            {/* <span>Trunk XL</span> */}
-                                            <span>{product.name}</span>
-                                            {/* <span>31.5 x 17.2 x 17 inch</span> */}
-                                            {
-                                                // attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
-                                                attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
-                                                    <span>{attri_value.value}</span>
-                                                ))
-                                            }
-                                            <img src={down2} />
+                                                {/* <span>Trunk XL</span> */}
+                                                <span>{product.name}</span>
+                                                {/* <span>31.5 x 17.2 x 17 inch</span> */}
+                                                {
+                                                    // attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
+                                                    attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
+                                                        <span>{attri_value.value}</span>
+                                                    ))
+                                                }
+                                                <img src={down2} />
                                             </button>
                                         </div>
                                         <div className='item-list-3'>

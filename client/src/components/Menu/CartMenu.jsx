@@ -181,7 +181,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           ))}
         </div>
         <div>
-          <Carousel2 media={WhispersMedia} title="Recommended for you" />
+          <Carousel2 title="Recommended for you" />
         </div>
       </div>
       <div className='cart-content-3'>
