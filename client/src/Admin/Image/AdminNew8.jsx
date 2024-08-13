@@ -51,7 +51,7 @@ const AdminNew8 = () => {
             .then(data => {
                 console.log(data);
                 alert('image Updated successfully');
-                // navigate(`/Admin/image/${products.product_id}`); 
+                navigate(`/Admin/image/${products.product_id}`); 
             })
             .catch(error => {
                 console.log(error);

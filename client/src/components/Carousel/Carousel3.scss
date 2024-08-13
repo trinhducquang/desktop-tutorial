@@ -4,14 +4,20 @@
 
 .carousel-new-item {
     position: relative;
-    
+
+
+    .img-link {
+        text-decoration: none;
+        /* Ensure links are styled correctly */
+    }
 
     // Thay đổi kích thước hoặc bố cục của từng mục nếu cần
     .img-container {
         position: relative;
-        height: 350px; 
+        height: 350px;
         background-color: hsl(0, 0%, 90%); // Giữ nền cố định
         width: 95%;
+        cursor: pointer;
 
         .img1,
         .imgright {
@@ -47,18 +53,18 @@
 .carousel-new-item-info {
     display: flex;
     flex-direction: column;
-   
-    margin-top: 10px; 
+
+    margin-top: 10px;
 }
 
 .carousel-item-caption {
-    font-size: 16px; 
+    font-size: 16px;
     margin-bottom: 5px;
 }
 
 .carousel-item-price {
-    font-size: 14px; 
-    margin-top: 5px; 
+    font-size: 14px;
+    margin-top: 5px;
     margin-bottom: 15px;
 }
 

@@ -16,7 +16,7 @@ import axios from 'axios';
 const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
-
+  console.log(cartItems);
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cartItems.reduce((sum, item) => {
@@ -132,9 +132,15 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       });
   }
 
+  
+  const clickSubmit = (e) => {
+    handleSubmit(e);
+    handleSubmitPaypal();
+}
+
 
   return (
-    <form className={`cart-panel ${isCartOpen ? 'open' : ''}`} onSubmit={(e) => handleSubmit(e)}>
+    <form className={`cart-panel ${isCartOpen ? 'open' : ''}`}>
       <div className='cart-content'>
         <span className='close-button' onClick={handleCloseCart}>
           <IconButton className='fix'>
@@ -181,7 +187,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           ))}
         </div>
         <div>
-          <Carousel2 media={WhispersMedia} title="Recommended for you" />
+          <Carousel2 title="Recommended for you" />
         </div>
       </div>
       <div className='cart-content-3'>
@@ -195,7 +201,8 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
         <div className='cart-content-3-item-2'>
           {/* <button type="submit" onClick={handleSubmit}>CHECKOUT NOW</button> */}
-          <button type="submit" onClick={handleSubmitPaypal}>CHECKOUT NOW</button>
+          {/* <button type="submit" onClick={handleSubmitPaypal}>CHECKOUT NOW</button> */}
+          <button onClick={(e) => clickSubmit(e)}>CHECKOUT NOW</button>
         </div>
         <div>
           <Link to='/User'>Modify your shopping cart</Link>
