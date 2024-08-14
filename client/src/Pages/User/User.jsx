@@ -14,6 +14,7 @@ import Carousel3 from '../../components/Carousel/Carousel3';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
 import AdminConfig from '../../Admin/AdminConfig'
 import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom'
 
 
 
@@ -344,7 +345,7 @@ const User = () => {
                         <Carousel3 media={WhispersMedia} />
                     </div>
                     <div className='User-item-4-item-3'>
-                        <button>BACK TO SHOP</button>
+                        <Link to='/Inspiring-Greatness'><button>BACK TO SHOP</button></Link>
                     </div>
                 </div>
             </div>
