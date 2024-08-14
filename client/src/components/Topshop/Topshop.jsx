@@ -1,18 +1,34 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useLocation } from 'react-router-dom'; // Import useLocation
+import { useLocation } from 'react-router-dom'; 
 import './topshop.scss';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AdminConfig from '../../Admin/AdminConfig';
 
-
 const Topshop = ({ onFilterChange }) => {
     const { url } = AdminConfig;
-    const location = useLocation(); // Sử dụng useLocation để lấy đường dẫn hiện tại
+    const location = useLocation(); 
     const [activeDropdown, setActiveDropdown] = useState('');
 
     const toggleDropdown = (dropdown) => {
         setActiveDropdown(activeDropdown === dropdown ? '' : dropdown);
     };
+
+    const closeDropdown = () => {
+        setActiveDropdown('');
+    };
+
+    const handleClickOutside = useCallback((event) => {
+        if (!event.target.closest('.dropdown-menu') && !event.target.closest('.topshop-container-item-1')) {
+            closeDropdown();
+        }
+    }, []);
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [handleClickOutside]);
 
     const [attributes, setAttirbutes] = useState([]);
     const [attributeValues, setAttirbuteValues] = useState([]);
@@ -81,7 +97,6 @@ const Topshop = ({ onFilterChange }) => {
         onFilterChange(selectedFilters);
     }, [selectedFilters, onFilterChange]);
 
-    // Kiểm tra nếu đường dẫn hiện tại có chứa các trang cụ thể
     const shouldHideType = ['/Vali', '/Handbag', '/Backpack', '/Gentlemen', '/Ladies'].includes(location.pathname);
 
     return (
@@ -93,7 +108,6 @@ const Topshop = ({ onFilterChange }) => {
                             {
                                 ['COLOR', 'TYPE', 'BRAND', 'SIZE', 'COLLECTION', 'FEATURES'].map(item => (
                                     <div key={item}>
-                                        {/* Ẩn chữ và biểu tượng mũi tên nếu item là 'TYPE' và đường dẫn hiện tại cần ẩn */}
                                         {(item === 'TYPE' && shouldHideType) ? null : (
                                             <div className="topshop-container-item-1">
                                                 <h5 onClick={() => toggleDropdown(item)}>{item}</h5>
@@ -101,7 +115,7 @@ const Topshop = ({ onFilterChange }) => {
                                             </div>
                                         )}
                                         {activeDropdown === item && item !== 'COLLECTION' && item !== 'FEATURES' && (
-                                            <div className='dropdown-menu colors-menu'>
+                                            <div className='dropdown-menu colors-menu' onClick={(e) => e.stopPropagation()}>
                                                 {
                                                     attributes
                                                         .filter((attri) => attri.attribute_type === item.toLowerCase())
@@ -128,7 +142,7 @@ const Topshop = ({ onFilterChange }) => {
                                             </div>
                                         )}
                                         {activeDropdown === item && (item === 'COLLECTION' || item === 'FEATURES') && (
-                                            <div className='dropdown-menu'>
+                                            <div className='dropdown-menu' onClick={(e) => e.stopPropagation()}>
                                                 <p>Select {item}</p>
                                                 {/* Add more options as needed */}
                                             </div>
@@ -141,7 +155,7 @@ const Topshop = ({ onFilterChange }) => {
                             <p>50 products</p>
                             <p onClick={() => toggleDropdown('SORT_BY')}>sort by <KeyboardArrowDownIcon /></p>
                             {activeDropdown === 'SORT_BY' && (
-                                <div className='dropdown-menu'>
+                                <div className='dropdown-menu' onClick={(e) => e.stopPropagation()}>
                                     <p>Select sorting option</p>
                                     {/* Add sorting options as needed */}
                                 </div>

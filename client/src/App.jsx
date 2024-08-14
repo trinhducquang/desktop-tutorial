@@ -92,6 +92,7 @@ const App = () => {
           <Route path='/Login' element={<Login />} />
           <Route path='/Resgiter' element={<Resgiter />}/>
           <Route path='*' element={<NotFound/>}/>
+          <Route path="/404" element={<NotFound />} />
 
 
           <Route path='/pre-owned' element={<Preowned />} />

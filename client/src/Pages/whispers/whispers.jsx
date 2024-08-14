@@ -11,8 +11,6 @@ import img2 from '/public/muse/page3/img2.webp'
 import img3 from '/public/muse/page3/img3.webp'
 import { Link } from 'react-router-dom';
 const Whispers = () => {
-
-  
   const {
     isPlaying,
     isFullscreen,

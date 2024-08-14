@@ -9,7 +9,7 @@ import Close from '/public/Booking/close.png';
 import cong from '/public/Booking/cong.png';
 import Carousel3 from '../../components/Carousel/Carousel3';
 import AdminConfig from '../../Admin/AdminConfig';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../../Hooks/CartContext';
 import useMenu from '../../Hooks/useMenu';
 
@@ -22,6 +22,7 @@ const Booking = () => {
     const [show3D, setShow3D] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
+    const navigate = useNavigate();
 
 
     // console.log(rating);
@@ -32,6 +33,7 @@ const Booking = () => {
 
 
     const fetchData = async (url) => {
+        
         try {
             let resp = await fetch(`${url}AdminProduct.php/${id}`, {
                 method: 'GET',
@@ -41,11 +43,18 @@ const Booking = () => {
                 }
             });
 
+            if (resp.status === 404) {
+                navigate('/404');
+                return;
+            }
+
             if (!resp.ok) {
                 throw new Error('Failed to fetch product data.');
             }
 
             let data = await resp.json();
+
+            
             setProducts(data);
             console.log(data);
         } catch (error) {
@@ -168,7 +177,7 @@ const Booking = () => {
     }
 
 
-    // sessionStorage.setItem('userId', '2');
+    sessionStorage.setItem('userId', '2');
     const userId = sessionStorage.getItem('userId');
 
     const [ratings, setRatings] = useState({

@@ -4,10 +4,14 @@
     width: 95%;
     margin: 0 auto;
     align-items: center;
-    
+
+
+
     * {
         font-family: 'RimowaGrotesk-Light';
         font-weight: normal;
+
+
     }
 
     .topshop-container-item {
@@ -20,7 +24,7 @@
             position: relative;
             bottom: 2px;
         }
-       
+
         div {
             position: relative;
             align-items: center;
@@ -58,13 +62,13 @@
 
             .colors-menu {
                 display: flex;
-                flex-wrap: wrap; 
+                flex-wrap: wrap;
                 padding: 20px;
 
                 .color-option {
                     display: flex;
                     align-items: center;
-                    width: 50%; 
+                    width: 50%;
                     margin-bottom: 10px;
                 }
 
@@ -90,3 +94,16 @@
     }
 }
 
+.topshort-text-container {
+
+    .topshop-container-item > div,
+    .MuiSvgIcon-root,
+    .dropdown-menu>div {
+        cursor: pointer;
+
+        input,
+        label {
+            cursor: pointer;
+        }
+    }
+}

@@ -8,7 +8,7 @@ import { GrLinkNext } from 'react-icons/gr'
 
 const NotFound = () => {
   return (
-    <div className='NotFound-container'>
+    <div className='NotFound-container overflow'>
       <section>
         <div className='Navbar-img'>
           <img src={original} alt="Rimowa Contact" />
@@ -22,10 +22,11 @@ const NotFound = () => {
           <h3>Page not found</h3>
           <h1>Something went wrong</h1>
           <p>So sorry, but the page you’re looking for is currently
-            not available. Go back to the homepage or click below to
+            not available. Go <br />
+            back to the homepage or click below to
             continue shopping.
           </p>
-          <button>START SHOPPING</button>
+          <Link to='/Library'><button>START SHOPPING</button></Link>
         </div>
       </section>
       <section className='color-seticon-last'>

@@ -45,7 +45,7 @@ const Navbar = () => {
               <h2>Original Colours </h2>
               <p>Mars & Mercury</p>
               <button className='circle-large bigmouse'>
-                <Link to="/Vali">
+                <Link to="/Inspiring-Greatness">
                   DISCOVER NOW
                 </Link>
                 <GrLinkNext className="arrow" />

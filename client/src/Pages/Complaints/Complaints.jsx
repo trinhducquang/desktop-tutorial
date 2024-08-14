@@ -3,6 +3,7 @@ import './Complaints.scss';
 import Complaints1 from '../../../public/Complaints/Complaints1.jpg';
 import useScrollTranslate from '../../Hooks/useScrollTranslate';
 
+
 const Complaints = () => {
   
   const distance1 = 362;

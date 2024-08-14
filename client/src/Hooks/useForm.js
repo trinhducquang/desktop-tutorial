@@ -29,9 +29,8 @@ const useForm = () => {
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
 
-        // Kiểm tra nếu ô input là số điện thoại
         if (name === 'phone') {
-            const isValidNumber = /^[0-9]*$/.test(value); // Chỉ cho phép nhập số
+            const isValidNumber = /^[0-9]*$/.test(value); 
 
             if (isValidNumber && value.length <= 15) {
                 setFormData({
