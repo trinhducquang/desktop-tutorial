@@ -3,6 +3,7 @@ import { openMenu, closeMenu, openCart, closeCart } from '../Store/menuSlice';
 import useScroll from './useScroll';
 import useOutsideClick from './useOutsideClick';
 import { useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const useMenu = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const useMenu = () => {
   const isClosing = useSelector((state) => state.menu.isClosing);
   const location = useLocation();
   const scrollY = useSelector((state) => state.menu.scrollY);
-  
+
   useScroll();
   useOutsideClick(); 
 
@@ -19,6 +20,8 @@ const useMenu = () => {
   const handleCloseMenu = () => dispatch(closeMenu());
   const handleCartClick = () => dispatch(openCart());
   const handleCloseCart = () => dispatch(closeCart());
+
+  const isLoggedIn = !!Cookies.get('userId'); // Kiểm tra xem người dùng có đăng nhập không
 
   const menuItems = [
     { name: "TRAVEL COMPANIONS COLLECTION", link: "/Library" },
@@ -28,7 +31,7 @@ const useMenu = () => {
     { name: "PROVENANCE", link: "/pre-owned" },
     { name: "OWNERSHIP", link: "/ownership" },
     { name: "LIBRARY", link: "/Library" },
-    { name: "LOGIN", link: "/Login" },
+    { name: isLoggedIn ? "LOGOUT" : "LOGIN", link: isLoggedIn ? "#" : "/Login" },
   ];
 
   const isNavMenuVisible = scrollY <= 50;
@@ -43,7 +46,7 @@ const useMenu = () => {
     handleCloseMenu,
     handleCartClick,
     handleCloseCart,
-    menuItems
+    menuItems,
   };
 };
 

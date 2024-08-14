@@ -31,8 +31,8 @@ app.post('/payment', async (req, res) => {
                 "payment_method": "paypal"
             },
             "redirect_urls": {
-                "return_url": "http://localhost:8000/success",
-                "cancel_url": "http://localhost:8000/failed"
+                "return_url": "http://localhost:8000/Success",
+                "cancel_url": "http://localhost:8000/Failed"
             },
             "transactions": [{
                 "item_list": {

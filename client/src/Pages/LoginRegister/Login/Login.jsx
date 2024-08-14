@@ -3,8 +3,9 @@ import './Login.scss';
 import login from '/public/Login/login.jpg';
 import tick from '/public/Login/tick.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import biểu tượng mắt
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import AdminConfig from '../../../Admin/AdminConfig';
+import Cookies from 'js-cookie';
 
 const Login = () => {
     const { urlLogin } = AdminConfig;
@@ -40,7 +41,7 @@ const Login = () => {
                 alert('Login successful.');
 
                 if (result.user_id) {
-                    // Store the user ID in session storage
+                    Cookies.set('userId', result.user_id, { expires: 7 });
                     sessionStorage.setItem('userId', result.user_id);
                     
                 }

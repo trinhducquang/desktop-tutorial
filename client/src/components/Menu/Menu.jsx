@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import Cookies from 'js-cookie';
+
 
 const Menu = ({
   isMenuOpen,
@@ -10,6 +12,18 @@ const Menu = ({
   handleCloseMenu,
   menuItems,
 }) => {
+  const navigate = useNavigate();
+
+  const handleMenuItemClick = (item) => {
+    if (item.name === 'LOGOUT') {
+      Cookies.remove('userId');
+     
+      navigate(0); 
+    } else {
+      navigate(item.link);
+    }
+  };
+
   return (
     <div className={`side-menu ${isMenuOpen ? 'open' : ''} ${scrollY > 50 ? 'scrolled' : ''}`}>
       <div className='side-menu-content'>
@@ -26,6 +40,7 @@ const Menu = ({
               className={isClosing ? 'closing' : 'appearing'}
               style={{ animationDelay: `${index * 0.1}s` }}
               key={index}
+              onClick={() => handleMenuItemClick(item)}
             >
               {item.name}
             </Link>

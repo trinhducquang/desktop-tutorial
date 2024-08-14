@@ -61,6 +61,8 @@ import AdminEdit8 from './Admin/Image/AdminEdit8';
 import AdminNew8 from './Admin/Image/AdminNew8';
 import Login from './Pages/LoginRegister/Login/Login';
 import Resgiter from './Pages/LoginRegister/Resgiter/Resgiter';
+import Success from './Pages/Success/Success';
+import Failed from './Pages/Failed/Failed';
 
 import { CartProvider } from './Hooks/CartContext';
 import NotFound from './Pages/NotFound/NotFound ';
@@ -93,6 +95,9 @@ const App = () => {
           <Route path='/Resgiter' element={<Resgiter />}/>
           <Route path='*' element={<NotFound/>}/>
           <Route path="/404" element={<NotFound />} />
+          <Route path='/Success' element={<Success/>}/>
+          <Route path='/Failed' element={<Failed/>}/>
+
 
 
           <Route path='/pre-owned' element={<Preowned />} />

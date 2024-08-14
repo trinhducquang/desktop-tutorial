@@ -9,8 +9,8 @@ import useMenu from '../../Hooks/useMenu';
 
 const Carousel = () => {
     const { url } = AdminConfig;
-    const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHover(); // Use useHover
-    const { handleCartClick } = useMenu(); // Use useMenu
+    const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHover(); 
+    const { handleCartClick } = useMenu(); 
     const settings = {
         infinite: true,
         speed: 500,
