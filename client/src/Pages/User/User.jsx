@@ -37,7 +37,7 @@ const User = () => {
             }
 
             let data = await resp.json();
-            console.log(data);
+            // console.log(data);
             setProducts(data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -106,7 +106,7 @@ const User = () => {
             let data = await resp.json();
             const filteredProducts = data.filter(product => product.id == parseInt(userId));
 
-            console.log(filteredProducts);
+            // console.log(filteredProducts);
 
             setUsers(filteredProducts);
             // console.log(products);
@@ -135,7 +135,7 @@ const User = () => {
             }
 
             let data = await resp.json();
-            console.log(data);
+            // console.log(data);
 
             setOrders(data);
         }
@@ -170,7 +170,7 @@ const User = () => {
 
             fetchOrder(url);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -188,7 +188,7 @@ const User = () => {
             }
 
             let data = await resp.json();
-            console.log(data);
+            // console.log(data);
 
             setOrderDetails(data);
         }
@@ -197,7 +197,7 @@ const User = () => {
         }
     }
 
-    const deleteOrderDetail = async (event, prd) => {
+    const deleteOrderDetail = async (event, id) => {
         event.preventDefault();
 
         let cf = window.confirm("Are you sure you want to delete this product?");
@@ -206,7 +206,7 @@ const User = () => {
         }
 
         try {
-            let resp = await fetch(`${url}AdminProduct.php/${prd.id}`, {
+            let resp = await fetch(`${url}AdminProduct.php/${id}`, {
                 method: "DELETE",
                 headers: {
                     'X-React-File-Name': 'AdminDelete.jsx',
@@ -221,7 +221,7 @@ const User = () => {
             let data = await resp.json();
             fetchOrderDetail(url);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -270,7 +270,7 @@ const User = () => {
                                                         .map((orderDetail) => {
 
                                                             return (
-                                                                <div style={{ 'margin-right': '10px' }}>
+                                                                <div style={{ 'marginRight': '10px' }}>
                                                                     {
                                                                         products
                                                                             .filter((product) => product.id == orderDetail.product_id)
@@ -306,7 +306,7 @@ const User = () => {
                                                                                                                             <p>Order Date: {order.order_date}</p>
                                                                                                                         </div>
                                                                                                                         <div>
-                                                                                                                            <h5 onClick={() => deleteOrder}>REMOVE</h5>
+                                                                                                                            <button onClick={(event) => deleteOrderDetail(event, orderDetail.id)}>REMOVE</button>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>

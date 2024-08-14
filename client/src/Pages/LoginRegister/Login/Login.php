@@ -28,8 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['message' => 'Invalid email or password.']);
     } else {
         $user = $result->fetch_assoc();
+        $storedHashedPassword = sha1($user['password']);
 
-        if ($hashedPassword === $user['password']) {
+        if ($hashedPassword === $storedHashedPassword) {
             http_response_code(200);
             echo json_encode([
                 'message' => 'Login successful.',
