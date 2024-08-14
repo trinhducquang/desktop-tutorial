@@ -121,7 +121,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   const clickSubmit = (e) => {
     e.preventDefault(); 
     handleSubmit(e);
-    handleSubmitPaypal();
+    // handleSubmitPaypal();
   };
 
   return (
