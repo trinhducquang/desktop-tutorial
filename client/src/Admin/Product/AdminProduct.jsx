@@ -198,9 +198,7 @@ const AdminProduct = () => {
                                                     averageRatings
                                                         .filter(avgR => avgR.product_id === prd.id)
                                                         .map(({ product_id, average }) => (
-                                                            <div key={product_id}>
-                                                                <td>{average}</td>
-                                                            </div>
+                                                                <td key={product_id}>{average}</td>
                                                         ))
                                                 ) : (
                                                     <td>0</td>

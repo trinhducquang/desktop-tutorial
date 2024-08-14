@@ -260,17 +260,19 @@ const User = () => {
                     <div className='item-3-left'>
                         <div className='item-3-left-item' >
                             {
-                                orders.map((order) => {
+                                orders
+                                .filter(order => order.user_id == userId)
+                                .map((order) => {
                                     return (
-                                        <>
-                                            <div className='item-3-left-item-1' key={order.id}>
+                                        <div key={order.id}>
+                                            <div className='item-3-left-item-1' >
                                                 {
                                                     orderDetails
                                                         .filter((orderDetail) => orderDetail.order_id == order.id)
                                                         .map((orderDetail) => {
 
                                                             return (
-                                                                <div style={{ 'marginRight': '10px' }}>
+                                                                <div style={{ 'marginRight': '10px' }} key={orderDetail.id} >
                                                                     {
                                                                         products
                                                                             .filter((product) => product.id == orderDetail.product_id)
@@ -284,8 +286,8 @@ const User = () => {
                                                                                                     const [image1, image2] = imageList.slice(0, 2);
 
                                                                                                     return (
-                                                                                                        <>
-                                                                                                            <div className='flex-item-container'>
+                                                                                                        <div key={productId}>
+                                                                                                            <div className='flex-item-container' >
                                                                                                                 <div className='item-1-flex'>
                                                                                                                     <div>
                                                                                                                         {image1 && (
@@ -315,7 +317,7 @@ const User = () => {
                                                                                                                 </div>
                                                                                                             </div>
 
-                                                                                                        </>
+                                                                                                        </div>
                                                                                                     )
                                                                                                 })
                                                                                         }
@@ -329,7 +331,7 @@ const User = () => {
                                                 }
                                             </div>
                                             <hr />
-                                        </>
+                                        </div>
                                     )
                                 })
                             }

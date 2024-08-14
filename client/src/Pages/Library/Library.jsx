@@ -162,9 +162,8 @@ const Library = () => {
                           // console.log(image1);
 
                           return (
-                            <Link to={`/Booking/${productId}`}>
+                            <Link to={`/Booking/${productId}`} key={productId}>
                               <div
-                                key={productId}
                                 className='img-container'
                                 onMouseEnter={() => handleMouseEnter(product.id)}
                                 onMouseLeave={handleMouseLeave}
