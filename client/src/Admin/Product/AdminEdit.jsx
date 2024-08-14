@@ -218,7 +218,9 @@ const AdminEdit = () => {
                         </div><br />
 
                         {
-                            attributes.map((attri) => (
+                            attributes.map((attri) => {
+                                const attri_type = products[attri.attribute_type]
+                                return (
                                 // console.log(attri.id) ||
                                 // console.log(attributeValue.filter(attri_value => attri_value.attribute_id === attri.id)) ||
                                 <div className="form-group" key={attri.attribute_type}>
@@ -227,7 +229,7 @@ const AdminEdit = () => {
                                     <select
                                         name={attri.attribute_type}
                                         className="form-control"
-                                        value={[products[attri.attribute_type]]}
+                                        value={attri_type}
                                         // value={4}
                                         onChange={(event) => setProducts({ ...products, [attri.attribute_type]: event.target.value })}>
 
@@ -252,7 +254,7 @@ const AdminEdit = () => {
 
                                     </select>
                                 </div>
-                            ))
+                            )})
 
 
                         }<br />

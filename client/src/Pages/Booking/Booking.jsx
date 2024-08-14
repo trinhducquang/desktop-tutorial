@@ -353,7 +353,7 @@ const Booking = () => {
                                                 {
                                                     // attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
                                                     attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
-                                                        <span>{attri_value.value}</span>
+                                                        <span key={attri_value.id}>{attri_value.value}</span>
                                                     ))
                                                 }
                                                 <img src={down2} />
@@ -364,7 +364,7 @@ const Booking = () => {
                                             {/* <p>Black</p> */}
                                             {
                                                 attributeValue.filter(attri_value => attri_value.id == product.color).map((attri_value) => (
-                                                    <p>{attri_value.value}</p>
+                                                    <p key={attri_value.id}>{attri_value.value}</p>
                                                 ))
                                             }
                                         </div>
