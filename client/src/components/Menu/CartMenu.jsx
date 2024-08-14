@@ -141,7 +141,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         alert('Checkout successfully');
         clearCart(); // Xóa giỏ hàng sau khi thanh toán thành công
         navigate('/Library'); // Điều hướng đến trang thư viện
-      }
+      }s
     } catch (error) {
       console.error('Error during checkout:', error);
     }
