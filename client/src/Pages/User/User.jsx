@@ -15,6 +15,7 @@ import Carousel3 from '../../components/Carousel/Carousel3';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
 import useMenu from '../../Hooks/useMenu';
 import AdminConfig from '../../Admin/AdminConfig'
+import Cookies from 'js-cookie';
 
 
 
@@ -87,8 +88,10 @@ const User = () => {
 
 
 
-    sessionStorage.setItem('userId', '2');
-    const userId = sessionStorage.getItem('userId');
+    // sessionStorage.setItem('userId', '2');
+    
+    // const userId = sessionStorage.getItem('userId');
+    const userId = Cookies.get('userId');
 
     const [users, setUsers] = useState([]);
 

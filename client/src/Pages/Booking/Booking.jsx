@@ -12,6 +12,7 @@ import AdminConfig from '../../Admin/AdminConfig';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../../Hooks/CartContext';
 import useMenu from '../../Hooks/useMenu';
+import Cookies from 'js-cookie';
 
 
 const Booking = () => {
@@ -177,8 +178,10 @@ const Booking = () => {
     }
 
 
-    sessionStorage.setItem('userId', '2');
-    const userId = sessionStorage.getItem('userId');
+    // sessionStorage.setItem('userId', '2');
+    
+    // const userId = sessionStorage.getItem('userId');
+    const userId = Cookies.get('userId');
 
     const [ratings, setRatings] = useState({
         id: null,
