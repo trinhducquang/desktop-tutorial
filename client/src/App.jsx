@@ -63,6 +63,7 @@ import Login from './Pages/LoginRegister/Login/Login';
 import Resgiter from './Pages/LoginRegister/Resgiter/Resgiter';
 
 import { CartProvider } from './Hooks/CartContext';
+import NotFound from './Pages/NotFound/NotFound ';
 
 
 
@@ -90,6 +91,7 @@ const App = () => {
           <Route path='/Complaints' element={<Complaints />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Resgiter' element={<Resgiter />}/>
+          <Route path='*' element={<NotFound/>}/>
 
 
           <Route path='/pre-owned' element={<Preowned />} />

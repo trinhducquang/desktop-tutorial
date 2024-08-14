@@ -26,7 +26,6 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   };
 
   const handleSubmitPaypal = async (e) => {
-    e.preventDefault();
     let res = await axios.post('http://localhost:8000/payment', { cartItems });
 
     console.log(res);
@@ -123,7 +122,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   const clickSubmit = (e) => {
     e.preventDefault();
     handleSubmit(e);
-    // handleSubmitPaypal();
+    handleSubmitPaypal();
   };
 
   return (

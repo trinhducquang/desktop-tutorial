@@ -5,7 +5,6 @@ import Navbar from './Navbar';
 import Menu from './Menu';
 import CartMenu from './CartMenu';
 import './Menu.scss';
-import Booking from '../../Pages/Booking/Booking';
 
 const MenuComponent = () => {
   const location = useLocation();
@@ -32,6 +31,8 @@ const MenuComponent = () => {
     location.pathname === '/User' ? 'user-page' :
       location.pathname === '/Login' ? 'login-page' :
         location.pathname === '/Resgiter' ? 'resgiter-page' : '';
+        location.pathname === '*' ? 'resgiter-page' : '';
+
 
 
   const navBarClass = location.pathname === '/Muse' ? 'booking-page' :
