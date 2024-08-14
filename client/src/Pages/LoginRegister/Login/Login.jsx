@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import './Login.scss';
 import login from '/public/Login/login.jpg';
 import tick from '/public/Login/tick.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import biểu tượng mắt
+import AdminConfig from '../../../Admin/AdminConfig';
 
 const Login = () => {
+    const { urlLogin } = AdminConfig;
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -23,10 +26,10 @@ const Login = () => {
 
     const handleSignIn = async () => {
         try {
-            const response = await fetch('http://localhost/git/desktop-tutorial-main/desktop-tutorial/client/src/Pages/LoginRegister/Login/login.php', {
+            const response = await fetch(`${urlLogin}login.php`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'X-React-File-Name': 'TakeUserId.jsx'
                 },
                 body: JSON.stringify(formData),
             });
@@ -35,6 +38,13 @@ const Login = () => {
 
             if (response.ok) {
                 alert('Login successful.');
+
+                if (result.user_id) {
+                    // Store the user ID in session storage
+                    sessionStorage.setItem('userId', result.user_id);
+                    
+                }
+                navigate('/');
             } else {
                 alert(result.message || 'An error occurred during login.');
             }
@@ -47,6 +57,8 @@ const Login = () => {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+
 
     return (
         <div className='login-container'>

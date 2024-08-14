@@ -1,5 +1,6 @@
-<?php 
-require_once('../../../connection.php');
+<?php
+require_once ('../../../connection.php');
+session_start();
 
 $conn = createConnection();
 
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $hashedPassword = sha1($password);
 
-    $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT password, id FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -28,11 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['message' => 'Invalid email or password.']);
     } else {
         $user = $result->fetch_assoc();
-        $storedHashedPassword = $user['password'];
+        $storedHashedPassword = sha1($user['password']);
 
         if ($hashedPassword === $storedHashedPassword) {
             http_response_code(200);
-            echo json_encode(['message' => 'Login successful.']);
+            echo json_encode([
+                'message' => 'Login successful.',
+                'user_id' => $user['id']
+            ]);
         } else {
             http_response_code(401);
             echo json_encode(['message' => 'Invalid email or password.']);
@@ -46,4 +50,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
+session_destroy();
 ?>
