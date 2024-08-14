@@ -226,7 +226,7 @@ const User = () => {
     }
 
     let executed = false;
-    
+
     return (
         <div className='User-container overflow'>
             <div className='User-item'>
@@ -302,7 +302,6 @@ const User = () => {
                                                                                                                             <p>Product Name: {product.name}</p>
                                                                                                                             <p>Price per Product: {orderDetail.price_product}</p>
                                                                                                                             <p>Quantity: {orderDetail.quantity}</p>
-                                                                                                                            <p>Subtotal: {orderDetail.subtotal}</p>
                                                                                                                             <p>Order Date: {order.order_date}</p>
                                                                                                                         </div>
                                                                                                                         <div>
@@ -311,7 +310,7 @@ const User = () => {
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                                 <div>
-                                                                                                                    <div><p>Total Amount: ${order.total_amount}</p></div>
+                                                                                                                    <div><p>Subtotal: {orderDetail.subtotal}</p></div>
                                                                                                                 </div>
                                                                                                             </div>
 
