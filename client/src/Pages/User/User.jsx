@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import FooterTop from '../../components/Footer-top/FooterTop'
 import './User.scss'
-import cano from '../../../public/User/cano.png'
-import box from '../../../public/User/box.png'
-import order from '../../../public/User/order.png'
-import paypal from '../../../public/User/paypal.png'
-import Visa from '../../../public/User/Visa.png'
-import Mastercard from '../../../public/User/Mastercard.png'
-import discover from '../../../public/User/discover.png'
-import Amex from '../../../public/User/Amex.png'
-import dinersclub from '../../../public/User/dinersclub.png'
 import Carousel3 from '../../components/Carousel/Carousel3';
 import { WhispersMedia } from '../../components/Carousel/imageGroups';
 import AdminConfig from '../../Admin/AdminConfig'
