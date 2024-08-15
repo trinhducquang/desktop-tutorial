@@ -6,6 +6,13 @@
         display: flex;
         justify-content: space-between;
         padding: 55px 0;
+
+        .item-flex-item {
+           display: flex;
+           justify-content: space-between;
+           flex-direction: column;
+        }
+
     }
     
 

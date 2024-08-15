@@ -40,15 +40,16 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   const { url, urlLogin } = AdminConfig;
   const navigate = useNavigate();
 
-  const id = Cookies.get('userId'); // Sử dụng cookie thay vì sessionStorage
 
-  const [products, setProducts] = useState({
+  const [products, setProducts] = useState({ // lấy thông tin của user theo id
     id: null,
     name: '',
     email: '',
     phone: '',
     address: ''
   });
+  
+  const id = Cookies.get('userId'); 
 
   useEffect(() => {
     if (id) {
@@ -79,7 +80,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     }
   }, [id, url]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => { // để khi nhấn vào checkout thì lưu vào csdl 
     event.preventDefault();
 
     const orderDetail = cartItems.map((item) => ({
@@ -128,8 +129,10 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     }
   
     try {
-      await handleSubmit(e); // Xử lý đơn hàng
       const paypalLink = await handleSubmitPaypal(); // Thực hiện thanh toán PayPal
+      
+      await handleSubmit(e); // Xử lý đơn hàng
+
       if (paypalLink) {
         // Chuyển hướng đến PayPal để thanh toán
         window.location.href = paypalLink;
@@ -140,7 +143,6 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         // Hiển thị thông báo khi thanh toán thành công (sẽ xuất hiện sau khi người dùng quay lại trang)
         alert('Checkout successfully');
         clearCart(); // Xóa giỏ hàng sau khi thanh toán thành công
-        navigate('/Library'); // Điều hướng đến trang thư viện
       }
     } catch (error) {
       console.error('Error during checkout:', error);

@@ -10,10 +10,16 @@ const Success = () => {
     return (
         <div className='NotFound-container overflow'>
             <section>
-                <div className='Navbar-img'>
+                <div className='Navbar-img '>
                     <img src={original} alt="Rimowa Contact" />
                     <div className='img-content'>
                         <h2>SUCCESS</h2>
+                        <div className='Page1-button fix2-button'>
+                            <Link to='/User'>
+                                 Check your order details
+                                <GrLinkNext className="arrow" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>

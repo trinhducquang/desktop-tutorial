@@ -280,7 +280,7 @@ const User = () => {
                                                                                                         <div key={productId}>
                                                                                                             <div className='flex-item-container' >
                                                                                                                 <div className='item-1-flex'>
-                                                                                                                    <div>
+                                                                                                                    <div >
                                                                                                                         {image1 && (
                                                                                                                             <img
                                                                                                                                 src={image1.image}
@@ -302,8 +302,9 @@ const User = () => {
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <div>
+                                                                                                                <div className='item-flex-item'>
                                                                                                                     <div><p>Subtotal: {orderDetail.subtotal}</p></div>
+                                                                                                                    <div><p>THANH TOÁN THÀNH CÔNG</p></div>
                                                                                                                 </div>
                                                                                                             </div>
 

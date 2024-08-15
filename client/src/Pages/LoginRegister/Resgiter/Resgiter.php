@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../../connection.php');
 
 $conn = createConnection();
@@ -44,4 +44,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
-?>
