@@ -48,8 +48,8 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     phone: '',
     address: ''
   });
-  
-  const id = Cookies.get('userId'); 
+
+  const id = Cookies.get('userId');
 
   useEffect(() => {
     if (id) {
@@ -120,32 +120,30 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
   const clickSubmit = async (e) => {
     e.preventDefault();
-  
+
     const userId = Cookies.get('userId');
-  
+
     if (!userId) {
       navigate('/login');
       return;
     }
-  
+
     try {
-      const paypalLink = await handleSubmitPaypal(); // Thực hiện thanh toán PayPal
-      
-      await handleSubmit(e); // Xử lý đơn hàng
+      const paypalLink = await handleSubmitPaypal();
+
+      await handleSubmit(e);
 
       if (paypalLink) {
-        // Chuyển hướng đến PayPal để thanh toán
+
         window.location.href = paypalLink;
-  
-        // Chờ đến khi người dùng hoàn tất thanh toán (giả định bạn có cơ chế xác thực sau khi thanh toán)
-        // Có thể thực hiện bằng cách kiểm tra trạng thái thanh toán hoặc sử dụng webhook nếu cần
-  
-        // Hiển thị thông báo khi thanh toán thành công (sẽ xuất hiện sau khi người dùng quay lại trang)
+
         alert('Checkout successfully');
-        clearCart(); // Xóa giỏ hàng sau khi thanh toán thành công
+        clearCart();
       }
     } catch (error) {
+
       console.error('Error during checkout:', error);
+
     }
   };
 
