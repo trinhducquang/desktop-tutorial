@@ -163,6 +163,7 @@ $sql = "CREATE TABLE IF NOT EXISTS orders (
     address varchar(100) not null,
     order_date date not null,
     total_amount decimal(18,2) not null,
+    status varchar(20),
     
     foreign key (user_id) references users(id) -- ON DELETE CASCADE
 )";

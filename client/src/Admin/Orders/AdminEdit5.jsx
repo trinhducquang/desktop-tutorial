@@ -18,7 +18,8 @@ const AdminEdit5 = () => {
         phone: '',
         address: '',
         order_date: '',
-        total_amount: ''
+        total_amount: '',
+        status: ''
     });
 
 
@@ -45,7 +46,8 @@ const AdminEdit5 = () => {
                 phone: data.phone ? data.phone : '',
                 address: data.address ? data.address : '',
                 order_date: data.order_date ? data.order_date : '',
-                total_amount: data.total_amount ? data.total_amount : ''
+                total_amount: data.total_amount ? data.total_amount : '',
+                status: data.status ? data.status : ''
             });
         }).catch(error => {
             console.error('Fetch error:', error);
@@ -73,7 +75,8 @@ const AdminEdit5 = () => {
                     "phone": products.phone,
                     "address": products.address,
                     "order_date": products.order_date,
-                    "total_amount": products.total_amount
+                    "total_amount": products.total_amount,
+                    "status": products.status
                 }
             })
         })
@@ -116,37 +119,46 @@ const AdminEdit5 = () => {
 
                         <div className="form-group">
                             <label htmlFor="user_id">User ID</label>
-                            <input required type="text" className="form-control" id="user_id" name="user_id" value={products.user_id} onChange={(event) => setProducts({ ...products, user_id: event.target.value })} disabled/>
+                            <input required type="text" className="form-control" id="user_id" name="user_id" value={products.user_id} onChange={(event) => setProducts({ ...products, user_id: event.target.value })} disabled />
                         </div><br />
 
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
-                            <input required type="text" className="form-control" id="name" name="name" value={products.name} onChange={(event) => setProducts({ ...products, name: event.target.value })} disabled/>
+                            <input required type="text" className="form-control" id="name" name="name" value={products.name} onChange={(event) => setProducts({ ...products, name: event.target.value })} disabled />
                         </div><br />
-                        
+
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input required type="text" className="form-control" id="email" name="email" value={products.email} onChange={(event) => setProducts({ ...products, email: event.target.value })} disabled/>
+                            <input required type="text" className="form-control" id="email" name="email" value={products.email} onChange={(event) => setProducts({ ...products, email: event.target.value })} disabled />
                         </div><br />
-                        
+
                         <div className="form-group">
                             <label htmlFor="phone">Phone</label>
-                            <input required type="text" className="form-control" id="phone" name="phone" value={products.phone} onChange={(event) => setProducts({ ...products, phone: event.target.value })} disabled/>
+                            <input required type="text" className="form-control" id="phone" name="phone" value={products.phone} onChange={(event) => setProducts({ ...products, phone: event.target.value })} disabled />
                         </div><br />
-                        
+
                         <div className="form-group">
                             <label htmlFor="address">Address</label>
-                            <input required type="text" className="form-control" id="address" name="address" value={products.address} onChange={(event) => setProducts({ ...products, address: event.target.value })} disabled/>
+                            <input required type="text" className="form-control" id="address" name="address" value={products.address} onChange={(event) => setProducts({ ...products, address: event.target.value })} disabled />
                         </div><br />
-                        
+
                         <div className="form-group">
                             <label htmlFor="order_date">Order Date</label>
-                            <input required type="text" className="form-control" id="order_date" name="order_date" value={products.order_date} onChange={(event) => setProducts({ ...products, order_date: event.target.value })} disabled/>
+                            <input required type="text" className="form-control" id="order_date" name="order_date" value={products.order_date} onChange={(event) => setProducts({ ...products, order_date: event.target.value })} disabled />
                         </div><br />
-                        
+
                         <div className="form-group">
                             <label htmlFor="total_amount">Total Amount</label>
-                            <input required type="text" className="form-control" id="total_amount" name="total_amount" value={products.total_amount} onChange={(event) => setProducts({ ...products, total_amount: event.target.value })} disabled/>
+                            <input required type="text" className="form-control" id="total_amount" name="total_amount" value={products.total_amount} onChange={(event) => setProducts({ ...products, total_amount: event.target.value })} disabled />
+                        </div><br />
+
+                        <div className="form-group">
+                            <label htmlFor="status">Status</label>
+                            <select name="status" className="form-control" value={products.status} onChange={(event) => setProducts({ ...products, status: event.target.value })}>
+                                <option value="" disabled>Select status</option>
+                                <option value="paid">Paid</option>
+                                <option value="unpaid">Unpaid</option>
+                            </select>
                         </div><br />
 
                         <button type="submit">Submit</button>
