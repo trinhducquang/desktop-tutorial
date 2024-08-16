@@ -5,7 +5,7 @@ import './Admin.scss'
 
 const Admin = () => {
 
-    const scrollRef = useScrollTranslate(9000);
+    const scrollRef = useScrollTranslate(99999);
 
     return (
             <div className="admin-container">
