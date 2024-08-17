@@ -63,7 +63,6 @@ import Login from './Pages/LoginRegister/Login/Login';
 import Resgiter from './Pages/LoginRegister/Resgiter/Resgiter';
 import Success from './Pages/Success/Success';
 import Failed from './Pages/Failed/Failed';
-import FoundersOfWebsite from './Pages/FoundersOfWebsite/FoundersOfWebsite';
 import { CartProvider } from './Hooks/CartContext';
 import NotFound from './Pages/NotFound/NotFound ';
 
@@ -108,7 +107,6 @@ const App = () => {
           <Route path='/Luxury' element={<Luxury />} />
           <Route path='/User' element={<User />} />
           <Route path='/Ownership' element={<Ownership/>}/>
-          <Route path='/FoundersOfWebsite' element={<FoundersOfWebsite/>}/>
 
           <Route path='/Vali' element={<Vali />} />
           <Route path='/Handbag' element={<Handbag />} />
