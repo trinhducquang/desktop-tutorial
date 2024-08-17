@@ -30,7 +30,7 @@ const useMenu = () => {
     { name: "OBJECTS OF LUXURY", link: "/Luxury" },
     { name: "PROVENANCE", link: "/pre-owned" },
     { name: "OWNERSHIP", link: "/ownership" },
-    { name: "LIBRARY", link: "/Library" },
+    // { name: "LIBRARY", link: "/Library" },
     { name: isLoggedIn ? "LOGOUT" : "LOGIN", link: isLoggedIn ? "#" : "/Login" },
   ];
 

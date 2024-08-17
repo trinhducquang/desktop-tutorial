@@ -71,9 +71,10 @@ $tables = [
             'address',
             'order_date',
             'total_amount',
+            'status',
             'id'
         ],
-        'type' => 'issssadi',
+        'type' => 'isssssdsi',
         'byId' => 'user_id'
     ],
     [
@@ -645,9 +646,10 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
                     case 'd': // Decimal
                         $fieldValues[$column] = floatval($data['fields'][$column]);
                         break;
-                    case 'a': // Datetime
-                        $fieldValues[$column] = DATE_FORMAT($data['fields'][$column], '%m/%d/%Y');
-                        break;
+                    // case 'a': // Datetime
+                    //     $dateTime = DateTime::createFromFormat('Y-m-d', $data['fields'][$column]);
+                    //     $fieldValues[$column] = $dateTime->format('m/d/Y');
+                    //     break;
                     case 's': // String
                     default:
                         $fieldValues[$column] = (string) $data['fields'][$column];

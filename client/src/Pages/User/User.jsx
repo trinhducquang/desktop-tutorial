@@ -126,7 +126,7 @@ const User = () => {
             }
 
             let data = await resp.json();
-            // console.log(data);
+            console.log(data);
 
             setOrders(data);
         }
@@ -252,79 +252,81 @@ const User = () => {
                         <div className='item-3-left-item' >
                             {
                                 orders
-                                .filter(order => order.user_id == userId)
-                                .map((order) => {
-                                    return (
-                                        <div key={order.id}>
-                                            <div className='item-3-left-item-1' >
-                                                {
-                                                    orderDetails
-                                                        .filter((orderDetail) => orderDetail.order_id == order.id)
-                                                        .map((orderDetail) => {
+                                    .filter(order => order.user_id == userId && order.total_amount != 0.00)
+                                    .map((order) => {
+                                        return (
+                                            <div key={order.id}>
+                                                <div className='item-3-left-item-1' >
+                                                    <p>Order Id: {order.id} (Order Date: {order.order_date})</p>
+                                                    {
+                                                        orderDetails
+                                                            .filter((orderDetail) => orderDetail.order_id == order.id)
+                                                            .map((orderDetail) => {
 
-                                                            return (
-                                                                <div style={{ 'marginRight': '10px' }} key={orderDetail.id} >
-                                                                    {
-                                                                        products
-                                                                            .filter((product) => product.id == orderDetail.product_id)
-                                                                            .map((product) => (
-                                                                                <div className='item' key={product.id}>
-                                                                                    <div className='item-flex'>
-                                                                                        {
-                                                                                            Object.entries(groupedImages)
-                                                                                                .filter(([productId, imageList]) => productId === orderDetail.product_id)
-                                                                                                .map(([productId, imageList]) => {
-                                                                                                    const [image1, image2] = imageList.slice(0, 2);
+                                                                return (
+                                                                    <div style={{ 'marginRight': '10px' }} key={orderDetail.id} >
+                                                                        {
+                                                                            products
+                                                                                .filter((product) => product.id == orderDetail.product_id)
+                                                                                .map((product) => (
+                                                                                    <div className='item' key={product.id}>
+                                                                                        <div className='item-flex'>
+                                                                                            {
+                                                                                                Object.entries(groupedImages)
+                                                                                                    .filter(([productId, imageList]) => productId === orderDetail.product_id)
+                                                                                                    .map(([productId, imageList]) => {
+                                                                                                        const [image1, image2] = imageList.slice(0, 2);
 
-                                                                                                    return (
-                                                                                                        <div key={productId}>
-                                                                                                            <div className='flex-item-container' >
-                                                                                                                <div className='item-1-flex'>
-                                                                                                                    <div >
-                                                                                                                        {image1 && (
-                                                                                                                            <img
-                                                                                                                                src={image1.image}
-                                                                                                                                alt={`Product ${productId} - Image 1`}
-                                                                                                                            />
-                                                                                                                        )}
+                                                                                                        return (
+                                                                                                            <div key={productId}>
+                                                                                                                <div className='flex-item-container' >
+                                                                                                                    <div className='item-1-flex'>
+                                                                                                                        <div >
+                                                                                                                            {image1 && (
+                                                                                                                                <img
+                                                                                                                                    src={image1.image}
+                                                                                                                                    alt={`Product ${productId} - Image 1`}
+                                                                                                                                />
+                                                                                                                            )}
+                                                                                                                        </div>
+                                                                                                                        <div className='item-2-flex' >
+                                                                                                                            <div>
+                                                                                                                                {/* <p>Order Id: {orderDetail.order_id}</p> */}
+                                                                                                                                <p>Product Id: {orderDetail.product_id}</p>
+                                                                                                                                <p>Product Name: {product.name}</p>
+                                                                                                                                <p>Price per Product: {orderDetail.price_product}</p>
+                                                                                                                                <p>Quantity: {orderDetail.quantity}</p>
+                                                                                                                                {/* <p>Order Date: {order.order_date}</p> */}
+                                                                                                                            </div>
+                                                                                                                            <div>
+                                                                                                                                <button onClick={(event) => deleteOrderDetail(event, orderDetail.id)}>REMOVE</button>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
-                                                                                                                    <div className='item-2-flex' >
-                                                                                                                        <div>
-                                                                                                                            <p>Order Id: {orderDetail.order_id}</p>
-                                                                                                                            <p>Product Id: {orderDetail.product_id}</p>
-                                                                                                                            <p>Product Name: {product.name}</p>
-                                                                                                                            <p>Price per Product: {orderDetail.price_product}</p>
-                                                                                                                            <p>Quantity: {orderDetail.quantity}</p>
-                                                                                                                            <p>Order Date: {order.order_date}</p>
-                                                                                                                        </div>
-                                                                                                                        <div>
-                                                                                                                            <button onClick={(event) => deleteOrderDetail(event, orderDetail.id)}>REMOVE</button>
-                                                                                                                        </div>
+                                                                                                                    <div className='item-flex-item'>
+                                                                                                                        <div><p>Subtotal: {orderDetail.subtotal}</p></div>
+
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <div className='item-flex-item'>
-                                                                                                                    <div><p>Subtotal: {orderDetail.subtotal}</p></div>
-                                                                                                                    <div><p>THANH TOÁN THÀNH CÔNG</p></div>
-                                                                                                                </div>
+
                                                                                                             </div>
-
-                                                                                                        </div>
-                                                                                                    )
-                                                                                                })
-                                                                                        }
+                                                                                                        )
+                                                                                                    })
+                                                                                            }
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div>
-                                                                            ))
-                                                                    }
-                                                                </div>
-                                                            )
-                                                        })
-                                                }
+                                                                                ))
+                                                                        }
+                                                                    </div>
+                                                                )
+                                                            })
+                                                    }
+                                                    <div style={{'textAlign': 'right', 'marginBottom': '10px'}}><p>{order.status}</p></div>
+                                                </div>
+                                                <hr />
                                             </div>
-                                            <hr />
-                                        </div>
-                                    )
-                                })
+                                        )
+                                    })
                             }
                         </div>
                     </div>

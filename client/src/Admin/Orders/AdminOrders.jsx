@@ -39,7 +39,34 @@ const AdminOrders = () => {
 
     useEffect(() => {
         fetchData(url);
+        fetchOrderDetail(url);
     }, []);
+
+    const [orderDetails, setOrderDetails] = useState([]);
+
+    const fetchOrderDetail = async (url) => {
+        try {
+            let resp = await fetch(`${url}AdminProduct.php`, {
+                method: 'GET',
+                headers: {
+                    'X-React-File-Name': 'AdminOrderDetail.jsx'
+                }
+            });
+
+            if (!resp.ok) {
+                throw new Error('Failed to fetch entertainment data.');
+            }
+
+            let data = await resp.json();
+            // console.log(data);
+
+            setOrderDetails(data);
+        }
+        catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
 
 
     const deletePro = async (event, prd) => {
@@ -76,7 +103,6 @@ const AdminOrders = () => {
     }
 
 
-
     return (
         <div className="container">
             <Admin />
@@ -107,6 +133,7 @@ const AdminOrders = () => {
                                 <th>Address</th>
                                 <th>Order Date</th>
                                 <th>Total Amount</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -124,10 +151,11 @@ const AdminOrders = () => {
                                             <td>{new Date(prd.order_date).toLocaleDateString()}</td>
                                             <td>${prd.total_amount}</td>
                                             {/* <td>${prd.total_amount.toFixed(2)}</td> */}
+                                            <td>{prd.status}</td>
 
                                             <td className="action-buttons">
                                                 <Link to={`/Admin/order_detail/${prd.id}`}><button className="show-button">Show</button></Link>
-                                                {/* <Link to={`/Admin/order/edit/${prd.id}`}><button className="edit-button">Edit</button></Link> */}
+                                                <Link to={`/Admin/order/edit/${prd.id}`}><button className="edit-button">Edit</button></Link>
                                                 <button type="button" className="delete-button" onClick={(event) => deletePro(event, prd)}>Delete</button>
                                             </td>
                                         </tr>
