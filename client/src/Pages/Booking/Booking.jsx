@@ -221,7 +221,7 @@ const Booking = () => {
 
 
     return (
-        <div className='overflow'>
+        <div className='overflow clasname-fix-colum'>
 
             {/* product.id !== null && */}
             {

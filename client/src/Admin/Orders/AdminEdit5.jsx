@@ -156,8 +156,8 @@ const AdminEdit5 = () => {
                             <label htmlFor="status">Status</label>
                             <select name="status" className="form-control" value={products.status} onChange={(event) => setProducts({ ...products, status: event.target.value })}>
                                 <option value="" disabled>Select status</option>
-                                <option value="paid">Paid</option>
-                                <option value="unpaid">Unpaid</option>
+                                <option value="successful">successful</option>
+                                <option value="unsuccessful">unsuccessful</option>
                             </select>
                         </div><br />
 

@@ -128,7 +128,6 @@ body.menu-open .custom-carousel .control-dots {
 .Navbar-item {
   background-color: #222;
   width: 100%;
-  min-height: 1000px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -137,6 +136,8 @@ body.menu-open .custom-carousel .control-dots {
   color: #fff;
   height: auto;
   overflow: hidden;
+  padding-top: 7%;
+  padding-bottom: 4%;
   
   h3,
   p {
@@ -169,7 +170,6 @@ body.menu-open .custom-carousel .control-dots {
       min-width: 300px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       color: #fff;
       overflow: hidden;
 
@@ -212,3 +212,30 @@ body.menu-open .custom-carousel .control-dots {
   }
 }
 
+.Home-container {
+  @media (max-width: 1024px) {
+    .mobile-top-home {
+      padding-top: 50px !important;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .Navbar-content div {
+      border: none !important;
+
+      h4 {
+        margin-top: 30px !important;
+      }
+
+      p {
+        margin-bottom: 30px !important;
+      }
+    }
+
+    .content-container div h4,
+    p {
+      padding: 0 !important;
+    }
+
+  }
+}

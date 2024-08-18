@@ -32,7 +32,7 @@ const InspiringGreatness = () => {
   } = useVideoControl();
 
   return (
-    <>
+    <div className='Inspiring-Greatness-Container'>
       <section>
         <div className='Menu1-container'>
           <video src={menu1} autoPlay loop muted />
@@ -62,7 +62,7 @@ const InspiringGreatness = () => {
               </button>
             </div>
           </div>
-          <div>
+          <div className='fix-alk-in'>
             <button>
               <Link to='/Inspiring-Series'>
                 Watch All Episodes
@@ -252,7 +252,7 @@ const InspiringGreatness = () => {
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const paypal = require('paypal-rest-sdk');
 const cors = require('cors');
+const mysql = require('mysql2');
 
 const app = express();
 app.use(cors());
@@ -12,11 +13,28 @@ paypal.configure({
     "client_secret": 'EO0R5IeDVzLBZ_6yQufcRdW5Lt82EPBrR2yfAioHDY3RQDeWyd8qMuxvJeVZzxuid3CRm4nkQFec9VNw',
 });
 
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'project1_luggage'
+});
+
+connection.connect(err => {
+    if (err) {
+        console.error('Lỗi kết nối cơ sở dữ liệu: ' + err.stack);
+        return;
+    }
+    console.log('Kết nối cơ sở dữ liệu thành công');
+});
+
 let currentTotalPrice = "0.00";
+let currentOrderId = null;
 
 app.post('/payment', async (req, res) => {
     try {
-        const { cartItems } = req.body;
+        const { cartItems, orderId } = req.body;
+        currentOrderId = orderId;
 
         const totalPrice = cartItems.reduce((sum, item) => {
             const itemPrice = parseFloat(item.price) || 0;
@@ -31,8 +49,8 @@ app.post('/payment', async (req, res) => {
                 "payment_method": "paypal"
             },
             "redirect_urls": {
-                "return_url": "http://localhost:8000/Success",
-                "cancel_url": "http://localhost:8000/Failed"
+                "return_url": "http://localhost:8000/success",
+                "cancel_url": "http://localhost:8000/failed"
             },
             "transactions": [{
                 "item_list": {
@@ -64,7 +82,7 @@ app.post('/payment', async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: 'Payment creation failed' });
+        res.status(500).json({ error: 'Tạo thanh toán không thành công' });
     }
 });
 
@@ -77,7 +95,7 @@ app.get('/success', (req, res) => {
         "transactions": [{
             "amount": {
                 "currency": "USD",
-                "total": currentTotalPrice 
+                "total": currentTotalPrice
             }
         }]
     };
@@ -88,7 +106,16 @@ app.get('/success', (req, res) => {
             res.redirect('http://localhost:5173/failed');
         } else {
             console.log(JSON.stringify(payment));
-            res.redirect('http://localhost:5173/success');
+
+            const updateOrderStatus = 'UPDATE orders SET status = ? WHERE id = ?';
+            connection.query(updateOrderStatus, ['completed', currentOrderId], (err, results) => {
+                if (err) {
+                    console.error('Lỗi khi cập nhật trạng thái đơn hàng: ' + err.stack);
+                } else {
+                    console.log('Trạng thái đơn hàng đã được cập nhật');
+                    res.redirect('http://localhost:5173/Success');
+                }
+            });
         }
     });
 });
@@ -98,5 +125,5 @@ app.get('/failed', (req, res) => {
 });
 
 app.listen(8000, () => {
-    console.log('Server is running on port 8000');
+    console.log('Máy chủ đang chạy trên cổng 8000');
 });

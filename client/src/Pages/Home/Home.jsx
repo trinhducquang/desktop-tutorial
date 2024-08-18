@@ -23,7 +23,7 @@ const Navbar = () => {
   } = useNavbar();
 
   return (
-    <>
+    <div className='Home-container'>
       <section>
         <Carousel
           className="custom-carousel"
@@ -42,8 +42,8 @@ const Navbar = () => {
           <div className='Navbar-video '>
             <video src={RIMOWAMars} autoPlay muted loop />
             <div className={`video-content ${isVideoInView ? 'visible' : ''}`}>
-              <h2>Original Colours </h2>
-              <p>Mars & Mercury</p>
+              <h2>ORIGINAL COLOURS</h2>
+              <p>MARS & MERCURY</p>
               <button className='circle-large bigmouse'>
                 <Link to="/Inspiring-Greatness">
                   DISCOVER NOW
@@ -73,7 +73,7 @@ const Navbar = () => {
           onMouseLeave={handleMouseLeave}
           style={{ marginTop: scrollPosition > window.innerHeight ? '0' : '0' }}
         >
-          <div>
+          <div className='mobile-top-home'>
             <h3>EXPLORE FURTHER</h3>
             <p>CONTINUE YOUR JOURNEY</p>
           </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

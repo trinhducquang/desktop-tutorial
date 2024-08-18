@@ -126,7 +126,7 @@ const Library = () => {
 
 
   return (
-    <div className='overflow'>
+    <div className='overflow libary-container'>
       <section>
         <div className='Navbar-img Navbar-library'>
           <img src={banner} alt="Library Banner" />

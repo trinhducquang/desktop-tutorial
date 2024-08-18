@@ -4,15 +4,18 @@ import Owership from '/public/Owership/Mecury.mp4'
 import { GrLinkNext } from 'react-icons/gr'
 import Carousel from '../../components/Carousel/Carousel.jsx'
 import { Page6img } from '../../components/Carousel/imageGroups.js';
-import img1 from '/public/Luxury/img2.webp'
-import img2 from '/public/Luxury/img2.webp'
-import img3 from '/public/Luxury/img2.webp'
+import img2 from '/public/Owership/img2.webp'
+import img3 from '/public/Owership/img3.webp'
+import img4 from '/public/Owership/img4.webp'
+import img5 from '/public/Owership/img5.webp'
+import img6 from '/public/Owership/img6.webp'
+import img7 from '/public/Owership/img7.webp'
 import Slider from 'react-slick'
 import Roll from '/video/Rolls.mp4';
 import useVideoControl from '../../Hooks/useVideoControl';
 import Limitless from '/muse/Limitless.mp4'
 import Owership3 from '/public/Owership/ownersip3.mp4'
-import img4 from '/public/Owership/img1.webp'
+import { Link } from 'react-router-dom'
 
 
 
@@ -95,9 +98,11 @@ const Ownership = () => {
                                 Ecstasy Challenge in 2023.
                             </p>
                             <div className='Page1-button'>
-                                <button>STAY CONNECTED
-                                    <GrLinkNext className="arrow" />
-                                </button>
+                                <Link to = '/Login'>
+                                    <button>STAY CONNECTED
+                                        <GrLinkNext className="arrow" />
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -212,13 +217,13 @@ const Ownership = () => {
                 <section className='carousel-section'>
                     <Slider {...settings} className='Slider-section'>
                         <div>
-                            <img src={img1} alt="Pre-owned luggage 1" />
+                            <img src={img2} alt="Pre-owned luggage 1" />
                         </div>
                         <div>
-                            <img src={img2} alt="Pre-owned luggage 2" />
+                            <img src={img3} alt="Pre-owned luggage 2" />
                         </div>
                         <div>
-                            <img src={img3} alt="Pre-owned luggage 3" />
+                            <img src={img4} alt="Pre-owned luggage 3" />
                         </div>
                     </Slider>
                 </section>
@@ -235,21 +240,21 @@ const Ownership = () => {
                         <div className='content-container fix-boder-left'>
                             <div className='Navbar-content'>
                                 <div>
-                                    <img src={img1} alt="Discover Bespoke" />
+                                    <img src={img5} alt="Discover Bespoke" />
                                     <h4>DISCOVER BESPOKE</h4>
                                     <p>Choose from our exclusive collections or collaborate with our craftspeople and designers to create a Rolls-Royce wholly unique to you. This is Rolls-Royce Bespoke.</p>
                                 </div>
                             </div>
                             <div className='Navbar-content'>
                                 <div>
-                                    <img src={img4} alt="Explore Models" />
+                                    <img src={img6} alt="Explore Models" />
                                     <h4>EXPLORE MODELS</h4>
                                     <p>Explore our stunning collection of new Rolls-Royce models. Whether you’re looking for the ultimate luxury saloon, a sporty coupe or a refined convertible, we have something for you.</p>
                                 </div>
                             </div>
                             <div className='Navbar-content'>
                                 <div>
-                                    <img src={img3} alt="Find Your Dealer" />
+                                    <img src={img7} alt="Find Your Dealer" />
                                     <h4>FIND A DEALER</h4>
                                     <p>Find a Rolls-Royce dealer near you and book a test drive or discover more about the bespoke services we offer.</p>
                                 </div>

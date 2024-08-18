@@ -9,8 +9,12 @@
 
         .item-flex-item {
            display: flex;
-           justify-content: space-between;
+          
            flex-direction: column;
+
+           div:nth-child(2) {
+            margin-top: 95px;
+           }
         }
 
     }

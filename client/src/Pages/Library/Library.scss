@@ -1,80 +1,102 @@
-.Navbar-library {
-  height: 500px;
+  .Navbar-library {
+    height: 500px;
 
-  h2 {
-    letter-spacing: normal;
+    h2 {
+      letter-spacing: normal;
+    }
+
+    p {
+      letter-spacing: normal;
+      font-size: 20px;
+      font-weight: 300;
+    }
   }
 
-  p {
-    letter-spacing: normal;
-    font-size: 20px;
-    font-weight: 300;
-  }
-}
-
-.Library-item {
-  text-align: center;
-  width: 95%;
-  margin: 0 auto;
-  background-color: rgb(255, 255, 255);
-
-  .content-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    width: 100%;
-  }
-
-  .item {   
+  .Library-item {
     text-align: center;
-    
-    .img-container {
-      position: relative;
-      height: 400px; 
-      background-color: hsl(0, 0%, 90%); // Giữ nền cố định
+    width: 95%;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
 
-      .img1,
-      .imgright {
-        transition: opacity 0.3s ease-in-out;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        background-color: inherit; // Đảm bảo ảnh giữ nguyên nền của container
-      }
-
-      .img1 {
-        opacity: 1;
-      }
-
-      .imgright {
-        z-index: 1;
-        opacity: 0;
-      }
-
-      .img1.hidden {
-        opacity: 0;
-      }
-
-      .imgright.visible {
-        z-index: 2;
-        opacity: 1;
-      }
+    .content-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      width: 100%;
     }
 
-    .text-abc {
-      text-align: left;
-      padding: 10px 0;
-      
-      h4 {
-        color: black;
+    .item {
+      text-align: center;
+
+      .img-container {
+        position: relative;
+        height: 400px;
+        background-color: hsl(0, 0%, 90%); // Giữ nền cố định
+
+        .img1,
+        .imgright {
+          transition: opacity 0.3s ease-in-out;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          background-color: inherit; // Đảm bảo ảnh giữ nguyên nền của container
+        }
+
+        .img1 {
+          opacity: 1;
+        }
+
+        .imgright {
+          z-index: 1;
+          opacity: 0;
+        }
+
+        .img1.hidden {
+          opacity: 0;
+        }
+
+        .imgright.visible {
+          z-index: 2;
+          opacity: 1;
+        }
       }
 
-      .rating {
-        margin: 0 auto;
+      .text-abc {
+        text-align: left;
+        padding: 10px 0;
+
+        h4 {
+          color: black;
+        }
+
+        .rating {
+          margin: 0 auto;
+        }
       }
     }
   }
-}
+
+  @media (max-width: 1024px) {
+    .content-container {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+  }
+
+
+
+  @media (max-width: 846px) {
+    .topshop-container {
+      display: block !important;
+    }
+
+    .topshop-container .sort-container {
+      margin-left: 13px;
+      margin-bottom: 15px;
+  }
+  }
+
+

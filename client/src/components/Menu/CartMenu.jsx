@@ -74,6 +74,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
             address: data.address || ''
           });
         })
+       
         .catch(error => {
           console.error('Fetch error:', error);
         });
@@ -87,7 +88,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       fields: {
         product_id: item.id,
         quantity: item.quantity.toString(),
-        price_product: item.price
+        price_product: item.price,
       }
     }));
 
@@ -111,6 +112,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         body: JSON.stringify(order)
       });
       const data = await response.json();
+      
       clearCart();
       //navigate('/Library');
     } catch (error) {

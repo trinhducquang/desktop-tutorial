@@ -10,6 +10,25 @@
 
 }
 
+
+.carousel-section {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .Slider-section .slick-slide {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Slider-section img {
+    width: 100%;
+    height: 500px; 
+    object-fit: cover; 
+  }
+
 .fix-back-cc {
     padding-bottom: 130px;
 }

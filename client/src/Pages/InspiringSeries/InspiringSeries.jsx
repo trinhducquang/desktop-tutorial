@@ -26,7 +26,7 @@ const InspiringSeries = () => {
 
 
     return (
-        <div>
+        <div className='overflow'>
             <section>
                 <div className='Menu1-container'>
                     <video src={ArcticBlue} autoPlay loop muted />

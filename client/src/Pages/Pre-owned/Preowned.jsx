@@ -30,7 +30,7 @@ const Preowned = () => {
     };
 
     return (
-        <div className='overflow'>
+        <div className='overflow Preowned-container'>
             <section className="hero-section">
                 <div className='hero-video-container'>
                     <video src={Unique} autoPlay loop muted />
@@ -188,7 +188,7 @@ const Preowned = () => {
                 </div>
             </section>
             <section>
-                <div className='Navbar-item'>
+                <div className='Navbar-item fix-pre-item'>
                     <div>
                         <h3>CONTINUE YOUR JOURNEY</h3>
                     </div>
