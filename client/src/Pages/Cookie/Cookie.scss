@@ -159,3 +159,18 @@
         transform: translateY(0);
     }
 }
+
+@media (max-width: 1024px) {
+    .text-font {
+        padding: 10px;
+    }
+
+    .Cookie-text {
+     
+        padding: 0 !important;
+    }
+
+    ul, li {
+        margin-left: 0 !important;
+    }
+}
