@@ -1,17 +1,18 @@
 import React from 'react';
 import '../Complaints/Complaints.scss';
+import './Sitemap.scss';
 import useScrollTranslate from '../../Hooks/useScrollTranslate';
 import sitemap from '/img/sitemap.webp';
-
+import { Link } from 'react-router-dom';
 
 const Sitemap = () => {
 
-  const distance1 = 502;
+  const distance1 = 570.8;
 
   const contactRef1 = useScrollTranslate(distance1);
 
   return (
-    <div className='overflow h2'>
+    <div className='overflow h2 Sitemap-container'>
       <section>
         <div className='Navbar-img Complaints-img'>
           <img src={sitemap} alt="Rimowa Complaints" />
@@ -37,22 +38,21 @@ const Sitemap = () => {
                 <h2>RIMOWA</h2>
               </div>
               <div className='Contact-section-contact-us'>
-                <p>TRAVEL COMPANIONS COLLECTION</p>
-                <p>MUSE ARTS PROGRAMME</p>
-                <p>INSPIRING GREATNESS</p>
-                <p>OBJECTS OF LUXURY</p>
-                <p>PROVENANCE</p>
-                <p>OWNERSHIP</p>
-                <p>LIBRARY</p>
-                <p>LOGIN</p>
-                <p>FAQs</p>
-                <p>Whispers</p>
-                <p>Privacy</p>
-                <p>Contact</p>
-                <p>COOKIES</p>
-                <p>Legal</p>
-                <p>Complaints</p>
-                <p>Careers</p>
+                <Link to='/Library'><p>TRAVEL COMPANIONS COLLECTION</p></Link>
+                <Link to='/Muse'><p>MUSE ARTS PROGRAMME</p></Link>
+                <Link to='/Inspiring-Greatness'><p>INSPIRING GREATNESS</p></Link>
+                <Link to='/OBJECTS OF LUXURY'><p>OBJECTS OF LUXURY</p></Link>
+                <Link to='/pre-owned'><p>PROVENANCE</p></Link>
+                <Link to='/OWNERSHIP'><p>OWNERSHIP</p></Link>
+                <Link to='/Login'><p>LOGIN</p></Link>
+                <Link to='/Faqs'><p>FAQs</p></Link>
+                <Link to='/whispers'><p>Whispers</p></Link>
+                <Link to='/Privacy'><p>Privacy</p></Link>
+                <Link to='/Contact'><p>Contact</p></Link>
+                <Link to='/Cookie'><p>COOKIES</p></Link>
+                <Link to='/Legal'><p>Legal</p></Link>
+                <Link to='/Complaints'><p>Complaints</p></Link>
+                <Link to='/Careers'><p>Careers</p></Link>
               </div>
             </div>
             <hr />

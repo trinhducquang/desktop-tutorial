@@ -1,0 +1,15 @@
+.Sitemap-container {
+    a {
+        text-decoration: underline white !important;
+        text-underline-offset: 5px;
+
+
+        >p {
+            margin-top: 20px !important;
+
+            &:hover {
+                cursor: pointer !important;
+            }
+        }
+    }
+}
