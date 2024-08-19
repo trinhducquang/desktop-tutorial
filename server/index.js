@@ -34,7 +34,11 @@ let currentOrderId = null;
 app.post('/payment', async (req, res) => {
     try {
         const { cartItems, orderId } = req.body;
+        
         currentOrderId = orderId;
+
+        //console.log(currentOrderId);
+
 
         const totalPrice = cartItems.reduce((sum, item) => {
             const itemPrice = parseFloat(item.price) || 0;
@@ -106,19 +110,35 @@ app.get('/success', (req, res) => {
             res.redirect('http://localhost:5173/failed');
         } else {
             console.log(JSON.stringify(payment));
+            console.log('currentOrderId:', currentOrderId);
 
-            const updateOrderStatus = 'UPDATE orders SET status = ? WHERE id = ?';
-            connection.query(updateOrderStatus, ['completed', currentOrderId], (err, results) => {
-                if (err) {
-                    console.error('Lỗi khi cập nhật trạng thái đơn hàng: ' + err.stack);
-                } else {
-                    console.log('Trạng thái đơn hàng đã được cập nhật');
-                    res.redirect('http://localhost:5173/Success');
-                }
-            });
+            // Kiểm tra xem currentOrderId có phải là một đối tượng không
+            if (currentOrderId && currentOrderId.orderId) {
+                // Sử dụng giá trị cụ thể từ orderId
+                const orderIdValue = currentOrderId.orderId;
+
+                // Cập nhật trạng thái đơn hàng
+                const updateOrderStatus = 'UPDATE orders SET status = ? WHERE id = ?';
+
+                connection.query(updateOrderStatus, ['completed', orderIdValue], (err, results) => {
+                    if (err) {
+                        console.error('Lỗi khi cập nhật trạng thái đơn hàng: ' + err.stack);
+                        res.redirect('http://localhost:5173/failed');
+                    } else {
+                        console.log('Trạng thái đơn hàng đã được cập nhật');
+                        res.redirect('http://localhost:5173/User');
+                    }
+                });
+            } else {
+                console.error('currentOrderId không hợp lệ');
+                res.redirect('http://localhost:5173/failed');
+            }
         }
     });
 });
+
+
+
 
 app.get('/failed', (req, res) => {
     res.redirect('http://localhost:5173/failed');

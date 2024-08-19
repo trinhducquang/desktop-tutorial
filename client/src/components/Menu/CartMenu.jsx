@@ -24,18 +24,19 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     return isNaN(numPrice) ? '0.00' : numPrice.toFixed(2);
   };
 
-  const handleSubmitPaypal = async () => {
+  const handleSubmitPaypal = async (orderId) => {
     try {
-      const res = await axios.post('http://localhost:8000/payment', { cartItems });
-      if (res && res.data) {
-        const link = res.data.links[1].href;
-        return link;
-      }
+        const res = await axios.post('http://localhost:8000/payment', { cartItems, orderId });
+        if (res && res.data) {
+            const link = res.data.links[1].href;
+            return link;
+        }
     } catch (error) {
-      console.error('Error during PayPal submission:', error);
-      throw error;
+        console.error('Error during PayPal submission:', error);
+        throw error;
     }
-  };
+};
+
 
   const { url, urlLogin } = AdminConfig;
   const navigate = useNavigate();
@@ -115,11 +116,12 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         body: JSON.stringify(order)
       });
       const data = await response.json();
-      
+
       const orderId = data['orderId']['order_id'];
-      console.log(`Order Id: ${orderId}`);
+      // console.log(`Order Id: ${orderId}`);
       clearCart();
       //navigate('/Library');
+      return orderId;
     } catch (error) {
       console.error('Error during checkout:', error);
     }
@@ -136,17 +138,20 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     }
 
     try {
-      // const paypalLink = await handleSubmitPaypal();
 
-      await handleSubmit(e);
+      const orderId = await handleSubmit(e);
 
-      // if (paypalLink) {
+      const paypalLink = await handleSubmitPaypal({ orderId });
 
-      //   window.location.href = paypalLink;
+      console.log(orderId);
 
-      //   alert('Checkout successfully');
-      //   clearCart();
-      // }
+      if (paypalLink) {
+
+        window.location.href = paypalLink;
+        // console.log(orderId)
+        alert('Checkout successfully');
+        clearCart();
+      }
     } catch (error) {
 
       console.error('Error during checkout:', error);

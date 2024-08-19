@@ -184,8 +184,8 @@ $sql = "CREATE TABLE IF NOT EXISTS order_detail (
     quantity int not null,
     subtotal decimal(18,2) not null,
 
-    foreign key (order_id) references orders(id) ,
-    foreign key (product_id) references products(id) -- ON DELETE CASCADE
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 )";
 
 $result = $conn->query($sql);
