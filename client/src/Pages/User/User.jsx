@@ -126,7 +126,7 @@ const User = () => {
             }
 
             let data = await resp.json();
-            console.log(data);
+            // console.log(data);
 
             setOrders(data);
         }
@@ -136,34 +136,34 @@ const User = () => {
         }
     }
 
-    const deleteOrder = async (event, prd) => {
-        event.preventDefault();
+    // const deleteOrder = async (event, prd) => {
+    //     event.preventDefault();
 
-        let cf = window.confirm("Are you sure you want to delete this product?");
-        if (!cf) {
-            return;
-        }
+    //     let cf = window.confirm("Are you sure you want to delete this product?");
+    //     if (!cf) {
+    //         return;
+    //     }
 
-        setLoading(true);
-        try {
-            let resp = await fetch(`${url}AdminProduct.php/${prd.id}`, {
-                method: "DELETE",
-                headers: {
-                    'X-React-File-Name': 'AdminDelete.jsx',
-                    'X-File-Type': 'order'
-                }
-            });
+    //     setLoading(true);
+    //     try {
+    //         let resp = await fetch(`${url}AdminProduct.php/${prd.id}`, {
+    //             method: "DELETE",
+    //             headers: {
+    //                 'X-React-File-Name': 'AdminDelete.jsx',
+    //                 'X-File-Type': 'order'
+    //             }
+    //         });
 
-            if (!resp.ok) {
-                throw new Error('Failed to fetch entertainment data.');
-            }
-            let data = await resp.json();
+    //         if (!resp.ok) {
+    //             throw new Error('Failed to fetch entertainment data.');
+    //         }
+    //         let data = await resp.json();
 
-            fetchOrder(url);
-        } catch (error) {
-            // console.log(error);
-        }
-    }
+    //         fetchOrder(url);
+    //     } catch (error) {
+    //         // console.log(error);
+    //     }
+    // }
 
     const fetchOrderDetail = async (url) => {
         try {
@@ -257,7 +257,7 @@ const User = () => {
                                         return (
                                             <div key={order.id}>
                                                 <div className='item-3-left-item-1' >
-                                                <p>Order Id: {order.id} (Order date: {order.order_date})</p>
+                                                {/* <p>Order Id: {order.id} (Order date: {order.order_date})</p> */}
 
                                                     {
                                                         orderDetails
@@ -307,6 +307,7 @@ const User = () => {
                                                                                                                     </div>
                                                                                                                     <div className='item-flex-item'>
                                                                                                                         <div><p>Subtotal: {orderDetail.subtotal}</p></div>
+                                                                                                                        <div><p>Status: {order.status}</p></div>
                                                                                                                     </div>
                                                                                                                 </div>
 
@@ -322,7 +323,7 @@ const User = () => {
                                                                 )
                                                             })
                                                     }
-                                                                                                                        <div><p>Status: {order.status}</p></div>
+                                                                                                                        {/* <div><p>Status: {order.status}</p></div> */}
 
                                                 </div>
                                                 <hr />

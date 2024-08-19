@@ -136,17 +136,17 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     }
 
     try {
-      const paypalLink = await handleSubmitPaypal();
+      // const paypalLink = await handleSubmitPaypal();
 
       await handleSubmit(e);
 
-      if (paypalLink) {
+      // if (paypalLink) {
 
-        window.location.href = paypalLink;
+      //   window.location.href = paypalLink;
 
-        alert('Checkout successfully');
-        clearCart();
-      }
+      //   alert('Checkout successfully');
+      //   clearCart();
+      // }
     } catch (error) {
 
       console.error('Error during checkout:', error);
@@ -190,14 +190,6 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         </div>
       </div>
       <div className='cart-content-3'>
-        <div className='cart-content-3-item'>
-          <p>Total</p>
-          <p>({totalItems} items)</p>
-          <p>${totalPrice.toFixed(2)}</p>
-        </div>
-        <div className='cart-content-3-item-2'>
-          <button type='button' onClick={(e) => handleSubmit(e)}>CHECKOUT NOW</button>
-        </div>
         <div>
           <div className='cart-content-3-item'>
             <p>Total</p>
