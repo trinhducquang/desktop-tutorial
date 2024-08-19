@@ -219,6 +219,12 @@ const Booking = () => {
             });
     }
 
+    // Function to format numbers with a dot as the thousands separator
+    const formatNumber = (number) => {
+      return new Intl.NumberFormat('de-DE').format(number);
+    };
+  
+
 
     return (
         <div className='overflow clasname-fix-colum'>
@@ -312,7 +318,7 @@ const Booking = () => {
                                             {/* <h1>Trunk XL</h1> */}
                                             <h1>{product.name}</h1>
                                             {/* <span>$2,450.00</span> */}
-                                            <span>${product.price}</span>
+                                            <span>${formatNumber(product.price)}</span>
                                             {/* <p>
                                                 Crafted from high-end anodized aluminum,
                                                 RIMOWA Original is an iconic luggage design,

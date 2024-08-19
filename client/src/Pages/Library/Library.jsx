@@ -123,6 +123,11 @@ const Library = () => {
   }, [filters, products, productAttributes]);
 
 
+  // Function to format numbers with a dot as the thousands separator
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat('de-DE').format(number);
+  };
+
 
 
   return (
@@ -208,7 +213,7 @@ const Library = () => {
 
                     <div className='text-abc'>
                       <h4>{product.name}</h4>
-                      <p>${product.price}</p>
+                      <p>${formatNumber(product.price)}</p>
                     </div>
 
                   </div>
