@@ -12,7 +12,7 @@ body {
     background-color: $secondary-color;
     margin: 0;
     padding: 0;
-    
+
 }
 
 // Container
@@ -20,22 +20,25 @@ body {
     display: grid;
     grid-template-columns: 10% 90%;
 
-    .edit-button, .delete-button {
+    .edit-button,
+    .delete-button {
         width: 70px;
-       
 
-       
+
+
     }
 
     .action-buttons {
+        display: flex;
+        flex-direction: column;
         button {
             margin-top: 15px;
-            
+
         }
     }
 
-   
-    
+
+
 }
 
 
@@ -67,7 +70,7 @@ body {
     flex-wrap: wrap;
     gap: 20px;
     margin-bottom: 30px;
-    
+
 
     a {
         width: 90px;
@@ -145,6 +148,7 @@ body {
     border-collapse: collapse;
     margin-top: 20px;
 
+
     th,
     td {
         padding: 15px;
@@ -162,6 +166,10 @@ body {
 
     td {
         font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 160px;
     }
 
     .product-image {
@@ -280,10 +288,12 @@ form button[type="submit"] {
 //     }
 // }
 
-th, td {
-    border: 1px solid #ddd; 
-    padding: 8px; 
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
+
 th {
     background-color: #f4f4f4;
 }
