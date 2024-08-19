@@ -115,6 +115,9 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         body: JSON.stringify(order)
       });
       const data = await response.json();
+      
+      const orderId = data['orderId']['order_id'];
+      console.log(`Order Id: ${orderId}`);
       clearCart();
       //navigate('/Library');
     } catch (error) {
@@ -187,6 +190,14 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         </div>
       </div>
       <div className='cart-content-3'>
+        <div className='cart-content-3-item'>
+          <p>Total</p>
+          <p>({totalItems} items)</p>
+          <p>${totalPrice.toFixed(2)}</p>
+        </div>
+        <div className='cart-content-3-item-2'>
+          <button type='button' onClick={(e) => handleSubmit(e)}>CHECKOUT NOW</button>
+        </div>
         <div>
           <div className='cart-content-3-item'>
             <p>Total</p>
