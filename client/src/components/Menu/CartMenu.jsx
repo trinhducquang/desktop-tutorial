@@ -92,6 +92,8 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       }
     }));
 
+    const statusValue = 'unpaid'
+
     const order = {
       fields: {
         user_id: products.id,
@@ -99,6 +101,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         email: products.email,
         phone: products.phone,
         address: products.address,
+        status: statusValue,
         orderDetails: orderDetail
       }
     };
@@ -112,7 +115,13 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         body: JSON.stringify(order)
       });
       const data = await response.json();
+<<<<<<< HEAD
 
+=======
+      
+      const orderId = data['orderId']['order_id'];
+      console.log(`Order Id: ${orderId}`);
+>>>>>>> 27e1521a0e3f74e3e99e1db9b5f1ac637c1c5caa
       clearCart();
       //navigate('/Library');
     } catch (error) {
@@ -185,6 +194,17 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         </div>
       </div>
       <div className='cart-content-3'>
+<<<<<<< HEAD
+=======
+        <div className='cart-content-3-item'>
+          <p>Total</p>
+          <p>({totalItems} items)</p>
+          <p>${totalPrice.toFixed(2)}</p>
+        </div>
+        <div className='cart-content-3-item-2'>
+          <button type='button' onClick={(e) => handleSubmit(e)}>CHECKOUT NOW</button>
+        </div>
+>>>>>>> 27e1521a0e3f74e3e99e1db9b5f1ac637c1c5caa
         <div>
           <div className='cart-content-3-item'>
             <p>Total</p>

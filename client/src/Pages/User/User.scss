@@ -1,6 +1,6 @@
 .User-container {
     background-color: white;
-    
+
 
     .flex-item-container {
         display: flex;
@@ -8,17 +8,17 @@
         padding: 55px 0;
 
         .item-flex-item {
-           display: flex;
-          
-           flex-direction: column;
+            display: flex;
 
-           div:nth-child(2) {
-            margin-top: 95px;
-           }
+            flex-direction: column;
+
+            div:nth-child(2) {
+                margin-top: 95px;
+            }
         }
 
     }
-    
+
 
     .item-2-flex {
         display: flex;
@@ -27,18 +27,18 @@
         button {
             margin-left: 100%;
         }
-        
-       button {
-         background-color: black;
-         color: white;
-         border: none;
-         width: 100px;
-         height: 30px;
-         border-radius: 3px;
-       }
-        
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            width: 100px;
+            height: 30px;
+            border-radius: 3px;
+        }
+
     }
-  
+
 
     * {
         font-family: 'RimowaGrotesk-Light';
@@ -65,7 +65,7 @@
         p {
             font-size: 24px;
             color: #555;
-          
+
         }
 
         .user-info {
@@ -103,8 +103,7 @@
     p,
     h4,
     img,
-    h5
-     {
+    h5 {
         color: black;
         margin-top: 5px;
     }
@@ -163,7 +162,7 @@
 
     span {
         font-size: 16px;
-       
+
     }
 }
 
