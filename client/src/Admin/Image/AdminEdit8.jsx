@@ -82,7 +82,7 @@ const AdminEdit8 = () => {
                 console.log(data);
 
                 // setProducts(data);
-                alert('image Updated successfully');
+                // alert('image Updated successfully');
 
                 navigate(`/Admin/image/${products.product_id}`);
             })

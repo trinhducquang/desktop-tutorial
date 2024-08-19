@@ -34,7 +34,7 @@ let currentOrderId = null;
 app.post('/payment', async (req, res) => {
     try {
         const { cartItems, orderId } = req.body;
-        
+
         currentOrderId = orderId;
 
         //console.log(currentOrderId);
@@ -112,21 +112,16 @@ app.get('/success', (req, res) => {
             console.log(JSON.stringify(payment));
             console.log('currentOrderId:', currentOrderId);
 
-            // Kiểm tra xem currentOrderId có phải là một đối tượng không
             if (currentOrderId && currentOrderId.orderId) {
-                // Sử dụng giá trị cụ thể từ orderId
                 const orderIdValue = currentOrderId.orderId;
-
-                // Cập nhật trạng thái đơn hàng
                 const updateOrderStatus = 'UPDATE orders SET status = ? WHERE id = ?';
-
-                connection.query(updateOrderStatus, ['completed', orderIdValue], (err, results) => {
+                connection.query(updateOrderStatus, ['Success', orderIdValue], (err, results) => {
                     if (err) {
                         console.error('Lỗi khi cập nhật trạng thái đơn hàng: ' + err.stack);
                         res.redirect('http://localhost:5173/failed');
                     } else {
                         console.log('Trạng thái đơn hàng đã được cập nhật');
-                        res.redirect('http://localhost:5173/User');
+                        res.redirect('http://localhost:5173/Success');
                     }
                 });
             } else {
@@ -141,8 +136,28 @@ app.get('/success', (req, res) => {
 
 
 app.get('/failed', (req, res) => {
-    res.redirect('http://localhost:5173/failed');
+    // Xác định ID đơn hàng từ query params nếu có
+    const orderId = req.query.orderId || currentOrderId?.orderId;
+
+    if (orderId) {
+        // Cập nhật trạng thái đơn hàng là "Failed"
+        const updateOrderStatus = 'UPDATE orders SET status = ? WHERE id = ?';
+
+        connection.query(updateOrderStatus, ['Failed', orderId], (err, results) => {
+            if (err) {
+                console.error('Lỗi khi cập nhật trạng thái đơn hàng: ' + err.stack);
+                res.redirect('http://localhost:5173/failed');
+            } else {
+                console.log('Trạng thái đơn hàng đã được cập nhật thành "Failed"');
+                res.redirect('http://localhost:5173/failed');
+            }
+        });
+    } else {
+        // Nếu không có orderId, chuyển hướng đến trang lỗi
+        res.redirect('http://localhost:5173/failed');
+    }
 });
+
 
 app.listen(8000, () => {
     console.log('Máy chủ đang chạy trên cổng 8000');
