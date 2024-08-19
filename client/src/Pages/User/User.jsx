@@ -257,6 +257,7 @@ const User = () => {
                                         return (
                                             <div key={order.id}>
                                                 <div className='item-3-left-item-1' >
+                                                <p>Order Id: {order.id} (Order date: {order.order_date})</p>
 
                                                     {
                                                         orderDetails
@@ -306,7 +307,6 @@ const User = () => {
                                                                                                                     </div>
                                                                                                                     <div className='item-flex-item'>
                                                                                                                         <div><p>Subtotal: {orderDetail.subtotal}</p></div>
-                                                                                                                        <div><p>Status: {order.status}</p></div>
                                                                                                                     </div>
                                                                                                                 </div>
 
@@ -322,6 +322,7 @@ const User = () => {
                                                                 )
                                                             })
                                                     }
+                                                                                                                        <div><p>Status: {order.status}</p></div>
 
                                                 </div>
                                                 <hr />

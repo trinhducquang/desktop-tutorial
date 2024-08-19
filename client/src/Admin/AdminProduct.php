@@ -1049,7 +1049,8 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
     $checkout = orderProduct($orderItems, $orderInfos);
 
     if ($checkout) {
-        echo json_encode(array("message" => "checkout successfully"));
+        echo json_encode(array("message" => "checkout successfully", 
+                                "orderId" => $checkout));
     } else {
         echo json_encode(array("error" => "Failed to checkout"));
     }

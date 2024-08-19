@@ -92,6 +92,8 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       }
     }));
 
+    const statusValue = 'unpaid'
+
     const order = {
       fields: {
         user_id: products.id,
@@ -99,6 +101,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         email: products.email,
         phone: products.phone,
         address: products.address,
+        status: statusValue,
         orderDetails: orderDetail
       }
     };
@@ -113,6 +116,8 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       });
       const data = await response.json();
       
+      const orderId = data['orderId']['order_id'];
+      console.log(`Order Id: ${orderId}`);
       clearCart();
       //navigate('/Library');
     } catch (error) {
@@ -191,7 +196,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
           <p>${totalPrice.toFixed(2)}</p>
         </div>
         <div className='cart-content-3-item-2'>
-          <button onClick={(e) => clickSubmit(e)}>CHECKOUT NOW</button>
+          <button type='button' onClick={(e) => handleSubmit(e)}>CHECKOUT NOW</button>
         </div>
         <div>
           <Link to='/User'>Modify your shopping cart</Link>
