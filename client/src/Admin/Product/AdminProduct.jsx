@@ -127,6 +127,11 @@ const AdminProduct = () => {
 
 
 
+    // Function to format numbers with a dot as the thousands separator
+    const formatNumber = (number) => {
+        return new Intl.NumberFormat('de-DE').format(number);
+    };
+
     return (
         <div className="container">
             <Admin />
@@ -191,14 +196,14 @@ const AdminProduct = () => {
                                             <td>
                                                 <Link to={`/Admin/image/${prd.id}`}><button className="show-button">Show</button></Link>
                                             </td>
-                                            <td>{prd.price}</td>
+                                            <td>{formatNumber(prd.price)}</td>
                                             {/* <td>{prd.rating}</td> */}
                                             {
                                                 averageRatings.filter(avgR => avgR.product_id === prd.id).length > 0 ? (
                                                     averageRatings
                                                         .filter(avgR => avgR.product_id === prd.id)
                                                         .map(({ product_id, average }) => (
-                                                                <td key={product_id}>{average}</td>
+                                                            <td key={product_id}>{average}</td>
                                                         ))
                                                 ) : (
                                                     <td>0</td>
