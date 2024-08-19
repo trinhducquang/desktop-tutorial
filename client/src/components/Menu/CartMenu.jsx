@@ -74,7 +74,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
             address: data.address || ''
           });
         })
-       
+
         .catch(error => {
           console.error('Fetch error:', error);
         });
@@ -112,7 +112,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         body: JSON.stringify(order)
       });
       const data = await response.json();
-      
+
       clearCart();
       //navigate('/Library');
     } catch (error) {
@@ -185,16 +185,18 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
         </div>
       </div>
       <div className='cart-content-3'>
-        <div className='cart-content-3-item'>
-          <p>Total</p>
-          <p>({totalItems} items)</p>
-          <p>${totalPrice.toFixed(2)}</p>
-        </div>
-        <div className='cart-content-3-item-2'>
-          <button onClick={(e) => clickSubmit(e)}>CHECKOUT NOW</button>
-        </div>
         <div>
-          <Link to='/User'>Modify your shopping cart</Link>
+          <div className='cart-content-3-item'>
+            <p>Total</p>
+            <p>({totalItems} items)</p>
+            <p>${totalPrice.toFixed(2)}</p>
+          </div>
+          <div className='cart-content-3-item-2'>
+            <button onClick={(e) => clickSubmit(e)}>CHECKOUT NOW</button>
+          </div>
+          <div>
+            <Link to='/User'>Modify your shopping cart</Link>
+          </div>
         </div>
       </div>
     </form>

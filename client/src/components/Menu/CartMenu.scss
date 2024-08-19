@@ -1,4 +1,5 @@
 .cart-panel {
+  border-radius: 0px;
 
   * {
     font-family: 'RimowaGrotesk-Light';
@@ -22,7 +23,7 @@
 
   .cart-content {
     margin-top: 3px;
-    padding: 15px;
+    padding: 15px 0px;
     border-top: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
 
@@ -41,7 +42,7 @@
   display: flex;
   padding: 12px 5px 30px;
   align-items: center;
- 
+
 
   h3 {
     color: #6f6f6f;
@@ -99,11 +100,12 @@
 }
 
 .cart-content-3 {
-  margin-left: 20px;
   position: static;
-  width: 90%;
+  width: 95%;
   text-align: center;
   border-top: 1px solid #ececec;
+  margin: 0 auto;
+
   .cart-content-3-item {
     display: flex;
 
@@ -114,11 +116,13 @@
     p:nth-child(3) {
       margin-left: auto;
     }
+
     margin-bottom: 15px;
   }
 
   .cart-content-3-item-2 {
-   
+    padding-bottom: 10px;
+
     button {
       width: 100%;
       background-color: #0c67e7;
@@ -130,14 +134,14 @@
       font-size: 11px;
     }
   }
-  
+
   a {
     text-decoration: underline;
     font-size: 14px;
-  
+
   }
 
-  > div {
+  >div {
     margin-top: 15px;
   }
 
@@ -145,13 +149,32 @@
 
 .cart-panel {
   .cart-content-2-container {
-    overflow-y: auto; 
+    overflow-y: auto;
     overflow-x: hidden;
-    height: 500px; 
-   
+    height: 500px;
+
   }
 }
 
 .border-bottom {
   border-bottom: 1px solid #ececec;
+}
+
+@media (max-width: 1024px) {
+  .cart-panel {
+    width: 100%;
+    padding: 0;
+
+    .cart-content-2-container {
+      padding-left: 15px;
+
+    }
+  }
+
+  .cart-content {
+   
+    padding-left: 15px !important;
+   
+  }
+
 }

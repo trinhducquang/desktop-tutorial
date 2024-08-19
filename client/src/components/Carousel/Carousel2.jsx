@@ -18,9 +18,26 @@ const Carousel = ({ title }) => {
         centerPadding: '35px',
         responsive: [
             {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    centerPadding: '0',
+                },
+            },
+            {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    centerPadding: '0',
+                },
+            },
+
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     centerPadding: '0',
                 },
@@ -99,7 +116,7 @@ const Carousel = ({ title }) => {
         addToCart(productToAdd);
     }, [addToCart, images]);
 
-    
+
 
     return (
         <div className='carousel-container'>
