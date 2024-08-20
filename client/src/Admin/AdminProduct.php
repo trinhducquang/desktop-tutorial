@@ -18,7 +18,7 @@ $tables = [
             'rating',
             'id',
         ],
-        'type' => 'sssdsddi', // isssdssdd
+        'type' => 'sssdssddi', // isssdssdd
 
         'attriTitle' => 'product_attri',
         'attribute' => [

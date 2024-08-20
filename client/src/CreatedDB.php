@@ -281,6 +281,7 @@ $tables = [
             // 'image1',
             // 'image2',
             'link',
+            'videoLink',
             'price',
             'rating'
         ]
@@ -327,16 +328,16 @@ $tables = [
 // Example data to insert for each table
 $dataToInsert = [
     'products' => [
-        ['Selena', 'Black-tailed deer', 'ladies', 77, '', 235.23, 4],
-        ['Yves', 'Vulture, turkey', 'ladies', 41, '', 552.13, 3],
-        ['Benita', 'Woylie', 'ladies', 54, '', 794.18, 5],
-        ['Corissa', 'Cormorant, javanese', 'ladies', 35, '', 448.5, 5],
-        ['Elisabet', 'Common pheasant', 'gentlman', 70, '', 172.2, 2],
-        ['Kermie', 'Grant\'s gazelle', 'ladies', 56, '', 760.53, 3],
-        ['Olvan', 'Pie, rufous tree', 'gentlman', 23, '', 312.42, 1],
-        ['Roze', 'Slender-billed cockatoo', 'ladies', 61, '', 437.34, 1],
-        ['Leena', 'Australian sea lion', 'gentlman', 55, '', 643.43, 3],
-        ['Bettine', 'Chipmunk, least', 'ladies', 53, '', 363.45, 1]
+        ['Selena', 'Black-tailed deer', 'ladies', 77, '', '', 235.23, 4],
+        ['Yves', 'Vulture, turkey', 'ladies', 41, '', '', 552.13, 3],
+        ['Benita', 'Woylie', 'ladies', 54, '', '', 794.18, 5],
+        ['Corissa', 'Cormorant, javanese', 'ladies', 35, '', '', 448.5, 5],
+        ['Elisabet', 'Common pheasant', 'gentlman', 70, '', '', 172.2, 2],
+        ['Kermie', 'Grant\'s gazelle', 'ladies', 56, '', '', 760.53, 3],
+        ['Olvan', 'Pie, rufous tree', 'gentlman', 23, '', '', 312.42, 1],
+        ['Roze', 'Slender-billed cockatoo', 'ladies', 61, '', '', 437.34, 1],
+        ['Leena', 'Australian sea lion', 'gentlman', 55, '', '', 643.43, 3],
+        ['Bettine', 'Chipmunk, least', 'ladies', 53, '', '', 363.45, 1]
     ],
     'attributes' => [
         ['color', 'Color of the product'],
