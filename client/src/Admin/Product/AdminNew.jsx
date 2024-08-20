@@ -18,6 +18,7 @@ const AdminNew = () => {
         // image1: '',
         // image2: '',
         link: '',
+        videoLink: '',
         price: '',
         rating: '',
         color: '',
@@ -75,6 +76,7 @@ const AdminNew = () => {
                     // "image1": products.image1,
                     // "image2": products.image2,
                     "link": products.link,
+                    "videoLink": products.videoLink,
                     "price": products.price,
                     "rating": products.rating,
                     "color": products.color,
@@ -259,14 +261,23 @@ const AdminNew = () => {
 
                     <div className="form-group">
                         <label htmlFor="link">Link</label>
-                        <input 
-                            required type="text" 
-                            className="form-control" 
-                            id="link" name="link" 
-                            value={products.link} 
+                        <input
+                            required type="text"
+                            className="form-control"
+                            id="link" name="link"
+                            value={products.link}
                             onChange={(event) => setProducts({ ...products, link: event.target.value })} />
                     </div><br />
 
+                    <div className="form-group">
+                        <label htmlFor="videoLink">Video Link</label>
+                        <input
+                            required type="text"
+                            className="form-control"
+                            id="videoLink" name="videoLink"
+                            value={products.videoLink}
+                            onChange={(event) => setProducts({ ...products, videoLink: event.target.value })} />
+                    </div><br />
 
                     <div className="form-group">
                         <label htmlFor="price">Price</label>

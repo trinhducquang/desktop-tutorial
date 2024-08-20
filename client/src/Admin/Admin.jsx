@@ -1,13 +1,33 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, {useState, useEffect} from "react"
+import { Link, useLocation, Navigate } from "react-router-dom"
 import useScrollTranslate from '../Hooks/useScrollTranslate';
 import './Admin.scss'
+import Cookies from 'js-cookie';
 
 const Admin = () => {
 
     const scrollRef = useScrollTranslate(99999);
 
+    const [isAuthorized, setIsAuthorized] = useState(null);
+    const location = useLocation();
+
+    useEffect(() => {
+        const checkRole = () => {
+            const userRole = Cookies.get('userRole');
+            // Assuming 'admin' is the role required for this route
+            setIsAuthorized(userRole === 'admin');
+        };
+
+        checkRole();
+    }, []);
+
+    if (isAuthorized === null) {
+        return <div>Loading...</div>;
+    }
+
     return (
+        isAuthorized ? (
+
             <div className="admin-container">
                 <div><p>Admin</p></div>
                 <div ref={scrollRef} className="admin-item">
@@ -20,6 +40,9 @@ const Admin = () => {
 
                 </div>
             </div>
+        ): (
+            <Navigate to="/access_denied" state={{ from: location }} />
+        )
     )
 
 }

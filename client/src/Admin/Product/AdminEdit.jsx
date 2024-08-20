@@ -19,6 +19,7 @@ const AdminEdit = () => {
         // image1: '',
         // image2: '',
         link: '',
+        videoLink: '',
         price: '',
         rating: '',
         color: '',
@@ -52,6 +53,7 @@ const AdminEdit = () => {
                 // image1: data.image1 ? data.image1 : '',
                 // image2: data.image2 ? data.image2 : '',
                 link: data.link ? data.link : '',
+                videoLink: data.videoLink ? data.videoLink : '',
                 price: data.price ? data.price : '',
                 rating: data.rating ? data.rating : '',
                 color: data.color ? data.color : '',
@@ -152,6 +154,7 @@ const AdminEdit = () => {
                     // "image1": products.image1,
                     // "image2": products.image2,
                     "link": products.link,
+                    "videoLink": products.videoLink,
                     "price": products.price,
                     "rating": products.rating,
                     "color": products.color,
@@ -221,40 +224,41 @@ const AdminEdit = () => {
                             attributes.map((attri) => {
                                 const attri_type = products[attri.attribute_type]
                                 return (
-                                // console.log(attri.id) ||
-                                // console.log(attributeValue.filter(attri_value => attri_value.attribute_id === attri.id)) ||
-                                <div className="form-group" key={attri.attribute_type}>
-                                    <label htmlFor={attri.attribute_type}>{attri.attribute_type.toUpperCase()}</label>
+                                    // console.log(attri.id) ||
+                                    // console.log(attributeValue.filter(attri_value => attri_value.attribute_id === attri.id)) ||
+                                    <div className="form-group" key={attri.attribute_type}>
+                                        <label htmlFor={attri.attribute_type}>{attri.attribute_type.toUpperCase()}</label>
 
-                                    <select
-                                        name={attri.attribute_type}
-                                        className="form-control"
-                                        value={attri_type}
-                                        // value={4}
-                                        onChange={(event) => setProducts({ ...products, [attri.attribute_type]: event.target.value })}>
+                                        <select
+                                            name={attri.attribute_type}
+                                            className="form-control"
+                                            value={attri_type}
+                                            // value={4}
+                                            onChange={(event) => setProducts({ ...products, [attri.attribute_type]: event.target.value })}>
 
-                                        <option value="" disabled>Select {attri.attribute_type}</option>
-                                        {
-                                            attributeValue
-                                                .filter(attri_value => attri_value.attribute_id === attri.id) // Filter based on attribute_id
-                                                .map((attri_value) => (
-                                                    <option key={attri_value.id} value={attri_value.id}>
-                                                        {attri_value.value}
-                                                    </option>
-                                                    // console.log(`<option key=${attri_value.id} value=${attri_value.id}>
-                                                    //     ${attri_value.value}
-                                                    // </option>`)
-                                                ))
-                                        }
+                                            <option value="" disabled>Select {attri.attribute_type}</option>
+                                            {
+                                                attributeValue
+                                                    .filter(attri_value => attri_value.attribute_id === attri.id) // Filter based on attribute_id
+                                                    .map((attri_value) => (
+                                                        <option key={attri_value.id} value={attri_value.id}>
+                                                            {attri_value.value}
+                                                        </option>
+                                                        // console.log(`<option key=${attri_value.id} value=${attri_value.id}>
+                                                        //     ${attri_value.value}
+                                                        // </option>`)
+                                                    ))
+                                            }
 
-                                        {/* <option value="4">1</option>
+                                            {/* <option value="4">1</option>
                                     <option value="5">2</option>
                                     <option value="11">3</option>
                                     <option value="14">4</option> */}
 
-                                    </select>
-                                </div>
-                            )})
+                                        </select>
+                                    </div>
+                                )
+                            })
 
 
                         }<br />
@@ -288,6 +292,11 @@ const AdminEdit = () => {
                         <div className="form-group">
                             <label htmlFor="link">Link</label>
                             <input required type="text" className="form-control" id="link" name="link" value={products.link} onChange={(event) => setProducts({ ...products, link: event.target.value })} />
+                        </div><br />
+
+                        <div className="form-group">
+                            <label htmlFor="videoLink">Video Link</label>
+                            <input required type="text" className="form-control" id="videoLink" name="videoLink" value={products.videoLink} onChange={(event) => setProducts({ ...products, videoLink: event.target.value })} />
                         </div><br />
 
                         <div className="form-group">

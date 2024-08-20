@@ -265,7 +265,7 @@ const Booking = () => {
                                             <button onClick={() => setShow3D(true)}>Try in 3D</button>
                                         </div>
                                         <div>
-                                            <video src={vali} autoPlay muted loop />
+                                            <video src={product.videoLink} autoPlay muted loop />
                                         </div>
                                         <div className='abc'>
                                             {/* <img src={validata} />

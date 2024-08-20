@@ -42,7 +42,8 @@ const Login = () => {
 
                 if (result.user_id) {
                     Cookies.set('userId', result.user_id, { expires: 7 });
-                    sessionStorage.setItem('userId', result.user_id);
+                    // sessionStorage.setItem('userId', result.user_id);
+                    Cookies.set('userRole', result.user_role, { expires: 7 });
                     
                 }
                 navigate('/');

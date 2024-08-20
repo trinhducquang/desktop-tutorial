@@ -13,11 +13,12 @@ $tables = [
             // 'image1',
             // 'image2',
             'link',
+            'videoLink',
             'price',
             'rating',
             'id',
         ],
-        'type' => 'sssdsddi', // isssdssdd
+        'type' => 'sssdssddi', // isssdssdd
 
         'attriTitle' => 'product_attri',
         'attribute' => [
@@ -652,7 +653,7 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
                     //     break;
                     case 's': // String
                     default:
-                        $fieldValues[$column] = (string) $data['fields'][$column];
+                        $fieldValues[$column] = strip_tags($data['fields'][$column]);
                         break;
                 }
             } else {
@@ -677,12 +678,12 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
                         case 'd': // Decimal
                             $AttriValues[$column] = floatval($data['fields'][$column]);
                             break;
-                        case 'a': // Datetime
-                            $fieldValues[$column] = DATE_FORMAT($data['fields'][$column], '%m/%d/%Y');
-                            break;
+                        // case 'a': // Datetime
+                        //     $fieldValues[$column] = DATE_FORMAT($data['fields'][$column], '%m/%d/%Y');
+                        //     break;
                         case 's': // String
                         default:
-                            $AttriValues[$column] = (string) $data['fields'][$column];
+                            $AttriValues[$column] = strip_tags($data['fields'][$column]);
                             break;
                     }
                 } else {
