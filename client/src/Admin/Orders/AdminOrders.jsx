@@ -103,6 +103,21 @@ const AdminOrders = () => {
     }
 
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(7);
+
+    // Calculate total number of pages
+    const totalPages = Math.ceil(products.length / itemsPerPage);
+
+    // Get current page items
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+
     return (
         <div className="container">
             <Admin />
@@ -139,7 +154,7 @@ const AdminOrders = () => {
                         </thead>
                         <tbody>
                             {
-                                products.map((prd) => {
+                                currentItems.map((prd) => {
                                     return (
                                         <tr key={prd.id}>
                                             <td>{prd.id}</td>
@@ -156,7 +171,7 @@ const AdminOrders = () => {
                                             <td className="action-buttons">
                                                 <Link to={`/Admin/order_detail/${prd.id}`}><button className="show-button">Show</button></Link>
                                                 <Link to={`/Admin/order/edit/${prd.id}`}><button className="edit-button">Edit</button></Link>
-                                                <button type="button" className="delete-button" onClick={(event) => deletePro(event, prd)}>Delete</button>
+                                                {/* <button type="button" className="delete-button" onClick={(event) => deletePro(event, prd)}>Delete</button> */}
                                             </td>
                                         </tr>
                                     )
@@ -165,6 +180,17 @@ const AdminOrders = () => {
                         </tbody>
                     </table>
                 </div>
+                <div className="pagination-container">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+                        <button
+                            key={number}
+                            onClick={() => paginate(number)}
+                            className={`pagination-button ${currentPage === number ? 'active' : ''}`}>
+                            {number}
+                        </button>
+                    ))}
+                </div>
+
             </div>
         </div>
     )

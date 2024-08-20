@@ -144,7 +144,8 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
     email varchar(40) not null,
     phone varchar(40) not null,
     address varchar(100) not null,
-    role varchar(20) not null
+    -- role varchar(20) not null
+    role ENUM('customer', 'admin') DEFAULT 'customer' NOT NULL
 )";
 
 $result = $conn->query($sql);

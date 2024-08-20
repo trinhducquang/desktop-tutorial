@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $hashedPassword = sha1($password);
 
-    $stmt = $conn->prepare("SELECT password, id FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT password, id, role FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -33,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             http_response_code(200);
             echo json_encode([
                 'message' => 'Login successful.',
-                'user_id' => $user['id']
+                'user_id' => $user['id'],
+                'user_role' => $user['role']
             ]);
         } else {
             http_response_code(401);

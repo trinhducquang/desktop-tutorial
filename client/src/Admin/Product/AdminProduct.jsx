@@ -126,11 +126,25 @@ const AdminProduct = () => {
     const averageRatings = calculateAverageRating(ratings);
 
 
-
     // Function to format numbers with a dot as the thousands separator
     const formatNumber = (number) => {
         return new Intl.NumberFormat('de-DE').format(number);
     };
+
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(7);
+
+    // Calculate total number of pages
+    const totalPages = Math.ceil(products.length / itemsPerPage);
+
+    // Get current page items
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className="container">
@@ -175,7 +189,7 @@ const AdminProduct = () => {
                         </thead>
                         <tbody>
                             {
-                                products.map((prd) => {
+                                currentItems.map((prd) => {
                                     return (
                                         <tr key={prd.id}>
                                             <td>{prd.id}</td>
@@ -222,6 +236,18 @@ const AdminProduct = () => {
                         </tbody>
                     </table>
                 </div>
+
+                <div className="pagination-container">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+                        <button
+                            key={number}
+                            onClick={() => paginate(number)}
+                            className={`pagination-button ${currentPage === number ? 'active' : ''}`}>
+                            {number}
+                        </button>
+                    ))}
+                </div>
+
             </div>
         </div>
     )

@@ -107,7 +107,7 @@ const AdminOrderDetail = () => {
                                 <th>Price Product</th>
                                 <th>Quantity</th>
                                 <th>Subtotal</th>
-                                <th>Actions</th>
+                                {/* <th>Actions</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -122,10 +122,10 @@ const AdminOrderDetail = () => {
                                             <td>{prd.quantity}</td>
                                             <td>${prd.subtotal}</td>
 
-                                            <td className="action-buttons">
-                                                {/* <Link to={`/Admin/order_detail/edit/${prd.id}`}><button className="edit-button">Edit</button></Link> */}
+                                            {/* <td className="action-buttons">
+                                                <Link to={`/Admin/order_detail/edit/${prd.id}`}><button className="edit-button">Edit</button></Link>
                                                 <button type="button" className="delete-button" onClick={(event) => deletePro(event, prd)}>Delete</button>
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     )
                                 })
