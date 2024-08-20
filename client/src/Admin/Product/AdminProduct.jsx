@@ -166,6 +166,7 @@ const AdminProduct = () => {
                                 {/* <th>Image1</th>
                                 <th>Image2</th> */}
                                 <th>Link</th>
+                                <th>Video Link</th>
                                 <th>Image</th>
                                 <th>Price</th>
                                 <th>Rating</th>
@@ -193,6 +194,7 @@ const AdminProduct = () => {
                                                 <img src={prd.image2} alt={prd.name} className="product-image" />
                                             </td> */}
                                             <td>{prd.link}</td>
+                                            <td>{prd.videoLink}</td>
                                             <td>
                                                 <Link to={`/Admin/image/${prd.id}`}><button className="show-button">Show</button></Link>
                                             </td>

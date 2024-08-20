@@ -304,9 +304,9 @@ const User = () => {
                                                                                                                                 <p>Quantity: {orderDetail.quantity}</p>
                                                                                                                                 {/* <p>Order Id: {order.id} (Order Date: {order.order_date})</p> */}
                                                                                                                             </div>
-                                                                                                                            <div>
+                                                                                                                            {/* <div>
                                                                                                                                 <button onClick={(event) => deleteOrderDetail(event, orderDetail.id)}>REMOVE</button>
-                                                                                                                            </div>
+                                                                                                                            </div> */}
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                     <div className='item-flex-item'>
