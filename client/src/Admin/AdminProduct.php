@@ -940,19 +940,20 @@ function orderProduct($orderItems, $orderInfos)
     $conn = createConnection();
 
     // Insert order into orders table
-    $sql = "INSERT INTO orders (user_id, name, email, phone, address, order_date, total_amount)
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO orders (user_id, name, email, phone, address, order_date, total_amount, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "isssssd",
+        "isssssds",
         $orderInfos[0]['user_id'],
         $orderInfos[0]['name'],
         $orderInfos[0]['email'],
         $orderInfos[0]['phone'],
         $orderInfos[0]['address'],
         $orderInfos[0]['order_date'],
-        $orderInfos[0]['total']
+        $orderInfos[0]['total'],
+        $orderInfos[0]['status']
     );
 
     if ($stmt->execute()) {
@@ -1042,6 +1043,7 @@ if (isset($_SERVER['HTTP_X_REACT_FILE_NAME']) && $_SERVER['HTTP_X_REACT_FILE_NAM
                 'phone' => $record['phone'],
                 'address' => $record['address'],
                 'order_date' => date("Y-m-d H:i:s"),
+                'status' => $record['status'],
                 'total' => $total
             ];
         }
