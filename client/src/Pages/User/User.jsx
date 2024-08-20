@@ -263,7 +263,7 @@ const User = () => {
                                         return (
                                             <div key={order.id}>
                                                 <div className='item-3-left-item-1' >
-                                                    <p>Order Id: {order.id} (Order date: {order.order_date})</p>
+                                                    {/* <p>Order Id: {order.id} (Order date: {order.order_date})</p> */}
 
                                                     {
                                                         orderDetails
@@ -302,16 +302,16 @@ const User = () => {
                                                                                                                                 <p>Product Name: {product.name}</p>
                                                                                                                                 <p>Price per Product: {formatNumber(orderDetail.price_product)}</p>
                                                                                                                                 <p>Quantity: {orderDetail.quantity}</p>
-                                                                                                                                {/* <p>Order Id: {order.id} (Order Date: {order.order_date})</p> */}
+                                                                                                                                <p>Order Id: {order.id} (Order Date: {order.order_date})</p>
                                                                                                                             </div>
-                                                                                                                            <div>
+                                                                                                                            {/* <div>
                                                                                                                                 <button onClick={(event) => deleteOrderDetail(event, orderDetail.id)}>REMOVE</button>
-                                                                                                                            </div>
+                                                                                                                            </div> */}
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                     <div className='item-flex-item'>
                                                                                                                         <div><p>Subtotal: {formatNumber(orderDetail.subtotal)}</p></div>
-                                                                                                                        {/* <div><p>Status: {order.status}</p></div> */}
+                                                                                                                        <div><p>Status: {order.status}</p></div>
                                                                                                                     </div>
                                                                                                                 </div>
 
@@ -327,8 +327,6 @@ const User = () => {
                                                                 )
                                                             })
                                                     }
-                                                    <div><p>Status: {order.status}</p></div>
-
                                                 </div>
                                                 <hr />
                                             </div>

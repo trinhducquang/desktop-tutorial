@@ -7,21 +7,21 @@ import useHover from '../../Hooks/useHover'; // Import useHover
 
 const Carousel = ({ title }) => {
     const { url } = AdminConfig;
-    const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHover(); // Use useHover
+    const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHover(); 
 
     const settings = {
         infinite: true,
         speed: 500,
         slidesToShow: 2,
         centerMode: true,
-        slidesToScroll: 1,
+        slidesToScroll: 4,
         centerPadding: '35px',
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 4,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                     centerPadding: '0',
                 },
             },
@@ -29,7 +29,7 @@ const Carousel = ({ title }) => {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                     centerPadding: '0',
                 },
             },
