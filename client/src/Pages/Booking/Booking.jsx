@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Booking.scss';
-import vali from '/public/Booking/vali.mp4';
 import FooterTop from '../../components/Footer-top/FooterTop';
 import useRating from '../../Hooks/useRating';
 import down from '/public/Booking/down.png';
@@ -23,6 +22,7 @@ const Booking = () => {
     const [show3D, setShow3D] = useState(false);
     const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
+    const MAX_LENGTH = 100;
     const navigate = useNavigate();
 
 
@@ -296,7 +296,7 @@ const Booking = () => {
                                         </div>
                                         <div className={showMore ? 'visible' : 'hidden'}>
                                             {/* <img src={validata7} />
-                                            <img src={validata8} /> */}
+                                             <img src={validata8} /> */}
                                             {image7 && (
                                                 <img
                                                     src={image7.image}
@@ -310,9 +310,11 @@ const Booking = () => {
                                                 />
                                             )}
                                         </div>
-                                        <button className='show-button' onClick={() => setShowMore(!showMore)}>
-                                            {showMore ? 'Show Less' : 'See more images (2)'}
-                                        </button>
+                                        {(image7 || image8) && (
+                                            <button className='show-button' onClick={() => setShowMore(!showMore)}>
+                                                {showMore ? 'Show Less' : 'See more images (2)'}
+                                            </button>
+                                        )}
                                     </div>
                                     <div className='Booking-item-2'>
                                         <div className='item-list-1'>
@@ -346,11 +348,15 @@ const Booking = () => {
                                                     </>
                                                 )}
                                             </p> */}
-                                            <p>{product.description}</p>
-                                            <button className='read-more-button' onClick={() => setIsExpanded(!isExpanded)}>
-                                                {isExpanded ? 'Read Less' : 'Read More'}
-                                                <img src={down} />
-                                            </button>
+                                            <div className={`description-container ${isExpanded ? 'expanded' : ''}`}>
+                                                <p className="description-text">{product.description}</p>
+                                            </div>
+                                            {product.description.length > MAX_LENGTH && (
+                                                <button className="read-more-button" onClick={() => setIsExpanded(!isExpanded)}>
+                                                    {isExpanded ? 'Read Less' : 'Read More'}
+                                                    <img src={down} />
+                                                </button>
+                                            )}
                                             <p><a href="#">Size guide</a></p>
                                         </div>
                                         <div className='item-list-2'>
