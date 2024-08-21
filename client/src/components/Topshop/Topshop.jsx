@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useLocation } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom';
 import './topshop.scss';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AdminConfig from '../../Admin/AdminConfig';
 
 const Topshop = ({ onFilterChange }) => {
     const { url } = AdminConfig;
-    const location = useLocation(); 
+    const location = useLocation();
     const [activeDropdown, setActiveDropdown] = useState('');
 
     const toggleDropdown = (dropdown) => {
@@ -75,6 +75,33 @@ const Topshop = ({ onFilterChange }) => {
     }, []);
 
     const [selectedFilters, setSelectedFilters] = useState({});
+    
+    const [minPrice, setMinPrice] = useState({});
+    const [maxPrice, setMaxPrice] = useState({});
+
+    const handleMinPriceChange = (e) => {
+        setMinPrice(parseFloat(e.target.value) || 0); 
+        // console.log('top', minPrice)
+        
+        setSelectedFilters(prevFilters => {
+            const newFilters = { ...prevFilters };
+            newFilters.minPrice = minPrice;
+
+            return newFilters;
+        });
+    }
+
+    const handleMaxPriceChange = (e) => {
+        setMaxPrice(parseFloat(e.target.value) || Infinity); 
+        // console.log('top', maxPrice)
+
+        setSelectedFilters(prevFilters => {
+            const newFilters = { ...prevFilters };
+            newFilters.maxPrice = maxPrice;
+
+            return newFilters;
+        });
+    }
 
     const handleCheckboxChange = useCallback((attributeType, valueId) => {
         setSelectedFilters(prevFilters => {
@@ -82,12 +109,14 @@ const Topshop = ({ onFilterChange }) => {
             if (!newFilters[attributeType]) {
                 newFilters[attributeType] = [];
             }
+
             const index = newFilters[attributeType].indexOf(valueId);
             if (index > -1) {
                 newFilters[attributeType].splice(index, 1);
             } else {
                 newFilters[attributeType].push(valueId);
             }
+
             return newFilters;
         });
     }, []);
@@ -96,8 +125,43 @@ const Topshop = ({ onFilterChange }) => {
         console.log(selectedFilters);
         onFilterChange(selectedFilters);
     }, [selectedFilters, onFilterChange]);
+    
 
     const shouldHideType = ['/Vali', '/Handbag', '/Backpack', '/Gentlemen', '/Ladies'].includes(location.pathname);
+
+
+    const [products, setProducts] = useState([]);
+
+    const fetchData = async (url) => {
+        try {
+            let resp = await fetch(`${url}AdminProduct.php`, {
+                method: 'GET',
+                headers: {
+                    'X-React-File-Name': 'AdminProduct.jsx'
+                }
+            });
+
+            if (!resp.ok) {
+                throw new Error('Failed to fetch product data.');
+            }
+
+            let data = await resp.json();
+            
+            setProducts(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData(url);
+    }, [url]);
+
+    const productCount = products.length;
+
+
+
+
 
     return (
         <div>
@@ -152,12 +216,27 @@ const Topshop = ({ onFilterChange }) => {
                             }
                         </div>
                         <div className='sort-container'>
-                            <p>50 products</p>
+                            <p>{productCount} products</p>
                             <p onClick={() => toggleDropdown('SORT_BY')}>sort by <KeyboardArrowDownIcon /></p>
                             {activeDropdown === 'SORT_BY' && (
                                 <div className='dropdown-menu' onClick={(e) => e.stopPropagation()}>
-                                    <p>Select sorting option</p>
-                                    {/* Add sorting options as needed */}
+                                    <p>Input sorting amount:</p>
+                                    <div>
+                                        Min:{' '}
+                                        <input
+                                            type="number"
+                                            value={minPrice || ''}
+                                            onChange={(e) => handleMinPriceChange(e)}
+                                        />
+                                    </div>
+                                    <div>
+                                        Max:{' '}
+                                        <input
+                                            type="number"
+                                            value={maxPrice || ''}
+                                            onChange={(e) => handleMaxPriceChange(e)}
+                                        />
+                                    </div>
                                 </div>
                             )}
                         </div>
