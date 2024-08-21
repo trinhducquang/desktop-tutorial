@@ -592,7 +592,7 @@ const Booking = () => {
                                                     </div>
                                                 </li>
                                             </ul>
-                                            <p className='fix-booking-last'>Product SKU: 97363004</p>
+                                           {/* <p className='fix-booking-last'>Product SKU: 97363004</p> */}
                                         </div>
                                     </div>
                                 </div>
