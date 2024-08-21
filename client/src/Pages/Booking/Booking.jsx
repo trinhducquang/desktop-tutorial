@@ -34,7 +34,7 @@ const Booking = () => {
 
 
     const fetchData = async (url) => {
-        
+
         try {
             let resp = await fetch(`${url}AdminProduct.php/${id}`, {
                 method: 'GET',
@@ -55,7 +55,7 @@ const Booking = () => {
 
             let data = await resp.json();
 
-            
+
             setProducts(data);
             console.log(data);
         } catch (error) {
@@ -179,7 +179,7 @@ const Booking = () => {
 
 
     // sessionStorage.setItem('userId', '2');
-    
+
     // const userId = sessionStorage.getItem('userId');
     const userId = Cookies.get('userId');
 
@@ -221,9 +221,9 @@ const Booking = () => {
 
     // Function to format numbers with a dot as the thousands separator
     const formatNumber = (number) => {
-      return new Intl.NumberFormat('de-DE').format(number);
+        return new Intl.NumberFormat('de-DE').format(number);
     };
-  
+
 
 
     return (
@@ -265,7 +265,9 @@ const Booking = () => {
                                             <button onClick={() => setShow3D(true)}>Try in 3D</button>
                                         </div>
                                         <div>
-                                            <video src={product.videoLink} autoPlay muted loop />
+                                            {product.videoLink ? (
+                                                <video src={product.videoLink} autoPlay muted loop />
+                                            ) : null}
                                         </div>
                                         <div className='abc'>
                                             {/* <img src={validata} />
@@ -415,66 +417,75 @@ const Booking = () => {
                                             </div>
                                         </div> */}
                                         <div className='item-list-7'>
-                                            <span>Key elements</span>
-                                            <div className='item-list-7-item'>
+                                            {(image9 || image10 || image11 || image12) && (
                                                 <div>
-                                                    {/* <img src={validata8} /> */}
-                                                    {image9 && (
-                                                        <img
-                                                            src={image9.image}
-                                                            alt={`Product ${productId} - image 9`}
-                                                        />
-                                                    )}
-                                                    <span>TSA-Approved Locks</span>
-                                                    <p>Each of our suitcases features TSA-approved
-                                                        locks that can be opened by security during
-                                                        airline baggage checks without causing any damage.</p>
+                                                    <span>Key elements</span>
+                                                    <div className='item-list-7-item'>
+                                                        <div>
+                                                            {image9 && (
+                                                                <>
+                                                                    <img
+                                                                        src={image9.image}
+                                                                        alt={`Product ${productId} - image 9`}
+                                                                    />
+                                                                    <span>TSA-Approved Locks</span>
+                                                                    <p>Each of our suitcases features TSA-approved
+                                                                        locks that can be opened by security during
+                                                                        airline baggage checks without causing any damage.</p>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                        <div>
+                                                            {image10 && (
+                                                                <>
+                                                                    <img
+                                                                        src={image10.image}
+                                                                        alt={`Product ${productId} - image 10`}
+                                                                    />
+                                                                    <span>Flex Divider</span>
+                                                                    <p>Packed items are kept in perfect
+                                                                        order during transit with the height
+                                                                        adjustable Flex Divider, which can be
+                                                                        adapted to suit your belongings.
+                                                                    </p>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                        <div>
+                                                            {image11 && (
+                                                                <>
+                                                                    <img
+                                                                        src={image11.image}
+                                                                        alt={`Product ${productId} - image 11`}
+                                                                    />
+                                                                    <span>RIMOWA Multiwheel® System</span>
+                                                                    <p>Pioneered by RIMOWA, this high-end
+                                                                        system guarantees stable and effortless
+                                                                        steering thanks to ball-bearing mounted
+                                                                        wheels with cushioned axels.
+                                                                    </p>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                        <div>
+                                                            {image12 && (
+                                                                <>
+                                                                    <img
+                                                                        src={image12.image}
+                                                                        alt={`Product ${productId} - image 12`}
+                                                                    />
+                                                                    <span>Telescopic Handle</span>
+                                                                    <p>Engineered to offer seamless
+                                                                        stage-free adjustment for maximum
+                                                                        comfort and smooth maneuverability.
+                                                                    </p>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    {/* <img src={validata9} /> */}
-                                                    {image10 && (
-                                                        <img
-                                                            src={image10.image}
-                                                            alt={`Product ${productId} - image 10`}
-                                                        />
-                                                    )}
-                                                    <span>Flex Divider</span>
-                                                    <p>Packed items are kept in perfect
-                                                        order during transit with the height
-                                                        adjustable Flex Divider, which can be
-                                                        adapted to suit your belongings.
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    {/* <img src={validata10} /> */}
-                                                    {image11 && (
-                                                        <img
-                                                            src={image11.image}
-                                                            alt={`Product ${productId} - image 11`}
-                                                        />
-                                                    )}
-                                                    <span>RIMOWA Multiwheel® System</span>
-                                                    <p>Pioneered by RIMOWA, this high-end
-                                                        system guarantees stable and effortless
-                                                        steering thanks to ball-bearing mounted
-                                                        wheels with cushioned axels.
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    {/* <img src={validata11} /> */}
-                                                    {image12 && (
-                                                        <img
-                                                            src={image12.image}
-                                                            alt={`Product ${productId} - image 12`}
-                                                        />
-                                                    )}
-                                                    <span>Telescopic Handle</span>
-                                                    <p>Engineered to offer seamless
-                                                        stage-free adjustment for maximum
-                                                        comfort and smooth maneuverability.
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            )}
+
                                             <ul className='ul-booking-list'>
                                                 <li onClick={() => handleItemClick('size')} className='li-size-list'>
                                                     <div className='fix-img-1'>

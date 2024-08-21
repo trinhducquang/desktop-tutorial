@@ -296,7 +296,7 @@ const AdminEdit = () => {
 
                         <div className="form-group">
                             <label htmlFor="videoLink">Video Link</label>
-                            <input required type="text" className="form-control" id="videoLink" name="videoLink" value={products.videoLink} onChange={(event) => setProducts({ ...products, videoLink: event.target.value })} />
+                            <input type="text" className="form-control" id="videoLink" name="videoLink" value={products.videoLink} onChange={(event) => setProducts({ ...products, videoLink: event.target.value })} />
                         </div><br />
 
                         <div className="form-group">
