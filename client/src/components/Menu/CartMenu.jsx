@@ -117,11 +117,9 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       });
       const data = await response.json();
 
-      const orderId = data['orderId']['order_id'];
-      // console.log(`Order Id: ${orderId}`);
       clearCart();
-      //navigate('/Library');
-      return orderId;
+      // navigate('/Library');
+
     } catch (error) {
       console.error('Error during checkout:', error);
     }
