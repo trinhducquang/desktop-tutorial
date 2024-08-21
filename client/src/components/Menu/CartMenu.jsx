@@ -93,7 +93,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       }
     }));
 
-    const statusValue = 'unpaid'
+    const statusValue = 'Failed'
 
     const order = {
       fields: {
@@ -117,9 +117,10 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       });
       const data = await response.json();
 
+      const orderId = data['orderId']['order_id'];
       clearCart();
+      return orderId;
       // navigate('/Library');
-
     } catch (error) {
       console.error('Error during checkout:', error);
     }
