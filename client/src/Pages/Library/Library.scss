@@ -79,6 +79,14 @@
     }
   }
 
+
+  .dropdown-menu {
+     input {
+       display: flex;
+       flex-direction: column;
+     }
+  }
+
   @media (max-width: 1024px) {
     .content-container {
       grid-template-columns: repeat(2, 1fr) !important;

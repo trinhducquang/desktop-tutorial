@@ -16,6 +16,15 @@ const Navbar = ({
 }) => {
   const currentLocation = useLocation();
 
+  const pathsWithMenu = [
+    '/Inspiring-Greatness',
+    '/Vali',
+    '/Handbag',
+    '/Backpack',
+    '/Gentlemen',
+    '/Ladies'
+  ];
+
   return (
     <div className={`Navbar-container ${navBarClass}`}>
       <div className='container-item'>
@@ -31,7 +40,7 @@ const Navbar = ({
             <div className='shopping-cart-container' onClick={handleCartClick}>
               <img
                 src={currentLocation.pathname.startsWith(`/Booking/${id}`) ||
-                     ['/Muse', '/Login', '/User', '/Resgiter'].includes(currentLocation.pathname)
+                     ['/Muse', '/Login', '/User', '/Register'].includes(currentLocation.pathname)
                      ? market
                      : Shopcart}
                 alt="Shopping Cart"
@@ -40,7 +49,7 @@ const Navbar = ({
             </div>
           </div>
         </div>
-        {isNavMenuVisible && currentLocation.pathname === '/Inspiring-Greatness' && (
+        {isNavMenuVisible && pathsWithMenu.includes(currentLocation.pathname) && (
           <div className='Navbar-container-menu1'>
             <div className='additional-items'>
               <a href='./Inspiring-Greatness'>Inspiring Greatness</a>

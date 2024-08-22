@@ -160,9 +160,6 @@ const Topshop = ({ onFilterChange }) => {
     const productCount = products.length;
 
 
-
-
-
     return (
         <div>
             <section>
@@ -220,7 +217,6 @@ const Topshop = ({ onFilterChange }) => {
                             <p onClick={() => toggleDropdown('SORT_BY')}>sort by <KeyboardArrowDownIcon /></p>
                             {activeDropdown === 'SORT_BY' && (
                                 <div className='dropdown-menu' onClick={(e) => e.stopPropagation()}>
-                                    <p>Input sorting amount:</p>
                                     <div>
                                         Min:{' '}
                                         <input

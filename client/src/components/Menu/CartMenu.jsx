@@ -82,7 +82,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
     }
   }, [id, url]);
 
-  const handleSubmit = async (event) => { // để khi nhấn vào checkout thì lưu vào csdl 
+  const handleSubmit = async (event) => { 
     event.preventDefault();
 
     const orderDetail = cartItems.map((item) => ({
