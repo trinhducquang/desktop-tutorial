@@ -91,6 +91,56 @@ const Gentlement = () => {
     return acc;
   }, {});
 
+  
+  
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filters, setFilters] = useState({});
+
+  const handleFilterChange = useCallback((newFilters) => {
+    setFilters(newFilters);
+  }, []);
+
+  useEffect(() => {
+    const applyFilters = () => {
+      const filtered = products.filter(product => {
+        // console.log('Product Price:', product.price);
+
+        // Handle minPrice and maxPrice filters separately
+        if (filters.minPrice && product.price < filters.minPrice) {
+            // console.log('b minPrice:', product.price);
+            return false;
+        }
+        if (filters.maxPrice && product.price > filters.maxPrice) {
+            // console.log('a maxPrice:', product.price);
+            return false;
+        }
+
+        return Object.entries(filters)
+        .filter(([attributeType]) => attributeType !== 'minPrice' && attributeType !== 'maxPrice')
+        .every(([attributeType, selectedValues]) => {
+          if (selectedValues.length === 0) return true;
+          // console.log(product);
+          // console.log(attributeType);
+          const productAttriForType = productAttributes.filter(
+            pa => pa.product_id === product.id && pa.attribute_value_id && selectedValues.includes(pa.attribute_value_id)
+          );
+          // console.log(productAttriForType.filter(pa => pa.product_id === product.id && pa.attribute_value_id && selectedValues.includes(pa.attribute_value_id)));
+          return productAttriForType.length > 0;
+        })
+      });
+      // console.log(filtered);
+      setFilteredProducts(filtered);
+    };
+
+    applyFilters();
+  }, [filters, products, productAttributes]);
+
+
+  // Function to format numbers with a dot as the thousands separator
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat('de-DE').format(number);
+  };
+
 
 
 
@@ -111,7 +161,7 @@ const Gentlement = () => {
           <div className='content-container'>
 
             {
-              products
+              filteredProducts
                 .filter((product) => product.gender === 'gentlman')
                 .map((product) => (
                   <div className='item' key={product.id}>

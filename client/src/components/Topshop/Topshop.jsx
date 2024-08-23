@@ -80,24 +80,32 @@ const Topshop = ({ onFilterChange }) => {
     const [maxPrice, setMaxPrice] = useState({});
 
     const handleMinPriceChange = (e) => {
-        setMinPrice(parseFloat(e.target.value) || 0); 
+        const value = parseFloat(e.target.value) || 0;
+        // console.log("change min price");
+        // console.log(value);
+        if (value >= 0) {
+            setMinPrice(value);
+        }
         // console.log('top', minPrice)
         
         setSelectedFilters(prevFilters => {
             const newFilters = { ...prevFilters };
-            newFilters.minPrice = minPrice;
+            newFilters.minPrice = value;
 
             return newFilters;
         });
     }
 
     const handleMaxPriceChange = (e) => {
-        setMaxPrice(parseFloat(e.target.value) || Infinity); 
+        const value = parseFloat(e.target.value) || Infinity;
+        if (value >= 0) {
+            setMaxPrice(value);
+        }
         // console.log('top', maxPrice)
-
+        
         setSelectedFilters(prevFilters => {
             const newFilters = { ...prevFilters };
-            newFilters.maxPrice = maxPrice;
+            newFilters.maxPrice = value;
 
             return newFilters;
         });
@@ -223,6 +231,7 @@ const Topshop = ({ onFilterChange }) => {
                                             type="number"
                                             value={minPrice || ''}
                                             onChange={(e) => handleMinPriceChange(e)}
+                                            min="1" 
                                         />
                                     </div>
                                     <div>
@@ -231,6 +240,7 @@ const Topshop = ({ onFilterChange }) => {
                                             type="number"
                                             value={maxPrice || ''}
                                             onChange={(e) => handleMaxPriceChange(e)}
+                                            min="1" 
                                         />
                                     </div>
                                 </div>
