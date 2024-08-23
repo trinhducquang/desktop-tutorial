@@ -7,8 +7,6 @@
     
 }
 
-
-
 img,button,a:hover {
     cursor: pointer;  
 }
@@ -34,8 +32,6 @@ a {
 li {
   list-style: none;
 }
-
-
 
 .darken {
   position: relative;
@@ -76,7 +72,6 @@ li {
   z-index: 3; 
 
 }
-
 
 
 

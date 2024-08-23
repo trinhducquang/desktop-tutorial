@@ -143,8 +143,6 @@ const Booking = () => {
         return acc;
     }, {});
 
-
-
     const handleItemClick = (item) => {
         setExpandedItem(expandedItem === item ? null : item);
     };

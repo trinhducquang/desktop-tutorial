@@ -1,7 +1,8 @@
-const express = require('express');
-const paypal = require('paypal-rest-sdk');
-const cors = require('cors');
-const mysql = require('mysql2');
+import express from 'express';
+import paypal from 'paypal-rest-sdk';
+import cors from 'cors';
+import mysql from 'mysql2';
+import nodemailer from 'nodemailer';
 
 const app = express();
 app.use(cors());
@@ -31,14 +32,19 @@ connection.connect(err => {
 let currentTotalPrice = "0.00";
 let currentOrderId = null;
 
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'quang.td.2430@aptechlearning.edu.vn',
+        pass: 'f b a a u k s w s b t y j u f a'
+    }
+});
+
 app.post('/payment', async (req, res) => {
     try {
         const { cartItems, orderId } = req.body;
 
         currentOrderId = orderId;
-
-        //console.log(currentOrderId);
-
 
         const totalPrice = cartItems.reduce((sum, item) => {
             const itemPrice = parseFloat(item.price) || 0;
@@ -46,6 +52,7 @@ app.post('/payment', async (req, res) => {
         }, 0).toFixed(2);
 
         currentTotalPrice = totalPrice;
+        console.log(totalPrice);
 
         let create_payment_json = {
             "intent": "sale",
@@ -105,6 +112,14 @@ app.get('/success', (req, res) => {
     };
 
     paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+
+        const query = `
+                        SELECT u.email 
+                        FROM users u
+                        JOIN orders o ON u.id = o.user_id
+                        WHERE o.id = ?
+                      `;
+
         if (error) {
             console.log(error.response);
             res.redirect('http://localhost:5173/failed');
@@ -121,7 +136,116 @@ app.get('/success', (req, res) => {
                         res.redirect('http://localhost:5173/failed');
                     } else {
                         console.log('Trạng thái đơn hàng đã được cập nhật');
-                        res.redirect('http://localhost:5173/Success');
+                        connection.query(query, [orderIdValue], (err, results) => {
+                            if (err) {
+                                console.error('Lỗi khi lấy email: ' + err.stack);
+                                res.redirect('http://localhost:5173/failed');
+                                return;
+                            }
+                            const userEmail = results[0]?.email;
+
+                            if (userEmail) {
+                                const mailOptions = {
+                                    from: 'quang.td.2430@aptechlearning.edu.vn',
+                                    to: userEmail,
+                                    subject: 'Đơn hàng đã được xử lý thành công',
+                                    html: `
+                                <!DOCTYPE html>
+                                <html lang="en">
+                                <head>
+                                    <meta charset="UTF-8">
+                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                    <title>Order Confirmation</title>
+                                    <style>
+                                        .Send-Container {
+                                            width: 400px;
+                                            height: 400px;
+                                            margin: 0 auto;
+                                            padding: 20px; 
+                                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                            border-radius: 10px; 
+                                            background-color: #ffffff; 
+                                        }
+                                
+                                        .Send-header {
+                                            border-bottom: 1px solid gray;
+                                            padding-bottom: 10px;
+                                        }
+                                
+                                        .Send-header img {
+                                            width: 50px;
+                                            margin-left: 165px
+                                        }
+                                
+                                        .Send-middle h3, .Send-middle p {
+                                            margin-top: 10px;
+                                        }
+                                
+                                        .Send-middle p {
+                                            line-height: 30px;
+                                        }
+                                
+                                        .Send-Footer {
+                                            text-align: center;
+                                            margin-top: 30px;
+                                        }
+                                
+                                        .Send-Footer button {
+                                            background-color: #1877f2;
+                                            border-radius: 5px;
+                                            color: white;
+                                            padding: 8px 20px;
+                                            width: 100%;
+                                            border: none;
+                                            font-size: 20px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 2px;
+                                        }
+                                    </style>
+                                </head>
+                                <body>
+                                    <div class="Send-Container">
+                                        <div class="Send-header">
+                                            <img src="cid:rimowa-logo" alt="Rimowa Logo">
+                                        </div>
+                                        <div class="Send-middle">
+                                            <h3>You have successfully made a purchase.</h3>
+                                            <p>Congratulations! Your order with ID ${orderIdValue} has been successfully processed and confirmed.
+                                                Thank you for choosing to shop with us. We hope you are pleased with your purchase and
+                                                the service we provided. If you have any questions or need further information about your order,
+                                                please do not hesitate to reach out. We appreciate your trust and support!
+                                            </p>
+                                        </div>
+                                        <div class="Send-Footer">
+                                            <a href="http://localhost:5173/Library">
+                                                <button>
+                                                    Continue shopping
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </body>
+                                </html>
+                                `,
+                                    attachments: [{
+                                        filename: 'rimowa-logo.png',
+                                        path: './public/rimowa-logo.png',
+                                        cid: 'rimowa-logo'
+                                    }]
+                                };
+                                transporter.sendMail(mailOptions, (error, info) => {
+                                    if (error) {
+                                        console.error('Lỗi khi gửi email: ' + error.message);
+                                    } else {
+                                        console.log('Email đã được gửi: ' + info.response);
+                                    }
+                                    res.redirect('http://localhost:5173/Success');
+                                });
+                            } else {
+                                console.error('Không tìm thấy email của người dùng');
+                                res.redirect('http://localhost:5173/failed');
+                            }
+                        });
                     }
                 });
             } else {
@@ -132,17 +256,11 @@ app.get('/success', (req, res) => {
     });
 });
 
-
-
-
 app.get('/failed', (req, res) => {
-    // Xác định ID đơn hàng từ query params nếu có
     const orderId = req.query.orderId || currentOrderId?.orderId;
 
     if (orderId) {
-        // Cập nhật trạng thái đơn hàng là "Failed"
         const updateOrderStatus = 'UPDATE orders SET status = ? WHERE id = ?';
-
         connection.query(updateOrderStatus, ['Failed', orderId], (err, results) => {
             if (err) {
                 console.error('Lỗi khi cập nhật trạng thái đơn hàng: ' + err.stack);
@@ -153,11 +271,9 @@ app.get('/failed', (req, res) => {
             }
         });
     } else {
-        // Nếu không có orderId, chuyển hướng đến trang lỗi
         res.redirect('http://localhost:5173/failed');
     }
 });
-
 
 app.listen(8000, () => {
     console.log('Máy chủ đang chạy trên cổng 8000');
