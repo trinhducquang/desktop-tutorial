@@ -41,7 +41,7 @@ const Admin = () => {
                 </div>
             </div>
         ): (
-            <Navigate to="/access_denied" state={{ from: location }} />
+            <Navigate to="/404" state={{ from: location }} />
         )
     )
 

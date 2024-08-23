@@ -618,13 +618,9 @@ const Booking = () => {
                         )
                     })
             }
-
-
-
             {/* <div className='Booking-container'>
 
             </div> */}
-
             <div className='fix-best-lat-booking'>
                 <h1>Related products</h1>
                 <p>You may also like</p>

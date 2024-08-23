@@ -65,8 +65,6 @@ import Success from './Pages/Success/Success';
 import Failed from './Pages/Failed/Failed';
 import { CartProvider } from './Hooks/CartContext';
 import NotFound from './Pages/NotFound/NotFound ';
-import AccessDenied from './Admin/AccessDenied';
-
 
 
 const App = () => {
@@ -76,7 +74,6 @@ const App = () => {
   return (
 
     <CartProvider>
-
       <div>
         {!isAdminRoute && <MenuComponent />}
         <ScrollToTop />
@@ -132,7 +129,6 @@ const App = () => {
 
 
           <Route path='/Admin' element={<Admin />} />
-          <Route path="/access_denied" element={<AccessDenied/>}/>
 
           <Route path='/Admin/product' element={<AdminProduct />}></Route>
           <Route path='/Admin/product/edit/:id' element={<AdminEdit />}></Route>
