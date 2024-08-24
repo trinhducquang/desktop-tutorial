@@ -291,7 +291,7 @@ const AdminEdit = () => {
 
                         <div className="form-group">
                             <label htmlFor="link">Link</label>
-                            <input required type="text" className="form-control" id="link" name="link" value={products.link} onChange={(event) => setProducts({ ...products, link: event.target.value })} />
+                            <input type="text" className="form-control" id="link" name="link" value={products.link} onChange={(event) => setProducts({ ...products, link: event.target.value })} />
                         </div><br />
 
                         <div className="form-group">

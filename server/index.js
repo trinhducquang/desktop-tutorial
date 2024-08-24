@@ -148,7 +148,7 @@ app.get('/success', (req, res) => {
                                 const mailOptions = {
                                     from: 'quang.td.2430@aptechlearning.edu.vn',
                                     to: userEmail,
-                                    subject: 'Đơn hàng đã được xử lý thành công',
+                                    subject: 'Đơn hàng đang được xử lý',
                                     html: `
                                 <!DOCTYPE html>
                                 <html lang="en">

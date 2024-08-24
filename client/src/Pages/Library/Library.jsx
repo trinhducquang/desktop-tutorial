@@ -226,7 +226,7 @@ const Library = () => {
                     }
 
                     <div className='text-abc'>
-                      <h4>{product.name}</h4>
+                      <span>{product.name}</span>
                       <p>${formatNumber(product.price)}</p>
                     </div>
 

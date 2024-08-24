@@ -490,6 +490,15 @@
     margin: 0;
 }
 
+.icon-spacing {
+    margin-top: 50px !important;
+      
+    .react-share__ShareButton:nth-of-type(n+2) {
+       margin-left: 10px !important;
+    }
+
+    
+}
 
 
 @media (max-width: 1024px) {

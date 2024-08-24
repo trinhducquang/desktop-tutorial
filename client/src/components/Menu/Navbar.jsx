@@ -22,7 +22,8 @@ const Navbar = ({
     '/Handbag',
     '/Backpack',
     '/Gentlemen',
-    '/Ladies'
+    '/Ladies',
+    '/Library'
   ];
 
   return (

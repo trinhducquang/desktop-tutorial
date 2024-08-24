@@ -2,7 +2,10 @@ import React from 'react'
 import './Success.scss'
 import original from '/public/NotFound/original.jpeg'
 import FooterTop from '../../components/Footer-top/FooterTop'
-import img1 from '/public/Owership/img1.webp'
+import img3 from '/public/Owership/img1.webp'
+import img1 from '/public/Success/img1.webp'
+import img2 from '/public/Success/img2.webp'
+import VerticalLine from '../../components/VerticalLine/VerticalLine'
 import { Link } from 'react-router-dom'
 import { GrLinkNext } from 'react-icons/gr'
 
@@ -19,8 +22,11 @@ const Success = () => {
                                  Check your order details
                                 <GrLinkNext className="arrow" />
                             </Link>
+                            <VerticalLine/>
                         </div>
+                      
                     </div>
+                   
                 </div>
             </section>
             <section>
@@ -47,14 +53,14 @@ const Success = () => {
                         </div>
                         <div className='Navbar-content'>
                             <div>
-                                <img src={img1} alt="Explore Models" />
+                                <img src={img3} alt="Explore Models" />
                                 <h4>EXPLORE MODELS</h4>
                                 <p>Explore our stunning collection of new Rolls-Royce models. Whether you’re looking for the ultimate luxury saloon, a sporty coupe or a refined convertible, we have something for you.</p>
                             </div>
                         </div>
                         <div className='Navbar-content'>
                             <div>
-                                <img src={img1} alt="Find Your Dealer" />
+                                <img src={img2} alt="Find Your Dealer" />
                                 <h4>FIND A DEALER</h4>
                                 <p>Find a Rolls-Royce dealer near you and book a test drive or discover more about the bespoke services we offer.</p>
                             </div>

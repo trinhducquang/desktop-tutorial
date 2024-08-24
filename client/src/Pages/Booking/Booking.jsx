@@ -3,7 +3,6 @@ import './Booking.scss';
 import FooterTop from '../../components/Footer-top/FooterTop';
 import useRating from '../../Hooks/useRating';
 import down from '/public/Booking/down.png';
-import down2 from '/public/Booking/arrow2.png';
 import Close from '/public/Booking/close.png';
 import cong from '/public/Booking/cong.png';
 import Carousel3 from '../../components/Carousel/Carousel3';
@@ -12,6 +11,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../../Hooks/CartContext';
 import useMenu from '../../Hooks/useMenu';
 import Cookies from 'js-cookie';
+import {
+    FacebookShareButton,
+    FacebookIcon,
+    TwitterShareButton,
+    TwitterIcon,
+    WhatsappShareButton,
+    WhatsappIcon,
+    LinkedinShareButton,
+    LinkedinIcon,
+} from "react-share";
 
 
 const Booking = () => {
@@ -23,6 +32,7 @@ const Booking = () => {
     const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
     const MAX_LENGTH = 100;
+    const shareurl = "http://localhost:5173/Library"
     const navigate = useNavigate();
 
 
@@ -222,11 +232,8 @@ const Booking = () => {
         return new Intl.NumberFormat('de-DE').format(number);
     };
 
-
-
     return (
         <div className='overflow clasname-fix-colum'>
-
             {/* product.id !== null && */}
             {
                 // products.map((product) => ({
@@ -260,7 +267,11 @@ const Booking = () => {
                                                     alt={`Product ${productId} - Image 3`}
                                                 />
                                             )}
-                                            <button onClick={() => setShow3D(true)}>Try in 3D</button>
+                                            {
+                                                product.link && (
+                                                    <button onClick={() => setShow3D(true)}>Try in 3D</button>
+                                                )
+                                            }
                                         </div>
                                         <div>
                                             {product.videoLink ? (
@@ -362,13 +373,12 @@ const Booking = () => {
                                                 {/* <span>Trunk XL</span> */}
                                                 <span>{product.name}</span>
                                                 {/* <span>31.5 x 17.2 x 17 inch</span> */}
-                                                {
+                                                {/* {
                                                     // attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
                                                     attributeValue.filter(attri_value => attri_value.id == product.size).map((attri_value) => (
                                                         <span key={attri_value.id}>{attri_value.value}</span>
                                                     ))
-                                                }
-                                                <img src={down2} />
+                                                } */}
                                             </button>
                                         </div>
                                         <div className='item-list-3'>
@@ -489,108 +499,122 @@ const Booking = () => {
                                                     </div>
                                                 </div>
                                             )}
+                                            <div>
+                                                <ul className='ul-booking-list'>
+                                                    <li onClick={() => handleItemClick('size')} className='li-size-list'>
+                                                        <div className='fix-img-1'>
+                                                            <img src={cong} className='fix-img' />
+                                                            <p>Size and Weight </p>
+                                                        </div>
+                                                        <div className='fix-booking-1'>
+                                                            {expandedItem === 'size' && <p>Additional details about size and weight.</p>}
+                                                        </div>
+                                                    </li>
+                                                    <li onClick={() => handleItemClick('materials')} className='li-size-list'>
+                                                        <div className='fix-img-1'>
+                                                            <img src={cong} className='fix-img' />
+                                                            <p>Materials</p>
+                                                        </div>
+                                                        <div className='size-best fix-booking-1'>
+                                                            {expandedItem === 'materials' && <>
+                                                                <p>Outside: Aluminum</p>
+                                                                <p>Inside: Polyester</p>
+                                                                <p>Handles: Plastic</p>
+                                                                <p>Wheels: Hard plastic</p>
+                                                                <p>Dividers: Polyester</p>
+                                                            </>}
+                                                        </div>
+                                                    </li>
+                                                    <li onClick={() => handleItemClick('shipping')} className='li-size-list'>
+                                                        <div className='fix-img-1' >
+                                                            <img src={cong} className='fix-img' />
+                                                            <p>Shipping and Returns</p>
+                                                        </div>
+                                                        <div>
+                                                            {expandedItem === 'shipping' &&
+                                                                <div className='fix-menu-1 fix-booking-1'>
+                                                                    <div>
+                                                                        <p>Express shipping</p>
+                                                                        <p>$35</p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p>Standard shipping for orders that are $300 and over</p>
+                                                                        <p>Free of charge</p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p>Standard shipping for orders under $300</p>
+                                                                        <p>$5</p>
+                                                                    </div>
 
-                                            <ul className='ul-booking-list'>
-                                                <li onClick={() => handleItemClick('size')} className='li-size-list'>
-                                                    <div className='fix-img-1'>
-                                                        <img src={cong} className='fix-img' />
-                                                        <p>Size and Weight </p>
-                                                    </div>
-                                                    <div className='fix-booking-1'>
-                                                        {expandedItem === 'size' && <p>Additional details about size and weight.</p>}
-                                                    </div>
-                                                </li>
-                                                <li onClick={() => handleItemClick('materials')} className='li-size-list'>
-                                                    <div className='fix-img-1'>
-                                                        <img src={cong} className='fix-img' />
-                                                        <p>Materials</p>
-                                                    </div>
-                                                    <div className='size-best fix-booking-1'>
-                                                        {expandedItem === 'materials' && <>
-                                                            <p>Outside: Aluminum</p>
-                                                            <p>Inside: Polyester</p>
-                                                            <p>Handles: Plastic</p>
-                                                            <p>Wheels: Hard plastic</p>
-                                                            <p>Dividers: Polyester</p>
-                                                        </>}
-                                                    </div>
-                                                </li>
-                                                <li onClick={() => handleItemClick('shipping')} className='li-size-list'>
-                                                    <div className='fix-img-1' >
-                                                        <img src={cong} className='fix-img' />
-                                                        <p>Shipping and Returns</p>
-                                                    </div>
-                                                    <div>
-                                                        {expandedItem === 'shipping' &&
-                                                            <div className='fix-menu-1 fix-booking-1'>
-                                                                <div>
-                                                                    <p>Express shipping</p>
-                                                                    <p>$35</p>
-                                                                </div>
-                                                                <div>
-                                                                    <p>Standard shipping for orders that are $300 and over</p>
-                                                                    <p>Free of charge</p>
-                                                                </div>
-                                                                <div>
-                                                                    <p>Standard shipping for orders under $300</p>
-                                                                    <p>$5</p>
-                                                                </div>
+                                                                    <div>
+                                                                        <p>From the date of delivery, you have 30 days to return your item(s). Products should be returned unused,
+                                                                            undamaged, and packaged in their original boxes.</p>
+                                                                    </div>
 
-                                                                <div>
-                                                                    <p>From the date of delivery, you have 30 days to return your item(s). Products should be returned unused,
-                                                                        undamaged, and packaged in their original boxes.</p>
                                                                 </div>
+                                                            }
 
-                                                            </div>
-                                                        }
-
-                                                    </div>
-                                                </li>
-                                                <li onClick={() => handleItemClick('warranty')} className='li-size-list'>
-                                                    <div className='fix-img-1' >
-                                                        <img src={cong} className='fix-img' />
-                                                        <p>Lifetime Guarantee</p>
-                                                    </div>
-                                                    <div className='fix-booking-1'>
-                                                        {expandedItem === 'warranty' &&
-                                                            <p>
-                                                                This product comes with RIMOWA's
-                                                                lifetime guarantee. For easy enjoyment
-                                                                of the lifetime guarantee, please register
-                                                                your RIMOWA suitcase here.
-                                                            </p>}
-                                                    </div>
-                                                </li>
-                                                <li onClick={() => handleItemClick('contact')} className='li-size-list'>
-                                                    <div className='fix-img-1'>
-                                                        <img src={cong} className='fix-img' />
-                                                        <p>Contact Us</p>
-                                                    </div>
-                                                    <div className='fix-booking-1'>
-                                                        {expandedItem === 'contact' &&
-                                                            <>
-                                                                <p>Call us at:
-                                                                    <br />
-                                                                    312-635-6607
-                                                                    <br />
-                                                                    <br />
-                                                                    Contact us by email
-                                                                </p>
-                                                            </>
-                                                        }
-                                                    </div>
-                                                </li>
-                                                <li onClick={() => handleItemClick('faq')} className='li-size-list'>
-                                                    <div className='fix-img-1'>
-                                                        <img src={cong} className='fix-img' />
-                                                        <p>FAQ</p>
-                                                    </div>
-                                                    <div className='li-size-list fix-booking-1'>
-                                                        {expandedItem === 'faq' && <p>See our FAQs.</p>}
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                           {/* <p className='fix-booking-last'>Product SKU: 97363004</p> */}
+                                                        </div>
+                                                    </li>
+                                                    <li onClick={() => handleItemClick('warranty')} className='li-size-list'>
+                                                        <div className='fix-img-1' >
+                                                            <img src={cong} className='fix-img' />
+                                                            <p>Lifetime Guarantee</p>
+                                                        </div>
+                                                        <div className='fix-booking-1'>
+                                                            {expandedItem === 'warranty' &&
+                                                                <p>
+                                                                    This product comes with RIMOWA's
+                                                                    lifetime guarantee. For easy enjoyment
+                                                                    of the lifetime guarantee, please register
+                                                                    your RIMOWA suitcase here.
+                                                                </p>}
+                                                        </div>
+                                                    </li>
+                                                    <li onClick={() => handleItemClick('contact')} className='li-size-list'>
+                                                        <div className='fix-img-1'>
+                                                            <img src={cong} className='fix-img' />
+                                                            <p>Contact Us</p>
+                                                        </div>
+                                                        <div className='fix-booking-1'>
+                                                            {expandedItem === 'contact' &&
+                                                                <>
+                                                                    <p>Call us at:
+                                                                        <br />
+                                                                        312-635-6607
+                                                                        <br />
+                                                                        <br />
+                                                                        Contact us by email
+                                                                    </p>
+                                                                </>
+                                                            }
+                                                        </div>
+                                                    </li>
+                                                    <li onClick={() => handleItemClick('faq')} className='li-size-list'>
+                                                        <div className='fix-img-1'>
+                                                            <img src={cong} className='fix-img' />
+                                                            <p>FAQ</p>
+                                                        </div>
+                                                        <div className='li-size-list fix-booking-1'>
+                                                            {expandedItem === 'faq' && <p>See our FAQs.</p>}
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div className='icon-spacing'>
+                                                <FacebookShareButton url={shareurl}>
+                                                    <FacebookIcon size={30} round={true} />
+                                                </FacebookShareButton>
+                                                <TwitterShareButton url={shareurl}>
+                                                    <TwitterIcon size={30} round={true} />
+                                                </TwitterShareButton>
+                                                <WhatsappShareButton url={shareurl}>
+                                                    <WhatsappIcon size={30} round={true} />
+                                                </WhatsappShareButton>
+                                                <LinkedinShareButton url={shareurl}>
+                                                    <LinkedinIcon size={30} round={true} />
+                                                </LinkedinShareButton>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

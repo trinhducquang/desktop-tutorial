@@ -97,6 +97,14 @@ const Preowned = () => {
                             <h2>UNPARALLELED PRIVILEGES</h2>
                             <p>Owning Rimowa luggage grants you access to a world of unique experiences, exceptional connections, and a dedicated concierge service available around the clock.</p>
                         </div>
+                        <div>
+                            <h2>UNPARALLELED PRIVILEGES</h2>
+                            <p>Owning Rimowa luggage grants you access to a world of unique experiences, exceptional connections, and a dedicated concierge service available around the clock.</p>
+                        </div>
+                        <div>
+                            <h2>UNPARALLELED PRIVILEGES</h2>
+                            <p>Owning Rimowa luggage grants you access to a world of unique experiences, exceptional connections, and a dedicated concierge service available around the clock.</p>
+                        </div>
                     </div>
                 </div>
             </section>

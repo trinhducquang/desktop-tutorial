@@ -3,6 +3,7 @@ import './Failed.scss'
 import original from '/public/NotFound/original.jpeg'
 import FooterTop from '../../components/Footer-top/FooterTop'
 import img1 from '/public/Owership/img1.webp'
+import VerticalLine from '../../components/VerticalLine/VerticalLine'
 import { Link } from 'react-router-dom'
 import { GrLinkNext } from 'react-icons/gr'
 
@@ -14,6 +15,8 @@ const Success = () => {
                     <img src={original} alt="Rimowa Contact" />
                     <div className='img-content'>
                         <h2>FAILED</h2>
+                        <VerticalLine/>
+
                     </div>
                 </div>
             </section>

@@ -63,6 +63,7 @@ import Login from './Pages/LoginRegister/Login/Login';
 import Resgiter from './Pages/LoginRegister/Resgiter/Resgiter';
 import Success from './Pages/Success/Success';
 import Failed from './Pages/Failed/Failed';
+import VerticalLine from './components/VerticalLine/VerticalLine'
 import { CartProvider } from './Hooks/CartContext';
 import NotFound from './Pages/NotFound/NotFound ';
 
@@ -94,6 +95,7 @@ const App = () => {
           <Route path="/404" element={<NotFound />} />
           <Route path='/Success' element={<Success/>}/>
           <Route path='/Failed' element={<Failed/>}/>
+          <Route path='/a' element={<VerticalLine></VerticalLine>}></Route>
     
           <Route path='/pre-owned' element={<Preowned />} />
           <Route path='/Complaints' element={<Complaints />} />
