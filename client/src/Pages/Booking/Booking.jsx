@@ -32,7 +32,8 @@ const Booking = () => {
     const [expandedItem, setExpandedItem] = useState(null);
     const { rating, handleRating } = useRating();
     const MAX_LENGTH = 100;
-    const shareurl = "http://localhost:5173/Library"
+    const shareurl = `http://localhost:5174/Booking/${id}`
+    console.log(shareurl);
     const navigate = useNavigate();
 
 
@@ -67,7 +68,7 @@ const Booking = () => {
 
 
             setProducts(data);
-            console.log(data);
+            //console.log(data);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -91,7 +92,7 @@ const Booking = () => {
                 }
             })
             if (!response.ok) {
-                console.log(response);
+                //console.log(response);
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
@@ -112,7 +113,7 @@ const Booking = () => {
                 }
             })
             if (!response.ok) {
-                console.log(response);
+               // console.log(response);
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
@@ -218,12 +219,12 @@ const Booking = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+               // console.log(data);
 
                 handleRating(star)
             })
             .catch(error => {
-                console.log(error);
+               // console.log(error);
             });
     }
 
