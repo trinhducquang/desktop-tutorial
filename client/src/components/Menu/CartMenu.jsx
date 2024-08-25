@@ -107,6 +107,8 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       }
     };
 
+    console.log(order);
+
     try {
       const response = await fetch(`${url}AdminProduct.php`, {
         method: 'POST',

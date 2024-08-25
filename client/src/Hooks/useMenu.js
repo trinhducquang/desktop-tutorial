@@ -31,6 +31,7 @@ const useMenu = () => {
     { name: "PROVENANCE", link: "/pre-owned" },
     { name: "OWNERSHIP", link: "/ownership" },
     // { name: "LIBRARY", link: "/Library" },
+    { name: "USER", link: "/User" },
     { name: isLoggedIn ? "LOGOUT" : "LOGIN", link: isLoggedIn ? "#" : "/Login" },
   ];
 

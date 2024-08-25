@@ -4,10 +4,12 @@ import login from '/public/Login/login.jpg';
 import useForm from '../../../Hooks/useForm'; 
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 import AdminConfig from '../../../Admin/AdminConfig';
+import { useNavigate } from 'react-router-dom';
 
 
 const Resgiter = () => {
     const { urlRegister } = AdminConfig;
+    const navigate = useNavigate;
     const { formData, errors, errorMessages, handleChange, validateForm } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -36,6 +38,7 @@ const Resgiter = () => {
 
             if (response.ok) {
                 alert('Registration successful!');
+                navigate('/Login');
             } else {
                 alert('An error occurred during registration.');
             }

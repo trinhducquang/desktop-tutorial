@@ -92,8 +92,8 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     -- image2 MEDIUMTEXT not null, 
     link varchar(255),
     videoLink varchar(255),
-    price decimal(18,2) not null,
-    rating int  -- (1-5) 
+    price decimal(18,2) not null
+    -- rating int  -- (1-5) 
 )";
 
 $result = $conn->query($sql);
