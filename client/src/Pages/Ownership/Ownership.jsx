@@ -214,7 +214,7 @@ const Ownership = () => {
                         </div>
                     </div>
                 </section>
-                <section className='carousel-section'>
+                <section>
                     <Slider {...settings} className='Slider-section'>
                         <div>
                             <img src={img2} alt="Pre-owned luggage 1" />

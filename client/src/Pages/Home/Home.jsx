@@ -81,22 +81,22 @@ const Navbar = () => {
             <div className='Navbar-content'>
               <div className='bigmouse'>
                 <img src={img1} alt="Discover Bespoke " />
-                <h4>DISCOVER BESPOKE</h4>
-                <p>Choose from our exclusive collections or collaborate with our craftspeople and designers to create a Rolls-Royce wholly unique to you. This is Rolls-Royce Bespoke.</p>
+                <h4>EXPLORE OUR COLLECTIONS</h4>
+                <p>Discover Rimowa's exclusive range of premium collections. Each collection is meticulously designed to meet the highest standards of craftsmanship and innovation, offering a variety of styles and functionalities to suit your travel needs.</p>
               </div>
             </div>
             <div className='Navbar-content'>
               <div className='bigmouse'>
                 <img src={img2} alt="Explore Models " />
-                <h4>EXPLORE MODELS</h4>
-                <p>Explore our stunning collection of new Rolls-Royce models. Whether you’re looking for the ultimate luxury saloon, a sporty coupe or a refined convertible, we have something for you.</p>
+                <h4>CUSTOMIZE YOUR RIMOWA</h4>
+                <p>Personalize your Rimowa suitcase by collaborating with our skilled artisans and designers. Choose from a range of custom options to create a piece that reflects your unique style and preferences. Experience the art of customization like never before.</p>
               </div>
             </div>
             <div className='Navbar-content '>
               <div>
                 <img src={img4} alt="Find Your Dealer" />
-                <h4>FIND A DEALER</h4>
-                <p>Find a Rolls-Royce dealer near you and book a test drive or discover more about the bespoke services we offer.</p>
+                <h4>EXPERIENCE RIMOWA</h4>
+                <p>Immerse yourself in the world of Rimowa craftsmanship. From the selection of materials to the precision engineering, every aspect of our products is crafted to deliver exceptional quality and durability. Experience the excellence of Rimowa firsthand.</p>
               </div>
             </div>
           </div>

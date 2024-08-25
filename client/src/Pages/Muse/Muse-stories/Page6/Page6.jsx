@@ -102,7 +102,7 @@ const Page6 = () => {
                     </div>
                 </div>
             </section>
-            <section className='carousel-section'>
+            <section className='carousel-section carousel-section-background'>
                 <Slider {...settings} className='Slider-section'>
                     <div>
                         <img src={img3} alt="Pre-owned car 1" />
@@ -114,7 +114,7 @@ const Page6 = () => {
             </section>
             <section>
                 <div className='Menu1-container Careers-container-section2 Page6-background'>
-                    <div className='text-overlay color-overlay'>
+                    <div className='text-overlay color-overlay fix-color-overlay'>
                         <p>‘This is what makes Rolls-Royce distinct from other brands’, says Franck. ‘All the craft is in our own hands, and this
                             allows us to address each client’s specific wishes. We have the most discerning clients in the world who know exactly
                             what they want and have high expectations. They come to Rolls-Royce because

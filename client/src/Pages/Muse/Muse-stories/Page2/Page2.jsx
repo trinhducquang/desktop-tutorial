@@ -30,7 +30,7 @@ const Page2 = () => {
 
 
     return (
-        <div className='Page2-container'>
+        <div className='Page2-container overflow'>
             <section>
                 <div className='Menu1-container page-2-overlay'>
                     <video src={video1page2} autoPlay loop muted />
@@ -81,7 +81,7 @@ const Page2 = () => {
                     </div>
                 </div>
             </section>
-            <section className='Page-2-item page-2-fix'>
+            <section className='Page-2-item page-2-fix page-2-item'>
                 <div className='Menu1-container Careers-container-section2'>
                     <div className='text-overlay color-overlay'>
                         <h1>Bi Rongrong</h1>

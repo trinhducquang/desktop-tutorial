@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import './Carousel2.scss';
 import AdminConfig from '../../Admin/AdminConfig';
 import { useCart } from '../../Hooks/CartContext';
-import useHover from '../../Hooks/useHover'; // Import useHover
+import useHover from '../../Hooks/useHover'; 
 
 const Carousel = ({ title }) => {
     const { url } = AdminConfig;

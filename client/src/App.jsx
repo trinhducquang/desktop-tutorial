@@ -128,8 +128,6 @@ const App = () => {
           {/* <Route path='/product-details/:id' element={<Booking />} /> */}
 
 
-
-
           <Route path='/Admin' element={<Admin />} />
 
           <Route path='/Admin/product' element={<AdminProduct />}></Route>
