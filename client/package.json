@@ -25,7 +25,6 @@
     "qs": "^6.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-fullpage": "^0.1.19",
     "react-icons": "^5.2.1",
     "react-lazyload": "^3.2.1",
     "react-modal": "^3.16.1",
@@ -52,6 +51,7 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.41",
     "sass": "^1.77.8",
     "vite": "^5.4.1"
