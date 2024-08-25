@@ -21,7 +21,7 @@ const useMenu = () => {
   const handleCartClick = () => dispatch(openCart());
   const handleCloseCart = () => dispatch(closeCart());
 
-  const isLoggedIn = !!Cookies.get('userId'); // Kiểm tra xem người dùng có đăng nhập không
+  const isLoggedIn = !!Cookies.get('userId'); 
 
   const menuItems = [
     { name: "TRAVEL COMPANIONS COLLECTION", link: "/Library" },

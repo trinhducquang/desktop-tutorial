@@ -31,7 +31,7 @@ const Page6 = () => {
         autoplaySpeed: 3000,
     };
     return (
-        <div>
+        <div className='overflow'>
             <section>
                 <div>
                     <div className='Navbar-img'>

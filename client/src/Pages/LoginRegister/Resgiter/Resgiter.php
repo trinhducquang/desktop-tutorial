@@ -24,6 +24,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->bind_result($emailCount);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($emailCount > 0) {
+        http_response_code(400);
+        echo json_encode(['message' => 'Email already exists.']);
+        exit();
+    }
+
     $hashedPassword = sha1($password);
 
     $stmt = $conn->prepare("INSERT INTO users (email, password, phone, address) VALUES (?, ?, ?, ?)");
