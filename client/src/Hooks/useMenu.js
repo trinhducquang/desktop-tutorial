@@ -14,14 +14,14 @@ const useMenu = () => {
   const scrollY = useSelector((state) => state.menu.scrollY);
 
   useScroll();
-  useOutsideClick(); 
+  useOutsideClick();
 
   const handleMenuClick = () => dispatch(openMenu());
   const handleCloseMenu = () => dispatch(closeMenu());
   const handleCartClick = () => dispatch(openCart());
   const handleCloseCart = () => dispatch(closeCart());
 
-  const isLoggedIn = !!Cookies.get('userId'); 
+  const isLoggedIn = !!Cookies.get('userId');
 
   const menuItems = [
     { name: "TRAVEL COMPANIONS COLLECTION", link: "/Library" },
@@ -31,7 +31,7 @@ const useMenu = () => {
     { name: "PROVENANCE", link: "/pre-owned" },
     { name: "OWNERSHIP", link: "/ownership" },
     // { name: "LIBRARY", link: "/Library" },
-    { name: "USER", link: "/User" },
+    // { name: "USER", link: "/User" },
     { name: isLoggedIn ? "LOGOUT" : "LOGIN", link: isLoggedIn ? "#" : "/Login" },
   ];
 

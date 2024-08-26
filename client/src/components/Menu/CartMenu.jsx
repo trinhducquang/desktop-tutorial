@@ -107,7 +107,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
       }
     };
 
-    console.log(order);
+    //console.log(order);
 
     try {
       const response = await fetch(`${url}AdminProduct.php`, {
@@ -144,7 +144,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
 
       const paypalLink = await handleSubmitPaypal({ orderId });
 
-      console.log(orderId);
+      //console.log(orderId);
 
       if (paypalLink) {
 
