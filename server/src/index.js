@@ -1,44 +1,15 @@
 import express from 'express';
-import paypal from 'paypal-rest-sdk';
 import cors from 'cors';
-import mysql from 'mysql2';
-import nodemailer from 'nodemailer';
+import connection from './config/mysql.js';
+import paypal from './config/paypal.js';
+import transporter from './config/nodemailer.js';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-paypal.configure({
-    "mode": 'sandbox',
-    "client_id": 'AYVNbi1hTeWzzz7vXv2P39G8rEt0cPRdIjhLjjk5uodpYUMdfUmlM-cOQXaBg2sTH8XX4YoVhKI3jFya',
-    "client_secret": 'EO0R5IeDVzLBZ_6yQufcRdW5Lt82EPBrR2yfAioHDY3RQDeWyd8qMuxvJeVZzxuid3CRm4nkQFec9VNw',
-});
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'project1_luggage'
-});
-
-connection.connect(err => {
-    if (err) {
-        console.error('Lỗi kết nối cơ sở dữ liệu: ' + err.stack);
-        return;
-    }
-    console.log('Kết nối cơ sở dữ liệu thành công');
-});
-
 let currentTotalPrice = "0.00";
 let currentOrderId = null;
-
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'quang.td.2430@aptechlearning.edu.vn',
-        pass: 'f b a a u k s w s b t y j u f a'
-    }
-});
 
 app.post('/payment', async (req, res) => {
     try {
