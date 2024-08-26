@@ -13,8 +13,10 @@ const NotFound = () => {
         <div className='Navbar-img'>
           <img src={original} alt="Rimowa Contact" />
           <div className='img-content'>
-            <h2>HERE IN SPIRIT</h2>
+            <h2 style={{marginTop: '3%'}}>HERE IN SPIRIT</h2>
+            <div style={{marginTop: '3%'}}>
             <VerticalLine />
+            </div>
           </div>
         </div>
         

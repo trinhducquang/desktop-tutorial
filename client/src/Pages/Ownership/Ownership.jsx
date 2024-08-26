@@ -17,9 +17,6 @@ import Owership3 from '/public/Owership/ownersip3.mp4'
 import { Link } from 'react-router-dom'
 
 
-
-
-
 const Ownership = () => {
 
     const settings = {

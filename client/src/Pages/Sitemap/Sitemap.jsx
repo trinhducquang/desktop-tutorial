@@ -3,7 +3,7 @@ import './Sitemap.scss';
 import useScrollTranslate from '../../Hooks/useScrollTranslate';
 import sitemap from '/img/sitemap.webp';
 import { Link } from 'react-router-dom';
-
+import  VerticalLine from '../../components/VerticalLine/VerticalLine';
 const Sitemap = () => {
 
   const distance1 = 570.8;
@@ -16,7 +16,10 @@ const Sitemap = () => {
         <div className='Navbar-img Complaints-img'>
           <img src={sitemap} alt="Rimowa Complaints" />
           <div className='img-content'>
-            <h2>Site Map</h2>
+            <h2  style={{marginTop: '5%'}}>Site Map</h2>
+            <div style={{marginTop: '2%'}}>
+            <VerticalLine/>
+            </div>
           </div>
         </div>
       </section>

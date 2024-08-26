@@ -15,7 +15,7 @@ const OuterLine = styled.div`
   height: 100px;
   background-color: gray;
   position: fixed;
-  top: 370px;
+  top: 200%;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
