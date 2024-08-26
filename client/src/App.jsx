@@ -1,70 +1,11 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
-import ScrollToTop from './Hooks/ScrollToTop';
-import Home from './Pages/Home/Home';
-import Footer from './components/Footer/Footer';
-import InspiringGreatness from './Pages/InspiringGreatness/InspiringGreatness';
-import Sitemap from './Pages/Sitemap/Sitemap';
-import Contact from './Pages/Contact/Contact';
-import Library from './Pages/Library/Library';
-import Booking from './Pages/Booking/Booking';
-import Privacy from './Pages/Privacy/Privacy';
-import Ownership from './Pages/Ownership/Ownership';
-import Legal from './Pages/Legal/Legal';
-import Preowned from './Pages/Pre-owned/Preowned';
-import Complaints from './Pages/Complaints/Complaints';
-import Vali from './Pages/Vali/Vali'
-import Handbag from './Pages/Handbag/Handbag'
-import Packpack from './Pages/Packpack/Packpack'
-import Gentlement from './Pages/Gentlement/Gentlement'
-import Ladies from './Pages/Ladies/Ladies'
-import Admin from './Admin/Admin';
-import AdminProduct from './Admin/Product/AdminProduct';
-import AdminEdit from './Admin/Product/AdminEdit';
-import AdminNew from './Admin/Product/AdminNew';
-import AdminAttribute from './Admin/Attribute/AdminAttribute';
-import AdminEdit2 from './Admin/Attribute/AdminEdit2';
-import AdminNew2 from './Admin/Attribute/AdminNew2';
-import AdminAttriValue from './Admin/Attribute Value/AdminAttriValue';
-import AdminEdit3 from './Admin/Attribute Value/AdminEdit3';
-import AdminNew3 from './Admin/Attribute Value/AdminNew3';
-import AdminUsers from './Admin/Users/AdminUsers';
-import AdminEdit4 from './Admin/Users/AdminEdit4';
-import AdminNew4 from './Admin/Users/AdminNew4';
-import AdminOrders from './Admin/Orders/AdminOrders';
-import AdminEdit5 from './Admin/Orders/AdminEdit5';
-// import AdminNew5 from './components/Admin/Orders/AdminNew5';
-import AdminOrderDetail from './Admin/OrderDetail/AdminOrderDetail';
-import AdminEdit6 from './Admin/OrderDetail/AdminEdit6';
-// import AdminNew6 from './components/Admin/OrderDetail/AdminNew6';
-import AdminVideo from './Admin/Video/AdminVideo';
-import AdminEdit7 from './Admin/Video/AdminEdit7';
-import AdminNew7 from './Admin/Video/AdminNew7';
-
-import Whispers from './Pages/whispers/whispers'
-import Faqs from './Pages/Faqs/Faqs';
-import Cookie from './Pages/Cookie/Cookie';
-import Careers from './Pages/Careers/Careers';
-import MenuComponent from './components/Menu/MenuComponent';
-import InspiringSeries from './Pages/InspiringSeries/InspiringSeries';
-import Luxury from './Pages/Luxury/Luxury';
-import Muse from './Pages/Muse/Muse';
-import Page1 from './Pages/Muse/Muse-stories/Page1/Page1';
-import Page2 from './Pages/Muse/Muse-stories/Page2/Page2';
-import Page3 from './Pages/Muse/Muse-stories/Page3/Page3';
-import Page4 from './Pages/Muse/Muse-stories/Page4/Page4';
-import Page5 from './Pages/Muse/Muse-stories/Page5/Page5';
-import Page6 from './Pages/Muse/Muse-stories/Page6/Page6';
-import User from './Pages/User/User';
-import AdminImage from './Admin/Image/AdminImage';
-import AdminEdit8 from './Admin/Image/AdminEdit8';
-import AdminNew8 from './Admin/Image/AdminNew8';
-import Login from './Pages/LoginRegister/Login/Login';
-import Resgiter from './Pages/LoginRegister/Resgiter/Resgiter';
-import Success from './Pages/Success/Success';
-import Failed from './Pages/Failed/Failed';
-import VerticalLine from './components/VerticalLine/VerticalLine'
-import { CartProvider } from './Hooks/CartContext';
-import NotFound from './Pages/NotFound/NotFound ';
+import { ScrollToTop, Home, Footer, InspiringGreatness, Sitemap, Contact, Library, Booking, Privacy, Ownership, 
+         Legal, Preowned, Complaints, Vali, Handbag, Packpack, Gentlement, Ladies, Admin, AdminProduct, AdminEdit, 
+         AdminNew, AdminAttribute, AdminEdit2, AdminNew2, AdminAttriValue, AdminEdit3, AdminNew3, AdminUsers, AdminEdit4, 
+         AdminNew4, AdminOrders, AdminEdit5, AdminOrderDetail, AdminEdit6, AdminVideo, AdminEdit7, AdminNew7, Whispers, Faqs, 
+         Cookie, Careers, MenuComponent, InspiringSeries, Luxury, Muse, Page1, Page2, Page3, Page4, Page5, Page6, User, AdminImage, 
+         AdminEdit8, AdminNew8, Login, Resgiter, Success, Failed, VerticalLine, CartProvider, NotFound
+       } from './index';
 
 
 const App = () => {
