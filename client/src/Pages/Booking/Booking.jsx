@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Booking.scss';
 import FooterTop from '../../components/Footer-top/FooterTop';
 import useRating from '../../Hooks/useRating';

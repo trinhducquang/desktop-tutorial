@@ -1,4 +1,3 @@
-import React from 'react';
 import './Footer.scss';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import FacebookIcon from '@mui/icons-material/Facebook';

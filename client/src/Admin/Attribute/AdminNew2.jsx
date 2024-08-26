@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Editor } from "@tinymce/tinymce-react";
 import AdminConfig from "../AdminConfig";
 import Admin from "../Admin";

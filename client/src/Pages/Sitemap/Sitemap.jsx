@@ -1,4 +1,3 @@
-import React from 'react';
 import '../Complaints/Complaints.scss';
 import './Sitemap.scss';
 import useScrollTranslate from '../../Hooks/useScrollTranslate';

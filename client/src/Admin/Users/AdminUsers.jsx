@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import AdminConfig from "../AdminConfig";
 import Admin from "../Admin";
 
 const AdminUsers = () => {
     const { url } = AdminConfig;
-    const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -27,7 +26,7 @@ const AdminUsers = () => {
 
             setProducts(data);
             // console.log(products);
-            console.log('vao');
+            //console.log('vao');
             setLoading(false);
         }
         catch (error) {
@@ -65,11 +64,11 @@ const AdminUsers = () => {
             // }
 
             let data = await resp.json();
-            console.log(data);
+            //console.log(data);
 
-            console.log('vao2');
+            //console.log('vao2');
             fetchData(url);
-            console.log('vao3');
+            //console.log('vao3');
         } catch (error) {
             console.log(error);
         }

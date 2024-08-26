@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Contact.scss';
 import contact from '/contact/contact.webp';
 import img5 from '/contact/img5.webp';

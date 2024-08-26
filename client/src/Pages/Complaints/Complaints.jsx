@@ -1,4 +1,3 @@
-import React from 'react';
 import './Complaints.scss';
 import Complaints1 from '../../../public/Complaints/Complaints1.jpg';
 import useScrollTranslate from '../../Hooks/useScrollTranslate';

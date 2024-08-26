@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nebula from '/public/muse/Nebula.mp4';
 import './Muse.scss';

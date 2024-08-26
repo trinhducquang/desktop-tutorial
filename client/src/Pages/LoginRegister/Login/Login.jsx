@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Login.scss';
 import login from '/public/Login/login.jpg';
 import tick from '/public/Login/tick.png';

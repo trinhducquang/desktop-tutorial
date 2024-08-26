@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import './Privacy.scss';
 import Privacyimg from '/Privacy/Privacy.webp';
 import Accordion from '../../components/Accordion/Accordion';

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Faqs.scss';
 import UpSlide from '../../components/UpSlide/UpSlide';
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Slider from 'react-slick';
 import './Carousel3.scss';
 import AdminConfig from '../../Admin/AdminConfig';

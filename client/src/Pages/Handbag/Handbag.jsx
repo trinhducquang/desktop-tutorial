@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import './Handbag.scss';
 import banner from '../../../public/Library/banner.avif'; // Bạn có thể thay đổi đường dẫn nếu cần

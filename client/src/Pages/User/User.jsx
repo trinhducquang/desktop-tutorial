@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import FooterTop from '../../components/Footer-top/FooterTop'
 import './User.scss'
 import Carousel3 from '../../components/Carousel/Carousel3';

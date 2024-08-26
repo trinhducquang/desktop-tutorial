@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import {useState, useEffect} from "react"
 import { Link, useLocation, Navigate } from "react-router-dom"
 import useScrollTranslate from '../Hooks/useScrollTranslate';
 import './Admin.scss'

@@ -1,4 +1,3 @@
-import React from 'react'
 import './Page4.scss'
 import { Link } from 'react-router-dom'
 import { GrLinkNext } from 'react-icons/gr'

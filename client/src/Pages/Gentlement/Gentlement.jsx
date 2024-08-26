@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './Gentlement.scss'
 import { Link } from 'react-router-dom';
 import banner from '../../../public/Library/banner.avif';

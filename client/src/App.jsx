@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import ScrollToTop from './Hooks/ScrollToTop';
 import Home from './Pages/Home/Home';
@@ -95,7 +94,7 @@ const App = () => {
           <Route path="/404" element={<NotFound />} />
           <Route path='/Success' element={<Success/>}/>
           <Route path='/Failed' element={<Failed/>}/>
-          <Route path='/a' element={<VerticalLine></VerticalLine>}></Route>
+          <Route path='/a' element={<VerticalLine/>}/>
     
           <Route path='/pre-owned' element={<Preowned />} />
           <Route path='/Complaints' element={<Complaints />} />

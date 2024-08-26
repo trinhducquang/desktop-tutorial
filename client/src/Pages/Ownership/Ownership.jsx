@@ -1,4 +1,3 @@
-import React from 'react'
 import './Ownership.scss'
 import Owership from '/public/Owership/Mecury.mp4'
 import { GrLinkNext } from 'react-icons/gr'

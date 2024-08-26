@@ -1,4 +1,3 @@
-import React from 'react'
 import './Page1.scss'
 import Limitless from '/muse/Limitless.mp4'
 import img1 from '/public/muse/page1/ImgPage1.webp'

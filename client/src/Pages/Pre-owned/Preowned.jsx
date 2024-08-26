@@ -1,4 +1,3 @@
-import React from 'react';
 import './Preowned.scss';
 import Unique from '/public/pre-owned/Unique.mp4';
 import { GrLinkNext } from 'react-icons/gr';

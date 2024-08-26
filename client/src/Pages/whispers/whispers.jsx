@@ -1,4 +1,3 @@
-import React from 'react';
 import img from '/public/Whispers/img.jpg';
 import './whispers.scss';
 import { GrLinkNext } from "react-icons/gr";

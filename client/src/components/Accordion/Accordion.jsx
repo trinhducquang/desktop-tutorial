@@ -1,4 +1,3 @@
-import React from 'react';
 import cong from '/contact/cong.svg';
 import './Accordion.scss';
 import useAccordion from '../../Hooks/useAccordion'; 

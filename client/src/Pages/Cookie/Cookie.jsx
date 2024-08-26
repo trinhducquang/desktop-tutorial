@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import img1 from '/public/Cookie/img1.jpg';
 import './Cookie.scss';
 import { GrLinkNext } from "react-icons/gr";

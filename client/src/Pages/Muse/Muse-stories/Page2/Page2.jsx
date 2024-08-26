@@ -1,4 +1,3 @@
-import React from 'react'
 import './Page2.scss'
 import video1page2 from '/public/muse/page2/video1page2.mp4'
 import video2page2 from '/public/muse/page2/video2page2.mp4'

@@ -1,4 +1,3 @@
-import React from 'react'
 import img1 from '../../../public/Luxury/img1.webp'
 import img2 from '../../../public/Luxury/img2.webp'
 import img3 from '../../../public/Luxury/img3.webp'

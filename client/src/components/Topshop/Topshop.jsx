@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation } from 'react-router-dom';
 import './topshop.scss';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';

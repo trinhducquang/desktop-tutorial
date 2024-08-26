@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Editor } from "@tinymce/tinymce-react";
 import AdminConfig from "../AdminConfig";
 import Admin from "../Admin";
-import Compressor from 'compressorjs';
 
 const AdminNew8 = () => {
     const { url } = AdminConfig;

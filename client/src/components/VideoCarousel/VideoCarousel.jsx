@@ -1,4 +1,3 @@
-import React from 'react';
 import './VideoCarousel.scss';
 import Slider from 'react-slick';
 

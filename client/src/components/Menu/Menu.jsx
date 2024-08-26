@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';

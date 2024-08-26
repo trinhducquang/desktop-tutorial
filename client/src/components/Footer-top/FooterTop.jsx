@@ -1,4 +1,3 @@
-import React from 'react'
 import './FooterTop.scss'
 import img1 from '/footer/img1.png'
 import img2 from '/footer/img2.png'

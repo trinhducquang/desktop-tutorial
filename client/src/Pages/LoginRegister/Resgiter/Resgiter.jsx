@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Resgiter.scss';
 import login from '/public/Login/login.jpg';
 import useForm from '../../../Hooks/useForm'; 

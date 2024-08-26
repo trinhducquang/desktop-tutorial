@@ -1,4 +1,3 @@
-import React from 'react'
 import './InspiringSeries.scss'
 import ArcticBlue from '/public/InspiringSeries/ArcticBlue.mp4'
 import img from '/public/InspiringSeries/img.webp'

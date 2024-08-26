@@ -1,4 +1,3 @@
-import React from 'react'
 import './Failed.scss'
 import original from '/public/NotFound/original.jpeg'
 import FooterTop from '../../components/Footer-top/FooterTop'

@@ -1,4 +1,3 @@
-import React from 'react'
 import video1 from '/public/muse/Page6/video1.mp4'
 import img1 from '/public/muse/Page6/img1.webp'
 import img2 from '/public/muse/Page6/img2.webp'
@@ -6,18 +5,11 @@ import img3 from '/public/muse/Page6/img3.webp'
 import img4 from '/public/muse/Page6/img4.webp'
 import img7 from '/public/muse/Page6/img7.webp'
 import img9 from '/public/muse/Page6/img9.webp'
-
-
 import Carousel from '../../../../components/Carousel/Carousel.jsx'
 import Slider from 'react-slick'
 import { Page6img } from '../../../../components/Carousel/imageGroups.js';
 import { GrLinkNext } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
-
-
-
-
-
 import './Page6.scss'
 
 
