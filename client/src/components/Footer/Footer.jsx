@@ -21,8 +21,7 @@ const Footer = () => {
                         <li><Link to='/Privacy'>Privacy</Link></li>
                         <li><Link to='/Careers'>Careers</Link></li>
                         <li><Link to='/Site-Map'>Site Map</Link></li>
-                        <li><Link to='/whispers'>Whispers</Link></li>
-                      
+                        <li><Link to='/whispers'>Whispers</Link></li> 
                     </ul>
                     <div className='Footer-icons'>
                         <a href="https://www.youtube.com/@RIMOWA1898"><YouTubeIcon/></a>
