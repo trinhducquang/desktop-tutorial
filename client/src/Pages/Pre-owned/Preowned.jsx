@@ -1,6 +1,5 @@
 import './Preowned.scss';
 import Unique from '/public/pre-owned/Unique.mp4';
-import { GrLinkNext } from 'react-icons/gr';
 import img1 from '/public/pre-owned/img1.webp';
 import img2 from '/public/pre-owned/img2.webp';
 import img3 from '/public/pre-owned/img3.webp';
@@ -18,7 +17,6 @@ import { PreownedMedia } from '../../components/Carousel/imageGroups.js';
 import Accordion from '../../components/Accordion/Accordion.jsx';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button.jsx';
-import { colors } from '@mui/material';
 
 const Preowned = () => {
     const settings = {
@@ -45,9 +43,13 @@ const Preowned = () => {
                         <p>Rimowa luggage is a symbol of top-tier craftsmanship and elegance. From classic models to modern designs, each Rimowa product tells a unique story – from its meticulous creation to its first owner's adventurous journeys. As a Rimowa owner, you will experience luggage that performs as beautifully as the day it was made.</p>
                         <p>Continue the legacy and discover your certified Rimowa luggage.</p>
                     </div>
-                    <div className='cta-buttons'>
-                        <Button label='CONTACT A DEALER' />
-                        <Button label='Search Pre-Owned' />
+                    <div className='intro-fix'>
+                        <div>
+                            <Button label='CONTACT A DEALER' style={{ magrinTop: '0px !important', backgroundColor: '#676776', border: 'none', color: 'white' }} />
+                        </div>
+                        <div>
+                            <Button label='Search Pre-Owned' style={{ magrinTop: '0px !important', backgroundColor: '#676776', border: 'none', color: 'white' }} />
+                        </div>
                     </div>
                 </div>
             </section>
@@ -133,7 +135,7 @@ const Preowned = () => {
                             concepts to life through conversations with our Rimowa Bespoke team.
                         </p>
                         <div style={{ marginTop: '50px' }}>
-                            <Button label='CONTACT A DEALER' />
+                            <Button label='CONTACT A DEALER' style={{ color: '#676776', border: '1.2px solid #676776', backgroundColor: 'rgb(210, 210, 210)' }} />
                         </div>
                     </div>
                 </div>
@@ -180,8 +182,8 @@ const Preowned = () => {
                     <div className='image-container'>
                         <img src={img13} alt="Nebula" />
                         <h2>begin your Rimowa story</h2>
-                        <div style={{position:'relative', bottom: '550px'}}>
-                            <Button label='Search Pre-Owned' style={{border: 'none'}}/>
+                        <div style={{ position: 'relative', bottom: '550px' }}>
+                            <Button label='Search Pre-Owned' style={{ border: 'none' }} />
                         </div>
                     </div>
                 </div>
@@ -215,13 +217,9 @@ const Preowned = () => {
                         </div>
 
                     </div>
-                </div>
-                <div className="img-section img-section-3">
-                    <div className='image-container' style={{background: '#151515'}}>
-                        <Link to='/Inspiring-Greatness'>
-                            <Button label='Inspiring Greatness' style={{border: 'none', backgroundColor: 'transparent'}} color= 'white'/>
-                        </Link>
-                    </div>
+                    <Link to='/Inspiring-Greatness'>
+                        <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent' }} color='white' />
+                    </Link>
                 </div>
             </section>
         </div>

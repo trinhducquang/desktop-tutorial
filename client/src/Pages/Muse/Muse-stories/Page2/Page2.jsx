@@ -8,12 +8,8 @@ import img3 from '/public/muse/page2/img3.png'
 import img4 from '/public/muse/img4.webp';
 import img5 from '/public/muse/img5.webp';
 import img6 from '/public/muse/img6.webp';
-import { GrLinkNext } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
-
-
-
-
+import Button from '../../../../components/Button/Button.jsx';
 
 const Page2 = () => {
 
@@ -180,10 +176,8 @@ const Page2 = () => {
                             including the latest on the Dream Commission and Spirit of
                             Ecstasy Challenge in 2023.
                         </p>
-                        <div className='Page1-button'>
-                            <button>STAY CONNECTED
-                                <GrLinkNext className="arrow" />
-                            </button>
+                        <div style={{marginTop: '30px'}}>
+                            <Button label='STAY CONNECTED' style={{ backgroundColor: '#6D30A7', padding: '15px' }} borderColor='none' color='White' />
                         </div>
                     </div>
                 </div>
@@ -216,12 +210,9 @@ const Page2 = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='Page1-button fix2-button'>
-                        <Link to='/Inspiring-Greatness'>
-                            Inspiring Greatness
-                            <GrLinkNext className="arrow" />
-                        </Link>
-                    </div>
+                    <Link to='/Inspiring-Greatness'>
+                        <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent' }} color='white' />
+                    </Link>
                 </div>
             </section>
         </div>

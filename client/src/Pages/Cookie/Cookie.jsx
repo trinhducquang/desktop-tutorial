@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import img1 from '/public/Cookie/img1.jpg';
 import './Cookie.scss';
-import { GrLinkNext } from "react-icons/gr";
 import down from '/public/Cookie/down.svg'
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
 import Button from '../../components/Button/Button';
@@ -33,9 +32,15 @@ const Cookie = () => {
                             <h2>Modifications and Details</h2>
                             <div>
                                 <div className="report-buttons cookie-report-buttons">
-                                    <Button label= 'Accept selected' style={{backgroundColor: 'transparent', color: 'White', borderColor: 'white'}}/>
-                                    <Button label= 'Reject' style={{backgroundColor: 'transparent', color: 'White', borderColor: 'white'}}/>
-                                    <Button label= 'Accept all' style={{backgroundColor: 'white', color: 'black', borderColor: 'white'}}/>
+                                    <div>
+                                        <Button label='Accept selected' style={{ backgroundColor: 'transparent', color: 'White', borderColor: 'white' }} />
+                                    </div>
+                                    <div>
+                                        <Button label='Reject' style={{ backgroundColor: 'transparent', color: 'White', borderColor: 'white' }} />
+                                    </div>
+                                    <div>
+                                        <Button label='Accept all' style={{ backgroundColor: 'white', color: 'black', borderColor: 'white' }} />
+                                    </div>
                                 </div>
                             </div>
                             <p>In the following paragraph, you'll learn more about the purposes for which cookies are used.</p>
@@ -43,8 +48,8 @@ const Cookie = () => {
                                 <section>
                                     <div>
                                         <div>
-                                            <h2>Analytics and Marketing Cookies </h2> 
-                                            <ToggleButton/>
+                                            <h2>Analytics and Marketing Cookies </h2>
+                                            <ToggleButton />
                                         </div>
                                         <p>Based on your consent, we store and read information on your end device,
                                             in order to subsequently process the collected personal data.</p>

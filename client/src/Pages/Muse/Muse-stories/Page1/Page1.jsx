@@ -11,6 +11,7 @@ import img8 from '/public/muse/img4.webp';
 import img9 from '/public/muse/img5.webp';
 import { Link } from 'react-router-dom'
 import { GrLinkNext } from 'react-icons/gr';
+import Button from '../../../../components/Button/Button'
 
 
 
@@ -73,16 +74,16 @@ const Page1 = () => {
         <div className='Menu1-container Careers-container-section2'>
           <div className='text-overlay color-overlay'>
             <h1>FEBRUARY: UNVEILING THE DREAM COMMISSION IN SWITZERLAND</h1>
-            <p>At one of Switzerland’s most prestigious museums, Fondation Beyeler, 
-              Muse unveiled the inaugural Dream Commission, celebrating moving image works 
-              created by emerging and mid-career artists worldwide. The winning artist, New 
-              Jersey-based Sondra Perry, debuted her Dream Commission artwork ‘Lineage for a 
-              Phantom Zone’, transporting audiences with her boundary-pushing approach to moving 
-              image. The immersive audio-visual installation conjured the idea of dreams and memories 
-              that Perry wishes her family could have had.  Fondation Beyeler welcomed over 30,000 visitors 
+            <p>At one of Switzerland’s most prestigious museums, Fondation Beyeler,
+              Muse unveiled the inaugural Dream Commission, celebrating moving image works
+              created by emerging and mid-career artists worldwide. The winning artist, New
+              Jersey-based Sondra Perry, debuted her Dream Commission artwork ‘Lineage for a
+              Phantom Zone’, transporting audiences with her boundary-pushing approach to moving
+              image. The immersive audio-visual installation conjured the idea of dreams and memories
+              that Perry wishes her family could have had.  Fondation Beyeler welcomed over 30,000 visitors
               to experience the artwork.
             </p>
-            <p>Click here to download the catalogue, which includes the voices of the artist Sondra Perry, 
+            <p>Click here to download the catalogue, which includes the voices of the artist Sondra Perry,
               artist Sir Isaac Julien CBE and writer N.K Jemisin.</p>
           </div>
         </div>
@@ -159,41 +160,6 @@ const Page1 = () => {
           </div>
         </div>
       </section>
-      <section className='Page-2-item'>
-        <div className='Menu1-container Careers-container-section2 Careers-container-section3'>
-          <div className='text-overlay color-overlay'>
-            <h1>Muse Initiatives</h1>
-            <p>In 2023, Muse continues to celebrate creativity and innovation across moving image and design. The Spirit of Ecstasy
-              Challenge artworks will travel on a global tour, where new regions will be explored. Muse will continue to support our
-              partners, Serpentine, London, and Fondation Beyeler, Switzerland, on their upcoming programmes, and collaborate with some
-              of the most exciting and inspiring artists of today.
-            </p>
-            <p>Follow the journey of our Spirit of Ecstasy Challenge winners, as they created three world-class artworks. Download the catalogue
-              and watch here.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className='Page-2-item'>
-        <div className='Menu1-container Careers-container-section2 Careers-container-section3'>
-          <div className='text-overlay color-overlay'>
-            <h1 style={{paddingTop: '0px'}}>SIGN UP NOW</h1>
-            <div className='border-1-px'></div>
-            <p>Be the first to hear about our commissioning work with artists and designers,
-              events, conversations with collectors and museum partnership programmes.
-            </p>
-            <p>Sign up to our newsletter to hear the latest from Muse,
-              including the latest on the Dream Commission and Spirit of
-              Ecstasy Challenge in 2023.
-            </p>
-            <div className='Page1-button'>
-              <button>STAY CONNECTED
-                <GrLinkNext className="arrow" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
       <section className='color-seticon-last'>
         <div className='Navbar-item'>
           <div>
@@ -222,12 +188,9 @@ const Page1 = () => {
               </div>
             </div>
           </div>
-          <div className='Page1-button fix2-button'>
-            <Link to='/Inspiring-Greatness'>
-              Inspiring Greatness
-              <GrLinkNext className="arrow" />
-            </Link>
-          </div>
+          <Link to='/Inspiring-Greatness'>
+            <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent' }} color='white' />
+          </Link>
         </div>
       </section>
     </div>

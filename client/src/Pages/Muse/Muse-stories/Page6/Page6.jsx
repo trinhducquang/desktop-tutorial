@@ -5,10 +5,10 @@ import img3 from '/public/muse/Page6/img3.webp'
 import img4 from '/public/muse/Page6/img4.webp'
 import img7 from '/public/muse/Page6/img7.webp'
 import img9 from '/public/muse/Page6/img9.webp'
+import Button from '../../../../components/Button/Button.jsx'
 import Carousel from '../../../../components/Carousel/Carousel.jsx'
 import Slider from 'react-slick'
 import { Page6img } from '../../../../components/Carousel/imageGroups.js';
-import { GrLinkNext } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 import './Page6.scss'
 
@@ -172,7 +172,7 @@ const Page6 = () => {
                 </div>
                 <div>
                     <div className='Navbar-img Careers-container-section6'>
-                        <img src={img9}/>
+                        <img src={img9} />
                     </div>
                 </div>
             </section>
@@ -188,10 +188,8 @@ const Page6 = () => {
                             including the latest on the Dream Commission and Spirit of
                             Ecstasy Challenge in 2023.
                         </p>
-                        <div className='Page1-button'>
-                            <button>STAY CONNECTED
-                                <GrLinkNext className="arrow" />
-                            </button>
+                        <div style={{marginTop: '50px'}}>
+                            <Button label='STAY CONNECTED' style={{ backgroundColor: 'rgb(109, 48, 167)', padding: '15px' }} color='white' />
                         </div>
                     </div>
                 </div>
@@ -224,12 +222,9 @@ const Page6 = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='Page1-button fix2-button'>
-                        <Link to='/Inspiring-Greatness'>
-                            Inspiring Greatness
-                            <GrLinkNext className="arrow" />
-                        </Link>
-                    </div>
+                    <Link to='/Inspiring-Greatness'>
+                        <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent' }} color='white' />
+                    </Link>
                 </div>
             </section>
         </div>

@@ -1,11 +1,11 @@
 import './Page5.scss'
 import { Link } from 'react-router-dom'
-import { GrLinkNext } from 'react-icons/gr'
 import img1 from '/public/muse/Page4/img1.webp'
 import img2 from '/public/muse/Page5/img2.webp'
 import img3 from '/public/muse/Page5/img3.webp'
 import img4 from '/public/muse/Page5/img4.webp'
 import img5 from '/public/muse/Page5/img5.webp'
+import Button from '../../../../components/Button/Button.jsx'
 import video1 from '/public/muse/Page5/video1.mp4'
 import VideoCarousel from '../../../../components/VideoCarousel/VideoCarousel.jsx'
 import useVideoControl from '../../../../Hooks/useVideoControl.js';
@@ -99,9 +99,8 @@ const Page5 = () => {
                         <p>INTRODUCING SPIRIT OF ECSTASY CHALLENGE WINNER</p>
                         <h1>GHIZLANE SAHLI</h1>
                         <div className='Page1-button fix2-button'>
-                            <Link to='/Inspiring-Greatness'>
-                                EXPLORE
-                                <GrLinkNext className="arrow" />
+                            <Link to='/Inspiring-Greatness'>                           
+                            <Button label='EXPLORE' style={{ border: 'none', backgroundColor: 'transparent', fontSize: '13px' }} color='black' />
                             </Link>
                         </div>
                     </div>
@@ -124,10 +123,8 @@ const Page5 = () => {
                             including the latest on the Dream Commission and Spirit of
                             Ecstasy Challenge in 2023.
                         </p>
-                        <div className='Page1-button'>
-                            <button>STAY CONNECTED
-                                <GrLinkNext className="arrow" />
-                            </button>
+                        <div style={{marginTop: '30px'}}>
+                            <Button label='STAY CONNECTED' style={{ backgroundColor: '#6D30A7', padding: '15px' }} borderColor='none' color='White' />
                         </div>
                     </div>
                 </div>
@@ -160,12 +157,9 @@ const Page5 = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='Page1-button fix2-button'>
-                        <Link to='/Inspiring-Greatness'>
-                            Inspiring Greatness
-                            <GrLinkNext className="arrow" />
-                        </Link>
-                    </div>
+                    <Link to='/Inspiring-Greatness'>
+                        <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent' }} color='white' />
+                    </Link>
                 </div>
             </section>
         </div>

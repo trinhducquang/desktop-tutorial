@@ -9,39 +9,25 @@
        color: white;
        margin-top: 25px;
        letter-spacing: 0.09rem;
+       font-weight: 300;
     }
 
     p {
         line-height: 2rem;
     }
 
-    button {
-        background-color: black;
-        border-radius: 4px;
-        width: 150px;
-        height: 50px;
-        margin-left: 10px;
+    .text-center {
+        button {
+            background-color: black;
+            border-radius: 4px;
+            width: 150px;
+            height: 50px;
+            margin-left: 10px;
+            border: none;
+        }
     }
-    
 
     .Navbar-item {
         background-color: #281432 !important;
-    }
-
-   
-
-    * {
-        font-family: 'Riviera Nights';
-        font-weight: 300;
-    
-        a, button {
-            border: none;
-            color: white;
-        }
-        
-        h1 {
-            font-size: 30px;
-        }
-
     }
 }

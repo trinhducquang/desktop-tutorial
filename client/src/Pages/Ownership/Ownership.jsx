@@ -94,9 +94,11 @@ const Ownership = () => {
                                 including the latest on the Dream Commission and Spirit of
                                 Ecstasy Challenge in 2023.
                             </p>
-                                <Link to = '/Login'>
-                                <Button label= 'STAY CONNECTED' style={{backgroundColor: '#6D30A7', color: 'white', border: 'none'}}/> 
+                            <div style={{marginTop: '30px'}}>
+                                <Link to='/Login'>
+                                    <Button label='STAY CONNECTED' style={{ backgroundColor: '#6D30A7', color: 'white', border: 'none' }} />
                                 </Link>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -117,9 +119,9 @@ const Ownership = () => {
                                 including the latest on the Dream Commission and Spirit of
                                 Ecstasy Challenge in 2023.
                             </p>
-                            <div className='Page1-button'>
-                            <Button label= 'STAY CONNECTED' style={{backgroundColor: '#6D30A7', color: 'white', border: 'none'}}/> 
-                            </div>
+                            <div style={{marginTop: '30px'}}>
+                                <Button label='STAY CONNECTED' style={{ backgroundColor: '#6D30A7', color: 'white', border: 'none' }} />
+                                </div>
                         </div>
                     </div>
                 </section>
@@ -156,8 +158,8 @@ const Ownership = () => {
                                 including the latest on the Dream Commission and Spirit of
                                 Ecstasy Challenge in 2023.
                             </p>
-                            <div className='Page1-button'>
-                            <Button label= 'STAY CONNECTED' style={{backgroundColor: '#6D30A7', color: 'white', border: 'none'}}/> 
+                            <div style={{marginTop: '30px'}}>
+                                <Button label='STAY CONNECTED' style={{ backgroundColor: '#6D30A7', color: 'white', border: 'none' }} />
                             </div>
                         </div>
                     </div>
@@ -195,10 +197,10 @@ const Ownership = () => {
                                 including the latest on the Dream Commission and Spirit of
                                 Ecstasy Challenge in 2023.
                             </p>
-                            <div className='Page1-button'>
-                              
-                                <Button label= 'STAY CONNECTED' style={{backgroundColor: '#6D30A7', color: 'white', border: 'none'}}/> 
-                               
+                            <div style={{marginTop: '30px'}}>
+
+                                <Button label='STAY CONNECTED' style={{ backgroundColor: '#6D30A7', color: 'white', border: 'none' }} />
+
                             </div>
                         </div>
                     </div>

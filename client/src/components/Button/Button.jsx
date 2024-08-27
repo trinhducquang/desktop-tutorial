@@ -4,7 +4,7 @@ import { GrLinkNext } from 'react-icons/gr'
 
 const StyledButton = styled.button`
     margin: 0 auto !important;
-    margin-top: 70px !important;
+    margin-top: 70px;
     padding: 15px 30px;
     border-radius: 50px;
     width: 280px;

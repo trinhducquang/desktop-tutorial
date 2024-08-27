@@ -149,7 +149,7 @@ const Careers = () => {
                     <p>
                         In addition to personalized training and workshops, you will benefit from the guidance of experienced mentors through our graduate mentoring programme. Their expertise will assist you in networking, developing your personal and professional skills, and navigating your chosen career path. Our networking groups and supportive management are also dedicated to nurturing your career, ensuring you are well-prepared to excel at Rimowa.</p>
                     <p>If you’re interested in discovering more about our graduate programmes, please sign up to receive regular email updates.</p>
-                    <div className='Careers-buttons'>
+                    <div style={{paddingLeft: '0px'}}>
                         <Button label='Sign Up For Email Updates' style={{ backgroundColor: 'white' }} />
                     </div>
                 </div>

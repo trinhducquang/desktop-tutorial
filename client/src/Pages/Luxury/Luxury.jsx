@@ -6,6 +6,7 @@ import img5 from '../../../public/Luxury/img5.webp'
 import img6 from '../../../public/Luxury/img6.webp'
 import img7 from '../../../public/Luxury/img7.webp'
 import { Link } from 'react-router-dom'
+import Button from '../../components/Button/Button'
 
 import { GrLinkNext } from 'react-icons/gr'
 import './Luxury.scss'
@@ -47,12 +48,7 @@ const Luxury = () => {
                 including the latest on the Dream Commission and Spirit of
                 Ecstasy Challenge in 2023.
               </p>
-              <div className='Page1-button'>
-                <button>
-                  DISCOVER
-                  <GrLinkNext className="arrow" />
-                </button>
-              </div>
+              <Button label='DISCOVER' />
             </div>
           </div>
         </section>
@@ -71,12 +67,7 @@ const Luxury = () => {
                 using only the highest quality saddle leather
                 in a classic tan finish.
               </p>
-              <div className='Page1-button'>
-                <button>
-                  DISCOVER
-                  <GrLinkNext className="arrow" />
-                </button>
-              </div>
+              <Button label='DISCOVER' />
             </div>
           </div>
         </section>
@@ -96,12 +87,7 @@ const Luxury = () => {
                   special moments of conviviality by marrying exquisitive design with signature
                   Rolls-Royce craftsmanship.
                 </p>
-                <div className='Page1-button'>
-                  <button>
-                    DISCOVER
-                    <GrLinkNext className="arrow" />
-                  </button>
-                </div>
+                <Button label='DISCOVER' />
               </div>
             </div>
           </section>
@@ -116,12 +102,7 @@ const Luxury = () => {
                 <p>The Champagne Chest is an epicurial masterpiece, and unmistakably Rolls-Royce. The Chest comes alive with a sense of theatre,
                   embodying the meticulous attention to detail and commitment to remarkable handcraftsmanship that is so characteristic of the marque.
                 </p>
-                <div className='Page1-button'>
-                  <button>
-                    DISCOVER
-                    <GrLinkNext className="arrow" />
-                  </button>
-                </div>
+                <Button label='DISCOVER' />
               </div>
             </div>
           </section>
@@ -138,12 +119,7 @@ const Luxury = () => {
                 including the latest on the Dream Commission and Spirit of
                 Ecstasy Challenge in 2023.
               </p>
-              <div className='Page1-button'>
-                <button>
-                  DISCOVER
-                  <GrLinkNext className="arrow" />
-                </button>
-              </div>
+              <Button label='DISCOVER' />
             </div>
           </div>
         </section>
@@ -160,12 +136,7 @@ const Luxury = () => {
                 including the latest on the Dream Commission and Spirit of
                 Ecstasy Challenge in 2023.
               </p>
-              <div className='Page1-button'>
-                <button>
-                  DISCOVER
-                  <GrLinkNext className="arrow" />
-                </button>
-              </div>
+              <Button label='DISCOVER' />
             </div>
           </div>
         </section>
@@ -182,19 +153,11 @@ const Luxury = () => {
                 using only the highest quality saddle leather
                 in a classic tan finish.
               </p>
-              <div className='Page1-button'>
-                <button>
-                  DISCOVER
-                  <GrLinkNext className="arrow" />
-                </button>
-              </div>
+              <Button label='DISCOVER' />
             </div>
           </div>
           <div className='Careers-buttons luxury-button'>
-            <button>
-              <span>GRADUATES: APPLY NOW</span>
-              <GrLinkNext className="arrow" />
-            </button>
+            <Button label='GRADUATES: APPLY NOW' />
           </div>
         </section>
         <section className='color-seticon-last'>
@@ -225,12 +188,9 @@ const Luxury = () => {
                 </div>
               </div>
             </div>
-            <div className='Page1-button fix2-button'>
               <Link to='/Inspiring-Greatness'>
-                Inspiring Greatness
-                <GrLinkNext className="arrow" />
+              <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent' }} color='white' />
               </Link>
-            </div>
           </div>
         </section>
       </div>

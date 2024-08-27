@@ -7,6 +7,7 @@ import img2 from '/public/Success/img2.webp'
 import VerticalLine from '../../components/VerticalLine/VerticalLine'
 import { Link } from 'react-router-dom'
 import { GrLinkNext } from 'react-icons/gr'
+import Button from '../../components/Button/Button'
 
 const Success = () => {
     return (
@@ -16,16 +17,12 @@ const Success = () => {
                     <img src={original} alt="Rimowa Contact" />
                     <div className='img-content'>
                         <h2>SUCCESS</h2>
-                        <div className='Page1-button fix2-button'>
-                            <Link to='/User'>
-                                 Check your order details
-                                <GrLinkNext className="arrow" />
-                            </Link>
-                            <VerticalLine/>
-                        </div>
-                      
+                        <Link to='/User'>
+                            <Button label='Check your order details' style={{ border: 'none', backgroundColor: 'transparent', fontWeight: '500', marginTop: '0px' }} color='white' />
+                        </Link>
+                        <VerticalLine />
                     </div>
-                   
+
                 </div>
             </section>
             <section>
@@ -65,12 +62,9 @@ const Success = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='Page1-button fix2-button'>
-                        <Link to='/Inspiring-Greatness'>
-                            Inspiring Greatness
-                            <GrLinkNext className="arrow" />
-                        </Link>
-                    </div>
+                    <Link to='/Inspiring-Greatness'>
+                        <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent', fontWeight: '500' }} color='white' />
+                    </Link>
                 </div>
             </section>
             <section>

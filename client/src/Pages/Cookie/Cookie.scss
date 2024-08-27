@@ -10,6 +10,13 @@
     animation: textSlideUp 1.5s forwards;
 }
 
+.report-buttons {
+    > div {
+        margin-left: 50px;
+        margin-top: 30px;
+    }
+}
+
 
 .text-font {
     padding: 50px;

@@ -27,7 +27,9 @@ const Contact = () => {
                 <div className='Contact-container'>
                     <div>
                         <h2>ASK US A QUESTION</h2>
-                        <Button label= 'Contact Us' style={{backgroundColor: '#6D30A7'}} borderColor = 'none' color ='White'/>
+                        <div style={{ marginTop: '70px' }}>
+                            <Button label='Contact Us' style={{ backgroundColor: '#6D30A7' }} borderColor='none' color='White' />
+                        </div>
                     </div>
                     <div className='Contact-info Contact-info-1'>
                         <div className='info-wrapper'>
@@ -175,7 +177,9 @@ const Contact = () => {
                     <div className='fix-top'>
                         <h3>Press Room</h3>
                         <p>The Rimowa Press Room provides access to the latest official headlines, stories, press kits, product, and brand imagery. Just register for access.</p>
-                        <Button label= 'visit pressclub' style={{backgroundColor: '#6D30A7'}} borderColor = 'none' color ='White'/>
+                        <div style={{ marginTop: '70px' }}>
+                            <Button label='visit pressclub' style={{ backgroundColor: '#6D30A7' }} borderColor='none' color='White' />
+                        </div>
                     </div>
                     <br />
                 </div>

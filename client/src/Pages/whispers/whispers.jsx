@@ -29,7 +29,7 @@ const Whispers = () => {
             <img src={img} alt="Cullinan" />
             <div className='img-content'>
               <h2>CHARGING SPECTRE</h2>
-              <Button label=' DISCOVER NOW' />
+              <Button label = 'DISCOVER NOW' style={{border: 'none'}}/>
             </div>
           </div>
         </div>
@@ -115,11 +115,9 @@ const Whispers = () => {
               </div>
             </div>
           </div>
-          <div className='Page1-button fix2-button'>
             <Link to='/Inspiring-Greatness'>
               <Button label='Inspiring Greatness' style={{background: 'transparent', color: 'white' }} />
             </Link>
-          </div>
         </div>
       </section>
     </div>

@@ -1,11 +1,12 @@
 import './NotFound.scss'
 import original from '/public/NotFound/original.jpeg'
 import FooterTop from '../../components/Footer-top/FooterTop'
-import img1 from '/public/Owership/img1.webp'
+import img1 from '/public/NotFound/img1.jpg'
+import img2 from '/public/NotFound/img2.jpg'
+import img3 from '/public/NotFound/img3.jpg'
 import VerticalLine from '../../components/VerticalLine/VerticalLine'
 import { Link } from 'react-router-dom'
-import { GrLinkNext } from 'react-icons/gr'
-
+import Button from '../../components/Button/Button'
 const NotFound = () => {
   return (
     <div className='NotFound-container overflow'>
@@ -41,7 +42,7 @@ const NotFound = () => {
           <div className='content-container'>
             <div className='Navbar-content'>
               <div>
-                <img src={img1} alt="Discover Bespoke" />
+                <img src={img2} alt="Discover Bespoke" />
                 <h4>DISCOVER BESPOKE</h4>
                 <p>Choose from our exclusive collections or collaborate with our craftspeople and designers to create a Rolls-Royce wholly unique to you. This is Rolls-Royce Bespoke.</p>
               </div>
@@ -55,18 +56,15 @@ const NotFound = () => {
             </div>
             <div className='Navbar-content'>
               <div>
-                <img src={img1} alt="Find Your Dealer" />
+                <img src={img3} alt="Find Your Dealer" />
                 <h4>FIND A DEALER</h4>
                 <p>Find a Rolls-Royce dealer near you and book a test drive or discover more about the bespoke services we offer.</p>
               </div>
             </div>
           </div>
-          <div className='Page1-button fix2-button'>
             <Link to='/Inspiring-Greatness'>
-              Inspiring Greatness
-              <GrLinkNext className="arrow" />
+            <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent', fontWeight: '500'}} color='white' />
             </Link>
-          </div>
         </div>
       </section>
       <section>

@@ -10,6 +10,7 @@ import Page3video1 from '/public/muse/page3/Page3video1.mp4'
 import VideoCarousel from '../../../../components/VideoCarousel/VideoCarousel.jsx'
 import useVideoControl from '../../../../Hooks/useVideoControl.js';
 import { mediaData } from '../../../../components/Carousel/imageGroups.js'
+import Button from '../../../../components/Button/Button.jsx'
 
 
 const Page3 = () => {
@@ -98,12 +99,9 @@ const Page3 = () => {
                     <div className='text-overlay text-overplay-2 text-fix-last-best'>
                         <p>introducing SPIRIT OF ECSTASY CHALLENGE winner</p>
                         <h1>bi rongrong</h1>
-                        <div className='Page1-button fix2-button'>
-                            <Link to='/Inspiring-Greatness'>
-                                EXPLORE
-                                <GrLinkNext className="arrow" />
-                            </Link>
-                        </div>
+                        <Link to='/Inspiring-Greatness'>
+                                <Button label='EXPLORE' style={{ border: 'none', backgroundColor: 'transparent', fontSize: '13px' }} color='black' />
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -124,10 +122,8 @@ const Page3 = () => {
                             including the latest on the Dream Commission and Spirit of
                             Ecstasy Challenge in 2023.
                         </p>
-                        <div className='Page1-button'>
-                            <button>STAY CONNECTED
-                                <GrLinkNext className="arrow" />
-                            </button>
+                        <div style={{ marginTop: '30px' }}>
+                            <Button label='STAY CONNECTED' style={{ backgroundColor: '#6D30A7', padding: '15px' }} borderColor='none' color='White' />
                         </div>
                     </div>
                 </div>
@@ -160,12 +156,9 @@ const Page3 = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='Page1-button fix2-button'>
-                        <Link to='/Inspiring-Greatness'>
-                            Inspiring Greatness
-                            <GrLinkNext className="arrow" />
-                        </Link>
-                    </div>
+                    <Link to='/Inspiring-Greatness'>
+                        <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent' }} color='white' />
+                    </Link>
                 </div>
             </section>
         </div>

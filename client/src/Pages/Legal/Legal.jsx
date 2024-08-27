@@ -35,15 +35,17 @@ const Legal = () => {
                             <p>We support transparency on gender pay issues and confirm that the data reported aligns with The Equality Act 2010 (Gender Pay Gap Information) Regulations 2017.</p>
                         </div>
                         <div className='report-buttons'>
-                            <Button label='Report 2021' style={{border: 'none', backgroundColor: '#6D30A7', color: 'white'}}/>
-                            <Button label='Report 2021' style={{border: 'none', backgroundColor: '#6D30A7', color: 'white'}}/>
-                            <Button label='Report 2021' style={{border: 'none', backgroundColor: '#6D30A7', color: 'white'}}/>
+                            <Button label='Report 2021' style={{ border: 'none', backgroundColor: '#6D30A7', color: 'white' }} />
+                            <Button label='Report 2021' style={{ border: 'none', backgroundColor: '#6D30A7', color: 'white' }} />
+                            <Button label='Report 2021' style={{ border: 'none', backgroundColor: '#6D30A7', color: 'white' }} />
                         </div>
                         <div className='note'>
                             <h2>Note on Fuel Consumption <br />
                                 and CO2 Emissions</h2>
                         </div>
-                        <Button label='DISCOVER' style={{border: 'none', backgroundColor: '#6D30A7', color: 'white'}}/>
+                        <div style={{marginTop: '30px'}}>
+                            <Button label='DISCOVER' style={{ border: 'none', backgroundColor: '#6D30A7', color: 'white' }} />
+                        </div>
                     </div>
                     <hr />
                     <section className='Privacy-item'>

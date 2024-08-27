@@ -69,45 +69,13 @@
                 font-size: clamp(0.9rem, 1.5vw, 1.2rem);
             }
         }
-    
-        .cta-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            padding-top: 70px;
-            padding-bottom: 70px;
-    
-            button {
-                padding: 8px 16px;
-                border: none;
-                background-color: #676776;
-                color: #fff;
-                cursor: pointer;
-                border-radius: 50px;
-                width: clamp(200px, 50%, 280px);
-                height: 50px;
-                position: relative;
-    
-                .cta-arrow {
-                    position: absolute;
-                    top: 50%;
-                    right: 10px;
-                    transform: translateY(-50%);
-                    font-size: 20px;
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                }
-    
-                &:hover {
-                    .cta-arrow {
-                        opacity: 1;
-                    }
-                }
-            }
-        }
     }
     
+    .intro-fix > div {
+   
+      margin-top: 30px;  
+    }
+
     .carousel-section {
         background-color: rgb(210, 210, 210);
     
@@ -215,41 +183,6 @@
                 font-size: 2.3rem;
             }
         }
-    
-        button {
-            margin-top: 30px;
-            padding: 15px 30px;
-            border-radius: 50px;
-            width: 280px;
-            border: none;
-            color: #676776;
-            border: 1.2px solid #676776;
-            font-size: 13px;
-            letter-spacing: 0.16666666em;
-            font-weight: 500;
-            position: relative;
-            transition: opacity 0.3s ease;
-            opacity: 0.8;
-            background-color: rgb(210, 210, 210);
-    
-            .arrow {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 20px;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-    
-            &:hover {
-                opacity: 1;
-    
-                .arrow {
-                    opacity: 1;
-                }
-            }
-        }
-    
     }
     
     
