@@ -7,8 +7,7 @@ import { ScrollToTop, Home, Footer, InspiringGreatness, Sitemap, Contact, Librar
          AdminEdit8, AdminNew8, Login, Resgiter, Success, Failed, VerticalLine, CartProvider, NotFound
        } from './index';
 
-
-const App = () => {
+  const App = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.includes('/Admin');
 
