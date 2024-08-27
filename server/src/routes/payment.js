@@ -1,7 +1,7 @@
 import express from 'express';
 import paypal from '../config/paypal.js';
 import connection from '../config/mysql.js';
-import { setStore } from '../config/store.js'; // Import module lưu trữ
+import { setStore } from '../config/store.js'; 
 
 const router = express.Router();
 
@@ -14,7 +14,6 @@ router.post('/', async (req, res) => {
             return sum + itemPrice * item.quantity;
         }, 0).toFixed(2);
 
-        // Cập nhật giá trị vào store
         setStore({
             currentTotalPrice: totalPrice,
             currentOrderId: orderId
