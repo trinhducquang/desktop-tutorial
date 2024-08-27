@@ -58,6 +58,6 @@ export { default as Login } from './Pages/LoginRegister/Login/Login';
 export { default as Resgiter } from './Pages/LoginRegister/Resgiter/Resgiter';
 export { default as Success } from './Pages/Success/Success';
 export { default as Failed } from './Pages/Failed/Failed';
-export { default as VerticalLine } from './components/VerticalLine/VerticalLine';
 export { default as NotFound } from './Pages/NotFound/NotFound';
 export { CartProvider } from './Hooks/CartContext';
+

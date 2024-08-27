@@ -1,12 +1,3 @@
-.whisper-container {
-    
-    .img-content {
-        button {
-            top: 90px !important;
-        }
-    }
-}
-
 .whisper-container-v1 {
     background-color: #151515;
     height: 20vh;
@@ -62,7 +53,6 @@
         padding: 15px 30px;
         border-radius: 50px;
         width: 280px;
-        border: none;
         color: white;
         border: 2px solid white;
         font-size: 13px;
@@ -72,24 +62,6 @@
         opacity: 0.8;
         background-color: #151515;
         position: relative;
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            font-size: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        &:hover {
-            opacity: 1;
-
-            .arrow {
-                opacity: 1;
-            }
-        }
     }
 }
 

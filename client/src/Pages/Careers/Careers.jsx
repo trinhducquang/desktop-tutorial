@@ -15,7 +15,7 @@ import Carousel from '../../components/Carousel/Carousel'
 import { CareersMedia } from '../../components/Carousel/imageGroups'
 import { CareersVideo } from '../../components/Carousel/imageGroups'
 import './Careers.scss'
-import { GrLinkNext } from 'react-icons/gr'
+import Button from '../../components/Button/Button'
 
 
 const Careers = () => {
@@ -57,16 +57,9 @@ const Careers = () => {
                             in nurturing talent and offering pathways for growth and development, ensuring that every team
                             member has the chance to contribute to our ongoing success and innovation in the world
                             of luxury travel.</p>
-
                         <div className='Careers-buttons'>
-                            <button>
-                                <span>APPLICATION ADVICE</span>
-                                <GrLinkNext className="arrow" />
-                            </button>
-                            <button>
-                                <span>SEARCH & APPLY</span>
-                                <GrLinkNext className="arrow" />
-                            </button>
+                            <Button label='APPLICATION ADVICE' style={{ backgroundColor: '#676776', border: 'none', color: 'white' }} />
+                            <Button label='SEARCH & APPLY' style={{ backgroundColor: 'white' }} />
                         </div>
                     </div>
                 </div>
@@ -85,10 +78,7 @@ const Careers = () => {
                         <p>Our team members share common qualities: they are innovative, passionate, and detail-oriented. They demonstrate excellent communication and collaboration skills, and approach challenges with effective problem-solving and critical thinking.</p>
                         <p>At Rimowa, we believe that innovation thrives on fresh perspectives and new ideas. That’s why we are dedicated to fostering enthusiastic individuals through our entry-level programs and development schemes, ensuring that our legacy of excellence continues to evolve with new talent.</p>
                         <div className='Careers-buttons'>
-                            <button>
-                                <span>SEARCH & APPLY</span>
-                                <GrLinkNext className="arrow" />
-                            </button>
+                            <Button label='SEARCH & APPLY' style={{ backgroundColor: 'white' }} />
                         </div>
                     </div>
 
@@ -122,14 +112,8 @@ const Careers = () => {
                         <p>Our team members share essential qualities; they are innovative, passionate, and detail-oriented. They demonstrate excellent communication and teamwork abilities, and approach challenges with effective problem-solving and critical thinking skills.</p>
                         <p>Innovation at Rimowa thrives on fresh ideas and enthusiasm. That’s why we are dedicated to supporting and developing motivated individuals through our entry-level programmes and development schemes, ensuring that our tradition of excellence continues to grow with new talent.</p>
                         <div className='Careers-buttons'>
-                            <button>
-                                <span>GRADUATES: APPLY NOW</span>
-                                <GrLinkNext className="arrow" />
-                            </button>
-                            <button>
-                                <span>Sign Up For Email Updates</span>
-                                <GrLinkNext className="arrow" />
-                            </button>
+                            <Button label='GRADUATES: APPLY NOW' style={{ backgroundColor: '#676776', border: 'none', color: 'white' }} />
+                            <Button label='Sign Up For Email Updates' style={{ backgroundColor: 'white' }} />
                         </div>
                     </div>
                 </div>
@@ -165,11 +149,8 @@ const Careers = () => {
                     <p>
                         In addition to personalized training and workshops, you will benefit from the guidance of experienced mentors through our graduate mentoring programme. Their expertise will assist you in networking, developing your personal and professional skills, and navigating your chosen career path. Our networking groups and supportive management are also dedicated to nurturing your career, ensuring you are well-prepared to excel at Rimowa.</p>
                     <p>If you’re interested in discovering more about our graduate programmes, please sign up to receive regular email updates.</p>
-                    <div className='Careers-buttons Careers-buttons2'>
-                        <button>
-                            <span>Sign Up For Email Updates</span>
-                            <GrLinkNext className="arrow" />
-                        </button>
+                    <div className='Careers-buttons'>
+                        <Button label='Sign Up For Email Updates' style={{ backgroundColor: 'white' }} />
                     </div>
                 </div>
             </section>
@@ -201,14 +182,8 @@ const Careers = () => {
                         <p>The application window opens on October 1st and closes on November 30th, or sooner if we reach a high volume of applications. To stay informed and receive updates on available internships at Rimowa, please sign up for regular email updates.</p>
 
                         <div className='Careers-buttons'>
-                            <button>
-                                <span>GRADUATES: APPLY NOW</span>
-                                <GrLinkNext className="arrow" />
-                            </button>
-                            <button>
-                                <span>Sign Up For Email Updates</span>
-                                <GrLinkNext className="arrow" />
-                            </button>
+                            <Button label='APPLICATION ADVICE' style={{ backgroundColor: '#676776', border: 'none', color: 'white' }} />
+                            <Button label='SEARCH & APPLY' style={{ backgroundColor: 'white' }} />
                         </div>
                     </div>
                 </div>
@@ -295,11 +270,8 @@ const Careers = () => {
                     <div className='text-overlay color-overlay'>
                         <h1>EMBRACE A COLLABORATIVE ENVIRONMENT</h1>
                         <p>At Rimowa, we cultivate a collaborative environment that enhances every aspect of your career. Our leaders are dedicated to guiding you in defining and pursuing a meaningful career path, ensuring growth in both your professional and personal life. Whether it’s through international assignments or specialized training programs, we encourage you to take advantage of a variety of opportunities. This approach not only expands your professional network but also fosters the development of genuine, lasting relationships.</p>
-                        <div className='Careers-buttons Careers-buttons2'>
-                            <button>
-                                <span>Sign Up For Email Updates</span>
-                                <GrLinkNext className="arrow" />
-                            </button>
+                        <div className='Careers-buttons '>
+                            <Button label='SEARCH & APPLY' style={{ backgroundColor: 'white' }} />
                         </div>
                     </div>
                 </div>

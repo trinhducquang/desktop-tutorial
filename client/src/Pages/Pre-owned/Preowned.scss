@@ -366,60 +366,6 @@
             line-height: 1.2941176471;
             text-transform: uppercase;
         }
-    
-        .image-container button {
-            position: absolute;
-            bottom: 50%;
-            background: white;
-            text-transform: uppercase;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            color: black;
-            font-size: 15px;
-            width: 280px;
-            letter-spacing: 0.1em;
-            font-weight: 500;
-            transition: opacity 0.3s ease;
-            opacity: 0.8;
-    
-    
-            .cta-arrow {
-                position: absolute;
-                top: 47%;
-                margin-left: 10px;
-                transform: translateY(-50%);
-                font-size: 20px;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                
-            }
-    
-            &:hover {
-                opacity: 1;
-    
-                .cta-arrow {
-                    opacity: 1;
-                }
-            }
-        }
-
-        
-    
-        .image-container-fix {
-         
-            button, a {
-                border: none;
-                background-color: #151515;
-                color: white !important;
-                text-decoration: none;
-                margin-right: 15px;
-                .cta-arrow {
-                    margin-bottom: 70px;
-                    opacity: 1;
-                }
-            }
-        }
     }
     
     .abc {

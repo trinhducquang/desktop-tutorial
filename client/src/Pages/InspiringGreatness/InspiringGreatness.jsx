@@ -16,9 +16,8 @@ import img11 from '/video/Menu1/main1-img11.webp';
 import img13 from '/video/Menu1/main1-img13.webp';
 import img14 from '/video/Menu1/main1-img14.webp';
 import img15 from '/video/Menu1/main1-img15.webp';
-import { GrLinkNext } from 'react-icons/gr';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
+import Button from '../../components/Button/Button'
 
 const InspiringGreatness = () => {
   const {
@@ -63,12 +62,9 @@ const InspiringGreatness = () => {
             </div>
           </div>
           <div className='fix-alk-in'>
-            <button>
-              <Link to='/Inspiring-Series'>
-                Watch All Episodes
-              </Link>
-              <GrLinkNext className="arrow" />
-            </button>
+            <Link to='/Inspiring-Series'>
+              <Button label='Watch All Episodes' style={{backgroundColor: 'white'}}/>
+            </Link>
           </div>
         </div>
       </section>
@@ -101,12 +97,9 @@ const InspiringGreatness = () => {
               </div>
             </div>
           </div>
-          <button>
-            <Link to='/Vali'>
-              DISCOVER MORE
-            </Link>
-            <GrLinkNext className="arrow" />
-          </button>
+          <Link to='/Vali'>
+            <Button label='DISCOVER MORE' style={{backgroundColor: 'white'}}/>
+          </Link>
         </div>
       </section>
       <section>
@@ -133,12 +126,9 @@ const InspiringGreatness = () => {
             <div className='Navbar-content Navbar-content-1'>
             </div>
           </div>
-          <button>
-            <Link to='/Handbag'>
-              DISCOVER MORE
-            </Link>
-            <GrLinkNext className="arrow" />
-          </button>
+          <Link to='/Handbag'>
+            <Button label='DISCOVER MORE' style={{backgroundColor: 'white'}}/>
+          </Link>
         </div>
       </section>
       <section>
@@ -170,12 +160,9 @@ const InspiringGreatness = () => {
               </div>
             </div>
           </div>
-          <button>
-            <Link to='/Backpack'>
-              DISCOVER MORE
-            </Link>
-            <GrLinkNext className="arrow" />
-          </button>
+          <Link to='/Backpack'>
+            <Button label='DISCOVER MORE' style={{backgroundColor: 'white'}}/>
+          </Link>
         </div>
       </section>
       <section>
@@ -207,12 +194,9 @@ const InspiringGreatness = () => {
               </div>
             </div>
           </div>
-          <button>
-            <Link to='/Gentlemen'>
-              DISCOVER MORE
-            </Link>
-            <GrLinkNext className="arrow" />
-          </button>
+          <Link to='/Gentlemen'>
+            <Button label='DISCOVER MORE' style={{backgroundColor: 'white'}}/>
+          </Link>
         </div>
       </section>
       <section>
@@ -244,12 +228,9 @@ const InspiringGreatness = () => {
               </div>
             </div>
           </div>
-          <button>
             <Link to='/Ladies'>
-              DISCOVER MORE
+            <Button label='DISCOVER MORE' style={{backgroundColor: 'white'}}/>
             </Link>
-            <GrLinkNext className="arrow" />
-          </button>
         </div>
       </section>
     </div>

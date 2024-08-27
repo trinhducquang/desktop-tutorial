@@ -3,6 +3,7 @@ import img from '/Legal/img.webp';
 import img1 from '/Legal/img1.webp';
 import Accordion from '../../components/Accordion/Accordion';
 import { GrLinkNext } from 'react-icons/gr';
+import Button from '../../components/Button/Button';
 
 const Legal = () => {
     return (
@@ -34,28 +35,15 @@ const Legal = () => {
                             <p>We support transparency on gender pay issues and confirm that the data reported aligns with The Equality Act 2010 (Gender Pay Gap Information) Regulations 2017.</p>
                         </div>
                         <div className='report-buttons'>
-                            <button>
-                                Report 2021
-                                <GrLinkNext className="arrow" />
-                            </button>
-                            <button>
-                                Report 2022
-                                <GrLinkNext className="arrow" />
-                            </button>
-                            <button>
-                                Report 2023
-                                <GrLinkNext className="arrow" />
-                            </button>
+                            <Button label='Report 2021' style={{border: 'none', backgroundColor: '#6D30A7', color: 'white'}}/>
+                            <Button label='Report 2021' style={{border: 'none', backgroundColor: '#6D30A7', color: 'white'}}/>
+                            <Button label='Report 2021' style={{border: 'none', backgroundColor: '#6D30A7', color: 'white'}}/>
                         </div>
                         <div className='note'>
                             <h2>Note on Fuel Consumption <br />
                                 and CO2 Emissions</h2>
                         </div>
-                        <div className='discover-button'>
-                            <button>DISCOVER
-                                <GrLinkNext className="arrow" />
-                            </button>
-                        </div>
+                        <Button label='DISCOVER' style={{border: 'none', backgroundColor: '#6D30A7', color: 'white'}}/>
                     </div>
                     <hr />
                     <section className='Privacy-item'>

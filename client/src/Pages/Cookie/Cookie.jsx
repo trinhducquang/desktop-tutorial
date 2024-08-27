@@ -4,6 +4,7 @@ import './Cookie.scss';
 import { GrLinkNext } from "react-icons/gr";
 import down from '/public/Cookie/down.svg'
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
+import Button from '../../components/Button/Button';
 
 
 const Cookie = () => {
@@ -32,9 +33,9 @@ const Cookie = () => {
                             <h2>Modifications and Details</h2>
                             <div>
                                 <div className="report-buttons cookie-report-buttons">
-                                    <button>Accept selected<GrLinkNext className="arrow" /></button>
-                                    <button>Reject<GrLinkNext className="arrow" /></button>
-                                    <button>Accept all<GrLinkNext className="arrow" /></button>
+                                    <Button label= 'Accept selected' style={{backgroundColor: 'transparent', color: 'White', borderColor: 'white'}}/>
+                                    <Button label= 'Reject' style={{backgroundColor: 'transparent', color: 'White', borderColor: 'white'}}/>
+                                    <Button label= 'Accept all' style={{backgroundColor: 'white', color: 'black', borderColor: 'white'}}/>
                                 </div>
                             </div>
                             <p>In the following paragraph, you'll learn more about the purposes for which cookies are used.</p>

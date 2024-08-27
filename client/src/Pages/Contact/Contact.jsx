@@ -4,6 +4,7 @@ import contact from '/contact/contact.webp';
 import img5 from '/contact/img5.webp';
 import { GrLinkNext } from 'react-icons/gr';
 import cong from '/public/contact/cong.svg';
+import Button from '../../components/Button/Button';
 
 const Contact = () => {
     const [isAssistanceVisible, setAssistanceVisible] = useState(false);
@@ -26,10 +27,7 @@ const Contact = () => {
                 <div className='Contact-container'>
                     <div>
                         <h2>ASK US A QUESTION</h2>
-                        <button>
-                            CONTACT US
-                            <GrLinkNext className="arrow" />
-                        </button>
+                        <Button label= 'Contact Us' style={{backgroundColor: '#6D30A7'}} borderColor = 'none' color ='White'/>
                     </div>
                     <div className='Contact-info Contact-info-1'>
                         <div className='info-wrapper'>
@@ -177,10 +175,7 @@ const Contact = () => {
                     <div className='fix-top'>
                         <h3>Press Room</h3>
                         <p>The Rimowa Press Room provides access to the latest official headlines, stories, press kits, product, and brand imagery. Just register for access.</p>
-                        <button>
-                            <h3>Visit Press Room</h3>
-                            <GrLinkNext className="arrow arrow2" />
-                        </button>
+                        <Button label= 'visit pressclub' style={{backgroundColor: '#6D30A7'}} borderColor = 'none' color ='White'/>
                     </div>
                     <br />
                 </div>

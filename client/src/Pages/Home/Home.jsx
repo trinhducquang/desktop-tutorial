@@ -6,7 +6,7 @@ import img1 from '../../../public/video/main/img1.webp';
 import img2 from '../../../public/video/main/img2.webp';
 import img4 from '../../../public/video/main/img4.webp';
 import { Link } from 'react-router-dom';
-import { GrLinkNext } from "react-icons/gr";
+import Button from '../../components/Button/Button';
 import useNavbar from '../../Hooks/useNavbar';
 import './Home.scss';
 
@@ -43,24 +43,18 @@ const Navbar = () => {
             <div className={`video-content ${isVideoInView ? 'visible' : ''}`}>
               <h2>ORIGINAL COLOURS</h2>
               <p>MARS & MERCURY</p>
-              <button className='circle-large bigmouse'>
-                <Link to="/Inspiring-Greatness">
-                  DISCOVER NOW
-                </Link>
-                <GrLinkNext className="arrow" />
-              </button>
+              <Link to="/Inspiring-Greatness">
+                <Button label="DISCOVER NOW" style={{border: 'none'}}/>
+              </Link>
             </div>
           </div>
           <div className='Navbar-img'>
             <img src={RIMOWA} alt="Culinan" />
             <div className={`img-content ${isImgInView ? 'visible' : ''}`}>
               <h2>CHARGING SPECTRE</h2>
-              <button className='bigmouse'>
-                <Link to="/Library">
-                  DISCOVER NOW
-                </Link>
-                <GrLinkNext className="arrow" />
-              </button>
+              <Link to="/Library">
+                <Button label="DISCOVER NOW" style={{border: 'none'}}/>
+              </Link>
             </div>
           </div>
         </Carousel>

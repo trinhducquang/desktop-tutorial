@@ -17,6 +17,8 @@ import Carousel from '../../components/Carousel/Carousel.jsx';
 import { PreownedMedia } from '../../components/Carousel/imageGroups.js';
 import Accordion from '../../components/Accordion/Accordion.jsx';
 import { Link } from 'react-router-dom';
+import Button from '../../components/Button/Button.jsx';
+import { colors } from '@mui/material';
 
 const Preowned = () => {
     const settings = {
@@ -44,14 +46,8 @@ const Preowned = () => {
                         <p>Continue the legacy and discover your certified Rimowa luggage.</p>
                     </div>
                     <div className='cta-buttons'>
-                        <button>
-                            CONTACT A DEALER
-                            <GrLinkNext className="cta-arrow" />
-                        </button>
-                        <button>
-                            Search Pre-Owned
-                            <GrLinkNext className="cta-arrow" />
-                        </button>
+                        <Button label='CONTACT A DEALER' />
+                        <Button label='Search Pre-Owned' />
                     </div>
                 </div>
             </section>
@@ -136,11 +132,8 @@ const Preowned = () => {
                             Rimowa piece can be tailored to its new owner through truly expressive customization. Bring original
                             concepts to life through conversations with our Rimowa Bespoke team.
                         </p>
-                        <div>
-                            <button>
-                                CONTACT A DEALER
-                                <GrLinkNext className="arrow" />
-                            </button>
+                        <div style={{ marginTop: '50px' }}>
+                            <Button label='CONTACT A DEALER' />
                         </div>
                     </div>
                 </div>
@@ -187,10 +180,9 @@ const Preowned = () => {
                     <div className='image-container'>
                         <img src={img13} alt="Nebula" />
                         <h2>begin your Rimowa story</h2>
-                        <button>
-                            Search Pre-Owned
-                            <GrLinkNext className="cta-arrow" />
-                        </button>
+                        <div style={{position:'relative', bottom: '550px'}}>
+                            <Button label='Search Pre-Owned' style={{border: 'none'}}/>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -225,13 +217,10 @@ const Preowned = () => {
                     </div>
                 </div>
                 <div className="img-section img-section-3">
-                    <div className='image-container image-container-fix'>
-                        <button>
-                            <Link to='/Inspiring-Greatness'>
-                                Inspiring Greatness
-                                <GrLinkNext className="cta-arrow" />
-                            </Link>
-                        </button>
+                    <div className='image-container' style={{background: '#151515'}}>
+                        <Link to='/Inspiring-Greatness'>
+                            <Button label='Inspiring Greatness' style={{border: 'none', backgroundColor: 'transparent'}} color= 'white'/>
+                        </Link>
                     </div>
                 </div>
             </section>

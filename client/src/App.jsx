@@ -4,7 +4,7 @@ import { ScrollToTop, Home, Footer, InspiringGreatness, Sitemap, Contact, Librar
          AdminNew, AdminAttribute, AdminEdit2, AdminNew2, AdminAttriValue, AdminEdit3, AdminNew3, AdminUsers, AdminEdit4, 
          AdminNew4, AdminOrders, AdminEdit5, AdminOrderDetail, AdminEdit6, AdminVideo, AdminEdit7, AdminNew7, Whispers, Faqs, 
          Cookie, Careers, MenuComponent, InspiringSeries, Luxury, Muse, Page1, Page2, Page3, Page4, Page5, Page6, User, AdminImage, 
-         AdminEdit8, AdminNew8, Login, Resgiter, Success, Failed, VerticalLine, CartProvider, NotFound
+         AdminEdit8, AdminNew8, Login, Resgiter, Success, Failed, CartProvider, NotFound
        } from './index';
 
   const App = () => {
@@ -34,7 +34,6 @@ import { ScrollToTop, Home, Footer, InspiringGreatness, Sitemap, Contact, Librar
           <Route path="/404" element={<NotFound />} />
           <Route path='/Success' element={<Success/>}/>
           <Route path='/Failed' element={<Failed/>}/>
-          <Route path='/a' element={<VerticalLine/>}/>
     
           <Route path='/pre-owned' element={<Preowned />} />
           <Route path='/Complaints' element={<Complaints />} />
@@ -53,7 +52,6 @@ import { ScrollToTop, Home, Footer, InspiringGreatness, Sitemap, Contact, Librar
           <Route path='/Gentlemen' element={<Gentlement />} />
           <Route path='/Ladies' element={<Ladies />} />
 
-
           <Route path='/Muse' element={<Muse />} />
           <Route path='/Page1' element={<Page1 />} />
           <Route path='/Page2' element={<Page2 />} />
@@ -62,10 +60,7 @@ import { ScrollToTop, Home, Footer, InspiringGreatness, Sitemap, Contact, Librar
           <Route path='/Page5' element={<Page5 />} />
           <Route path='/Page6' element={<Page6 />} />
 
-
-
           {/* <Route path='/product-details/:id' element={<Booking />} /> */}
-
 
           <Route path='/Admin' element={<Admin />} />
 

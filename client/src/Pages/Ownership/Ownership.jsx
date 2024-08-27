@@ -15,6 +15,7 @@ import useVideoControl from '../../Hooks/useVideoControl';
 import Limitless from '/muse/Limitless.mp4'
 import Owership3 from '/public/Owership/ownersip3.mp4'
 import { Link } from 'react-router-dom'
+import Button from '../../components/Button/Button.jsx';
 
 
 const Ownership = () => {
@@ -93,13 +94,9 @@ const Ownership = () => {
                                 including the latest on the Dream Commission and Spirit of
                                 Ecstasy Challenge in 2023.
                             </p>
-                            <div className='Page1-button'>
                                 <Link to = '/Login'>
-                                    <button>STAY CONNECTED
-                                        <GrLinkNext className="arrow" />
-                                    </button>
+                                <Button label= 'STAY CONNECTED' style={{backgroundColor: '#6D30A7', color: 'white', border: 'none'}}/> 
                                 </Link>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -121,9 +118,7 @@ const Ownership = () => {
                                 Ecstasy Challenge in 2023.
                             </p>
                             <div className='Page1-button'>
-                                <button>STAY CONNECTED
-                                    <GrLinkNext className="arrow" />
-                                </button>
+                            <Button label= 'STAY CONNECTED' style={{backgroundColor: '#6D30A7', color: 'white', border: 'none'}}/> 
                             </div>
                         </div>
                     </div>
@@ -162,9 +157,7 @@ const Ownership = () => {
                                 Ecstasy Challenge in 2023.
                             </p>
                             <div className='Page1-button'>
-                                <button>STAY CONNECTED
-                                    <GrLinkNext className="arrow" />
-                                </button>
+                            <Button label= 'STAY CONNECTED' style={{backgroundColor: '#6D30A7', color: 'white', border: 'none'}}/> 
                             </div>
                         </div>
                     </div>
@@ -203,9 +196,9 @@ const Ownership = () => {
                                 Ecstasy Challenge in 2023.
                             </p>
                             <div className='Page1-button'>
-                                <button>STAY CONNECTED
-                                    <GrLinkNext className="arrow" />
-                                </button>
+                              
+                                <Button label= 'STAY CONNECTED' style={{backgroundColor: '#6D30A7', color: 'white', border: 'none'}}/> 
+                               
                             </div>
                         </div>
                     </div>
