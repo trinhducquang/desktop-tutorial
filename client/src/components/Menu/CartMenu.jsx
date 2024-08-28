@@ -42,7 +42,7 @@ const CartMenu = ({ isCartOpen, handleCloseCart }) => {
   const navigate = useNavigate();
 
 
-  const [products, setProducts] = useState({ // lấy thông tin của user theo id
+  const [products, setProducts] = useState({ 
     id: null,
     name: '',
     email: '',
