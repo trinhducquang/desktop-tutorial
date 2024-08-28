@@ -10,7 +10,6 @@ app.use(cors());
 app.use(express.json());
 
 
-
 app.use('/payment', paymentRoutes);
 app.use('/success', successRoutes);
 app.use('/failed', failedRoutes);
