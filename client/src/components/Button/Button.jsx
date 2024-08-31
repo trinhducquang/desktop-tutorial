@@ -38,14 +38,14 @@ const StyledButton = styled.button`
     }
 
     &:hover {
-        opacity: 1;
+        opacity: 0.9;
 
         span {
             transform: translateX(-20px);
         }
 
         .arrow {
-            opacity: 1;
+            opacity: 0.9;
             transform: translateY(-50%) translateX(10px);
         }
     }
