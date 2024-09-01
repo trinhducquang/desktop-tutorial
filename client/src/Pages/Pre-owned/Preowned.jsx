@@ -215,7 +215,6 @@ const Preowned = () => {
                                 <p>Find a Rimowa dealer near you and book a consultation or discover more about the bespoke services we offer.</p>
                             </div>
                         </div>
-
                     </div>
                     <Link to='/Inspiring-Greatness'>
                         <Button label='Inspiring Greatness' style={{ border: 'none', backgroundColor: 'transparent' }} color='white' />
