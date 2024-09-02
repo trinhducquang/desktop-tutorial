@@ -88,8 +88,8 @@ const Handbag = () => {
     fetchProductAttri();
   }, [url]);
 
-  
-  
+
+
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filters, setFilters] = useState({});
 
@@ -104,26 +104,26 @@ const Handbag = () => {
 
         // Handle minPrice and maxPrice filters separately
         if (filters.minPrice && product.price < filters.minPrice) {
-            // console.log('b minPrice:', product.price);
-            return false;
+          // console.log('b minPrice:', product.price);
+          return false;
         }
         if (filters.maxPrice && product.price > filters.maxPrice) {
-            // console.log('a maxPrice:', product.price);
-            return false;
+          // console.log('a maxPrice:', product.price);
+          return false;
         }
 
         return Object.entries(filters)
-        .filter(([attributeType]) => attributeType !== 'minPrice' && attributeType !== 'maxPrice')
-        .every(([attributeType, selectedValues]) => {
-          if (selectedValues.length === 0) return true;
-          // console.log(product);
-          // console.log(attributeType);
-          const productAttriForType = productAttributes.filter(
-            pa => pa.product_id === product.id && pa.attribute_value_id && selectedValues.includes(pa.attribute_value_id)
-          );
-          // console.log(productAttriForType.filter(pa => pa.product_id === product.id && pa.attribute_value_id && selectedValues.includes(pa.attribute_value_id)));
-          return productAttriForType.length > 0;
-        })
+          .filter(([attributeType]) => attributeType !== 'minPrice' && attributeType !== 'maxPrice')
+          .every(([attributeType, selectedValues]) => {
+            if (selectedValues.length === 0) return true;
+            // console.log(product);
+            // console.log(attributeType);
+            const productAttriForType = productAttributes.filter(
+              pa => pa.product_id === product.id && pa.attribute_value_id && selectedValues.includes(pa.attribute_value_id)
+            );
+            // console.log(productAttriForType.filter(pa => pa.product_id === product.id && pa.attribute_value_id && selectedValues.includes(pa.attribute_value_id)));
+            return productAttriForType.length > 0;
+          })
       });
       // console.log(filtered);
       setFilteredProducts(filtered);
@@ -139,7 +139,7 @@ const Handbag = () => {
   };
 
   return (
-    <>
+    <div className='overflow'>
       <section>
         <div className='Navbar-img Navbar-library'>
           <img src={banner} alt="Library Banner" />
@@ -157,58 +157,58 @@ const Handbag = () => {
           <div className='content-container'>
             {
               filteredProducts
-              .filter((product) => product.type === 'Bags')
-              .map((product) => (
-                <div className='item' key={product.id}>
-                  <div className=''>
-                    {
-                      Object.entries(groupedImages)
-                        .filter(([productId, imageList]) => productId === product.id)
-                        .map(([productId, imageList]) => {
-                          const [image1, image2] = imageList.slice(0, 2);
+                .filter((product) => product.type === 'Bags')
+                .map((product) => (
+                  <div className='item' key={product.id}>
+                    <div className=''>
+                      {
+                        Object.entries(groupedImages)
+                          .filter(([productId, imageList]) => productId === product.id)
+                          .map(([productId, imageList]) => {
+                            const [image1, image2] = imageList.slice(0, 2);
 
-                          return (
-                            <Link to={`/Booking/${productId}`} key={productId}>
-                              <div
-                                className='img-container'
-                                onMouseEnter={() => handleMouseEnter(product.id)}
-                                onMouseLeave={handleMouseLeave}
-                              >
-                                {image1 && (
-                                  <img
-                                    src={image1.image}
-                                    alt={`Product ${productId} - Image 1`}
-                                    className={`img1 ${hoveredItem === productId ? 'hidden' : ''}`}
-                                  />
-                                )}
-                                {image2 && (
-                                  <img
-                                    src={image2.image}
-                                    alt={`Product ${productId} - Image 2`}
-                                    className={`imgright ${hoveredItem === productId ? 'visible' : ''}`}
-                                  />
-                                )}
-                              </div>
-                            </Link>
-                          );
-                        })
-                    }
+                            return (
+                              <Link to={`/Booking/${productId}`} key={productId}>
+                                <div
+                                  className='img-container'
+                                  onMouseEnter={() => handleMouseEnter(product.id)}
+                                  onMouseLeave={handleMouseLeave}
+                                >
+                                  {image1 && (
+                                    <img
+                                      src={image1.image}
+                                      alt={`Product ${productId} - Image 1`}
+                                      className={`img1 ${hoveredItem === productId ? 'hidden' : ''}`}
+                                    />
+                                  )}
+                                  {image2 && (
+                                    <img
+                                      src={image2.image}
+                                      alt={`Product ${productId} - Image 2`}
+                                      className={`imgright ${hoveredItem === productId ? 'visible' : ''}`}
+                                    />
+                                  )}
+                                </div>
+                              </Link>
+                            );
+                          })
+                      }
 
-                    <div className='text-abc'>
-                      <h4>{product.name}</h4>
-                      <p>${product.price}</p>
+                      <div className='text-abc'>
+                        <h4>{product.name}</h4>
+                        <p>${product.price}</p>
+                      </div>
+
                     </div>
-
                   </div>
-                </div>
-              ))
+                ))
             }
           </div>
         </div>
       </section>
-      
+
       <FooterTop />
-    </>
+    </div>
   );
 };
 
