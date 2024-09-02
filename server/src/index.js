@@ -7,8 +7,9 @@ import failedRoutes from './routes/failed.js';
 const app = express();
 
 app.use(cors());
-app.use(express.json());
 
+app.use(express.json({ limit: 'Infinity' }));
+app.use(express.urlencoded({ limit: 'Infinity', extended: true }));
 
 app.use('/payment', paymentRoutes);
 app.use('/success', successRoutes);
