@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from 'react';
 import './Gentlement.scss'
 import { Link } from 'react-router-dom';
