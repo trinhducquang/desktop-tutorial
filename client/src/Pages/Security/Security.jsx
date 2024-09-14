@@ -99,11 +99,11 @@ const Security = () => {
                                 </section>
                                 <section>
                                     <div>
-                                        <h2>Essential Cookies</h2>
+                                        <h2>Essential Security</h2>
                                         <h2>Always on</h2>
                                     </div>
                                     <div>
-                                        <p>We store and read essential cookies on your end device,
+                                        <p>We store and read essential Security on your end device,
                                             in order to subsequently process the collected personal data.</p>
                                         <p>This takes place in particular to:</p>
                                         <ul>
