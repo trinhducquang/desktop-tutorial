@@ -16,6 +16,8 @@ export { default as Handbag } from './Pages/Handbag/Handbag';
 export { default as Packpack } from './Pages/Packpack/Packpack';
 export { default as Gentlement } from './Pages/Gentlement/Gentlement';
 export { default as Ladies } from './Pages/Ladies/Ladies';
+export { default as Refund } from './Pages/Refund/Refund';
+export { default as Security } from './Pages/Security/Security';
 export { default as Admin } from './Admin/Admin';
 export { default as AdminProduct } from './Admin/Product/AdminProduct';
 export { default as AdminEdit } from './Admin/Product/AdminEdit';

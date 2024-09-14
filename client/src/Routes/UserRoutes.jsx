@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Home, InspiringGreatness, Sitemap, Contact, Library, Booking, Privacy, Ownership, Legal, Preowned, 
          Complaints, Vali, Handbag, Packpack, Gentlement, Ladies, Faqs, Whispers, Cookie, Careers, Login, 
-         InspiringSeries, Luxury, Muse, Page1, Page2, Page3, Page4, Page5, Page6, User, Success, Failed, NotFound,Resgiter } 
+         InspiringSeries, Luxury, Muse, Page1, Page2, Page3, Page4, Page5, Page6, User, Success, Failed, NotFound,Resgiter, Refund ,Security } 
          from '../index';
 
 const UserRoutes = () => {
@@ -38,6 +38,10 @@ const UserRoutes = () => {
       <Route path='/Backpack' element={<Packpack />} />
       <Route path='/Gentlemen' element={<Gentlement />} />
       <Route path='/Ladies' element={<Ladies />} />
+
+      <Route path='/Refund' element={<Refund />} />
+      <Route path='/Security' element={<Security />} />
+
 
       <Route path='/Muse' element={<Muse />} />
       <Route path='/Page1' element={<Page1 />} />
